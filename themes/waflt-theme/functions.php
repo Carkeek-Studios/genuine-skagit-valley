@@ -1,6 +1,6 @@
 <?php
 /**
- * WA Farmland Trust Theme functions and definitions
+ * WA Farmland Trust functions and definitions
  *
  * This file must be parseable by PHP 5.2.
  *

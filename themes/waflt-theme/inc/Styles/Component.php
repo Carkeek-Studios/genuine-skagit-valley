@@ -245,7 +245,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				$is_valid = isset( $css_files[ $handle ] ) && ! $css_files[ $handle ]['global'];
 				if ( ! $is_valid ) {
 					/* translators: %s: stylesheet handle */
-					_doing_it_wrong( __CLASS__ . '::print_styles()', esc_html( sprintf( __( 'Invalid theme stylesheet handle: %s', 'waflt-theme' ), $handle ) ), 'WA Farmland Trust Theme 2.0.0' );
+					_doing_it_wrong( __CLASS__ . '::print_styles()', esc_html( sprintf( __( 'Invalid theme stylesheet handle: %s', 'waflt-theme' ), $handle ) ), 'WA Farmland Trust 2.0.0' );
 				}
 				return $is_valid;
 			}

@@ -1,7 +1,7 @@
 {
   "theme": {
-    "slug": "carkeek-theme",
-    "name": "Carkeek Theme",
+    "slug": "waflt-theme",
+    "name": "WA Farmland Trust",
     "author": "Patty O'Hara"
   },
   "dev": {
@@ -13,5 +13,15 @@
       "certPath": "/Users/pattyohara/Sites/BrowserSync/wp-rig-browser-sync-cert.crt",
       "keyPath": "/Users/pattyohara/Sites/BrowserSync/wp-rig-browser-sync-key.key"
     }
+  },
+  "export": {
+    "compress": false,
+    "generatePotFile": false,
+    "filesToCopy": [
+      "LICENSE",
+      "readme.txt",
+      "assets/fonts/**",
+      "acf-json/**"
+    ]
   }
 }

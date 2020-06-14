@@ -88,66 +88,66 @@ msgstr ""
 msgid "Collapse child menu"
 msgstr ""
 
-#: inc/Base_Support/Component.php:280
+#: inc/Base_Support/Component.php:281
 msgid "Archives"
 msgstr ""
 
-#: inc/Base_Support/Component.php:273
+#: inc/Base_Support/Component.php:274
 msgctxt "post format archive title"
 msgid "Chats"
 msgstr ""
 
-#: inc/Base_Support/Component.php:271
+#: inc/Base_Support/Component.php:272
 msgctxt "post format archive title"
 msgid "Audio"
 msgstr ""
 
-#: inc/Base_Support/Component.php:269
+#: inc/Base_Support/Component.php:270
 msgctxt "post format archive title"
 msgid "Statuses"
 msgstr ""
 
-#: inc/Base_Support/Component.php:267
+#: inc/Base_Support/Component.php:268
 msgctxt "post format archive title"
 msgid "Links"
 msgstr ""
 
-#: inc/Base_Support/Component.php:265
+#: inc/Base_Support/Component.php:266
 msgctxt "post format archive title"
 msgid "Quotes"
 msgstr ""
 
-#: inc/Base_Support/Component.php:263
+#: inc/Base_Support/Component.php:264
 msgctxt "post format archive title"
 msgid "Videos"
 msgstr ""
 
-#: inc/Base_Support/Component.php:261
+#: inc/Base_Support/Component.php:262
 msgctxt "post format archive title"
 msgid "Images"
 msgstr ""
 
-#: inc/Base_Support/Component.php:259
+#: inc/Base_Support/Component.php:260
 msgctxt "post format archive title"
 msgid "Galleries"
 msgstr ""
 
-#: inc/Base_Support/Component.php:257
+#: inc/Base_Support/Component.php:258
 msgctxt "post format archive title"
 msgid "Asides"
 msgstr ""
 
-#: inc/Base_Support/Component.php:254
+#: inc/Base_Support/Component.php:255
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr ""
 
-#: inc/Base_Support/Component.php:252
+#: inc/Base_Support/Component.php:253
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: inc/Base_Support/Component.php:250
+#: inc/Base_Support/Component.php:251
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
@@ -176,59 +176,83 @@ msgstr ""
 msgid "Theme Options"
 msgstr ""
 
-#: inc/Editor/Component.php:69, inc/Nav_Menus/Component.php:71
-msgid "Primary"
-msgstr ""
-
-#: inc/Editor/Component.php:74, inc/Nav_Menus/Component.php:72
-msgid "Secondary"
-msgstr ""
-
 #: inc/Editor/Component.php:79
-msgid "Grey Med Light"
+msgid "Green"
 msgstr ""
 
 #: inc/Editor/Component.php:84
-msgid "Grey"
+msgid "Yellow"
 msgstr ""
 
 #: inc/Editor/Component.php:89
-msgid "Grey Med Dark"
+msgid "Orange"
 msgstr ""
 
 #: inc/Editor/Component.php:94
-msgid "White"
+msgid "Blue"
 msgstr ""
 
-#: inc/Editor/Component.php:111
-msgid "Small"
+#: inc/Editor/Component.php:99
+msgid "Red"
 msgstr ""
 
-#: inc/Editor/Component.php:112
-msgid "S"
+#: inc/Editor/Component.php:104
+msgid "Green Light"
 msgstr ""
 
-#: inc/Editor/Component.php:117
-msgid "Medium"
+#: inc/Editor/Component.php:109
+msgid "Red Light"
 msgstr ""
 
-#: inc/Editor/Component.php:118
-msgid "M"
+#: inc/Editor/Component.php:114
+msgid "Grey"
 msgstr ""
 
-#: inc/Editor/Component.php:123
-msgid "Large"
+#: inc/Editor/Component.php:119
+msgid "Grey Light"
 msgstr ""
 
 #: inc/Editor/Component.php:124
-msgid "L"
+msgid "Grey Lightest"
 msgstr ""
 
 #: inc/Editor/Component.php:129
+msgid "Black"
+msgstr ""
+
+#: inc/Editor/Component.php:134
+msgid "White"
+msgstr ""
+
+#: inc/Editor/Component.php:151
+msgid "Small"
+msgstr ""
+
+#: inc/Editor/Component.php:152
+msgid "S"
+msgstr ""
+
+#: inc/Editor/Component.php:157
+msgid "Medium"
+msgstr ""
+
+#: inc/Editor/Component.php:158
+msgid "M"
+msgstr ""
+
+#: inc/Editor/Component.php:163
+msgid "Large"
+msgstr ""
+
+#: inc/Editor/Component.php:164
+msgid "L"
+msgstr ""
+
+#: inc/Editor/Component.php:169
 msgid "Larger"
 msgstr ""
 
-#: inc/Editor/Component.php:130
+#: inc/Editor/Component.php:170
 msgid "XL"
 msgstr ""
 
@@ -248,20 +272,36 @@ msgstr ""
 msgid "Lazy-loading images means images are loaded only when they are in view. Improves performance, but can result in content jumping around on slower connections."
 msgstr ""
 
-#: inc/Sidebars/Component.php:71
+#: inc/Nav_Menus/Component.php:71
+msgid "Primary"
+msgstr ""
+
+#: inc/Nav_Menus/Component.php:72
+msgid "Secondary"
+msgstr ""
+
+#: inc/Sidebars/Component.php:72
 msgid "Footer Upper"
 msgstr ""
 
-#: inc/Sidebars/Component.php:73
-msgid "Footer Widgets, will stack vertically"
+#: inc/Sidebars/Component.php:74
+msgid "Footer Widgets Top"
 msgstr ""
 
-#: inc/Sidebars/Component.php:82
+#: inc/Sidebars/Component.php:83
 msgid "Footer Lower"
 msgstr ""
 
-#: inc/Sidebars/Component.php:84
-msgid "Footer Widgets, will layout horizontally"
+#: inc/Sidebars/Component.php:85
+msgid "Footer Widgets Lower Section (includes HR)"
+msgstr ""
+
+#: inc/Sidebars/Component.php:94
+msgid "Footer Bottom"
+msgstr ""
+
+#: inc/Sidebars/Component.php:96
+msgid "Footer Widgets Widgets Bottom (includes HR)"
 msgstr ""
 
 #. translators: %s: stylesheet handle
@@ -421,6 +461,10 @@ msgstr ""
 
 #: template-parts/header/navigation.php:49
 msgid "Menu"
+msgstr ""
+
+#: template-parts/header/search.php:12
+msgid "Open search"
 msgstr ""
 
 #: template-parts/header/top_navigation.php:16
