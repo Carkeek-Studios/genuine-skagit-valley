@@ -1,0 +1,100 @@
+/**
+ * Custom Properties
+ * aka CSS variables.
+ *
+ * @link: https://developer.mozilla.org/en-US/docs/Web/CSS/--*
+ **/
+
+:root {
+	--global-font-color: #777;
+	--global-font-family: frank-new, sans-serif;
+	--global-font-size: 16;
+	--global-font-line-height: 1.7;
+	--highlight-font-family: frank-new, sans-serif;
+	--form-field-font-family: frank-new, sans-serif;
+	--content-width: 824px;
+	--header-width: 1400px;
+	--dropdown-symbol-width: 0.7em;
+	--gutter-width: 1rem;
+
+	--global-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+
+
+	/* Custom editor colors */
+	--color-theme-primary: #68813c;
+	--color-theme-secondary: #cab44b;
+	--color-theme-red: #a55525;
+	--color-theme-red-light: #e8b7b1;
+	--color-theme-green: #68813c;
+	--color-theme-green-light: #a7ad37;
+	--color-theme-blue: #a2c6d2;
+	--color-theme-yellow: #cab44b;
+	--color-theme-orange: #c7932c;
+	--color-theme-black: #1c2833;
+
+
+	--color-theme-grey-light: #e0e0e0;
+	--color-theme-grey: #777;
+
+	--color-theme-grey-lightest: #e3e3e3;
+
+	--border-color: var(--color-theme-grey-lightest);
+
+	--color-button-background: var(--color-theme-orange);
+	--color-button-text: var(--color-theme-white);
+
+	--color-link: var(--color-theme-green-light);
+	--color-link-visited: var(--color-theme-green-light);
+	--color-link-active: var(--color-theme-green);
+
+	--color-quote-border: #000;
+	--color-quote-citation: #6c7781;
+	--color-border: #a6a6a6;
+
+	/* Custom editor font sizes */
+	--font-size-small: calc(16 / var(--global-font-size) * 1rem);
+	--font-size-xsmall: calc(12 / var(--global-font-size) * 1rem);
+	--font-size-medium: calc(18 / var(--global-font-size) * 1rem); /** intro text **/
+	--font-size-medium-hd: calc(24 / var(--global-font-size) * 1rem);
+	--font-size-regular: calc(14 / var(--global-font-size) * 1rem);
+	--font-size-regular-hd: calc(18 / var(--global-font-size) * 1rem);
+	--font-size-large: calc(18 / var(--global-font-size) * 1rem); /** quote **/
+	--font-size-large-t: calc(21 / var(--global-font-size) * 1rem); /** quote **/
+	--font-size-large-tw: calc(24 / var(--global-font-size) * 1rem); /** quote **/
+	--font-size-large-hd: calc(34 / var(--global-font-size) * 1rem); /** quote **/
+	--font-size-larger: calc(48 / var(--global-font-size) * 1rem);
+	--font-size-nav: calc(18 / var(--global-font-size) * 1rem);
+	--font-size-button: calc(16 / var(--global-font-size) * 1rem);
+	--font-size-button-hd: calc(20 / var(--global-font-size) * 1rem);
+
+
+	/* Main family font weights */
+	--font-weight-regular: 400;
+	--font-weight-bold: 700;
+	--font-weight-medium: 500;
+
+
+	/* Heading font sizes */
+	--font-size-h1: 2.25rem;
+	--font-size-h1-tw: 3rem;
+	--font-size-h1-hd: 3.75rem;
+	--font-size-h2: 2.25rem;
+	--font-size-h2-hd: 3.125rem;
+	--font-size-h3: 1.5rem;
+	--font-size-h4: 1.25rem;
+
+
+	/* Not Using */
+	--color-theme-grey-med-light: #b6b6b6;
+	--color-theme-grey-med-dark: #6e6d6d;
+	--color-theme-grey-dark: #545454;
+	--color-theme-white: #fff;
+	--color-custom-daylight: #97c0b7;
+	--color-custom-sun: #eee9d1;
+	--global-font-size-small: 14;
+	--global-font-size-large: 18;
+
+	/* End Not Using */
+
+
+}

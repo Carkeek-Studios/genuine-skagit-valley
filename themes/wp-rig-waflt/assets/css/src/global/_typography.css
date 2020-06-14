@@ -1,0 +1,211 @@
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+/* stylelint-disable */
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	color: var(--global-font-color);
+	font-family: var(--global-font-family);
+	font-size: var(--font-size-regular);
+	line-height: var(--global-font-line-height);
+}
+
+@media (--desktop-up) {
+
+	body,
+	button,
+	input,
+	select,
+	optgroup,
+	textarea {
+		font-size: var(--font-size-regular-hd);
+		line-height: var(--global-font-line-height);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+
+	& a {
+		color: var(--color-theme-green);
+	}
+}
+
+h1,
+.h1 {
+	font-weight: 700;
+	font-size: var(--font-size-h1);
+	line-height: 1.3888;
+}
+
+h2,
+.h2 {
+	line-height: 1.277777;
+	margin-bottom: 1rem;
+	font-weight: 700;
+	font-size: var(--font-size-h2);
+}
+
+h3,
+.h3 {
+	font-size: var(--font-size-h3);
+}
+
+h4,
+.h4 {
+	font-size: var(--font-size-h4);
+}
+
+
+@media (--tablet-wide-up) {
+
+	h1,
+	.h1 {
+		font-size: var(--font-size-h1-tw);
+		line-height: 1.25;
+	}
+}
+
+@media (--desktop-up) {
+
+	h1,
+	.h1 {
+		font-size: var(--font-size-h1-hd);
+		line-height: 1.25;
+	}
+}
+/* stylelint-enable */
+
+.entry-header h1.entry-title,
+.page-header .page-title {
+	line-height: 1.4;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote,
+q {
+	quotes: initial;
+}
+
+blockquote {
+	border: none;
+	text-align: center;
+	font-weight: var(--font-weight-medium);
+	font-size: var(--font-size-large);
+	line-height: 1.66667;
+}
+
+blockquote cite {
+	color: inherit;
+	font-size: 14px;
+	margin-top: 1em;
+	position: relative;
+	font-style: normal;
+
+	&::before {
+		content: "\2013 ";
+		margin-right: 3px;
+	}
+}
+
+@media (--tablet-up) {
+
+	blockquote {
+		font-size: var(--font-size-large-t);
+		line-height: 1.619;
+	}
+}
+
+@media (--tablet-wide-up) {
+
+	blockquote {
+		font-size: var(--font-size-large-tw);
+
+	}
+}
+
+@media (--desktop-up) {
+
+	blockquote {
+		font-size: var(--font-size-large-hd);
+	}
+
+	blockquote cite {
+		font-size: 1.25rem;
+	}
+}
+
+address {
+	margin: 0 0 1.5em;
+}
+
+/* stylelint-disable */
+pre {
+	background: #eee;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	margin-bottom: 1.5em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.5em;
+}
+/* stylelint-enable */
+
+code,
+kbd,
+tt,
+var {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 0.8rem;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+mark,
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+/*--------------------------------------------------------------
+# Block Styles
+--------------------------------------------------------------*/
+
+.has-medium-font-size {
+	font-size: var(--font-size-medium);
+	line-height: 1.77;
+}
+
+@media (--desktop-up) {
+
+	.has-medium-font-size {
+		font-size: var(--font-size-medium-hd);
+		line-height: 1.9;
+	}
+}
