@@ -1,0 +1,14 @@
+upgrade/
+uploads/
+
+
+.DS_Store
+.thumbsdb
+
+themes/*
+themes/*/node_modules/
+themes/*/bower_components/
+
+
+!themes/wp-rig-wfltorg
+!themes/waflt-theme

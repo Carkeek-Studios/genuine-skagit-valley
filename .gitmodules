@@ -1,0 +1,3 @@
+[submodule "mu-plugins/carkeek-blocks"]
+	path = mu-plugins/carkeek-blocks
+	url = https://github.com/pattyok/carkeek-blocks.git
