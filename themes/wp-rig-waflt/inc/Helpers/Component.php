@@ -63,7 +63,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$html = '<ul class="no-list social-links ' . $styles . '">';
 			foreach ( $social as $soc ) {
 				if ( ! empty( $soc['link'] ) ) {
-					$html .= '<li><a href="' . $soc['link'] . '" title="' . $soc['link_title'] . '" target="_blank"></a><i class="icon-' . $soc['type'] . '"></i></li>';
+					$html .= '<li><a href="' . $soc['link'] . '" title="' . $soc['link_title'] . '" target="_blank"><i class="icon-' . $soc['type'] . '"></i></a></li>';
 				}
 			}
 			$html .= '</ul>';
