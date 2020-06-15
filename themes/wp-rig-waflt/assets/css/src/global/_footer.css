@@ -15,6 +15,14 @@
 		margin-right: 1rem;
 		margin-left: 1rem;
 	}
+
+	& .gpopover {
+		color: var(--global-font-color);
+
+		& a {
+			color: var(--color-link);
+		}
+	}
 }
 
 .colophon {

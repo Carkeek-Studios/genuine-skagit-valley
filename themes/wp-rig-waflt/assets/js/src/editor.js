@@ -66,7 +66,6 @@ wp.domReady( function() {
 
 //Set the default dimratio on the cover block to 0.
 function setCoverBlockDefaults( settings, name ) {
-	console.log( settings );
 	if ( name !== 'core/cover' ) {
 		return settings;
 	}
