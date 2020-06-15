@@ -444,10 +444,16 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	}
 }
 
-@media (--desktop-up) {
+@media (--tablet-wide-up) {
 
 	.wp-block-carkeek-blocks-link-tiles {
 		margin-bottom: 2rem;
+	}
+}
+
+@media (--desktop-up) {
+
+	.wp-block-carkeek-blocks-link-tiles {
 
 		& .wp-block-carkeek-blocks-link-tile {
 			max-height: 400px;
