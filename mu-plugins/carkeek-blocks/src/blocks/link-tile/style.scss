@@ -1,10 +1,8 @@
 .wp-block-carkeek-blocks-link-tiles {
     display: flex;
     flex-direction: column;
-    margin-top: 1.5rem;
 
-    > .wp-block-carkeek-blocks-link-tile {
-        margin-bottom: 1.5rem;
+    & .wp-block-carkeek-blocks-link-tile {
         width: 100%;
         position: relative;
         color: #fff;
@@ -31,6 +29,7 @@
             left: 50%;
             width: 100%;
             transform: translate(-50%, -50%);
+            opacity: 0;
             &:after {
                 content: "\203A";
                 margin-left: 5px;
@@ -44,7 +43,11 @@
                 > .wp-block-carkeek-blocks-link-tile__img {
                     opacity: 0;
                 }
+                & .link-tile__hover_title {
+                    opacity: 1;
+                }
             }
+
         }
     }
 }
@@ -76,13 +79,5 @@
     .wp-block-carkeek-blocks-link-tiles {
         flex-direction: row;
         flex-wrap: nowrap;
-
-        > .wp-block-carkeek-blocks-link-tile {
-            margin-left: 2rem;
-
-            &:first-of-type {
-                margin-left: 0;
-            }
-        }
     }
 }

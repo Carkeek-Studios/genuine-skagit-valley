@@ -10,10 +10,26 @@ wp.domReady( function() {
 		label: 'Arrow Link',
 	} );
 
+	// Add Column Styles
+	wp.blocks.registerBlockStyle( 'core/columns', {
+		name: 'vertical-centered',
+		label: 'Vertical Centered',
+	} );
+
 	// Remove Core Button Style.
 	wp.blocks.unregisterBlockStyle( 'core/button', 'outline' );
 
-	wp.blocks.unregisterBlockStyle( 'core/pullquote', 'default' );
+	// Remove Core HR Style.
+	wp.blocks.unregisterBlockStyle( 'core/separator', 'dots' );
+
+	// Add Column Styles
+	wp.blocks.registerBlockStyle( 'core/separator', {
+		name: 'with-margin',
+		label: 'With Margin',
+	} );
+
+	//unregister pullquute in favor of cover/group with quote for consistency
+	wp.blocks.unregisterBlockType( 'core/pullquote' );
 
 	wp.blocks.registerBlockVariation( 'core/cover', {
 		name: 'page-header-cover',
@@ -40,9 +56,21 @@ wp.domReady( function() {
 	} );
 
 	wp.blocks.registerBlockVariation( 'core/group', {
+		name: 'quote-color-bg',
+		title: 'Pullquote with Background-color',
+		icon: 'format-quote',
+		innerBlocks: [
+			[ 'core/quote', { } ],
+		],
+		attributes: { align: 'full', className: 'is-group-quote' },
+		scope: [ 'inserter' ],
+		keywords: [ 'cover', 'quote', 'background' ],
+	} );
+
+	wp.blocks.registerBlockVariation( 'core/group', {
 		name: 'page-intro',
 		title: 'Page Intro',
-		icon: icons.intro,
+		icon: 'editor-aligncenter',
 		innerBlocks: [
 			[ 'core/paragraph', { align: 'center', fontSize: 'medium' } ],
 		],
@@ -65,21 +93,20 @@ wp.domReady( function() {
 } );
 
 //Set the default dimratio on the cover block to 0.
-function setCoverBlockDefaults( settings, name ) {
-	if ( name !== 'core/cover' ) {
-		return settings;
+function setBlockDefaults( settings, name ) {
+	if ( name === 'core/cover' ) {
+		if ( settings.attributes && settings.attributes.dimRatio ) {
+			settings.attributes.dimRatio.default = 0;
+		}
 	}
 
-	if ( settings.attributes && settings.attributes.dimRatio ) {
-		settings.attributes.dimRatio.default = 0;
-	}
 	return settings;
 }
 
 wp.hooks.addFilter(
 	'blocks.registerBlockType',
 	'wprig-theme',
-	setCoverBlockDefaults
+	setBlockDefaults
 );
 
 //Set the default dimratio on the cover block to 0.

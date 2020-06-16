@@ -35,6 +35,7 @@ const attributes = {
     focalPoint: {
         type: "object"
     }
+
 };
 
 registerBlockType("carkeek-blocks/link-tile", {

@@ -28,16 +28,14 @@ body {
 
 /* stylelint-disable */
 hr {
-	background-color: #ccc;
-	border: 0;
-	height: 1px;
 	margin-bottom: 1.5em;
+	box-sizing: border-box;
 }
 /* stylelint-enable */
 
 ul,
 ol {
-	margin: 0 0 1.5em 3em;
+	margin: 1.5rem 0;
 }
 
 ul {
@@ -50,8 +48,7 @@ ol {
 
 li > ul,
 li > ol {
-	margin-bottom: 0;
-	margin-left: 1.5em;
+	margin: 0;
 }
 
 ul.no-list {
@@ -89,5 +86,10 @@ table {
 
 p {
 	margin-bottom: 1.5rem;
+	margin-top: 0;
+}
+
+div > p:last-of-type {
+	margin-bottom: 0;
 }
 

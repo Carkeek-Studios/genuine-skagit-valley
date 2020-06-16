@@ -78,7 +78,7 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Green', 'wp-rig' ),
 					'slug'  => 'theme-green',
-					'color' => '#68813C',
+					'color' => '#637d36',
 				),
 				array(
 					'name'  => __( 'Yellow', 'wp-rig' ),
@@ -88,7 +88,7 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Orange', 'wp-rig' ),
 					'slug'  => 'theme-orange',
-					'color' => '#c7932c',
+					'color' => '#bc8a24',
 				),
 				array(
 					'name'  => __( 'Blue', 'wp-rig' ),
@@ -103,17 +103,12 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Green Light', 'wp-rig' ),
 					'slug'  => 'theme-green-light',
-					'color' => '#a7ad37',
-				),
-				array(
-					'name'  => __( 'Red Light', 'wp-rig' ),
-					'slug'  => 'theme-red-light',
-					'color' => '#e8b7b1',
+					'color' => '#959b27',
 				),
 				array(
 					'name'  => __( 'Grey', 'wp-rig' ),
 					'slug'  => 'theme-grey',
-					'color' => '#777',
+					'color' => '#6b6b6b',
 				),
 				array(
 					'name'  => __( 'Grey Light', 'wp-rig' ),
@@ -121,14 +116,9 @@ class Component implements Component_Interface {
 					'color' => '#e0e0e0',
 				),
 				array(
-					'name'  => __( 'Grey Lightest', 'wp-rig' ),
-					'slug'  => 'theme-grey-light',
-					'color' => '#e3e3e3',
-				),
-				array(
 					'name'  => __( 'Black', 'wp-rig' ),
-					'slug'  => 'theme-red-light',
-					'color' => '#1c2833',
+					'slug'  => 'theme-black',
+					'color' => '#383838',
 				),
 				array(
 					'name'  => __( 'White', 'wp-rig' ),

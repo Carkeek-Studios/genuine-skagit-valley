@@ -56,6 +56,10 @@
 		height 0s ease 1s;
 }
 
+.primary-menu-container .menu-item .dropdown-toggle:focus {
+	outline: none;
+}
+
 /* we only show the nav when the nav is active */
 body.overflow-hidden {
 	overflow: hidden;
@@ -91,6 +95,11 @@ body.overflow-hidden {
 		transform: translate3d(0, 0, 0);
 		opacity: 1;
 		transition: transform 0.6s ease;
+	}
+
+	.nav--toggle-small.subnav--toggled-on .sub-menu {
+		height: calc(100% -150px);
+		overflow: scroll;
 	}
 
 
@@ -162,9 +171,13 @@ body.overflow-hidden {
 		padding-bottom: 20px;
 		z-index: 1;
 		transform: translateX(-50%);
-		width: auto;
 		height: auto;
 		border: 2px solid var(--color-theme-green);
+		width: 210px;
+
+		& a {
+			color: var(--color-theme-green);
+		}
 	}
 
 	.nav--toggle-small .sub-menu::before {
@@ -332,14 +345,14 @@ body.overflow-hidden {
 	padding: 1.25rem 1rem;
 
 	& a {
-		background-color: var(--color-theme-yellow);
+		background-color: var(--color-button-background);
 		color: var(--color-theme-white);
 		padding: 1.5rem 1rem;
 		text-align: center;
 		transition: background-color 0.6s ease;
 
 		&:hover {
-			background-color: var(--color-theme-orange);
+			background-color: var(--color-button-hover);
 		}
 
 	}
@@ -353,7 +366,7 @@ body.overflow-hidden {
 	display: none;
 
 	& a {
-		background-color: var(--color-theme-yellow);
+		background-color: var(--color-button-background);
 		color: var(--color-theme-white);
 		font-weight: 500;
 		font-size: 18px;
@@ -362,7 +375,7 @@ body.overflow-hidden {
 		transition: background-color 0.6s ease;
 
 		&:hover {
-			background-color: var(--color-theme-orange);
+			background-color: var(--color-button-hover);
 		}
 
 	}
@@ -405,6 +418,7 @@ body.overflow-hidden {
 	}
 
 	.main-navigation li.menu-item-has-children .sub-menu li:not(:first-of-type) a {
+		color: var(--color-theme-green);
 		padding: 1rem 1.5rem;
 	}
 

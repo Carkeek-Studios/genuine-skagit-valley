@@ -9,7 +9,7 @@ namespace WP_Rig\WP_Rig;
 
 ?>
 
-<footer class="footer-main">
+<footer class="footer-main has-theme-green-background-color">
 	<?php if ( is_active_sidebar( 'sidebar-footer' ) ) { ?>
 		<section class="footer-section footer-upper">
 			<div class="widget_wrapper">

@@ -34,6 +34,7 @@ h4,
 h5,
 h6 {
 	margin-top: 0;
+	color: var(--color-theme-green);
 
 	& a {
 		color: var(--color-theme-green);

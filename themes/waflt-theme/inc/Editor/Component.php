@@ -78,7 +78,7 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Green', 'waflt-theme' ),
 					'slug'  => 'theme-green',
-					'color' => '#68813C',
+					'color' => '#637d36',
 				),
 				array(
 					'name'  => __( 'Yellow', 'waflt-theme' ),
@@ -88,7 +88,7 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Orange', 'waflt-theme' ),
 					'slug'  => 'theme-orange',
-					'color' => '#c7932c',
+					'color' => '#bc8a24',
 				),
 				array(
 					'name'  => __( 'Blue', 'waflt-theme' ),
@@ -103,17 +103,12 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Green Light', 'waflt-theme' ),
 					'slug'  => 'theme-green-light',
-					'color' => '#a7ad37',
-				),
-				array(
-					'name'  => __( 'Red Light', 'waflt-theme' ),
-					'slug'  => 'theme-red-light',
-					'color' => '#e8b7b1',
+					'color' => '#959b27',
 				),
 				array(
 					'name'  => __( 'Grey', 'waflt-theme' ),
 					'slug'  => 'theme-grey',
-					'color' => '#777',
+					'color' => '#6b6b6b',
 				),
 				array(
 					'name'  => __( 'Grey Light', 'waflt-theme' ),
@@ -121,14 +116,9 @@ class Component implements Component_Interface {
 					'color' => '#e0e0e0',
 				),
 				array(
-					'name'  => __( 'Grey Lightest', 'waflt-theme' ),
-					'slug'  => 'theme-grey-light',
-					'color' => '#e3e3e3',
-				),
-				array(
 					'name'  => __( 'Black', 'waflt-theme' ),
-					'slug'  => 'theme-red-light',
-					'color' => '#1c2833',
+					'slug'  => 'theme-black',
+					'color' => '#383838',
 				),
 				array(
 					'name'  => __( 'White', 'waflt-theme' ),

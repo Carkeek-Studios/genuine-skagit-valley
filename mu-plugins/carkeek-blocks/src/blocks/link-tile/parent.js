@@ -3,9 +3,9 @@ import { __ } from "@wordpress/i18n";
 import { InnerBlocks } from "@wordpress/block-editor";
 
 const attributes = {
-    columns: {
-        type: "number",
-        default: 2
+    align: {
+        type: "string",
+        default: "wide"
     }
 };
 

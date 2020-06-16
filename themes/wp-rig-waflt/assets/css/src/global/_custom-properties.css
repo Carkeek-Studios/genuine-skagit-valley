@@ -12,36 +12,39 @@
 	--global-font-line-height: 1.7;
 	--highlight-font-family: frank-new, sans-serif;
 	--form-field-font-family: frank-new, sans-serif;
-	--content-width: 824px;
+	--content-width: 888px; /* including padding 824 + 4 rem*/
+	--content-width-actual: 824px; /* including padding 824 + 4 rem*/
 	--header-width: 1400px;
 	--dropdown-symbol-width: 0.7em;
-	--gutter-width: 1rem;
+	--gutter-width: 1.5rem;
+	--gutter-width-tablet: 1.6875rem;
+	--gutter-width-tablet-wide: 2rem;
+	--gutter-width-hd: 2rem;
 
 	--global-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 
 
 	/* Custom editor colors */
-	--color-theme-primary: #68813c;
+	--color-theme-primary: #637d36;
 	--color-theme-secondary: #cab44b;
 	--color-theme-red: #a55525;
-	--color-theme-red-light: #e8b7b1;
-	--color-theme-green: #68813c;
-	--color-theme-green-light: #a7ad37;
+	--color-theme-green: #637d36;
+	--color-theme-green-light: #959b27;
 	--color-theme-blue: #a2c6d2;
 	--color-theme-yellow: #cab44b;
-	--color-theme-orange: #c7932c;
+	--color-theme-orange: #bc8a24;
 	--color-theme-black: #1c2833;
 
 
 	--color-theme-grey-light: #e0e0e0;
-	--color-theme-grey: #777;
+	--color-theme-grey: #6b6b6b;
 
 	--color-theme-grey-lightest: #e3e3e3;
 
-	--border-color: var(--color-theme-grey-lightest);
 
 	--color-button-background: var(--color-theme-orange);
 	--color-button-text: var(--color-theme-white);
+	--color-button-hover: var(--color-theme-yellow);
 
 	--color-link: var(--color-theme-green);
 	--color-link-visited: var(--color-theme-green);
@@ -49,7 +52,7 @@
 
 	--color-quote-border: #000;
 	--color-quote-citation: #6c7781;
-	--color-border: #a6a6a6;
+	--color-border: #f0f0f0;
 
 	/* Custom editor font sizes */
 	--font-size-small: calc(16 / var(--global-font-size) * 1rem);
@@ -82,6 +85,13 @@
 	--font-size-h2-hd: 3.125rem;
 	--font-size-h3: 1.5rem;
 	--font-size-h4: 1.25rem;
+
+	/*block padding */
+	--block-padding-vert: 3.25rem;
+	--block-padding-vert-tablet: 3.25rem;
+	--block-padding-vert-tablet-wide: 3.25rem;
+	--block-padding-vert-hd: 3.25rem;
+
 
 
 	/* Not Using */

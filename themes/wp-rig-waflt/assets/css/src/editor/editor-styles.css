@@ -91,3 +91,8 @@ option {
 	padding-left: 2.5em;
 	padding-right: 2.5em;
 }
+
+.wp-block-image.is-style-rounded img {
+	width: auto;
+	height: auto;
+}

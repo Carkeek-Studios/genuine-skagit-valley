@@ -22,7 +22,7 @@
 
 	.alignwide,
 	.is-style-wide {
-		max-width: calc(50% + var(--content-width) / 2);
+		max-width: calc(50% + ( var(--content-width) / 2 ));
 	}
 }
 
@@ -36,7 +36,6 @@
 
 .alignfull {
 	max-width: 100%;
-	padding: 0;
 }
 
 /*--------------------------------------------------------------
@@ -106,6 +105,15 @@
 
 .has-theme-orange-background-color {
 	background-color: var(--color-theme-orange);
+	color: var(--color-theme-white);
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-white);
+	}
 }
 
 .has-theme-green-color,
@@ -115,6 +123,15 @@
 
 .has-theme-green-background-color {
 	background-color: var(--color-theme-green);
+	color: var(--color-theme-white);
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-white);
+	}
 }
 
 .has-theme-blue-color,
@@ -124,6 +141,15 @@
 
 .has-theme-blue-background-color {
 	background-color: var(--color-theme-blue);
+	color: var(--color-theme-grey);
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-grey);
+	}
 }
 
 .has-theme-yellow-color,
@@ -133,6 +159,15 @@
 
 .has-theme-yellow-background-color {
 	background-color: var(--color-theme-yellow);
+	color: var(--color-theme-white);
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-white);
+	}
 }
 
 .has-theme-black-color,
@@ -143,11 +178,27 @@
 .has-theme-black-background-color {
 	background-color: var(--color-theme-black);
 	color: var(--color-theme-white);
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-white);
+	}
 }
 
 .has-theme-white-color,
 .has-theme-white-color a {
 	color: var(--color-theme-white);
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-white);
+	}
 }
 
 .has-theme-white-background-color {

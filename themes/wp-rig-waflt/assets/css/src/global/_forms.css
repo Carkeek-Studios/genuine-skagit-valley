@@ -15,8 +15,8 @@ input[type="submit"] {
 	border: 1px solid;
 	border-color: transparent;
 	border-radius: 0;
-	background: var(--color-theme-yellow);
-	color: var(--color-theme-white);
+	background: var(--color-button-background);
+	color: var(--color-button-text);
 	font-size: var(--font-size-regular);
 	font-family: var(--form-field-font-family);
 	font-weight: var(--font-weight-medium);
@@ -31,7 +31,7 @@ button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	background: var(--color-theme-orange);
+	background: var(--color-button-hover);
 }
 
 button:active,

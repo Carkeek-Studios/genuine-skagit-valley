@@ -25,6 +25,9 @@
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
+            &:after {
+                padding-bottom: 0;
+            }
         }
     }
     .wp-block-carkeek-blocks-link-tile__img {
