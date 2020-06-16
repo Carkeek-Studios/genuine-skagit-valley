@@ -61,8 +61,14 @@
 }
 
 /* we only show the nav when the nav is active */
-body.overflow-hidden {
+html.overflow-hidden {
 	overflow: hidden;
+	height: 100vh;
+
+	& body {
+		overflow: hidden;
+		height: 100vh;
+	}
 
 	& .overlay {
 		height: 100%;
@@ -95,11 +101,20 @@ body.overflow-hidden {
 		transform: translate3d(0, 0, 0);
 		opacity: 1;
 		transition: transform 0.6s ease;
+
+
+	}
+
+	.nav--toggle-small.nav--toggled-on:not(.subnav--toggled-on) .menu {
+		height: calc(100vh - 150px);
+		overflow: scroll;
+		padding-bottom: 50px;
 	}
 
 	.nav--toggle-small.subnav--toggled-on .sub-menu {
-		height: calc(100% -150px);
+		height: calc(100vh - 150px);
 		overflow: scroll;
+		padding-bottom: 50px;
 	}
 
 

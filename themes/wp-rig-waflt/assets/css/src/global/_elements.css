@@ -5,6 +5,7 @@
 html {
 	box-sizing: border-box;
 	overflow-x: hidden;
+
 }
 /* stylelint-enable */
 
@@ -23,6 +24,7 @@ html {
 body {
 	background: #fff;
 	overflow-x: hidden;
+	max-width: 100vw;
 
 	/* Fallback for when there is no custom background color defined. */
 }

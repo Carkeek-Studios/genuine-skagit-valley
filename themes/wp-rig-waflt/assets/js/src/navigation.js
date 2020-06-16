@@ -180,9 +180,11 @@ function initEachNavToggleSmall( nav ) {
 
 		//should not scroll when  nav is open (mobile only but that is handled with css)
 		if ( nav.classList.contains( 'nav--toggled-on' ) && nav.classList.contains( 'main-navigation' ) ) {
-			document.body.classList.add( 'overflow-hidden' );
+			//document.body.classList.add( 'overflow-hidden' );
+			document.documentElement.classList.add( 'overflow-hidden' );
 		} else {
-			document.body.classList.remove( 'overflow-hidden' );
+			//document.body.classList.remove( 'overflow-hidden' );
+			document.documentElement.classList.remove( 'overflow-hidden' );
 		}
 		e.currentTarget.setAttribute( 'aria-expanded', 'false' === e.currentTarget.getAttribute( 'aria-expanded' ) ? 'true' : 'false' );
 	}, false );
