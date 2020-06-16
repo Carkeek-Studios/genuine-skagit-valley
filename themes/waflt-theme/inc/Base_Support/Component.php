@@ -184,7 +184,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function get_version() : string {
 		static $theme_version = null;
-
 		if ( null === $theme_version ) {
 			$theme_version = wp_get_theme( get_template() )->get( 'Version' );
 		}
@@ -201,11 +200,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return string Asset version number.
 	 */
 	public function get_asset_version( string $filepath ) : string {
-		if ( WP_DEBUG ) {
+		//if ( WP_DEBUG ) {
 			return (string) filemtime( $filepath );
-		}
+		//}
 
-		return $this->get_version();
+		//return $this->get_version();
 	}
 
 	/**
