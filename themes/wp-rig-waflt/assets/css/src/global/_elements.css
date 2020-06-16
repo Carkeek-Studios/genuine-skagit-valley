@@ -4,6 +4,7 @@
 /* stylelint-disable */
 html {
 	box-sizing: border-box;
+	overflow-x: hidden;
 }
 /* stylelint-enable */
 
@@ -21,6 +22,7 @@ html {
 /* stylelint-disable */
 body {
 	background: #fff;
+	overflow-x: hidden;
 
 	/* Fallback for when there is no custom background color defined. */
 }
