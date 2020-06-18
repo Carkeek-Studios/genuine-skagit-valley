@@ -41,6 +41,18 @@ h6 {
 	}
 }
 
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+p + h6 {
+	margin-top: 2.25rem;
+}
+
+h2 + [class^=wp-block-] {
+	margin-top: var(--block-padding-vert);
+}
+
 h1,
 .h1 {
 	font-weight: 700;
@@ -50,8 +62,8 @@ h1,
 
 h2,
 .h2 {
-	line-height: 1.277777;
-	margin-bottom: 1rem;
+	line-height: 1.15;
+	margin-bottom: 2rem;
 	font-weight: 700;
 	font-size: var(--font-size-h2);
 }

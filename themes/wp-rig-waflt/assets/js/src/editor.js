@@ -18,6 +18,8 @@ wp.domReady( function() {
 
 	// Remove Core HR Style.
 	wp.blocks.unregisterBlockStyle( 'core/separator', 'dots' );
+	// Remove Core HR Style.
+	wp.blocks.unregisterBlockStyle( 'core/separator', 'wide' );
 
 	// Add Column Styles
 	wp.blocks.registerBlockStyle( 'core/separator', {

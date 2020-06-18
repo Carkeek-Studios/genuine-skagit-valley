@@ -63,7 +63,7 @@
 		margin-bottom: var(--block-padding-vert-tablet);
 	}
 
-	.wp-block-cover.is-page-header {
+	.page-content > .wp-block-cover.is-page-header {
 		margin-bottom: var(--block-padding-vert-tablet);
 	}
 
@@ -74,8 +74,7 @@
 	/* override to core */
 	.page-content > .wp-block-group.has-background,
 	.page-content > .wp-block-cover {
-		padding-left: var(--gutter-width-tablet);
-		padding-right: var(--gutter-width-tablet);
+		padding: var(--block-padding-vert-tablet) var(--gutter-width-tablet);
 	}
 }
 
@@ -93,8 +92,7 @@
 	/* override to core */
 	.page-content > .wp-block-group.has-background,
 	.page-content > .wp-block-cover {
-		padding-left: var(--gutter-width-tablet-wide);
-		padding-right: var(--gutter-width-tablet-wide);
+		padding: var(--block-padding-vert-tablet-wide) var(--gutter-width-tablet-wide);
 	}
 }
 
@@ -110,9 +108,10 @@
 	}
 
 
-	.page-content > .wp-block-group.alignfull .wp-block-group__inner-container {
-		padding-left: var(--gutter-width-hd);
-		padding-right: var(--gutter-width-hd);
+	/* override to core */
+	.page-content > .wp-block-group.has-background,
+	.page-content > .wp-block-cover {
+		padding: var(--block-padding-vert-hd) var(--gutter-width-hd);
 	}
 }
 
@@ -333,6 +332,10 @@
 	&.is-style-vertical-centered {
 		padding-top: var(--block-padding-vert);
 		padding-bottom: var(--block-padding-vert);
+
+		& .wp-block-column {
+			text-align: center;
+		}
 	}
 
 	& .wp-block-column {
@@ -352,6 +355,7 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				text-align: left;
 			}
 		}
 
@@ -575,6 +579,15 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 /*--------------------------------------------------------------
 # CUSTOM BLOCK OVERRIDES
 --------------------------------------------------------------*/
+.wp-block-separator {
+	border-color: var(--color-border);
+
+	&.is-style-with-margin {
+		margin-top: var(--block-padding-vert);
+		margin-bottom: var(--block-padding-vert);
+	}
+}
+
 
 /* override the wp style */
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
@@ -618,14 +631,14 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 @media (--desktop-up) {
 
 	.wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
-		max-width: calc(var(--content-width));
+		max-width: calc(var(--content-width) - 2 * var(--gutter-width-hd));
 
 		&.alignwide {
 			max-width: calc(50% + var(--content-width) / 2);
 		}
 
 		&.alignfull {
-			max-width: calc(100% - ( 2 * var(--gutter-width-tablet-wide)));
+			max-width: calc(100% - ( 2 * var(--gutter-width-hd)));
 		}
 	}
 

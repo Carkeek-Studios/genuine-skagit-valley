@@ -18,6 +18,15 @@
 	margin-right: auto;
 }
 
+.alignfull {
+	max-width: 100%;
+}
+
+.alignwide .alignwide {
+	width: 100%;
+	max-width: 100%;
+}
+
 @media (--tablet-wide-up) {
 
 	.alignwide,
@@ -34,9 +43,7 @@
 	}
 }
 
-.alignfull {
-	max-width: 100%;
-}
+
 
 /*--------------------------------------------------------------
 ## Custom block colors.
