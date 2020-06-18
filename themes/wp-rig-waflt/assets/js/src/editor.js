@@ -18,6 +18,11 @@ wp.domReady( function() {
 		label: 'Highlight',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/media-text', {
+		name: 'small-image',
+		label: 'Small Image',
+	} );
+
 	// Remove Core Button Style.
 	wp.blocks.unregisterBlockStyle( 'core/button', 'outline' );
 

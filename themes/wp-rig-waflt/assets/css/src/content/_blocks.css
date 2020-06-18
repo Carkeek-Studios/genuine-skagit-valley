@@ -30,7 +30,10 @@
  * .wp-block-categories
  * .wp-block-archives
  */
-.page-content > .wp-block-group {
+.page-content > .wp-block-group,
+.page-content > .wp-block-media-text,
+.page-content > .wp-block-carkeek-blocks-link-gallery,
+.page-content > .wp-block-columns {
 	margin-top: var(--block-padding-vert);
 	margin-bottom: var(--block-padding-vert);
 }
@@ -58,7 +61,10 @@
 
 @media (--tablet-up) {
 
-	.page-content > .wp-block-group {
+	.page-content > .wp-block-group,
+	.page-content > .wp-block-media-text,
+	.page-content > .wp-block-carkeek-blocks-link-gallery,
+	.page-content > .wp-block-columns {
 		margin-top: var(--block-padding-vert-tablet);
 		margin-bottom: var(--block-padding-vert-tablet);
 	}
@@ -80,7 +86,10 @@
 
 @media (--tablet-wide-up) {
 
-	.page-content > .wp-block-group {
+	.page-content > .wp-block-group,
+	.page-content > .wp-block-media-text,
+	.page-content > .wp-block-carkeek-blocks-link-gallery,
+	.page-content > .wp-block-columns {
 		margin-top: var(--block-padding-vert-tablet-wide);
 		margin-bottom: var(--block-padding-vert-tablet-wide);
 	}
@@ -98,7 +107,10 @@
 
 @media (--desktop-up) {
 
-	.page-content > .wp-block-group {
+	.page-content > .wp-block-group,
+	.page-content > .wp-block-media-text,
+	.page-content > .wp-block-carkeek-blocks-link-gallery,
+	.page-content > .wp-block-columns {
 		margin-top: var(--block-padding-vert-hd);
 		margin-bottom: var(--block-padding-vert-hd);
 	}
@@ -239,13 +251,21 @@
 		width: 100%;
 		align-self: flex-start;
 	}
+
+	&.is-style-small-image {
+
+		& .wp-block-media-text__media {
+			padding-left: var(--gutter-width);
+			padding-right: var(--gutter-width);
+		}
+
+	}
 }
 
 @media screen and (min-width: 600px) {
 
 	.wp-block-media-text {
 		display: grid;
-		padding: 0 3rem;
 
 		&.alignfull {
 			padding-left: 0;
@@ -254,6 +274,18 @@
 
 		& .wp-block-media-text__content {
 			padding: 5% 1.5rem;
+		}
+
+		&.is-style-small-image {
+			grid-template-columns: 25% 1fr;
+
+			& .wp-block-media-text__content {
+				padding-top: 0;
+			}
+
+			&.has-media-on-the-right {
+				grid-template-columns: 1fr 25%;
+			}
 		}
 	}
 
