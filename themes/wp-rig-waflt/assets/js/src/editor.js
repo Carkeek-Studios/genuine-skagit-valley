@@ -1,9 +1,6 @@
 /** Register custom styles for the button, remove the outline style */
 
 wp.domReady( function() {
-	const icons = {
-		intro: '<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none" /><path d="M3 17h18v2H3zm16-5v1H5v-1h14m2-2H3v5h18v-5zM3 6h18v2H3z" /></svg>',
-	};
 	// Add Arrow Button.
 	wp.blocks.registerBlockStyle( 'core/button', {
 		name: 'arrow-cta',
@@ -27,9 +24,6 @@ wp.domReady( function() {
 		name: 'with-margin',
 		label: 'With Margin',
 	} );
-
-	//unregister pullquute in favor of cover/group with quote for consistency
-	wp.blocks.unregisterBlockType( 'core/pullquote' );
 
 	wp.blocks.registerBlockVariation( 'core/cover', {
 		name: 'page-header-cover',
@@ -62,7 +56,7 @@ wp.domReady( function() {
 		innerBlocks: [
 			[ 'core/quote', { } ],
 		],
-		attributes: { align: 'full', className: 'is-group-quote' },
+		attributes: { align: 'full', className: 'is-group-quote', backgroundColor: 'theme-orange', textColor: 'theme-white' },
 		scope: [ 'inserter' ],
 		keywords: [ 'cover', 'quote', 'background' ],
 	} );
@@ -97,6 +91,14 @@ function setBlockDefaults( settings, name ) {
 	if ( name === 'core/cover' ) {
 		if ( settings.attributes && settings.attributes.dimRatio ) {
 			settings.attributes.dimRatio.default = 0;
+		}
+	} else if ( name === 'core/separator' ) {
+		if ( settings.supports ) {
+			settings.supports.align = [ 'wide', 'full' ];
+		} else {
+			settings.supports = {
+				align: [ 'wide', 'full' ],
+			};
 		}
 	}
 

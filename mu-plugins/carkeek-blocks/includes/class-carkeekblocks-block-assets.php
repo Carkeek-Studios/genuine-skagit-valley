@@ -113,6 +113,7 @@ class CarkeekBlocks_Block_Assets {
 		$blocks = array(
 			'team-member',
 			'link-tile',
+			'link-gallery',
 		);
 
 		foreach ( $blocks as $block ) {

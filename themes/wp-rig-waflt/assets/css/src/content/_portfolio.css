@@ -59,7 +59,7 @@
 
 	& > ul > li {
 		position: relative;
-		padding: 0 15px;
+		padding: 0;
 		margin-bottom: 1.5rem;
 		overflow: hidden;
 	}
@@ -82,6 +82,15 @@
 }
 
 @media (--tablet-up) {
+
+	.wp-block-ck-custom_posttype__list.is-grid {
+
+		& > ul > li {
+
+			padding: 0 15px;
+
+		}
+	}
 
 	.post-type-archive-portfolio {
 

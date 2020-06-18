@@ -71,6 +71,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $html;
 	}
 
+	/**
+	 * Get Accreditaion as defined in the Theme options
+	 *
+	 * @param string $styles Optional. Css classes to add to component.
+	 * @return string Html of component.
+	 */
 	public function get_accreditation( $styles = null ) : string {
 		$accs = get_field( 'accreditation', 'option' );
 		$html = '';

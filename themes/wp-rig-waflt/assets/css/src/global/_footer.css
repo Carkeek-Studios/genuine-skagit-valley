@@ -105,7 +105,7 @@ form.the-crop-footer {
 
 
 	.footer-main {
-		background-image: url("../images/footer-pattern.png");
+		background-image: url(../images/footer-pattern.png);
 		background-position: top right;
 		background-repeat: repeat-y;
 		background-size: 212px;

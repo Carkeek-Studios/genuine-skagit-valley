@@ -112,6 +112,32 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/blocks/link-gallery/script.js":
+/*!*******************************************!*\
+  !*** ./src/blocks/link-gallery/script.js ***!
+  \*******************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/link-gallery/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ "./src/blocks/link-gallery/style.scss":
+/*!********************************************!*\
+  !*** ./src/blocks/link-gallery/style.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/blocks/link-tile/script.js":
 /*!****************************************!*\
   !*** ./src/blocks/link-tile/script.js ***!
@@ -149,12 +175,14 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_custom_archive_script__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./blocks/custom-archive/script */ "./src/blocks/custom-archive/script.js");
 /* harmony import */ var _blocks_link_tile_script__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./blocks/link-tile/script */ "./src/blocks/link-tile/script.js");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _blocks_link_gallery_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/link-gallery/script */ "./src/blocks/link-gallery/script.js");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockCollection"])("carkeek-blocks", {
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__["registerBlockCollection"])("carkeek-blocks", {
   title: "Carkeek Blocks",
   icon: "wordpress"
 });

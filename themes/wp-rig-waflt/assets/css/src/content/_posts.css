@@ -131,7 +131,7 @@
 	padding: 0;
 	max-width: 100%;
 	position: relative;
-	margin-bottom: 3rem;
+	margin-bottom: var(--block-padding-vert);
 	color: var(--color-theme-white);
 
 	& .post-thumbnail {
@@ -175,6 +175,13 @@
 		border-bottom: none;
 	}
 
+}
+
+@media (--tablet-wide-up) {
+
+	.page-header.has-post-thumbnail {
+		margin-bottom: var(--block-padding-vert-tablet-wide);
+	}
 }
 
 @media (--desktop-up) {

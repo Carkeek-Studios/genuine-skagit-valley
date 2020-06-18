@@ -83,6 +83,18 @@ h4,
 		font-size: var(--font-size-h1-hd);
 		line-height: 1.25;
 	}
+
+	h2,
+	.h2 {
+		font-size: var(--font-size-h2-hd);
+		line-height: 1.25;
+	}
+
+	h3,
+	.h3 {
+		font-size: var(--font-size-h3-hd);
+		line-height: 1.25;
+	}
 }
 /* stylelint-enable */
 

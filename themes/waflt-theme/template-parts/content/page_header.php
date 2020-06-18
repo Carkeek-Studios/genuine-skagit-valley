@@ -73,8 +73,8 @@ if ( is_404() ) {
 		?>
 		<div class="entry-title">
 		<?php
-		if ( $post->parent !== 0 ) {
-			echo '<span>' . get_the_title( $post->post_parent ) . '</span>';
+		if ( 0 !== $post->parent ) {
+			echo '<span>' . wp_kses_post( get_the_title( $post->post_parent ) ) . '</span>';
 		}
 		the_title( '<h1>', '</h1>' );
 		?>

@@ -83,16 +83,15 @@
 	--font-size-h1-hd: 3.75rem;
 	--font-size-h2: 2.25rem;
 	--font-size-h2-hd: 3.125rem;
-	--font-size-h3: 1.5rem;
+	--font-size-h3: 1.875rem;
+	--font-size-h3-hd: 2rem;
 	--font-size-h4: 1.25rem;
 
 	/*block padding */
 	--block-padding-vert: 3.25rem;
-	--block-padding-vert-tablet: 3.25rem;
-	--block-padding-vert-tablet-wide: 3.25rem;
-	--block-padding-vert-hd: 3.25rem;
-
-
+	--block-padding-vert-tablet: 4.85rem;
+	--block-padding-vert-tablet-wide: 4.85rem;
+	--block-padding-vert-hd: 7rem;
 
 	/* Not Using */
 	--color-theme-grey-med-light: #b6b6b6;

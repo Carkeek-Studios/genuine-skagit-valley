@@ -92,7 +92,9 @@ option {
 	padding-right: 2.5em;
 }
 
+/* stylelint-disable */
 .wp-block-image.is-style-rounded img {
 	width: auto;
 	height: auto;
 }
+/* stylelint-enable */

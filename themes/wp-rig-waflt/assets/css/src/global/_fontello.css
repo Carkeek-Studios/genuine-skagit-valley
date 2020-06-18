@@ -1,19 +1,22 @@
 @font-face {
-	font-family: "waflt";
-	src: url("../fonts/waflt.eot?70370723");
+	font-family: waflt;
+	src: url(../fonts/waflt.eot?70370723);
 	src:
-		url("../fonts/waflt.eot?70370723#iefix") format("embedded-opentype"),
-		url("../fonts/waflt.woff2?70370723") format("woff2"),
-		url("../fonts/waflt.woff?70370723") format("woff"),
-		url("../fonts/waflt.ttf?70370723") format("truetype"),
-		url("../fonts/waflt.svg?70370723#waflt") format("svg");
-	font-weight: normal;
+		url(../fonts/waflt.eot?70370723#iefix) format("embedded-opentype"),
+		url(../fonts/waflt.woff2?70370723) format("woff2"),
+		url(../fonts/waflt.woff?70370723) format("woff"),
+		url(../fonts/waflt.ttf?70370723) format("truetype"),
+		url(../fonts/waflt.svg?70370723#waflt) format("svg");
+	font-weight: 400;
 	font-style: normal;
 }
 
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Chrome hack: SVG is rendered more smooth in Windozze.
+100% magic, uncomment if you need it. */
 
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+Note, that will break hinting!
+In other OS-es font will be not as sharp as it could be */
 
 /*
   @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -26,9 +29,10 @@
 
 [class^="icon-"]::before,
 [class*=" icon-"]::before {
-	font-family: "waflt";
+
+	font-family: waflt, sans-serif;
 	font-style: normal;
-	font-weight: normal;
+	font-weight: 400;
 	speak: never;
 
 	display: inline-block;
@@ -44,7 +48,7 @@
 	text-transform: none;
 
 	/* fix buttons height, for twitter bootstrap */
-	line-height: 1em;
+	line-height: 1;
 
 	/* Animation center compensation - margins should be symmetric */
 
