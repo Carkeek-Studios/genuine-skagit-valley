@@ -13,6 +13,11 @@ wp.domReady( function() {
 		label: 'Vertical Centered',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/heading', {
+		name: 'highlight',
+		label: 'Highlight',
+	} );
+
 	// Remove Core Button Style.
 	wp.blocks.unregisterBlockStyle( 'core/button', 'outline' );
 

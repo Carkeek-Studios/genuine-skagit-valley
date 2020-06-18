@@ -39,6 +39,12 @@ h6 {
 	& a {
 		color: var(--color-theme-green);
 	}
+
+	&.is-style-highlight {
+		text-transform: uppercase;
+		letter-spacing: 9.6px;
+		font-family: var(--highlight-font-family);
+	}
 }
 
 p + h2,
