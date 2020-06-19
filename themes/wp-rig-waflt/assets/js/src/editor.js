@@ -23,6 +23,11 @@ wp.domReady( function() {
 		label: 'Small Image',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/list', {
+		name: 'no-bullets',
+		label: 'No Bullets',
+	} );
+
 	// Remove Core Button Style.
 	wp.blocks.unregisterBlockStyle( 'core/button', 'outline' );
 

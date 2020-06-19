@@ -36,7 +36,17 @@
 .page-content > .wp-block-columns {
 	margin-top: var(--block-padding-vert);
 	margin-bottom: var(--block-padding-vert);
+
+	&.alignfull.has-background {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
 }
+
+.page-content > .wp-block-columns + .wp-block-columns {
+	margin-top: calc(0 - var(--block-padding-vert));
+}
+
 
 /* override to core */
 .page-content > .wp-block-group.has-background,
@@ -67,6 +77,11 @@
 	.page-content > .wp-block-columns {
 		margin-top: var(--block-padding-vert-tablet);
 		margin-bottom: var(--block-padding-vert-tablet);
+
+		&.alignfull.has-background {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
 	}
 
 	.page-content > .wp-block-cover.is-page-header {
@@ -75,6 +90,10 @@
 
 	.page-content > .wp-block-group.is-page-intro {
 		margin-top: 0 !important;
+	}
+
+	.page-content > .wp-block-columns + .wp-block-columns {
+		margin-top: calc(-1 * var(--block-padding-vert-tablet));
 	}
 
 	/* override to core */
@@ -92,10 +111,19 @@
 	.page-content > .wp-block-columns {
 		margin-top: var(--block-padding-vert-tablet-wide);
 		margin-bottom: var(--block-padding-vert-tablet-wide);
+
+		&.alignfull.has-background {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
 	}
 
 	.wp-block-cover.is-page-header {
 		margin-bottom: var(--block-padding-vert-tablet-wide);
+	}
+
+	.page-content > .wp-block-columns + .wp-block-columns {
+		margin-top: calc(-1 * var(--block-padding-vert-tablet-wide));
 	}
 
 	/* override to core */
@@ -113,6 +141,15 @@
 	.page-content > .wp-block-columns {
 		margin-top: var(--block-padding-vert-hd);
 		margin-bottom: var(--block-padding-vert-hd);
+
+		&.alignfull.has-background {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+	.page-content > .wp-block-columns + .wp-block-columns {
+		margin-top: calc(-1 * var(--block-padding-vert-hd));
 	}
 
 	.wp-block-cover.is-page-header {
@@ -125,6 +162,7 @@
 	.page-content > .wp-block-cover {
 		padding: var(--block-padding-vert-hd) var(--gutter-width-hd);
 	}
+
 }
 
 /*--------------------------------------------------------------
@@ -270,6 +308,25 @@
 		&.alignfull {
 			padding-left: 0;
 			padding-right: 0;
+		}
+
+		&.has-background {
+			min-height: 550px;
+
+			& .wp-block-media-text__media {
+				width: 100%;
+				height: 100%;
+
+				& img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+
+			& .wp-block-media-text__content {
+				padding: 15% 10%;
+			}
 		}
 
 		& .wp-block-media-text__content {

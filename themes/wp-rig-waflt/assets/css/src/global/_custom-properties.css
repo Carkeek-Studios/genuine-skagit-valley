@@ -29,13 +29,14 @@
 	--color-theme-secondary: #cab44b;
 	--color-theme-red: #a55525;
 	--color-theme-green: #637d36;
-	--color-theme-green-light: #959b27;
+	--color-theme-green-light-links: #959b27;
+	--color-theme-green-light-background: #a7ad37;
 	--color-theme-blue: #a2c6d2;
 	--color-theme-yellow: #cab44b;
 	--color-theme-orange: #bc8a24;
-	--color-theme-black: #1c2833;
 
 
+	--color-theme-grey-dark: #383838;
 	--color-theme-grey-light: #e0e0e0;
 	--color-theme-grey: #6b6b6b;
 
@@ -78,14 +79,20 @@
 
 
 	/* Heading font sizes */
-	--font-size-h1: 2.25rem;
-	--font-size-h1-tw: 3rem;
-	--font-size-h1-hd: 3.75rem;
-	--font-size-h2: 2.25rem;
-	--font-size-h2-hd: 3.125rem;
-	--font-size-h3: 1.875rem;
-	--font-size-h3-hd: 2rem;
-	--font-size-h4: 1.25rem;
+	--font-size-h1: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-h1-tw: calc(48 / var(--global-font-size) * 1rem);
+	--font-size-h1-hd: calc(60 / var(--global-font-size) * 1rem);
+	--font-size-h2: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-h2-hd: calc(50 / var(--global-font-size) * 1rem);
+	--font-size-h3: calc(30 / var(--global-font-size) * 1rem);
+	--font-size-h3-hd: calc(42 / var(--global-font-size) * 1rem);
+	--font-size-h4: calc(24 / var(--global-font-size) * 1rem);
+	--font-size-h4-hd: calc(34 / var(--global-font-size) * 1rem);
+	--font-size-h5: calc(18 / var(--global-font-size) * 1rem);
+	--font-size-h5-hd: calc(21 / var(--global-font-size) * 1rem);
+	--font-size-h6: calc(14 / var(--global-font-size) * 1rem);
+	--font-size-h6-hd: calc(18 / var(--global-font-size) * 1rem);
+
 
 	/*block padding */
 	--block-padding-vert: 3.25rem;

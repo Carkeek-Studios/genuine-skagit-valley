@@ -43,7 +43,12 @@
 	}
 }
 
-
+/*--------------------------------------------------------------
+## List Style
+--------------------------------------------------------------*/
+ul.is-style-no-bullets {
+	list-style: none;
+}
 
 /*--------------------------------------------------------------
 ## Custom block colors.
@@ -86,13 +91,22 @@
 	background-color: var(--color-theme-grey);
 }
 
-.has-theme-grey-med-dark-color,
-.has-theme-grey-med-dark-color a {
-	color: var(--color-theme-grey-med-dark);
+.has-theme-grey-dark-color,
+.has-theme-grey-dark-color a {
+	color: var(--color-theme-grey-dark);
 }
 
-.has-theme-grey-med-dark-background-color {
-	background-color: var(--color-theme-grey-med-dark);
+.has-theme-grey-dark-background-color {
+	background-color: var(--color-theme-grey-dark);
+}
+
+.has-theme-grey-light-color,
+.has-theme-grey-light-color a {
+	color: var(--color-theme-grey-light);
+}
+
+.has-theme-grey-light-background-color {
+	background-color: var(--color-theme-grey-light);
 }
 
 
@@ -113,14 +127,6 @@
 .has-theme-orange-background-color {
 	background-color: var(--color-theme-orange);
 	color: var(--color-theme-white);
-
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
-		color: var(--color-theme-white);
-	}
 }
 
 .has-theme-green-color,
@@ -130,16 +136,17 @@
 
 .has-theme-green-background-color {
 	background-color: var(--color-theme-green);
-	color: var(--color-theme-white);
-
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
-		color: var(--color-theme-white);
-	}
 }
+
+.has-theme-green-light-color,
+.has-theme-green-light-color a {
+	color: var(--color-theme-green-light-links);
+}
+
+.has-theme-green-light-background-color {
+	background-color: var(--color-theme-green-light-background);
+}
+
 
 .has-theme-blue-color,
 .has-theme-blue-color a {
@@ -148,15 +155,6 @@
 
 .has-theme-blue-background-color {
 	background-color: var(--color-theme-blue);
-	color: var(--color-theme-grey);
-
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
-		color: var(--color-theme-grey);
-	}
 }
 
 .has-theme-yellow-color,
@@ -166,46 +164,11 @@
 
 .has-theme-yellow-background-color {
 	background-color: var(--color-theme-yellow);
-	color: var(--color-theme-white);
-
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
-		color: var(--color-theme-white);
-	}
-}
-
-.has-theme-black-color,
-.has-theme-black-color a {
-	color: var(--color-theme-black);
-}
-
-.has-theme-black-background-color {
-	background-color: var(--color-theme-black);
-	color: var(--color-theme-white);
-
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
-		color: var(--color-theme-white);
-	}
 }
 
 .has-theme-white-color,
 .has-theme-white-color a {
 	color: var(--color-theme-white);
-
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
-		color: var(--color-theme-white);
-	}
 }
 
 .has-theme-white-background-color {
@@ -228,6 +191,41 @@
 
 .has-custom-sun-background-color {
 	background-color: var(--color-custom-sun);
+}
+
+.has-theme-black-background-color,
+.has-theme-green-background-color,
+.has-theme-red-background-color,
+.has-theme-grey-background-color,
+.has-theme-grey-dark-background-color,
+.has-theme-orange-background-color {
+	color: var(--color-theme-white);
+
+	& a,
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-white);
+	}
+}
+
+.has-theme-grey-light-background-color,
+.has-theme-yellow-background-color,
+.has-theme-green-light-background-color,
+.has-theme-blue-background-color {
+	color: var(--color-theme-grey-dark);
+
+	& .link-tile__hover_title,
+	& a,
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5 {
+		color: var(--color-theme-grey-dark);
+	}
 }
 
 /*--------------------------------------------------------------

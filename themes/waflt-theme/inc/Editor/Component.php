@@ -103,7 +103,7 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Green Light', 'waflt-theme' ),
 					'slug'  => 'theme-green-light',
-					'color' => '#959b27',
+					'color' => '#a7ad37',
 				),
 				array(
 					'name'  => __( 'Grey', 'waflt-theme' ),
@@ -116,10 +116,11 @@ class Component implements Component_Interface {
 					'color' => '#e0e0e0',
 				),
 				array(
-					'name'  => __( 'Black', 'waflt-theme' ),
-					'slug'  => 'theme-black',
+					'name'  => __( 'Grey Dark', 'waflt-theme' ),
+					'slug'  => 'theme-grey-dark',
 					'color' => '#383838',
 				),
+
 				array(
 					'name'  => __( 'White', 'waflt-theme' ),
 					'slug'  => 'theme-white',
