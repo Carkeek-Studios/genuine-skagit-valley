@@ -47,8 +47,8 @@
 	--color-button-text: var(--color-theme-white);
 	--color-button-hover: var(--color-theme-yellow);
 
-	--color-link: var(--color-theme-green);
-	--color-link-visited: var(--color-theme-green);
+	--color-link: var(--color-theme-green-light-links);
+	--color-link-visited: var(--color-theme-green-light-links);
 	--color-link-active: var(--color-theme-green);
 
 	--color-quote-border: #000;

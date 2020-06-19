@@ -221,13 +221,13 @@
 }
 
 .wp-block-button__link:hover {
-	background-color: var(--color-theme-grey-med-light);
+	background-color: var(--color-button-hover);
 }
 
 .is-style-arrow-cta .wp-block-button__link {
 	background-color: transparent;
 	color: var(--color-link);
-	font-weight: 600;
+	font-weight: var(--font-weight-medium);
 	padding-left: 0;
 }
 
