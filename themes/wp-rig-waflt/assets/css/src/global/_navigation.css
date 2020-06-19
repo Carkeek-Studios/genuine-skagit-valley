@@ -283,7 +283,7 @@ html.overflow-hidden {
 	&.current-menu-parent,
 	&.current-menu-item {
 
-		& a {
+		& > a {
 			text-decoration: underline;
 		}
 	}
