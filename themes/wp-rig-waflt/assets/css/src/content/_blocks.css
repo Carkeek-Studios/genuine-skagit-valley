@@ -345,10 +345,6 @@
 			}
 		}
 	}
-
-	.home .wp-block-media-text {
-		padding: 4.375rem 3rem;
-	}
 }
 
 /*--------------------------------------------------------------
@@ -754,6 +750,9 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 }
 
+.home .wp-block-carkeek-blocks-link-tiles {
+	margin-bottom: 0;
+}
 
 @media (--desktop-up) {
 
