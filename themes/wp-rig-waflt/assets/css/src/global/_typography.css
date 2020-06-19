@@ -37,14 +37,27 @@ h5 {
 	line-height: 1.15;
 	font-weight: 700;
 
-	& a {
-		color: var(--color-theme-green);
-	}
-
 	&.is-style-highlight {
 		text-transform: uppercase;
 		letter-spacing: 9.6px;
 		font-family: var(--highlight-font-family);
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+	& a {
+		color: var(--color-theme-green);
+		font-weight: var(--font-weight-bold);
+
+		&:visited {
+			color: var(--color-theme-green);
+		}
 	}
 }
 
