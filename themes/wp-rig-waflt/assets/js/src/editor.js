@@ -85,7 +85,7 @@ wp.domReady( function() {
 		innerBlocks: [
 			[ 'core/paragraph', { align: 'center', fontSize: 'medium' } ],
 		],
-		attributes: { align: 'full', className: 'is-page-intro' },
+		attributes: { className: 'is-page-intro' },
 		scope: [ 'inserter' ],
 		keywords: [ 'intro', 'page' ],
 	} );
@@ -116,6 +116,10 @@ function setBlockDefaults( settings, name ) {
 			settings.supports = {
 				align: [ 'wide', 'full' ],
 			};
+		}
+	} else if ( name === 'core/media-text' ) {
+		if ( settings.attributes && settings.attributes.align ) {
+			settings.attributes.align.default = 'full';
 		}
 	}
 

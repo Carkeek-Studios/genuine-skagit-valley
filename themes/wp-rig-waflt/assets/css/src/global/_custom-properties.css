@@ -12,14 +12,18 @@
 	--global-font-line-height: 1.7;
 	--highlight-font-family: frank-new, sans-serif;
 	--form-field-font-family: frank-new, sans-serif;
-	--content-width: 888px; /* including padding 824 + 4 rem*/
-	--content-width-actual: 824px; /* including padding 824 + 4 rem*/
+	--content-width: calc(1130px + (2 * var(--gutter-width) )); /* including padding 824 + 4 rem*/
+	--content-width-actual: 1130px;
 	--header-width: 1400px;
 	--dropdown-symbol-width: 0.7em;
-	--gutter-width: 1.5rem;
-	--gutter-width-tablet: 1.6875rem;
-	--gutter-width-tablet-wide: 2rem;
-	--gutter-width-hd: 2rem;
+
+	--gutter-width: 8.5vw;
+	--gutter-width-small: 3.7vw;
+	--gutter-width-mobile: 1.5rem;
+
+	/*block padding */
+	--block-padding-vert: 3.25rem;
+	--block-padding-vert-tablet: 7vw;
 
 	--global-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 
@@ -92,13 +96,6 @@
 	--font-size-h5-hd: calc(21 / var(--global-font-size) * 1rem);
 	--font-size-h6: calc(14 / var(--global-font-size) * 1rem);
 	--font-size-h6-hd: calc(18 / var(--global-font-size) * 1rem);
-
-
-	/*block padding */
-	--block-padding-vert: 3.25rem;
-	--block-padding-vert-tablet: 3.85rem;
-	--block-padding-vert-tablet-wide: 3.85rem;
-	--block-padding-vert-hd: 5rem;
 
 	/* Not Using */
 	--color-theme-grey-med-light: #b6b6b6;

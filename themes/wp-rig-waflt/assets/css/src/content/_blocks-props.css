@@ -18,30 +18,6 @@
 	margin-right: auto;
 }
 
-.alignfull {
-	max-width: 100%;
-}
-
-.alignwide .alignwide {
-	width: 100%;
-	max-width: 100%;
-}
-
-@media (--tablet-wide-up) {
-
-	.alignwide,
-	.is-style-wide {
-		max-width: calc(50% + ( var(--content-width) / 2 ));
-	}
-}
-
-@media (--desktop-up) {
-
-	.alignwide,
-	.is-style-wide {
-		max-width: calc(50% + var(--content-width) / 2);
-	}
-}
 
 /*--------------------------------------------------------------
 ## List Style

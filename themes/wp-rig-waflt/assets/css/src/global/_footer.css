@@ -6,15 +6,30 @@
 	color: var(--color-theme-white);
 	font-size: 14px;
 	line-height: 1.45;
+	min-height: 75vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: var(--gutter-width-mobile);
+	padding-right: var(--gutter-width-mobile);
+	padding-top: var(--block-padding-vert);
+	padding-bottom: var(--block-padding-vert);
+
 
 	& a {
 		color: var(--color-theme-white);
 	}
 
+
 	& hr {
-		margin-right: 1rem;
-		margin-left: 1rem;
+		margin-top: var(--block-padding-vert);
+		margin-bottom: var(--block-padding-vert);
+		width: 100%;
+		max-width: 1000px;
+		margin-left: 0;
+		margin-right: auto;
 	}
+
 
 	& .gpopover {
 		color: var(--global-font-color);
@@ -27,25 +42,27 @@
 
 .colophon {
 	font-size: 12px;
+
 }
 
 .footer-section {
-	padding: 3rem 1.5rem;
 
-	&.footer-lower {
-		padding-bottom: 4rem;
+	& p {
+		padding-bottom: 1rem;
 	}
 
 	& .colophon {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: grid;
+		grid-template-areas:
+			"info info"
+			"social accreditation";
 		align-items: center;
 		padding-top: 2rem;
 	}
 
-	& .social-links {
+	& .footer-social {
 		padding-top: 1rem;
+		grid-area: social;
 
 		& li {
 			display: inline-block;
@@ -53,12 +70,17 @@
 		}
 	}
 
-	& .accreditation {
+	& .footer-accreditation {
 		padding-top: 20px;
+		grid-area: accreditation;
 
 		& img {
 			max-width: 55px;
 		}
+	}
+
+	&.colophon-info {
+		grid-area: info;
 	}
 }
 
@@ -69,9 +91,14 @@
 	align-content: center;
 
 	& .the-crop-image {
-		max-width: 195px;
+		width: 100%;
 		margin: 0 auto;
 		padding-bottom: 2rem;
+
+		& img {
+			width: 70vw !important;
+			margin: 0 auto;
+		}
 
 		& a {
 			display: block;
@@ -79,7 +106,7 @@
 	}
 
 	& .wa-farmland-logo {
-		max-width: 200px;
+		width: 100% !important;
 	}
 
 	& h2.widget-title {
@@ -101,7 +128,7 @@ form.the-crop-footer {
 	}
 }
 
-@media (--tablet-up) {
+@media (--tablet-small-up) {
 
 
 	.footer-main {
@@ -110,15 +137,22 @@ form.the-crop-footer {
 		background-repeat: repeat-y;
 		background-size: 212px;
 		overflow: hidden;
+		padding-left: var(--gutter-width);
+		padding-right: var(--gutter-width);
+
 
 		& hr {
-			margin-right: 3rem;
-			margin-left: 3rem;
+			margin-top: var(--block-padding-vert-tablet);
+			margin-bottom: var(--block-padding-vert-tablet);
+		}
+
+		& img {
+			max-width: 100%;
+			width: 100%;
 		}
 	}
 
 	.footer-section {
-		padding: 3rem 3.25rem;
 
 		& .widget_wrapper {
 			justify-content: flex-start;
@@ -127,8 +161,6 @@ form.the-crop-footer {
 				font-size: 30px;
 			}
 		}
-
-
 	}
 
 	.footer-upper {
@@ -139,10 +171,23 @@ form.the-crop-footer {
 			flex-direction: row;
 		}
 
+		& .widget-1 {
+			flex-basis: 30%;
+		}
+
+		& .widget-2 {
+			flex-basis: 70%;
+		}
+
 		& .the-crop-form {
-			margin-left: 3rem;
-			margin-right: 3rem;
-			max-width: 350px;
+			padding-left: 4rem;
+			margin-right: var(--gutter-width);
+
+			& > * {
+				max-width: 450px;
+			}
+
+
 		}
 	}
 
@@ -151,43 +196,36 @@ form.the-crop-footer {
 		justify-content: space-between;
 		padding-top: 1rem;
 
+		& .widget_wrapper {
+			flex: 1 1 30%;
+		}
+
+		& .colophon-wrapper {
+			flex: 1 1 70%;
+		}
+
 		& .colophon {
+
+			max-width: 450px;
 			padding-top: 0;
-			width: 380px;
-			height: 115px;
-			flex-direction: column;
-			align-items: flex-start;
-			justify-content: flex-start;
-			flex-wrap: wrap;
+			padding-left: 3rem;
+			margin-right: var(--gutter-width);
+			grid-template-areas:
+				"info accreditation"
+				"social social";
 
 		}
 
 		& .colophon-info {
-			width: 300px;
+			align-self: flex-start;
+
 		}
 
-		& .accreditation {
+		& .footer-accreditation {
 			padding-top: 0;
+			align-self: flex-start;
 			padding-left: 20px;
 		}
 	}
 }
 
-@media (--tablet-wide-up) {
-
-
-	.footer-main {
-		padding-right: 212px;
-	}
-
-	.footer-section {
-		max-width: 1000px;
-		margin-left: auto;
-		margin-right: auto;
-
-		& .widget_wrapper .the-crop-image {
-			margin-left: 0;
-		}
-	}
-
-}
