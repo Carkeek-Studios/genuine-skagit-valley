@@ -62,7 +62,7 @@ if ( is_404() ) {
 	if ( true !== $hide_image && has_post_thumbnail() ) {
 		$header_class .= 'has-post-thumbnail';
 	}
-
+	if ( true !== $hide_image && true !== $hide_title) {
 	?>
 	<header class="page-header <?php echo esc_attr( $header_class ); ?>">
 	<?php
@@ -79,7 +79,8 @@ if ( is_404() ) {
 		the_title( '<h1>', '</h1>' );
 		?>
 	</div>
-	<?php } ?>
+	<?php }
+ } ?>
 	</header><!-- .page-header -->
 	<?php
 }

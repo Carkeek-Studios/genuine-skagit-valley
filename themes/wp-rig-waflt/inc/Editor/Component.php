@@ -32,6 +32,7 @@ class Component implements Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'after_setup_theme', array( $this, 'action_add_editor_support' ) );
+		add_filter( 'editorskit_block_editor_classnames', array( $this, 'editorskit_classnames' ) );
 	}
 
 	/**
@@ -165,4 +166,30 @@ class Component implements Component_Interface {
 			)
 		);
 	}
+
+	/**
+	 * Add classname suggestions
+	 *
+	 * @param array $classes default classnames
+	 * @return array Add theme utility classes
+	 */
+	public function editorskit_classnames( $classes ){
+		error_log(print_r($classes, true));
+		$theme_classes = array(
+			'h1',
+			'h2',
+			'h3',
+			'h3',
+			'h5',
+			'h6',
+			'is-style-arrow-cta',
+			'is-style-small-image',
+			'is-page-header',
+			'is-crop-form',
+		);
+
+		return $theme_classes;
+	}
+
+
 }

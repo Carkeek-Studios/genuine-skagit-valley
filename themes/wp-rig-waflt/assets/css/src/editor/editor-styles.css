@@ -98,3 +98,6 @@ option {
 	height: auto;
 }
 /* stylelint-enable */
+.block-editor-plain-text {
+	color: #777 !important;
+}
