@@ -193,7 +193,7 @@
 @media (--tablet-wide-up) {
 
 	.page-header.has-post-thumbnail {
-		margin-bottom: var(--block-padding-vert-tablet-wide);
+		margin-bottom: var(--block-padding-vert-tablet);
 	}
 }
 
