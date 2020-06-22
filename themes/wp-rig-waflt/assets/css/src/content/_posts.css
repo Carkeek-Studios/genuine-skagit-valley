@@ -128,11 +128,10 @@
 		}
 
 		& span {
-			font-size: var(--font-size-small);
-			font-weight: var(--font-weight-bold);
+			font-size: 20px;
+			font-family: var(--highlight-font-family);
 			text-transform: uppercase;
-			letter-spacing: 2px;
-
+			letter-spacing: 2.5px;
 		}
 	}
 }

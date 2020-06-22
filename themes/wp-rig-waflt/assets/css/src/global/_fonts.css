@@ -1,0 +1,23 @@
+@font-face {
+	font-family: waflt;
+	src: url(../fonts/waflt.eot?70370723);
+	src:
+		url(../fonts/waflt.eot?70370723#iefix) format("embedded-opentype"),
+		url(../fonts/waflt.woff2?70370723) format("woff2"),
+		url(../fonts/waflt.woff?70370723) format("woff"),
+		url(../fonts/waflt.ttf?70370723) format("truetype"),
+		url(../fonts/waflt.svg?70370723#waflt) format("svg");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: hollis;
+	src: url(../fonts/hollis.woff2);
+	src:
+		url(../fonts/hollis.woff2) format("woff2"),
+		url(../fonts/hollis.woff) format("woff");
+	font-weight: 400;
+	font-style: normal;
+	letter-spacing: 9.6px;
+}
