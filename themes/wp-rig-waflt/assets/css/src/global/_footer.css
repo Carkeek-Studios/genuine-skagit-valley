@@ -25,7 +25,7 @@
 		margin-top: var(--block-padding-vert);
 		margin-bottom: var(--block-padding-vert);
 		width: 100%;
-		max-width: 1000px;
+
 		margin-left: 0;
 		margin-right: auto;
 	}
@@ -48,7 +48,7 @@
 .footer-section {
 
 	& p {
-		padding-bottom: 1rem;
+		padding-bottom: 1.5rem;
 	}
 
 	& .colophon {
@@ -57,7 +57,8 @@
 			"info info"
 			"social accreditation";
 		align-items: center;
-		padding-top: 2rem;
+		padding-top: var(--gutter-width-mobile);
+		padding-bottom: var(--gutter-width-mobile);
 	}
 
 	& .footer-social {
@@ -93,11 +94,12 @@
 	& .the-crop-image {
 		width: 100%;
 		margin: 0 auto;
-		padding-bottom: 2rem;
+		padding: var(--gutter-width-mobile);
 
 		& img {
 			width: 70vw !important;
 			margin: 0 auto;
+			padding-bottom: var(--gutter-width-mobile);
 		}
 
 		& a {
@@ -111,6 +113,7 @@
 
 	& h2.widget-title {
 		font-size: 28px;
+		margin-bottom: 1rem;
 	}
 }
 
@@ -144,6 +147,7 @@ form.the-crop-footer {
 		& hr {
 			margin-top: var(--block-padding-vert-tablet);
 			margin-bottom: var(--block-padding-vert-tablet);
+			max-width: calc(30% + 485px);
 		}
 
 		& img {
@@ -156,6 +160,10 @@ form.the-crop-footer {
 
 		& .widget_wrapper {
 			justify-content: flex-start;
+
+			& .the-crop-image {
+				padding-left: 0;
+			}
 
 			& h2.widget-title {
 				font-size: 30px;
@@ -181,10 +189,10 @@ form.the-crop-footer {
 
 		& .the-crop-form {
 			padding-left: 4rem;
-			margin-right: var(--gutter-width);
+
 
 			& > * {
-				max-width: 450px;
+				max-width: 418px;
 			}
 
 

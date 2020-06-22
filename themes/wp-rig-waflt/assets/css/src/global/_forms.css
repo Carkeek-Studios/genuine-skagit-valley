@@ -17,7 +17,7 @@ input[type="submit"] {
 	border-radius: 0;
 	background: var(--color-button-background);
 	color: var(--color-button-text);
-	font-size: var(--font-size-regular);
+	font-size: var(--font-size-button);
 	font-family: var(--form-field-font-family);
 	font-weight: var(--font-weight-medium);
 	line-height: 1;

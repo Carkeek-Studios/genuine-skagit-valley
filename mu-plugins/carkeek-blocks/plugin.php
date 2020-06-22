@@ -88,7 +88,7 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 		private function setup_constants() {
 
 			$this->define( 'CARKEEKBLOCKS_DEBUG', true );
-			$this->define( 'CARKEEKBLOCKS_VERSION', '1.0' );
+			$this->define( 'CARKEEKBLOCKS_VERSION', '1.2' );
 			$this->define( 'CARKEEKBLOCKS_HAS_PRO', false );
 			$this->define( 'CARKEEKBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'CARKEEKBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

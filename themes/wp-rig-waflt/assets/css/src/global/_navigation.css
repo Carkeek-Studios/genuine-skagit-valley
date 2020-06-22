@@ -394,7 +394,7 @@ html.overflow-hidden {
 		color: var(--color-theme-white);
 		font-weight: 500;
 		font-size: 18px;
-		padding: 1rem 1.5rem;
+		padding: 1rem 2rem;
 		text-align: center;
 		transition: background-color 0.6s ease;
 

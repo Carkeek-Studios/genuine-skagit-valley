@@ -210,24 +210,8 @@ blockquote cite {
 	}
 }
 
-@media (--tablet-wide-up) {
 
-	blockquote {
-		font-size: var(--font-size-large-tw);
 
-	}
-}
-
-@media (--desktop-up) {
-
-	blockquote {
-		font-size: var(--font-size-large-hd);
-	}
-
-	blockquote cite {
-		font-size: 1.25rem;
-	}
-}
 
 address {
 	margin: 0 0 1.5em;

@@ -38,8 +38,8 @@ wp.domReady( function() {
 
 	// Add Column Styles
 	wp.blocks.registerBlockStyle( 'core/separator', {
-		name: 'with-margin',
-		label: 'With Margin',
+		name: 'no-margin',
+		label: 'No Margin',
 	} );
 
 	wp.blocks.registerBlockVariation( 'core/cover', {
