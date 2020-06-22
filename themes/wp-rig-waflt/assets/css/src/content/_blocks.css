@@ -43,6 +43,16 @@
 		margin-top: 0;
 		margin-bottom: 0;
 	}
+
+	&.no-top-margin {
+		margin-top: 0;
+
+	}
+
+	&.no-bottom-margin {
+		margin-bottom: 0;
+
+	}
 }
 
 .page-content > .wp-block-media-text.has-background {
@@ -80,6 +90,16 @@
 	.page-content > .wp-block-cover {
 		padding-top: var(--block-padding-vert-tablet);
 		padding-bottom: var(--block-padding-vert-tablet);
+	}
+
+	&.no-top-margin {
+		margin-top: 0;
+
+	}
+
+	&.no-bottom-margin {
+		margin-bottom: 0;
+
 	}
 }
 
@@ -167,6 +187,7 @@
 	font-weight: var(--font-weight-medium);
 	transition: all 0.5s ease;
 	padding: 14px 2rem;
+	text-shadow: none;
 
 }
 
@@ -207,6 +228,10 @@
 /*--------------------------------------------------------------
 # WP Block Image- overrides core styles
 --------------------------------------------------------------*/
+.wp-block-image {
+	margin-bottom: var(--gutter-width-mobile);
+}
+
 .wp-block-image.is-style-rounded {
 	width: 200px;
 	height: 200px;
@@ -216,6 +241,13 @@
 		width: auto;
 		height: 100%;
 
+	}
+}
+
+@media (--tablet-small-up) {
+
+	.wp-block-image {
+		margin-bottom: var(--gutter-width);
 	}
 }
 
@@ -448,8 +480,6 @@
 			padding: var(--block-padding-vert-tablet) var(--gutter-width);
 		}
 
-
-
 		&.alignwide {
 
 			& .wp-block-cover__inner-container {
@@ -631,9 +661,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	display: block;
 }
 
-
-
-
 /*--------------------------------------------------------------
 # Gallery Block - overrides core styles
 --------------------------------------------------------------*/
@@ -784,5 +811,3 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	}
 
 }
-
-

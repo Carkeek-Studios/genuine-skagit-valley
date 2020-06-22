@@ -60,6 +60,8 @@ class Component implements Component_Interface {
 		// Disable gradients.
 		add_theme_support( '__experimental-editor-gradient-presets', array() );
 
+		add_image_size( 'x-large', 1800, 1200, array( 'center', 'center' ) );
+
 		/**
 		 * Add support for color palettes.
 		 *
@@ -170,11 +172,10 @@ class Component implements Component_Interface {
 	/**
 	 * Add classname suggestions
 	 *
-	 * @param array $classes default classnames
-	 * @return array Add theme utility classes
+	 * @param array $classes default classnames.
+	 * @return array Add theme utility classes.
 	 */
-	public function editorskit_classnames( $classes ){
-		error_log(print_r($classes, true));
+	public function editorskit_classnames( $classes ) {
 		$theme_classes = array(
 			'h1',
 			'h2',
@@ -182,6 +183,8 @@ class Component implements Component_Interface {
 			'h3',
 			'h5',
 			'h6',
+			'no-top-margin',
+			'no-bottom-margin',
 			'is-style-arrow-cta',
 			'is-style-small-image',
 			'is-page-header',
