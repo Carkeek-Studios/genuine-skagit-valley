@@ -8,7 +8,7 @@
 @custom-media --tablet-up screen and (min-width: 768px);
 @custom-media --tablet-small-up screen and (min-width: 600px);
 @custom-media --tablet-wide-up screen and (min-width: 1024px);
-@custom-media --desktop-up screen and (min-width: 1120px);
+@custom-media --desktop-up screen and (min-width: 1360px);
 @custom-media --narrow-menu-query screen and (max-width: 1023px);
 @custom-media --wide-menu-query screen and (min-width: 37.5em);
 @custom-media --content-query screen and (min-width: 48em);
