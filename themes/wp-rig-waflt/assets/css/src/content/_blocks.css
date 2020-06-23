@@ -501,6 +501,16 @@
 
 
 /*--------------------------------------------------------------
+# Social Links
+--------------------------------------------------------------*/
+.wp-block-social-links.is-style-logos-only .wp-social-link svg {
+	color: var(--color-theme-green);
+	fill: var(--color-theme-green);
+}
+
+
+
+/*--------------------------------------------------------------
 # Columns Block - overrides core styles
 --------------------------------------------------------------*/
 .wp-block-columns {

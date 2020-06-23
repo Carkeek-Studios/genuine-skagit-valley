@@ -19,6 +19,49 @@
 }
 
 
+.no-top-margin {
+	margin-top: 0;
+}
+
+.add-top-margin {
+	margin-top: var(--block-padding-vert);
+}
+
+.add-top-margin-small {
+	margin-top: var(--gutter-width-mobile);
+}
+
+.no-bottom-margin {
+	margin-bottom: 0;
+}
+
+.add-bottom-margin {
+	margin-bottom: var(--block-padding-vert);
+}
+
+.add-bottom-margin-small {
+	margin-bottom: var(--gutter-width-mobile);
+}
+
+@media (--tablet-small-up) {
+
+	.add-top-margin {
+		margin-top: var(--block-padding-vert-tablet);
+	}
+
+	.add-top-margin-small {
+		margin-top: var(--gutter-width-small);
+	}
+
+	.add-bottom-margin {
+		margin-bottom: var(--block-padding-vert-tablet);
+	}
+
+	.add-bottom-margin-small {
+		margin-bottom: var(--gutter-width-small);
+	}
+}
+
 /*--------------------------------------------------------------
 ## List Style
 --------------------------------------------------------------*/

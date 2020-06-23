@@ -189,6 +189,10 @@ class Component implements Component_Interface {
 			'is-style-small-image',
 			'is-page-header',
 			'is-crop-form',
+			'add-top-margin-small',
+			'add-top-margin',
+			'add-bottom-margin',
+			'add-bottom-margin-small',
 		);
 
 		return $theme_classes;
