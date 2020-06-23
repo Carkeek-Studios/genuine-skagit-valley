@@ -336,7 +336,7 @@
 
 @media screen and (min-width: 600px) {
 
-	.page-content > .wp-block-media-text {
+	.page-content > .wp-block-media-text:not(.has-background) {
 		padding-left: var(--gutter-width);
 		padding-right: var(--gutter-width);
 
@@ -412,7 +412,6 @@
 		}
 	}
 }
-
 
 
 /*--------------------------------------------------------------
