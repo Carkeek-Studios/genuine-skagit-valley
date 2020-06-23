@@ -23,6 +23,11 @@ wp.domReady( function() {
 		label: 'Small Image',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/media-text', {
+		name: 'round-image',
+		label: 'Round Image',
+	} );
+
 	wp.blocks.registerBlockStyle( 'core/list', {
 		name: 'no-bullets',
 		label: 'No Bullets',
@@ -89,18 +94,6 @@ wp.domReady( function() {
 		scope: [ 'inserter' ],
 		keywords: [ 'intro', 'page' ],
 	} );
-
-	wp.blocks.registerBlockVariation( 'core/group', {
-		name: 'single-column-centered',
-		title: 'Single Column',
-		icon: 'format-image',
-		innerBlocks: [
-			[ 'core/paragraph', { align: 'center' } ],
-		],
-		attributes: { align: 'full', className: 'is-single-column' },
-		scope: [ 'inserter' ],
-		keywords: [ 'column', 'centered', 'single' ],
-	} );
 } );
 
 //Set the default dimratio on the cover block to 0.
@@ -117,11 +110,12 @@ function setBlockDefaults( settings, name ) {
 				align: [ 'wide', 'full' ],
 			};
 		}
-	} else if ( name === 'core/media-text' ) {
-		if ( settings.attributes && settings.attributes.align ) {
-			settings.attributes.align.default = 'full';
-		}
 	}
+	// } else if ( name === 'core/media-text' ) {
+	// 	if ( settings.attributes && settings.attributes.align ) {
+	// 		settings.attributes.align.default = 'full';
+	// 	}
+	// }
 
 	return settings;
 }

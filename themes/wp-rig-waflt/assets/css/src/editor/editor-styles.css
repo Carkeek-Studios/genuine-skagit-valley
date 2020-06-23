@@ -24,6 +24,7 @@
 @import "../global/_elements.css";
 @import "../global/_links.css";
 @import "../global/_media.css";
+@import "../content/_blocks-props.css";
 @import "../content/_blocks.css";
 
 /*--------------------------------------------------------------
