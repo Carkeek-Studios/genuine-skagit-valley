@@ -15,7 +15,12 @@ const attributes = {
     info: {
         type: "string",
         source: "html",
-        selector: "p"
+        selector: ".wp-block-carkeek-blocks-team-member__info"
+    },
+    details: {
+        type: "string",
+        source: "html",
+        selector: ".wp-block-carkeek-blocks-team-member__details"
     },
     id: {
         type: "number"
@@ -33,22 +38,12 @@ const attributes = {
         selector: "img",
         attribute: "src"
     },
-    social: {
-        type: "array",
-        default: [],
-        source: "query",
-        selector: ".wp-block-carkeek-blocks-team-member__social ul li",
-        query: {
-            icon: {
-                source: "attribute",
-                attribute: "data-icon"
-            },
-            link: {
-                source: "attribute",
-                selector: "a",
-                attribute: "href"
-            }
-        }
+    email: {
+        type: "string",
+    },
+    emailLabel: {
+        type: "string",
+        default: "Send an email"
     }
 };
 
@@ -71,13 +66,14 @@ registerBlockType("carkeek-blocks/team-member", {
     keywords: [
         __("team", "carkeek-blocks"),
         __("member", "carkeek-blocks"),
-        __("person", "carkeek-blocks")
+        __("person", "carkeek-blocks"),
+        __("staff", "carkeek-blocks")
     ],
 
     attributes,
 
     save: ({ attributes }) => {
-        const { title, info, url, alt, id, social } = attributes;
+        const { title, info, url, alt, id, details } = attributes;
         return (
             <div>
                 {url && (
@@ -102,32 +98,14 @@ registerBlockType("carkeek-blocks/team-member", {
                     />
                 )}
 
-                {social.length > 0 && (
-                    <div
-                        className={
-                            "wp-block-carkeek-blocks-team-member__social"
-                        }
-                    >
-                        <ul>
-                            {social.map((item, index) => {
-                                return (
-                                    <li key={index} data-icon={item.icon}>
-                                        <a
-                                            href={item.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <Dashicon
-                                                icon={item.icon}
-                                                size={16}
-                                            />
-                                        </a>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </div>
+                {details && (
+                    <RichText.Content
+                        className={"wp-block-carkeek-blocks-team-member__details"}
+                        tagName="p"
+                        value={details}
+                    />
                 )}
+
             </div>
         );
     },

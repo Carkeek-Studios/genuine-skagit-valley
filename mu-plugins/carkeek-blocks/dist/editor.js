@@ -33181,18 +33181,6 @@ var _jsxFileName = "/Users/pattyohara/Sites/wa-farmland-trust/app/public/wp-cont
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -33255,6 +33243,24 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onChangeDetails", function (details) {
+      _this.props.setAttributes({
+        details: details
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeEmail", function (email) {
+      _this.props.setAttributes({
+        email: email
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeEmail", function (emailLabel) {
+      _this.props.setAttributes({
+        emailLabel: emailLabel
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "onSelectImage", function (_ref) {
       var id = _ref.id,
           url = _ref.url,
@@ -33300,78 +33306,15 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "addNewLink", function () {
-      var _this$props = _this.props,
-          setAttributes = _this$props.setAttributes,
-          attributes = _this$props.attributes;
-      var social = attributes.social;
-      setAttributes({
-        social: [].concat(_toConsumableArray(social), [{
-          icon: "wordpress",
-          link: ""
-        }])
-      });
-
-      _this.setState({
-        selectedLink: social.length
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "updateSocialItem", function (type, value) {
-      var _this$props2 = _this.props,
-          setAttributes = _this$props2.setAttributes,
-          attributes = _this$props2.attributes;
-      var social = attributes.social;
-      var selectedLink = _this.state.selectedLink;
-
-      var new_social = _toConsumableArray(social);
-
-      new_social[selectedLink][type] = value;
-      setAttributes({
-        social: new_social
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "removeLink", function (e) {
-      e.preventDefault();
-      var _this$props3 = _this.props,
-          setAttributes = _this$props3.setAttributes,
-          attributes = _this$props3.attributes;
-      var social = attributes.social;
-      var selectedLink = _this.state.selectedLink;
-      setAttributes({
-        social: [].concat(_toConsumableArray(social.slice(0, selectedLink)), _toConsumableArray(social.slice(selectedLink + 1)))
-      });
-
-      _this.setState({
-        selectedLink: null
-      });
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onSortEnd", function (oldIndex, newIndex) {
-      var _this$props4 = _this.props,
-          setAttributes = _this$props4.setAttributes,
-          attributes = _this$props4.attributes;
-      var social = attributes.social;
-      var new_social = Object(react_sortable_hoc__WEBPACK_IMPORTED_MODULE_6__["arrayMove"])(social, oldIndex, newIndex);
-      setAttributes({
-        social: new_social
-      });
-
-      _this.setState({
-        selectedLink: null
-      });
-    });
-
     return _this;
   }
 
   _createClass(TeamMemberEdit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this$props5 = this.props,
-          attributes = _this$props5.attributes,
-          setAttributes = _this$props5.setAttributes;
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes;
       var url = attributes.url,
           id = attributes.id;
 
@@ -33394,9 +33337,9 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
   }, {
     key: "getImageSizes",
     value: function getImageSizes() {
-      var _this$props6 = this.props,
-          image = _this$props6.image,
-          imageSizes = _this$props6.imageSizes;
+      var _this$props2 = this.props,
+          image = _this$props2.image,
+          imageSizes = _this$props2.imageSizes;
       if (!image) return [];
       var options = [];
       var sizes = image.media_details.sizes;
@@ -33427,103 +33370,24 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
       var _this2 = this;
 
       //console.log(this.props);
-      var _this$props7 = this.props,
-          className = _this$props7.className,
-          attributes = _this$props7.attributes,
-          noticeUI = _this$props7.noticeUI,
-          isSelected = _this$props7.isSelected;
+      var _this$props3 = this.props,
+          className = _this$props3.className,
+          attributes = _this$props3.attributes,
+          noticeUI = _this$props3.noticeUI,
+          isSelected = _this$props3.isSelected;
       var title = attributes.title,
           info = attributes.info,
           url = attributes.url,
           alt = attributes.alt,
           id = attributes.id,
-          social = attributes.social;
-      var SortableList = Object(react_sortable_hoc__WEBPACK_IMPORTED_MODULE_6__["SortableContainer"])(function () {
-        return wp.element.createElement("ul", {
-          __self: _this2,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 159,
-            columnNumber: 17
-          }
-        }, social.map(function (item, index) {
-          var SortableItem = Object(react_sortable_hoc__WEBPACK_IMPORTED_MODULE_6__["SortableElement"])(function () {
-            return wp.element.createElement("li", {
-              key: index,
-              onClick: function onClick() {
-                return _this2.setState({
-                  selectedLink: index
-                });
-              },
-              className: _this2.state.selectedLink === index ? "is-selected" : null,
-              __self: _this2,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 163,
-                columnNumber: 33
-              }
-            }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Dashicon"], {
-              icon: item.icon,
-              size: 16,
-              __self: _this2,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 176,
-                columnNumber: 37
-              }
-            }));
-          });
-          return wp.element.createElement(SortableItem, {
-            key: index,
-            index: index,
-            __self: _this2,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 180,
-              columnNumber: 32
-            }
-          });
-        }), isSelected && wp.element.createElement("li", {
-          className: "wp-block-carkeek-blocks-team-member__addIconLI",
-          __self: _this2,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 183,
-            columnNumber: 25
-          }
-        }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Tooltip"], {
-          text: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Add Item", "carkeek-blocks"),
-          __self: _this2,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 188,
-            columnNumber: 29
-          }
-        }, wp.element.createElement("button", {
-          className: "wp-block-carkeek-blocks-team-member__addIcon",
-          onClick: _this2.addNewLink,
-          __self: _this2,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 189,
-            columnNumber: 33
-          }
-        }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Dashicon"], {
-          icon: "plus",
-          size: 14,
-          __self: _this2,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 195,
-            columnNumber: 37
-          }
-        })))));
-      });
+          details = attributes.details,
+          email = attributes.email,
+          emailLabel = attributes.emailLabel;
       return wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["InspectorControls"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 205,
+          lineNumber: 131,
           columnNumber: 17
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
@@ -33531,7 +33395,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 206,
+          lineNumber: 132,
           columnNumber: 21
         }
       }, url && !Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(url) && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextareaControl"], {
@@ -33542,7 +33406,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208,
+          lineNumber: 134,
           columnNumber: 29
         }
       }), id && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["SelectControl"], {
@@ -33553,28 +33417,28 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221,
+          lineNumber: 147,
           columnNumber: 29
         }
       }))), wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["BlockControls"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 230,
+          lineNumber: 156,
           columnNumber: 17
         }
       }, url && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Toolbar"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 232,
+          lineNumber: 158,
           columnNumber: 25
         }
       }, id && wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUploadCheck"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 234,
+          lineNumber: 160,
           columnNumber: 33
         }
       }, wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["MediaUpload"], {
@@ -33591,7 +33455,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
             __self: _this2,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 241,
+              lineNumber: 167,
               columnNumber: 49
             }
           });
@@ -33599,7 +33463,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 235,
+          lineNumber: 161,
           columnNumber: 37
         }
       })), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["IconButton"], {
@@ -33610,7 +33474,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 255,
+          lineNumber: 181,
           columnNumber: 29
         }
       }))), wp.element.createElement("div", {
@@ -33618,7 +33482,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 264,
+          lineNumber: 190,
           columnNumber: 17
         }
       }, url ? wp.element.createElement(wp.element.Fragment, null, wp.element.createElement("img", {
@@ -33627,20 +33491,19 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 267,
+          lineNumber: 193,
           columnNumber: 29
         }
       }), Object(_wordpress_blob__WEBPACK_IMPORTED_MODULE_3__["isBlobURL"])(url) && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["Spinner"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 268,
+          lineNumber: 194,
           columnNumber: 48
         }
       })) : wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["MediaPlaceholder"], {
         icon: "format-image",
         onSelect: this.onSelectImage,
-        onSelectURL: this.onSelectURL,
         onError: this.onUploadError //accept="image/*"
         ,
         allowedTypes: ["image"],
@@ -33648,7 +33511,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 271,
+          lineNumber: 197,
           columnNumber: 25
         }
       }), wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"], {
@@ -33661,7 +33524,7 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 281,
+          lineNumber: 207,
           columnNumber: 21
         }
       }), wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"], {
@@ -33669,79 +33532,48 @@ var TeamMemberEdit = /*#__PURE__*/function (_Component) {
         tagName: "p",
         onChange: this.onChangeInfo,
         value: info,
-        placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member Info", "carkeek-blocks"),
+        placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member Title", "carkeek-blocks"),
         formatingControls: [],
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 289,
+          lineNumber: 215,
           columnNumber: 21
         }
-      }), wp.element.createElement("div", {
-        className: "wp-block-carkeek-blocks-team-member__social",
+      }), isSelected && wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["RichText"], {
+        className: "wp-block-carkeek-blocks-team-member__details",
+        tagName: "p",
+        onChange: this.onChangeDetails,
+        value: details,
+        placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Member Details", "carkeek-blocks"),
+        formatingControls: [],
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 297,
+          lineNumber: 225,
           columnNumber: 21
         }
-      }, wp.element.createElement(SortableList, {
-        axis: "x",
-        helperClass: "social_dragging",
-        distance: 10,
-        onSortEnd: function onSortEnd(_ref3) {
-          var oldIndex = _ref3.oldIndex,
-              newIndex = _ref3.newIndex;
-          return _this2.onSortEnd(oldIndex, newIndex);
-        },
+      }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+        value: email,
+        onChange: this.onChangeEmail,
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Email", "carkeek-blocks"),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 302,
-          columnNumber: 25
+          lineNumber: 233,
+          columnNumber: 21
         }
-      })), this.state.selectedLink !== null && wp.element.createElement("div", {
-        className: "wp-block-carkeek-blocks-team-member__linkForm",
+      }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
+        value: emailLabel,
+        onChange: this.onChangeEmailLabel,
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Email Label", "carkeek-blocks"),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 353,
-          columnNumber: 25
+          lineNumber: 238,
+          columnNumber: 21
         }
-      }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["TextControl"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Icon", "carkeek-blocks"),
-        value: social[this.state.selectedLink].icon,
-        onChange: function onChange(icon) {
-          return _this2.updateSocialItem("icon", icon);
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 358,
-          columnNumber: 29
-        }
-      }), wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_1__["URLInput"], {
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("URL", "carkeek-blocks"),
-        value: social[this.state.selectedLink].link,
-        onChange: function onChange(url) {
-          return _this2.updateSocialItem("link", url);
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 365,
-          columnNumber: 29
-        }
-      }), wp.element.createElement("a", {
-        className: "wp-block-carkeek-blocks-team-member__removeLink",
-        onClick: this.removeLink,
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 372,
-          columnNumber: 29
-        }
-      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Remove Link", "carkeek-blocks")))));
+      }))));
     }
   }]);
 
@@ -33798,7 +33630,12 @@ var attributes = {
   info: {
     type: "string",
     source: "html",
-    selector: "p"
+    selector: ".wp-block-carkeek-blocks-team-member__info"
+  },
+  details: {
+    type: "string",
+    source: "html",
+    selector: ".wp-block-carkeek-blocks-team-member__details"
   },
   id: {
     type: "number"
@@ -33816,22 +33653,12 @@ var attributes = {
     selector: "img",
     attribute: "src"
   },
-  social: {
-    type: "array",
-    default: [],
-    source: "query",
-    selector: ".wp-block-carkeek-blocks-team-member__social ul li",
-    query: {
-      icon: {
-        source: "attribute",
-        attribute: "data-icon"
-      },
-      link: {
-        source: "attribute",
-        selector: "a",
-        attribute: "href"
-      }
-    }
+  email: {
+    type: "string"
+  },
+  emailLabel: {
+    type: "string",
+    default: "Send an email"
   }
 };
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("carkeek-blocks/team-member", {
@@ -33844,7 +33671,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("car
     html: false
   },
   category: "widgets",
-  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("team", "carkeek-blocks"), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("member", "carkeek-blocks"), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("person", "carkeek-blocks")],
+  keywords: [Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("team", "carkeek-blocks"), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("member", "carkeek-blocks"), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("person", "carkeek-blocks"), Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__["__"])("staff", "carkeek-blocks")],
   attributes: attributes,
   save: function save(_ref) {
     var attributes = _ref.attributes;
@@ -33853,12 +33680,12 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("car
         url = attributes.url,
         alt = attributes.alt,
         id = attributes.id,
-        social = attributes.social;
+        details = attributes.details;
     return wp.element.createElement("div", {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 82,
+        lineNumber: 78,
         columnNumber: 13
       }
     }, url && wp.element.createElement("img", {
@@ -33868,7 +33695,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("car
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 84,
+        lineNumber: 80,
         columnNumber: 21
       }
     }), title && wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"].Content, {
@@ -33878,7 +33705,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("car
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 91,
+        lineNumber: 87,
         columnNumber: 21
       }
     }), info && wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"].Content, {
@@ -33888,55 +33715,20 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("car
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 98,
+        lineNumber: 94,
         columnNumber: 21
       }
-    }), social.length > 0 && wp.element.createElement("div", {
-      className: "wp-block-carkeek-blocks-team-member__social",
+    }), details && wp.element.createElement(_wordpress_editor__WEBPACK_IMPORTED_MODULE_5__["RichText"].Content, {
+      className: "wp-block-carkeek-blocks-team-member__details",
+      tagName: "p",
+      value: details,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 106,
+        lineNumber: 102,
         columnNumber: 21
       }
-    }, wp.element.createElement("ul", {
-      __self: _this,
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 111,
-        columnNumber: 25
-      }
-    }, social.map(function (item, index) {
-      return wp.element.createElement("li", {
-        key: index,
-        "data-icon": item.icon,
-        __self: _this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 114,
-          columnNumber: 37
-        }
-      }, wp.element.createElement("a", {
-        href: item.link,
-        target: "_blank",
-        rel: "noopener noreferrer",
-        __self: _this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 115,
-          columnNumber: 41
-        }
-      }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__["Dashicon"], {
-        icon: item.icon,
-        size: 16,
-        __self: _this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 120,
-          columnNumber: 45
-        }
-      })));
-    }))));
+    }));
   },
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"]
 });

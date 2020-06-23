@@ -57,6 +57,15 @@ class TeamMemberEdit extends Component {
     onChangeInfo = info => {
         this.props.setAttributes({ info });
     };
+    onChangeDetails = details => {
+        this.props.setAttributes({ details });
+    };
+    onChangeEmail = email => {
+        this.props.setAttributes({ email });
+    };
+    onChangeEmail = emailLabel => {
+        this.props.setAttributes({ emailLabel });
+    };
     onSelectImage = ({ id, url, alt }) => {
         this.props.setAttributes({
             id,
@@ -109,97 +118,14 @@ class TeamMemberEdit extends Component {
         }
         return options;
     }
-    addNewLink = () => {
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        setAttributes({
-            social: [...social, { icon: "wordpress", link: "" }]
-        });
-        this.setState({
-            selectedLink: social.length
-        });
-    };
-    updateSocialItem = (type, value) => {
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        const { selectedLink } = this.state;
-        let new_social = [...social];
-        new_social[selectedLink][type] = value;
-        setAttributes({ social: new_social });
-    };
-    removeLink = e => {
-        e.preventDefault();
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        const { selectedLink } = this.state;
-        setAttributes({
-            social: [
-                ...social.slice(0, selectedLink),
-                ...social.slice(selectedLink + 1)
-            ]
-        });
-        this.setState({
-            selectedLink: null
-        });
-    };
-    onSortEnd = (oldIndex, newIndex) => {
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        let new_social = arrayMove(social, oldIndex, newIndex);
-        setAttributes({ social: new_social });
-        this.setState({ selectedLink: null });
-    };
+
+
     render() {
         //console.log(this.props);
         const { className, attributes, noticeUI, isSelected } = this.props;
-        const { title, info, url, alt, id, social } = attributes;
+        const { title, info, url, alt, id, details, email, emailLabel } = attributes;
 
-        const SortableList = SortableContainer(() => {
-            return (
-                <ul>
-                    {social.map((item, index) => {
-                        let SortableItem = SortableElement(() => {
-                            return (
-                                <li
-                                    key={index}
-                                    onClick={() =>
-                                        this.setState({
-                                            selectedLink: index
-                                        })
-                                    }
-                                    className={
-                                        this.state.selectedLink === index
-                                            ? "is-selected"
-                                            : null
-                                    }
-                                >
-                                    <Dashicon icon={item.icon} size={16} />
-                                </li>
-                            );
-                        });
-                        return <SortableItem key={index} index={index} />;
-                    })}
-                    {isSelected && (
-                        <li
-                            className={
-                                "wp-block-carkeek-blocks-team-member__addIconLI"
-                            }
-                        >
-                            <Tooltip text={__("Add Item", "carkeek-blocks")}>
-                                <button
-                                    className={
-                                        "wp-block-carkeek-blocks-team-member__addIcon"
-                                    }
-                                    onClick={this.addNewLink}
-                                >
-                                    <Dashicon icon={"plus"} size={14} />
-                                </button>
-                            </Tooltip>
-                        </li>
-                    )}
-                </ul>
-            );
-        });
+
         return (
             <>
                 <InspectorControls>
@@ -271,7 +197,7 @@ class TeamMemberEdit extends Component {
                         <MediaPlaceholder
                             icon="format-image"
                             onSelect={this.onSelectImage}
-                            onSelectURL={this.onSelectURL}
+
                             onError={this.onUploadError}
                             //accept="image/*"
                             allowedTypes={["image"]}
@@ -291,92 +217,31 @@ class TeamMemberEdit extends Component {
                         tagName="p"
                         onChange={this.onChangeInfo}
                         value={info}
-                        placeholder={__("Member Info", "carkeek-blocks")}
+                        placeholder={__("Member Title", "carkeek-blocks")}
                         formatingControls={[]}
                     />
-                    <div
-                        className={
-                            "wp-block-carkeek-blocks-team-member__social"
-                        }
-                    >
-                        <SortableList
-                            axis="x"
-                            helperClass={"social_dragging"}
-                            distance={10}
-                            onSortEnd={({ oldIndex, newIndex }) =>
-                                this.onSortEnd(oldIndex, newIndex)
-                            }
-                        />
-                        {/* <ul>
-                            {social.map((item, index) => {
-                                return (
-                                    <li
-                                        key={index}
-                                        onClick={() =>
-                                            this.setState({
-                                                selectedLink: index
-                                            })
-                                        }
-                                        className={
-                                            this.state.selectedLink === index
-                                                ? "is-selected"
-                                                : null
-                                        }
-                                    >
-                                        <Dashicon icon={item.icon} size={16} />
-                                    </li>
-                                );
-                            })}
-                            {isSelected && (
-                                <li
-                                    className={
-                                        "wp-block-carkeek-blocks-team-member__addIconLI"
-                                    }
-                                >
-                                    <Tooltip
-                                        text={__("Add Item", "carkeek-blocks")}
-                                    >
-                                        <button
-                                            className={
-                                                "wp-block-carkeek-blocks-team-member__addIcon"
-                                            }
-                                            onClick={this.addNewLink}
-                                        >
-                                            <Dashicon icon={"plus"} size={14} />
-                                        </button>
-                                    </Tooltip>
-                                </li>
-                            )}
-                        </ul> */}
-                    </div>
-                    {this.state.selectedLink !== null && (
-                        <div
-                            className={
-                                "wp-block-carkeek-blocks-team-member__linkForm"
-                            }
-                        >
-                            <TextControl
-                                label={__("Icon", "carkeek-blocks")}
-                                value={social[this.state.selectedLink].icon}
-                                onChange={icon =>
-                                    this.updateSocialItem("icon", icon)
-                                }
-                            />
-                            <URLInput
-                                label={__("URL", "carkeek-blocks")}
-                                value={social[this.state.selectedLink].link}
-                                onChange={url =>
-                                    this.updateSocialItem("link", url)
-                                }
-                            />
-                            <a
-                                className="wp-block-carkeek-blocks-team-member__removeLink"
-                                onClick={this.removeLink}
-                            >
-                                {__("Remove Link", "carkeek-blocks")}
-                            </a>
-                        </div>
-                    )}
+                    {isSelected &&
+                    <>
+                    <RichText
+                        className={"wp-block-carkeek-blocks-team-member__details"}
+                        tagName="p"
+                        onChange={this.onChangeDetails}
+                        value={details}
+                        placeholder={__("Member Details", "carkeek-blocks")}
+                        formatingControls={[]}
+                    />
+                    <TextControl
+                        value={email}
+                        onChange={this.onChangeEmail}
+                        label={__("Email", "carkeek-blocks")}
+                    />
+                    <TextControl
+                        value={emailLabel}
+                        onChange={this.onChangeEmailLabel}
+                        label={__("Email Label", "carkeek-blocks")}
+                    />
+                    </>
+                    }
                 </div>
             </>
         );
