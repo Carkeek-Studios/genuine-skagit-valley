@@ -98,6 +98,7 @@
 
 		& img {
 			width: 70vw !important;
+			max-width: 300px !important;
 			margin: 0 auto;
 			padding-bottom: var(--gutter-width-mobile);
 		}
@@ -109,6 +110,10 @@
 
 	& .wa-farmland-logo {
 		width: 100% !important;
+
+		& img {
+			max-width: 400px !important;
+		}
 	}
 
 	& h2.widget-title {
