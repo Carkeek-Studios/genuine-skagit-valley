@@ -235,6 +235,7 @@
 	margin: 0 auto;
 
 	& img {
+		object-fit: cover;
 		width: auto;
 		height: 100%;
 
@@ -323,6 +324,7 @@
 			& img {
 				width: 200px;
 				height: 200px;
+				object-fit: cover;
 				border-radius: 100%;
 				margin-right: auto;
 				margin-left: auto;
