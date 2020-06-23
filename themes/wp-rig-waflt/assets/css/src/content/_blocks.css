@@ -76,7 +76,8 @@
 
 	.page-content > .wp-block-columns + .wp-block-columns,
 	.page-content > .alignfull.has-background + .alignfull.has-background,
-	.page-content > .alignfull.has-background + .wp-block-cover {
+	.page-content > .alignfull.has-background + .wp-block-cover,
+	.page-content > .wp-block-cover + .alignfull.has-background {
 		margin-top: calc(-1 * var(--block-padding-vert-tablet));
 	}
 
