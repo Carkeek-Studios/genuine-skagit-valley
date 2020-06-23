@@ -170,10 +170,6 @@
 
 		}
 	}
-
-	.wp-block-cover.header-image {
-		height: 550px;
-	}
 }
 
 
@@ -360,6 +356,16 @@
 			padding-right: 0;
 		}
 
+		& .wp-block-media-text__media {
+
+			& img {
+				object-fit: cover;
+				height: auto;
+				width: 100%;
+				max-height: 800px;
+			}
+		}
+
 		&.has-media-on-the-right {
 
 			& .wp-block-media-text__content {
@@ -371,11 +377,13 @@
 
 
 		&.has-background {
-			min-height: 75vw;
+			height: 75vw;
+			max-height: 800px;
 
 			& .wp-block-media-text__media {
 				width: 100%;
 				height: 100%;
+				max-height: 800px;
 
 				& img {
 					width: 100%;
@@ -428,6 +436,7 @@
 	&:not(.is-cover-quote) {
 		height: 66vw;
 		min-height: 400px;
+		max-height: 870px;
 	}
 
 	&.is-crop-form {
@@ -496,6 +505,7 @@
 	&.is-crop-form {
 		height: 66vw;
 		min-height: 400px;
+		max-height: 870px;
 	}
 }
 
@@ -507,8 +517,6 @@
 	color: var(--color-theme-green);
 	fill: var(--color-theme-green);
 }
-
-
 
 /*--------------------------------------------------------------
 # Columns Block - overrides core styles

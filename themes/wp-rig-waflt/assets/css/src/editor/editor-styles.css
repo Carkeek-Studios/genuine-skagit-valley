@@ -98,7 +98,12 @@ option {
 	width: auto;
 	height: auto;
 }
-/* stylelint-enable */
+
 .block-editor-plain-text {
 	color: #777 !important;
 }
+
+.wp-block-media-text.has-background {
+	max-height: auto;
+}
+/* stylelint-enable */

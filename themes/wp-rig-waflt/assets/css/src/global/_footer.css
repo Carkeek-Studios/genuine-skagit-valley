@@ -6,7 +6,7 @@
 	color: var(--color-theme-white);
 	font-size: 14px;
 	line-height: 1.45;
-	min-height: 75vw;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -142,11 +142,15 @@ form.the-crop-footer {
 		overflow: hidden;
 		padding-left: var(--gutter-width);
 		padding-right: var(--gutter-width);
+		padding-top: var(--block-padding-vert-tablet);
+		padding-bottom: var(--block-padding-vert-tablet);
+		height: 75vw;
+		min-height: 650px;
+		max-height: 800px;
 
 
 		& hr {
-			margin-top: var(--block-padding-vert-tablet);
-			margin-bottom: var(--block-padding-vert-tablet);
+
 			max-width: calc(30% + 485px);
 		}
 
