@@ -1,13 +1,13 @@
 <?php
-/*
-* Plugin Name: Carkeek Blocks
-* Plugin URI: https://carkeekstudios.com/
-* Description: Series of blocks designed to work with the Carkeek Theme
-* Author: pattyok
-* Version: 1.0
-* Author URI https://carkeekstudios.com/
-* Text Domain: carkeek-blocks
-*/
+/**
+ * Plugin Name: Carkeek Blocks
+ * Plugin URI: https://carkeekstudios.com/
+ * Description: Series of blocks designed to work with the Carkeek Theme
+ * Author: pattyok
+ * Version: 1.0
+ * Author URI https://carkeekstudios.com/
+ * Text Domain: carkeek-blocks
+ */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +19,6 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 	 *
 	 * @since 1.0
 	 */
-
 	final class CarkeekBlocks {
 		/**
 		 * The plugin's instance
@@ -33,7 +32,7 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 		/**
 		 * Main CarkeekBlocks instance
 		 *
-		 * insures only one instance exists. Also prevents needing to define globals all around.
+		 * Insures only one instance exists. Also prevents needing to define globals all around.
 		 *
 		 * @since 1.0.0
 		 * @static
@@ -78,6 +77,7 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 			_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheating huh?', 'carkeek-blocks' ), '1.0' );
 		}
 
+
 		/**
 		 * Setup plugin constants.
 		 *
@@ -118,7 +118,8 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 		private function includes() {
 
 			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-block-assets.php';
-			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-custom-post.php';
+			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-block-register.php';
+			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-custompost.php';
 			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-post-meta.php';
 
 		}

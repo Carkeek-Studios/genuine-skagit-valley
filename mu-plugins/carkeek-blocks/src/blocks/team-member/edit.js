@@ -7,7 +7,7 @@ import {
     MediaUploadCheck,
     InspectorControls,
     URLInput
-} from "@wordpress/editor";
+} from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from "@wordpress/blob";
 import {
@@ -23,11 +23,6 @@ import {
     TextControl
 } from "@wordpress/components";
 import { withSelect } from "@wordpress/data";
-import {
-    SortableContainer,
-    SortableElement,
-    arrayMove
-} from "react-sortable-hoc";
 
 class TeamMemberEdit extends Component {
     state = {
@@ -54,8 +49,8 @@ class TeamMemberEdit extends Component {
     onChangeTitle = title => {
         this.props.setAttributes({ title });
     };
-    onChangeInfo = info => {
-        this.props.setAttributes({ info });
+    onChangeName = name => {
+        this.props.setAttributes({ name });
     };
     onChangeDetails = details => {
         this.props.setAttributes({ details });
@@ -63,7 +58,7 @@ class TeamMemberEdit extends Component {
     onChangeEmail = email => {
         this.props.setAttributes({ email });
     };
-    onChangeEmail = emailLabel => {
+    onChangeEmailLabel = emailLabel => {
         this.props.setAttributes({ emailLabel });
     };
     onSelectImage = ({ id, url, alt }) => {
@@ -122,10 +117,8 @@ class TeamMemberEdit extends Component {
 
     render() {
         //console.log(this.props);
-        const { className, attributes, noticeUI, isSelected } = this.props;
-        const { title, info, url, alt, id, details, email, emailLabel } = attributes;
-
-
+        const { className, attributes, noticeUI, isSelected, layout } = this.props;
+        const { title, name, url, alt, id, details, email, emailLabel } = attributes;
         return (
             <>
                 <InspectorControls>
@@ -188,38 +181,44 @@ class TeamMemberEdit extends Component {
                     )}
                 </BlockControls>
                 <div className={className}>
-                    {url ? (
-                        <>
-                            <img src={url} alt={alt} />
-                            {isBlobURL(url) && <Spinner />}
-                        </>
-                    ) : (
-                        <MediaPlaceholder
-                            icon="format-image"
-                            onSelect={this.onSelectImage}
+                    { (layout=="grid" || isSelected) &&
+                    <>
+                        {url ? (
+                            <>
+                                <img src={url} alt={alt} />
+                                {isBlobURL(url) && <Spinner />}
+                            </>
+                        ) : (
+                            <MediaPlaceholder
+                                icon="format-image"
+                                onSelect={this.onSelectImage}
 
-                            onError={this.onUploadError}
-                            //accept="image/*"
-                            allowedTypes={["image"]}
-                            notices={noticeUI}
-                        />
-                    )}
+                                onError={this.onUploadError}
+                                //accept="image/*"
+                                allowedTypes={["image"]}
+                                notices={noticeUI}
+                            />
+                        )}
+                        </>
+                    }
                     <RichText
-                        className={"wp-block-carkeek-blocks-team-member__title"}
-                        tagName="h4"
-                        onChange={this.onChangeTitle}
-                        value={title}
+                        className={"wp-block-carkeek-blocks-team-member__name"}
+                        tagName="div"
+                        onChange={this.onChangeName}
+                        value={name}
                         placeholder={__("Member Name", "carkeek-blocks")}
                         formatingControls={[]}
                     />
+
                     <RichText
-                        className={"wp-block-carkeek-blocks-team-member__info"}
-                        tagName="p"
-                        onChange={this.onChangeInfo}
-                        value={info}
-                        placeholder={__("Member Title", "carkeek-blocks")}
+                        className={"wp-block-carkeek-blocks-team-member__title"}
+                        tagName="div"
+                        onChange={this.onChangeTitle}
+                        value={title}
+                        placeholder={isSelected ? __("Member Title", "carkeek-blocks") : null}
                         formatingControls={[]}
                     />
+
                     {isSelected &&
                     <>
                     <RichText
@@ -250,8 +249,11 @@ class TeamMemberEdit extends Component {
 
 export default withSelect((select, props) => {
     const id = props.attributes.id;
+    const parentId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
+    const parentAttributes = select('core/block-editor').getBlockAttributes( parentId );
     return {
         image: id ? select("core").getMedia(id) : null,
-        imageSizes: select("core/editor").getEditorSettings().imageSizes
+        imageSizes: select("core/editor").getEditorSettings().imageSizes,
+        layout: parentAttributes.layout
     };
 })(withNotices(TeamMemberEdit));
