@@ -377,7 +377,7 @@
 
 
 		&.has-background {
-			height: 75vw;
+			height: 56vw;
 			max-height: 800px;
 
 			& .wp-block-media-text__media {
@@ -640,7 +640,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	& blockquote {
 		text-align: center;
 		border-left: none;
-		max-width: var(--content-width);
 
 		& p {
 			font-size: var(--font-size-med);
@@ -652,7 +651,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 .wp-block-quote {
 	margin: 0;
-	padding: 0;
+	padding: var(--block-padding-vert) 0;
 }
 
 .wp-block-quote:not(.is-large):not(.is-style-large) {
@@ -669,6 +668,14 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	font-size: 14px;
 	margin-top: 3rem;
 	display: block;
+}
+
+@media (--tablet-up) {
+
+	.wp-block-quote {
+		margin: 0;
+		padding: var(--block-padding-vert-tablet) 0;
+	}
 }
 
 /*--------------------------------------------------------------
