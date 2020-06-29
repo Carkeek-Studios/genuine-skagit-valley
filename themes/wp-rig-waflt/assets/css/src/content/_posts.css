@@ -153,6 +153,7 @@
 		width: 100%;
 		height: 66vw;
 		min-height: 400px;
+		max-height: 870px;
 		object-fit: cover;
 	}
 
