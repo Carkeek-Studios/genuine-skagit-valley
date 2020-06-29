@@ -77,7 +77,7 @@ class CarkeekBlocks_CustomPost {
 				),
 				'public'       => true,
 				'has_archive'  => true,
-				'rewrite'      => array( 'slug' => 'portfolio' ), // my custom slug
+				'rewrite'      => array( 'slug' => 'portfolio' ),
 				'menu_icon'    => 'dashicons-book-alt',
 				'supports'     => array( 'title', 'editor', 'thumbnail', 'page-attributes', 'excerpt' ),
 				'show_in_rest' => true,
@@ -112,21 +112,22 @@ class CarkeekBlocks_CustomPost {
 				$post_title     = '';
 				$post_content   = '';
 				$class_pre      = 'wp-block-ck-custom_posttype__';
+				$class_excerpt  = '';
 
-				if ( $attributes['displayFeaturedImage'] == true ) {
+				if ( true == $attributes['displayFeaturedImage'] ) {
 					$featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
 					$featured_image .= get_the_post_thumbnail( null, 'medium_large' );
 					$featured_image .= '</a>';
 				}
 
-				if ( $attributes['displayPostTitle'] == true ) {
+				if ( true == $attributes['displayPostTitle'] ) {
 					$post_title  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'text-link">';
 					$post_title .= get_the_title();
 					$post_title .= '</a>';
 				}
 
-				if ( $attributes['displayPostContent'] == true ) {
-					if ( $attributes['displayPostContentRadio'] === 'excerpt' ) {
+				if ( true == $attributes['displayPostContent'] ) {
+					if ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
 						$post_content   = get_the_excerpt();
 						$class_excerpt .= 'excerpt';
 					} else {

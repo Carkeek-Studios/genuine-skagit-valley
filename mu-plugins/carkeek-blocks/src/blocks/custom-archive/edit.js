@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { get, invoke } from "lodash";
+import { compose } from "@wordpress/compose";
 
 import { Component, RawHTML } from "@wordpress/element";
 import { withSelect } from "@wordpress/data";

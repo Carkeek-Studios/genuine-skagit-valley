@@ -7,7 +7,7 @@ import {
     MediaUploadCheck,
     InspectorControls,
     URLInput
-} from "@wordpress/editor";
+} from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from "@wordpress/blob";
 import {
@@ -23,11 +23,6 @@ import {
     TextControl
 } from "@wordpress/components";
 import { withSelect } from "@wordpress/data";
-import {
-    SortableContainer,
-    SortableElement,
-    arrayMove
-} from "react-sortable-hoc";
 
 class TeamMemberEdit extends Component {
     state = {
@@ -54,8 +49,17 @@ class TeamMemberEdit extends Component {
     onChangeTitle = title => {
         this.props.setAttributes({ title });
     };
-    onChangeInfo = info => {
-        this.props.setAttributes({ info });
+    onChangeName = name => {
+        this.props.setAttributes({ name });
+    };
+    onChangeDetails = details => {
+        this.props.setAttributes({ details });
+    };
+    onChangeEmail = email => {
+        this.props.setAttributes({ email });
+    };
+    onChangeEmailLabel = emailLabel => {
+        this.props.setAttributes({ emailLabel });
     };
     onSelectImage = ({ id, url, alt }) => {
         this.props.setAttributes({
@@ -109,97 +113,12 @@ class TeamMemberEdit extends Component {
         }
         return options;
     }
-    addNewLink = () => {
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        setAttributes({
-            social: [...social, { icon: "wordpress", link: "" }]
-        });
-        this.setState({
-            selectedLink: social.length
-        });
-    };
-    updateSocialItem = (type, value) => {
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        const { selectedLink } = this.state;
-        let new_social = [...social];
-        new_social[selectedLink][type] = value;
-        setAttributes({ social: new_social });
-    };
-    removeLink = e => {
-        e.preventDefault();
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        const { selectedLink } = this.state;
-        setAttributes({
-            social: [
-                ...social.slice(0, selectedLink),
-                ...social.slice(selectedLink + 1)
-            ]
-        });
-        this.setState({
-            selectedLink: null
-        });
-    };
-    onSortEnd = (oldIndex, newIndex) => {
-        const { setAttributes, attributes } = this.props;
-        const { social } = attributes;
-        let new_social = arrayMove(social, oldIndex, newIndex);
-        setAttributes({ social: new_social });
-        this.setState({ selectedLink: null });
-    };
+
+
     render() {
         //console.log(this.props);
-        const { className, attributes, noticeUI, isSelected } = this.props;
-        const { title, info, url, alt, id, social } = attributes;
-
-        const SortableList = SortableContainer(() => {
-            return (
-                <ul>
-                    {social.map((item, index) => {
-                        let SortableItem = SortableElement(() => {
-                            return (
-                                <li
-                                    key={index}
-                                    onClick={() =>
-                                        this.setState({
-                                            selectedLink: index
-                                        })
-                                    }
-                                    className={
-                                        this.state.selectedLink === index
-                                            ? "is-selected"
-                                            : null
-                                    }
-                                >
-                                    <Dashicon icon={item.icon} size={16} />
-                                </li>
-                            );
-                        });
-                        return <SortableItem key={index} index={index} />;
-                    })}
-                    {isSelected && (
-                        <li
-                            className={
-                                "wp-block-carkeek-blocks-team-member__addIconLI"
-                            }
-                        >
-                            <Tooltip text={__("Add Item", "carkeek-blocks")}>
-                                <button
-                                    className={
-                                        "wp-block-carkeek-blocks-team-member__addIcon"
-                                    }
-                                    onClick={this.addNewLink}
-                                >
-                                    <Dashicon icon={"plus"} size={14} />
-                                </button>
-                            </Tooltip>
-                        </li>
-                    )}
-                </ul>
-            );
-        });
+        const { className, attributes, noticeUI, isSelected, layout } = this.props;
+        const { title, name, url, alt, id, details, email, emailLabel } = attributes;
         return (
             <>
                 <InspectorControls>
@@ -262,121 +181,66 @@ class TeamMemberEdit extends Component {
                     )}
                 </BlockControls>
                 <div className={className}>
-                    {url ? (
-                        <>
-                            <img src={url} alt={alt} />
-                            {isBlobURL(url) && <Spinner />}
+                    { (layout=="grid" || isSelected) &&
+                    <>
+                        {url ? (
+                            <>
+                                <img src={url} alt={alt} />
+                                {isBlobURL(url) && <Spinner />}
+                            </>
+                        ) : (
+                            <MediaPlaceholder
+                                icon="format-image"
+                                onSelect={this.onSelectImage}
+
+                                onError={this.onUploadError}
+                                //accept="image/*"
+                                allowedTypes={["image"]}
+                                notices={noticeUI}
+                            />
+                        )}
                         </>
-                    ) : (
-                        <MediaPlaceholder
-                            icon="format-image"
-                            onSelect={this.onSelectImage}
-                            onSelectURL={this.onSelectURL}
-                            onError={this.onUploadError}
-                            //accept="image/*"
-                            allowedTypes={["image"]}
-                            notices={noticeUI}
-                        />
-                    )}
+                    }
                     <RichText
-                        className={"wp-block-carkeek-blocks-team-member__title"}
-                        tagName="h4"
-                        onChange={this.onChangeTitle}
-                        value={title}
+                        className={"wp-block-carkeek-blocks-team-member__name"}
+                        tagName="div"
+                        onChange={this.onChangeName}
+                        value={name}
                         placeholder={__("Member Name", "carkeek-blocks")}
                         formatingControls={[]}
                     />
+
                     <RichText
-                        className={"wp-block-carkeek-blocks-team-member__info"}
-                        tagName="p"
-                        onChange={this.onChangeInfo}
-                        value={info}
-                        placeholder={__("Member Info", "carkeek-blocks")}
+                        className={"wp-block-carkeek-blocks-team-member__title"}
+                        tagName="div"
+                        onChange={this.onChangeTitle}
+                        value={title}
+                        placeholder={isSelected ? __("Member Title", "carkeek-blocks") : null}
                         formatingControls={[]}
                     />
-                    <div
-                        className={
-                            "wp-block-carkeek-blocks-team-member__social"
-                        }
-                    >
-                        <SortableList
-                            axis="x"
-                            helperClass={"social_dragging"}
-                            distance={10}
-                            onSortEnd={({ oldIndex, newIndex }) =>
-                                this.onSortEnd(oldIndex, newIndex)
-                            }
-                        />
-                        {/* <ul>
-                            {social.map((item, index) => {
-                                return (
-                                    <li
-                                        key={index}
-                                        onClick={() =>
-                                            this.setState({
-                                                selectedLink: index
-                                            })
-                                        }
-                                        className={
-                                            this.state.selectedLink === index
-                                                ? "is-selected"
-                                                : null
-                                        }
-                                    >
-                                        <Dashicon icon={item.icon} size={16} />
-                                    </li>
-                                );
-                            })}
-                            {isSelected && (
-                                <li
-                                    className={
-                                        "wp-block-carkeek-blocks-team-member__addIconLI"
-                                    }
-                                >
-                                    <Tooltip
-                                        text={__("Add Item", "carkeek-blocks")}
-                                    >
-                                        <button
-                                            className={
-                                                "wp-block-carkeek-blocks-team-member__addIcon"
-                                            }
-                                            onClick={this.addNewLink}
-                                        >
-                                            <Dashicon icon={"plus"} size={14} />
-                                        </button>
-                                    </Tooltip>
-                                </li>
-                            )}
-                        </ul> */}
-                    </div>
-                    {this.state.selectedLink !== null && (
-                        <div
-                            className={
-                                "wp-block-carkeek-blocks-team-member__linkForm"
-                            }
-                        >
-                            <TextControl
-                                label={__("Icon", "carkeek-blocks")}
-                                value={social[this.state.selectedLink].icon}
-                                onChange={icon =>
-                                    this.updateSocialItem("icon", icon)
-                                }
-                            />
-                            <URLInput
-                                label={__("URL", "carkeek-blocks")}
-                                value={social[this.state.selectedLink].link}
-                                onChange={url =>
-                                    this.updateSocialItem("link", url)
-                                }
-                            />
-                            <a
-                                className="wp-block-carkeek-blocks-team-member__removeLink"
-                                onClick={this.removeLink}
-                            >
-                                {__("Remove Link", "carkeek-blocks")}
-                            </a>
-                        </div>
-                    )}
+
+                    {isSelected &&
+                    <>
+                    <RichText
+                        className={"wp-block-carkeek-blocks-team-member__details"}
+                        tagName="p"
+                        onChange={this.onChangeDetails}
+                        value={details}
+                        placeholder={__("Member Details", "carkeek-blocks")}
+                        formatingControls={[]}
+                    />
+                    <TextControl
+                        value={email}
+                        onChange={this.onChangeEmail}
+                        label={__("Email", "carkeek-blocks")}
+                    />
+                    <TextControl
+                        value={emailLabel}
+                        onChange={this.onChangeEmailLabel}
+                        label={__("Email Label", "carkeek-blocks")}
+                    />
+                    </>
+                    }
                 </div>
             </>
         );
@@ -385,8 +249,11 @@ class TeamMemberEdit extends Component {
 
 export default withSelect((select, props) => {
     const id = props.attributes.id;
+    const parentId = select( 'core/block-editor' ).getBlockHierarchyRootClientId( props.clientId );
+    const parentAttributes = select('core/block-editor').getBlockAttributes( parentId );
     return {
         image: id ? select("core").getMedia(id) : null,
-        imageSizes: select("core/editor").getEditorSettings().imageSizes
+        imageSizes: select("core/editor").getEditorSettings().imageSizes,
+        layout: parentAttributes.layout
     };
 })(withNotices(TeamMemberEdit));

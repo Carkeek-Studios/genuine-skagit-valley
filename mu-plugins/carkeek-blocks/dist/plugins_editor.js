@@ -81,24 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/editor_script.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/plugins_editor.js");
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./src/editor_script.js":
-/*!******************************!*\
-  !*** ./src/editor_script.js ***!
-  \******************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plugins */ "./src/plugins/index.js");
-
-
-/***/ }),
 
 /***/ "./src/plugins/index.js":
 /*!******************************!*\
@@ -114,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _settings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./settings */ "./src/plugins/settings.js");
 /* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
 /* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__);
 /**
  * Internal dependencies
  */
@@ -124,9 +112,14 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
+
 Object(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__["registerPlugin"])("carkeek-blocks-pageheader", {
   icon: false,
   render: _settings__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__["registerBlockCollection"])("carkeek-blocks", {
+  title: "Carkeek Blocks",
+  icon: "wordpress"
 });
 
 /***/ }),
@@ -327,6 +320,31 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
+/***/ "./src/plugins_editor.js":
+/*!*******************************!*\
+  !*** ./src/plugins_editor.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plugins */ "./src/plugins/index.js");
+
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!********************************!*\
+  !*** external ["wp","blocks"] ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = wp["blocks"];
+
+/***/ }),
+
 /***/ "@wordpress/components":
 /*!************************************!*\
   !*** external ["wp","components"] ***!
@@ -405,4 +423,4 @@ module.exports = wp["plugins"];
 /***/ })
 
 /******/ });
-//# sourceMappingURL=editor_script.js.map
+//# sourceMappingURL=plugins_editor.js.map

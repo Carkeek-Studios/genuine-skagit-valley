@@ -790,7 +790,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 
 /*--------------------------------------------------------------
-# CUSTOM BLOCK OVERRIDES
+# CUSTOM BLOCK OVERRIDES - Link Tiles
 --------------------------------------------------------------*/
 
 .wp-block-carkeek-blocks-link-tile {
@@ -827,4 +827,91 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 		}
 	}
 
+}
+
+/*--------------------------------------------------------------
+# CUSTOM BLOCK OVERRIDES - Team Members
+--------------------------------------------------------------*/
+.wp-block-carkeek-blocks-team-members {
+
+	&.is-grid-style,
+	& .popup-content {
+
+		& .wp-block-carkeek-blocks-team-member__name {
+			font-size: var(--font-size-h5);
+			font-weight: var(--font-weight-bold);
+			color: var(--color-theme-green);
+			margin-top: 0.75rem;
+		}
+	}
+}
+
+.wp-block-carkeek-blocks-team-member {
+
+	& .popup-content {
+		position: relative;
+
+		&.modal-header {
+			background-color: var(--color-theme-white);
+			text-align: right;
+		}
+
+		& .content {
+			padding-left: 1rem;
+			padding-right: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		& .wp-block-carkeek-blocks-team-member__additional {
+			margin-top: var(--gutter-width-mobile);
+		}
+
+		& .close {
+			font-size: 30px;
+			line-height: 30px;
+			margin-bottom: 5px;
+			text-transform: uppercase;
+		}
+	}
+}
+
+@media (--tablet-up) {
+
+	.wp-block-carkeek-blocks-team-member {
+
+		& .popup-content {
+			width: 80% !important;
+			max-width: 720px;
+
+			& .modal-header {
+				height: 4rem;
+			}
+
+			& .close {
+				padding-right: 5px;
+			}
+
+			& .content {
+				padding-left: 10%;
+				padding-right: 10%;
+				margin-bottom: 4rem;
+				max-height: 70vh;
+			}
+
+			& .wp-block-carkeek-blocks-team-member__additional {
+				margin-top: 2rem;
+			}
+		}
+	}
+}
+
+@media (--desktop-up) {
+
+	.wp-block-carkeek-blocks-team-member {
+
+		& .wp-block-carkeek-blocks-team-member__name {
+			font-size: var(--font-size-h5-hd);
+		}
+
+	}
 }

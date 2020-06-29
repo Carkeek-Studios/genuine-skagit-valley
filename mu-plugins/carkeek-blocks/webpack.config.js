@@ -12,7 +12,7 @@ module.exports = (env, argv) => {
         entry: {
             editor: "./src/editor.js",
             script: "./src/script.js",
-            editor_script: "./src/editor_script.js"
+            plugins_editor: "./src/plugins_editor.js"
         },
         output: {
             filename: "[name].js"
@@ -91,6 +91,7 @@ module.exports = (env, argv) => {
         externals: {
             jquery: "jQuery",
             lodash: "lodash",
+            popup: "reactjs-popup",
             "@wordpress/blocks": ["wp", "blocks"],
             "@wordpress/i18n": ["wp", "i18n"],
             "@wordpress/editor": ["wp", "editor"],

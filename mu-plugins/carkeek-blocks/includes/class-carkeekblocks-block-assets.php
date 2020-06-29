@@ -58,131 +58,91 @@ class CarkeekBlocks_Block_Assets {
 	private $version;
 
 	/**
+	 * The Plugin directory.
+	 *
+	 * @var string $dir
+	 */
+	private $dir;
+
+
+	/**
 	 * The Constructor.
 	 */
 	private function __construct() {
-		$this->version = CARKEEKBLOCKS_VERSION;
-		$this->slug    = 'carkeek-blocks';
-		$this->url     = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->slug = 'carkeek-blocks';
+		$this->url  = untrailingslashit( plugins_url( '/', dirname( __FILE__ ) ) );
+		$this->dir  = plugin_dir_path( dirname( __FILE__ ) );
 
-		// add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
-		add_action( 'init', array( $this, 'carkeek_blocks_register' ), 9999 );
-		// add_action( 'admin_enqueue_scripts', array( $this, 'filter_admin_assets' ) );
+		add_action( 'init', array( $this, 'carkeek_blocks_register_assets' ), 9999 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'carkeek_blocks_enqueue_assets' ) );
-		add_filter( 'block_categories', array( $this, 'carkeek_blocks_categories' ), 10, 2 );
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'carkeek_blocks_enqueue_frontend_assets' ) );
 	}
 
-	function carkeek_blocks_enqueue_assets() {
+	/**
+	 * Enqueue block editor JS & CSS
+	 */
+	public function carkeek_blocks_enqueue_assets() {
+		$plugins_js_path = 'dist/plugins_editor.js';
 		wp_enqueue_script(
-			$this->slug . '-editor-js',
-			$this->url . '/dist/editor_script.js',
+			$this->slug . '-plugins-js',
+			$this->url . $plugins_js_path,
 			array( 'wp-data', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-components' ),
-			$this->version
+			filemtime( $this->dir . $plugins_js_path ),
+			true
 		);
 	}
 
-	function carkeek_blocks_register() {
+	/**
+	 * Enqueue block frontend JS & CSS
+	 */
+	public function carkeek_blocks_enqueue_frontend_assets() {
+			$frontend_js_path = '/dist/script.js';
+			$style_path       = '/dist/style.css';
+
+			// Register editor only styles.
+			wp_enqueue_script(
+				$this->slug . '-script',
+				$this->url . $frontend_js_path,
+				array( 'jquery', 'wp-element', 'wp-blocks' ),
+				filemtime( $this->dir . $frontend_js_path ),
+				true
+			);
+
+			// Register frontend styles. Include block style file in editor if you want backend styles.
+			wp_enqueue_style(
+				$this->slug . '-style',
+				$this->url . $style_path,
+				array(),
+				filemtime( $this->dir . $style_path ),
+			);
+	}
+	/**
+	 * Enqueue block frontend/backend JS & CSS
+	 */
+	public function carkeek_blocks_register_assets() {
+		// Make paths variables so we don't write em twice ;).
+		$editor_js_path    = '/dist/editor.js';
+		$editor_style_path = '/dist/editor.css';
+
+		// Register the bundled block JS file.
 		wp_register_script(
 			$this->slug . '-editor-script',
-			$this->url . '/dist/editor.js',
+			$this->url . $editor_js_path,
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components', 'lodash', 'wp-blob', 'wp-data', 'wp-html-entities', 'wp-compose' ),
-			$this->version
+			filemtime( $this->dir . $editor_js_path ),
+			true
 		);
 
-		wp_register_script(
-			$this->slug . '-script',
-			$this->url . '/dist/script.js',
-			array( 'jquery' ),
-			$this->version
-		);
-
+		// Register editor only styles.
 		wp_register_style(
 			$this->slug . '-editor-style',
-			$this->url . '/dist/editor.css',
+			$this->url . $editor_style_path,
 			array( 'wp-edit-blocks' ),
-			$this->version
-		);
-
-		wp_register_style(
-			$this->slug . '-style',
-			$this->url . '/dist/style.css',
-			array(),
-			$this->version
-		);
-
-		$blocks = array(
-			'team-member',
-			'link-tile',
-			'link-gallery',
-		);
-
-		foreach ( $blocks as $block ) {
-			$this->carkeek_blocks_register_block( $block );
-		}
-
-		$this->carkeek_blocks_register_block(
-			'custom-archive',
-			array(
-				'render_callback' => array( 'CarkeekBlocks_CustomPost', 'carkeek_blocks_render_custom_posttype_archive' ),
-				'attributes'      => array(
-					'numberOfPosts'           => array(
-						'type'    => 'number',
-						'default' => 3,
-					),
-					'displayFeaturedImage'    => array(
-						'type'    => 'boolean',
-						'default' => true,
-					),
-					'displayPostTitle'        => array(
-						'type'    => 'boolean',
-						'default' => true,
-					),
-					'postLayout'              => array(
-						'type'    => 'string',
-						'default' => 'grid',
-					),
-					'displayPostContent'      => array(
-						'type'    => 'boolean',
-						'default' => false,
-					),
-					'displayPostContentRadio' => array(
-						'type'    => 'string',
-						'default' => 'excerpt',
-					),
-				),
-			)
+			filemtime( $this->dir . $editor_js_path ),
 		);
 
 	}
-
-	function carkeek_blocks_register_block( $block, $options = array() ) {
-		register_block_type(
-			'carkeek-blocks/' . $block,
-			array_merge(
-				array(
-					'editor_script' => $this->slug . '-editor-script',
-					'editor_style'  => $this->slug . '-editor-style',
-					'script'        => $this->slug . '-script',
-					'style'         => $this->slug . '-style',
-				),
-				$options
-			)
-		);
-	}
-
-	function carkeek_blocks_categories( $categories, $post ) {
-		return array_merge(
-			$categories,
-			array(
-				array(
-					'slug'  => 'carkeek-category',
-					'title' => __( 'Carkeek Blocks', 'carkeek-blocks' ),
-					'icon'  => 'wordpress',
-				),
-			)
-		);
-	}
-
 }
 
 CarkeekBlocks_Block_Assets::register();
