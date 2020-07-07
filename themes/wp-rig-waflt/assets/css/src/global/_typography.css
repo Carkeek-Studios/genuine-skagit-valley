@@ -181,7 +181,8 @@ q {
 	quotes: initial;
 }
 
-blockquote {
+blockquote,
+.slide-content__quote {
 	border: none;
 	text-align: center;
 	font-weight: var(--font-weight-medium);
@@ -189,7 +190,8 @@ blockquote {
 	line-height: 1.66667;
 }
 
-blockquote cite {
+blockquote cite,
+.slide-content__quote .slide-content__attribution{
 	color: inherit;
 	font-size: 14px;
 	margin-top: 1em;
@@ -204,7 +206,8 @@ blockquote cite {
 
 @media (--tablet-up) {
 
-	blockquote {
+	blockquote,
+	.slide-content__quote {
 		font-size: var(--font-size-large-t);
 		line-height: 1.619;
 	}
@@ -212,22 +215,26 @@ blockquote cite {
 
 @media (--tablet-wide-up) {
 
-	blockquote {
+	blockquote,
+	.slide-content__quote {
 		font-size: var(--font-size-large-tw);
 	}
 
-	blockquote cite {
+	blockquote cite,
+	.slide-content__quote .slide-content__attribution {
 		font-size: 16px;
 	}
 }
 
 @media (--desktop-up) {
 
-	blockquote {
+	blockquote,
+	.slide-content__quote {
 		font-size: var(--font-size-large-hd);
 	}
 
-	blockquote cite {
+	blockquote cite,
+	.slide-content__quote .slide-content__attribution {
 		font-size: 20px;
 	}
 }

@@ -17,7 +17,6 @@ popupGroups.forEach(popupGroup => {
             name = popup.querySelectorAll(".wp-block-carkeek-blocks-team-member__name");
             name = name[0].outerText;
             title = popup.querySelectorAll(".wp-block-carkeek-blocks-team-member__title");
-            console.log(title);
             if (title.length > 0) {
                 name += ', ' + title[0].outerText
             }

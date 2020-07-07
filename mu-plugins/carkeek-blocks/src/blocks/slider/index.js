@@ -77,13 +77,13 @@ registerBlockType("carkeek-blocks/slider", {
                         />
                         {autoPlay &&
                         <RangeControl
-                            label={__("Speed", "carkeek-blocks")}
+                            label={__("Speed in ms", "carkeek-blocks")}
                             value={autoPlaySpeed}
                             onChange={value =>
                                 setAttributes({ autoPlaySpeed: value })
                             }
                             min={1000}
-                            max={8000}
+                            max={10000}
                         />
                         }
                         {/* code is ready, but need to do more styling if carousel is desired - its set to false by default so option is not displayed */}

@@ -121,6 +121,15 @@ class MappedPosts_CustomPost {
 				array(
 					'level'     => '2',
 					'className' => 'h6',
+					'content'   => 'Conservation Values:',
+				),
+			),
+			array( 'core/paragraph' ),
+			array(
+				'core/heading',
+				array(
+					'level'     => '2',
+					'className' => 'h6',
 					'content'   => 'Property Description:',
 				),
 			),
@@ -162,8 +171,7 @@ class MappedPosts_CustomPost {
 		}
 
 		if ( isset( $post ) ) {
-			$acf = get_fields( $post->id );
-			error_log( print_r( $acf, true ) );
+			$acf                   = get_fields( $post->id );
 			$response->data['acf'] = $acf;
 		}
 		return $response;
@@ -182,6 +190,8 @@ class MappedPosts_CustomPost {
 		$args  = array(
 			'posts_per_page' => -1,
 			'post_type'      => $attributes['postTypeSelected'],
+			'orderby'        => 'title',
+			'order'          => 'ASC',
 		);
 		$query = new WP_Query( $args );
 		$posts = '';
@@ -200,9 +210,9 @@ class MappedPosts_CustomPost {
 				if ( ! empty( $loc ) ) {
 
 					// if ( true == $attributes['popupImage'] ) {
-					// 	$featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
-					// 	$featured_image .= get_the_post_thumbnail( null, 'medium_large' );
-					// 	$featured_image .= '</a>';
+					// $featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
+					// $featured_image .= get_the_post_thumbnail( null, 'medium_large' );
+					// $featured_image .= '</a>';
 					// }
 
 					if ( true == $attributes['popupTitle'] ) {
@@ -216,13 +226,13 @@ class MappedPosts_CustomPost {
 						}
 					}
 
-					//if ( true == $attributes['popupExcerpt'] ) {
-						$acres = get_post_meta( $post->ID, 'mappedposts_acreage', true );
-						$location = get_post_meta( $post->ID, 'mappedposts_location', true );
+					// if ( true == $attributes['popupExcerpt'] ) {
+						$acres          = get_post_meta( $post->ID, 'mappedposts_acreage', true );
+						$location       = get_post_meta( $post->ID, 'mappedposts_location', true );
 						$post_content   = $acres . ' acres in ' . $location;
 						$class_excerpt .= 'excerpt';
 						$post_content   = '<div class="' . $class_pre . $class_excerpt . '">' . $post_content . '</div>';
-					//}
+					// }
 
 					$posts .= '<li data-id="' . $post->ID . '" data-lat="' . $loc['lat'] . '" data-lng="' . $loc['lng'] . '">' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $post_content . '</div></li>';
 				}

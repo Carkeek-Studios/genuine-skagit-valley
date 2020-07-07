@@ -1723,7 +1723,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
         columnNumber: 25
       }
     }), autoPlay && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["RangeControl"], {
-      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Speed", "carkeek-blocks"),
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Speed in ms", "carkeek-blocks"),
       value: autoPlaySpeed,
       onChange: function onChange(value) {
         return setAttributes({
@@ -1731,7 +1731,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
         });
       },
       min: 1000,
-      max: 8000,
+      max: 10000,
       __self: this,
       __source: {
         fileName: _jsxFileName,

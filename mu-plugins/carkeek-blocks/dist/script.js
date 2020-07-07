@@ -4024,7 +4024,7 @@ __webpack_require__.r(__webpack_exports__);
     $('.section-slider').each(function () {
       $(this).slick({
         autoplay: true,
-        autoplaySpeed: 3000
+        autoplaySpeed: 6000
       });
     });
   });
@@ -6770,7 +6770,6 @@ popupGroups.forEach(function (popupGroup) {
       name = popup.querySelectorAll(".wp-block-carkeek-blocks-team-member__name");
       name = name[0].outerText;
       title = popup.querySelectorAll(".wp-block-carkeek-blocks-team-member__title");
-      console.log(title);
 
       if (title.length > 0) {
         name += ', ' + title[0].outerText;
@@ -6787,7 +6786,7 @@ popupGroups.forEach(function (popupGroup) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29,
+          lineNumber: 28,
           columnNumber: 23
         }
       }),
@@ -6796,7 +6795,7 @@ popupGroups.forEach(function (popupGroup) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28,
+        lineNumber: 27,
         columnNumber: 13
       }
     }, function (close) {
@@ -6805,7 +6804,7 @@ popupGroups.forEach(function (popupGroup) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34,
+          lineNumber: 33,
           columnNumber: 17
         }
       }, wp.element.createElement("div", {
@@ -6813,7 +6812,7 @@ popupGroups.forEach(function (popupGroup) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 34,
           columnNumber: 21
         }
       }, wp.element.createElement("a", {
@@ -6822,7 +6821,7 @@ popupGroups.forEach(function (popupGroup) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 34,
           columnNumber: 51
         }
       }, "\xD7")), wp.element.createElement("div", {
@@ -6833,7 +6832,7 @@ popupGroups.forEach(function (popupGroup) {
         __self: _this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39,
+          lineNumber: 38,
           columnNumber: 21
         }
       }));

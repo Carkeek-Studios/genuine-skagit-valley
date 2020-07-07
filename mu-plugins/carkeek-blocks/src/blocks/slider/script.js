@@ -31,7 +31,7 @@ import "./style.scss";
         $('.section-slider').each(function(){
             $(this).slick({
                 autoplay: true,
-                autoplaySpeed: 3000,
+                autoplaySpeed: 6000,
             });
         });
     });

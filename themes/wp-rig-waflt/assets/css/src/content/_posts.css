@@ -196,11 +196,16 @@
 	.page-header.has-post-thumbnail {
 		margin-bottom: var(--block-padding-vert-tablet);
 	}
+
+	.single {
+		& .page-header.has-post-thumbnail {
+			margin-bottom: 4.375rem;
+		}
+	}
 }
 
 @media (--desktop-up) {
 
-	.entry-content > *,
 	.entry-summary > *,
 	.page-header,
 	.entry-header,
@@ -215,19 +220,6 @@
 	}
 }
 
-.entry-content ul,
-.entry-content ol {
-	padding-right: 2.5em;
-	padding-left: 2.5em;
-}
-
-.entry-content ul ul,
-.entry-content ol ol {
-	margin-right: 0;
-	margin-left: 0;
-	padding-right: 1.5em;
-	padding-left: 1.5em;
-}
 
 /* Align .more-link with the content. */
 .entry-content > .more-link {

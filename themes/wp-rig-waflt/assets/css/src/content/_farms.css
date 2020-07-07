@@ -20,23 +20,17 @@
 	font-weight: var(--font-weight-medium);
 }
 
-.slide-content__quote {
-	font-size: 21px;
-}
 
 .slide-content__headline {
 	font-size: 36px;
 }
 
-.slide-content__attribution {
-	font-size: 14px;
-	margin-top: 1rem;
-}
 
 .farm-meta {
 	font-weight: var(--font-weight-bold);
 	color: var(--color-theme-green);
 	margin-bottom: 1rem;
+	margin-top: 1rem;
 }
 
 .protected_farms {
