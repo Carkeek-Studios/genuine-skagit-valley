@@ -130,7 +130,6 @@ registerBlockType("carkeek-blocks/team-members", {
 
     save({ attributes, className }) {
         const { columns, layout } = attributes;
-        console.log(className);
         return (
             <div className={`has-${columns}-columns is-${layout}-style`} data-layout={layout}>
                 <InnerBlocks.Content />

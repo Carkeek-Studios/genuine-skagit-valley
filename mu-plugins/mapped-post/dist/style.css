@@ -1,0 +1,21 @@
+.wp-block-ck-custom_posttype__list > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .wp-block-ck-custom_posttype__list > ul li {
+    margin-bottom: 1rem; }
+
+.wp-block-ck-custom_posttype__list.is-grid ul {
+  display: flex;
+  flex-wrap: wrap; }
+
+@media screen and (min-width: 768px) {
+  .wp-block-ck-custom_posttype__list.is-grid ul {
+    margin-left: -15px;
+    margin-right: -15px; }
+    .wp-block-ck-custom_posttype__list.is-grid ul > li {
+      width: 50%;
+      padding: 15px; } }
+
+
+/*# sourceMappingURL=style.css.map*/

@@ -176,5 +176,13 @@
   .editor-styles-wrapper .wp-block-carkeek-blocks-link-gallery.has-6-columns .block-editor-block-list__layout > * {
     flex-basis: 16.66667%; }
 
+.block-editor-block-list__block[data-type="carkeek-blocks/slider"] .wp-block {
+  display: none; }
+  .block-editor-block-list__block[data-type="carkeek-blocks/slider"] .wp-block:first-of-type {
+    display: block; }
+
+.block-editor-block-list__block[data-type="carkeek-blocks/slider"].is-selected .wp-block, .block-editor-block-list__block[data-type="carkeek-blocks/slider"].has-child-selected .wp-block {
+  display: block; }
+
 
 /*# sourceMappingURL=editor.css.map*/

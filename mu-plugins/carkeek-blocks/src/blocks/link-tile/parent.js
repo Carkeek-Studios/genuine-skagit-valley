@@ -43,6 +43,7 @@ registerBlockType("carkeek-blocks/link-tiles", {
                         ["carkeek-blocks/link-tile"],
                         ["carkeek-blocks/link-tile"]
                     ]}
+                    orientation="horizontal"
                 />
             </div>
         );

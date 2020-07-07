@@ -86,7 +86,7 @@ class CarkeekBlocks_Block_Assets {
 		$plugins_js_path = 'dist/plugins_editor.js';
 		wp_enqueue_script(
 			$this->slug . '-plugins-js',
-			$this->url . $plugins_js_path,
+			$this->url . '/' . $plugins_js_path,
 			array( 'wp-data', 'wp-plugins', 'wp-edit-post', 'wp-i18n', 'wp-components' ),
 			filemtime( $this->dir . $plugins_js_path ),
 			true
@@ -129,7 +129,7 @@ class CarkeekBlocks_Block_Assets {
 		wp_register_script(
 			$this->slug . '-editor-script',
 			$this->url . $editor_js_path,
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components', 'lodash', 'wp-blob', 'wp-data', 'wp-html-entities', 'wp-compose' ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components', 'lodash', 'wp-blob', 'wp-data', 'wp-html-entities', 'wp-compose', 'wp-edit-post' ),
 			filemtime( $this->dir . $editor_js_path ),
 			true
 		);

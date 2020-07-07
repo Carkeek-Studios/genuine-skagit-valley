@@ -23,7 +23,7 @@ wp_rig()->print_styles( 'wp-rig-content' );
 		<?php
 		if ( have_posts() ) {
 
-			get_template_part( 'template-parts/content/page_header' );
+				get_template_part( 'template-parts/content/page_header' );
 
 			if ( ! is_singular() ) {
 				?>
