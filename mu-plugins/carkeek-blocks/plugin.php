@@ -40,7 +40,7 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 		 */
 
 		public static function instance() {
-			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CarkeekBLocks ) ) {
+			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof CarkeekBlocks ) ) {
 				self::$instance = new CarkeekBlocks();
 				self::$instance->init();
 				self::$instance->setup_constants();

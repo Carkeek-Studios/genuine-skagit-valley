@@ -678,6 +678,33 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	}
 }
 
+@media (--tablet-wide-up) {
+
+	.wp-block-quote {
+		margin: 0;
+		padding: var(--block-padding-vert-tablet) 0;
+	}
+
+	.wp-block-quote__citation,
+	.wp-block-quote cite,
+	.wp-block-quote footer,
+	.wp-block-pullquote cite,
+	.wp-block-pullquote footer {
+		font-size: 16px;
+	}
+}
+
+@media (--desktop-up) {
+
+	.wp-block-quote__citation,
+	.wp-block-quote cite,
+	.wp-block-quote footer,
+	.wp-block-pullquote cite,
+	.wp-block-pullquote footer {
+		font-size: 20px;
+	}
+}
+
 /*--------------------------------------------------------------
 # Gallery Block - overrides core styles
 --------------------------------------------------------------*/

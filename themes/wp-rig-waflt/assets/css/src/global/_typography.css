@@ -210,6 +210,28 @@ blockquote cite {
 	}
 }
 
+@media (--tablet-wide-up) {
+
+	blockquote {
+		font-size: var(--font-size-large-tw);
+	}
+
+	blockquote cite {
+		font-size: 16px;
+	}
+}
+
+@media (--desktop-up) {
+
+	blockquote {
+		font-size: var(--font-size-large-hd);
+	}
+
+	blockquote cite {
+		font-size: 20px;
+	}
+}
+
 
 address {
 	margin: 0 0 1.5em;

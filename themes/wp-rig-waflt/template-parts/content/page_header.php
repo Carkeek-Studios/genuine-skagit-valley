@@ -54,33 +54,63 @@ if ( is_404() ) {
 		?>
 	</header><!-- .page-header -->
 	<?php
+} elseif ( is_singular() && ! is_page() ) {
+	$hide_title = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+	$hide_image = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+	$slider       = get_field( 'slide' );
+	$header_class = '';
+	if ( ! empty( $slider ) && count( $slider ) > 0 && ! empty( $slider[0]['image'] ) ) {
+		$has_slider    = true;
+		$header_class .= 'has-post-thumbnail has-post-slider';
+	}
+	if ( true !== $hide_image && has_post_thumbnail() ) {
+		$header_class .= 'has-post-thumbnail';
+	}
+	?>
+
+	<header class="page-header <?php echo esc_attr( $header_class ); ?>">
+	<?php
+	if ( true === $has_slider ) {
+		get_template_part( 'template-parts/content/entry_slider', get_post_type() );
+	} elseif ( true !== $hide_image && has_post_thumbnail() ) {
+		get_template_part( 'template-parts/content/entry_thumbnail', get_post_type() );
+	}
+	?>
+	</header>
+
+	<?php
 } elseif ( ! is_front_page() ) {
-	$hide_title     = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
-	$hide_image     = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+	$hide_title = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+	$hide_image = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+
 	$header_class   = '';
 	$header_content = '';
 	if ( true !== $hide_image && has_post_thumbnail() ) {
 		$header_class .= 'has-post-thumbnail';
 	}
-	if ( true !== $hide_image && true !== $hide_title) {
-	?>
+	if ( ( true !== $hide_image && true !== $hide_title ) ) {
+		?>
 	<header class="page-header <?php echo esc_attr( $header_class ); ?>">
-	<?php
-	if ( true !== $hide_image ) {
-		get_template_part( 'template-parts/content/entry_thumbnail', get_post_type() );
-	}
-	if ( true !== $hide_title ) {
-		?>
-		<div class="entry-title">
 		<?php
-		if ( 0 !== $post->parent ) {
-			echo '<span>' . wp_kses_post( get_the_title( $post->post_parent ) ) . '</span>';
+		if ( true !== $hide_image && has_post_thumbnail() ) {
+			get_template_part( 'template-parts/content/entry_thumbnail', get_post_type() );
 		}
-		the_title( '<h1>', '</h1>' );
+		if ( true !== $hide_title ) {
+			?>
+		<div class="entry-title">
+			<?php
+			if ( 0 !== $post->parent ) {
+				echo '<span>' . wp_kses_post( get_the_title( $post->post_parent ) ) . '</span>';
+			}
+			the_title( '<h1>', '</h1>' );
+			?>
+		</div>
+			<?php
+		}
 		?>
-	</div>
-	<?php }
- } ?>
-	</header><!-- .page-header -->
+		</header><!-- .page-header -->
+		<?php
+	}
+	?>
 	<?php
 }

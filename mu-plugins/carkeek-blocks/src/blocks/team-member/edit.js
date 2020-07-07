@@ -5,8 +5,7 @@ import {
     BlockControls,
     MediaUpload,
     MediaUploadCheck,
-    InspectorControls,
-    URLInput
+    InspectorControls
 } from "@wordpress/block-editor";
 import { __ } from "@wordpress/i18n";
 import { isBlobURL } from "@wordpress/blob";
@@ -18,8 +17,6 @@ import {
     PanelBody,
     TextareaControl,
     SelectControl,
-    Dashicon,
-    Tooltip,
     TextControl
 } from "@wordpress/components";
 import { withSelect } from "@wordpress/data";

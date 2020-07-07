@@ -61,6 +61,7 @@ registerBlockType("carkeek-blocks/link-gallery", {
                 </InspectorControls>
                 <InnerBlocks
                     allowedBlocks={["core/image"]}
+                    orientation="horizontal"
                 />
             </div>
         );

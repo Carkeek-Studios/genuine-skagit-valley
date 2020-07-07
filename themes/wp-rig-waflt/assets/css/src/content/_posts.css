@@ -120,19 +120,20 @@
 		text-align: left;
 
 	}
+}
 
-	& .entry-title {
+.entry-title {
+	color: var(--color-theme-green);
 
-		& h1 {
-			margin-bottom: 0;
-		}
+	& h1 {
+		margin-bottom: 0;
+	}
 
-		& span {
-			font-size: 20px;
-			font-family: var(--highlight-font-family);
-			text-transform: uppercase;
-			letter-spacing: 2.5px;
-		}
+	& span {
+		font-size: 20px;
+		font-family: var(--highlight-font-family);
+		text-transform: uppercase;
+		letter-spacing: 2.5px;
 	}
 }
 

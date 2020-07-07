@@ -3,6 +3,7 @@ const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CleanPlugin = require("clean-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = (env, argv) => {
     function isDevelopment() {
@@ -83,15 +84,43 @@ module.exports = (env, argv) => {
                                 plugins: [autoprefixer()]
                             }
                         },
+                        "resolve-url-loader",
                         "sass-loader"
                     ]
-                }
+                },
+                {
+                    test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                    use: [
+                      {
+                        loader: 'file-loader',
+                        options: {
+                          name: '[name].[ext]',
+                          outputPath: 'fonts/',
+                          esModule: false
+                        }
+                      }
+                    ]
+                  },
+                    {
+                    test: /\.(jpg|png|gif|svg)$/,
+                    use: {
+                        loader: 'file-loader',
+                        options: {
+                        name: "[name].[ext]",
+                        outputPath: "img",
+                        esModule: false
+                        }
+                    },
+                    },
+
+
             ]
         },
         externals: {
             jquery: "jQuery",
             lodash: "lodash",
             popup: "reactjs-popup",
+            slideshow: "react-slideshow-image",
             "@wordpress/blocks": ["wp", "blocks"],
             "@wordpress/i18n": ["wp", "i18n"],
             "@wordpress/editor": ["wp", "editor"],

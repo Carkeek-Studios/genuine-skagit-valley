@@ -61,6 +61,7 @@ class CarkeekBlocks_Block_Register {
 			'team-member',
 			'link-tile',
 			'link-gallery',
+			'slider',
 		);
 
 		foreach ( $blocks as $block ) {
