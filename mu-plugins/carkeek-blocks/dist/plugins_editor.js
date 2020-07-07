@@ -204,14 +204,14 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
   }, {
     key: "initialize",
     value: function initialize() {
-      var hideTitle = this.props.hideTitle;
+      var postmeta = this.props.postmeta;
       var titleBlock = document.querySelector(".editor-post-title__block");
 
       if (titleBlock) {
-        var isHidden = typeof hideTitle !== "undefined" && typeof hideTitle !== "undefined" ? hideTitle : false;
-        var bodyClass = isHidden ? "carkeek-blocks-title-hidden" : "carkeek-blocks-title-visible"; //remove existing class
+        var isTitleHidden = typeof postmeta !== 'undefined' && typeof postmeta._carkeekblocks_title_hidden !== 'undefined' ? postmeta._carkeekblocks_title_hidden : false;
+        var bodyClass = isTitleHidden ? "carkeek-blocks-title-hidden" : "carkeek-blocks-title-visible"; //remove existing class
 
-        if (isHidden) {
+        if (isTitleHidden) {
           document.body.classList.remove("carkeek-blocks-title-visible");
         } else {
           document.body.classList.remove("carkeek-blocks-title-hidden");
@@ -224,27 +224,31 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
-          hideTitle = _this$props.hideTitle,
-          setHideTitle = _this$props.setHideTitle,
-          hideFeaturedImage = _this$props.hideFeaturedImage,
-          setHideFeaturedImage = _this$props.setHideFeaturedImage,
+          onToggleTitle = _this$props.onToggleTitle,
+          onToggleImage = _this$props.onToggleImage,
+          postmeta = _this$props.postmeta,
           posttype = _this$props.posttype,
           featuredImage = _this$props.featuredImage;
+
+      if (['wp_block'].includes(posttype)) {
+        return false;
+      }
+
+      var isTitleHidden = typeof postmeta !== 'undefined' && typeof postmeta._carkeekblocks_title_hidden !== 'undefined' ? postmeta._carkeekblocks_title_hidden : false;
+      var isImageHidden = typeof postmeta !== 'undefined' && typeof postmeta._carkeekblocks_featuredimage_hidden !== 'undefined' ? postmeta._carkeekblocks_featuredimage_hidden : false;
       var hideImageCheckbox;
 
       if (featuredImage) {
         hideImageCheckbox = wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
           className: "carkeek-hide-featured-image-label",
           label: "Hide Featured Image",
-          checked: hideFeaturedImage,
-          onChange: function onChange(value) {
-            return setHideFeaturedImage(value);
-          },
-          help: hideFeaturedImage ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("The Featured Image is hidden on the rendered page.", "carkeek-blocks") : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("The Featured Image is visible on the rendered page.", "carkeek-blocks"),
+          checked: isImageHidden,
+          onChange: onToggleImage,
+          help: isImageHidden ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("The Featured Image is hidden on the rendered page.", "carkeek-blocks") : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("The Featured Image is visible on the rendered page.", "carkeek-blocks"),
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 17
           }
         });
@@ -257,21 +261,19 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81,
+          lineNumber: 82,
           columnNumber: 13
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
         className: "carkeek-hide-title-label",
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Hide " + posttype + " Title", "carkeek-blocks"),
-        checked: hideTitle,
-        onChange: function onChange(value) {
-          return setHideTitle(value);
-        },
-        help: hideTitle ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Title is hidden on the rendered page.", "carkeek-blocks") : null,
+        checked: isTitleHidden,
+        onChange: onToggleTitle,
+        help: isTitleHidden ? Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Title is hidden on the rendered page.", "carkeek-blocks") : null,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86,
+          lineNumber: 87,
           columnNumber: 17
         }
       }), hideImageCheckbox);
@@ -281,26 +283,37 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
   return PageHeaderSettings;
 }(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__["compose"])(Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withSelect"])(function (select) {
+/* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__["compose"])(Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withSelect"])(function () {
   return {
-    hideTitle: select("core/editor").getEditedPostAttribute("meta")["_carkeekblocks_title_hidden"],
-    hideFeaturedImage: select("core/editor").getEditedPostAttribute("meta")["_carkeekblocks_featuredimage_hidden"],
-    featuredImage: select("core/editor").getEditedPostAttribute("featured_media"),
-    posttype: select("core/editor").getEditedPostAttribute("type")
+    postmeta: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("meta"),
+    featuredImage: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("featured_media"),
+    posttype: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("type")
   };
-}), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (dispatch) {
+}), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (dispatch, ownProps) {
+  var hideTitle;
+
+  if (typeof ownProps.postmeta !== 'undefined' && typeof ownProps.postmeta._carkeekblocks_title_hidden !== 'undefined') {
+    hideTitle = ownProps.postmeta._carkeekblocks_title_hidden;
+  }
+
+  var hideImage;
+
+  if (typeof ownProps.postmeta !== 'undefined' && typeof ownProps.postmeta._carkeekblocks_featuredimage_hidden !== 'undefined') {
+    hideImage = ownProps.postmeta._carkeekblocks_featuredimage_hidden;
+  }
+
   return {
-    setHideTitle: function setHideTitle(hideTitle) {
+    onToggleTitle: function onToggleTitle() {
       dispatch("core/editor").editPost({
         meta: {
-          _carkeekblocks_title_hidden: hideTitle
+          _carkeekblocks_title_hidden: !hideTitle
         }
       });
     },
-    setHideFeaturedImage: function setHideFeaturedImage(hideFeaturedImage) {
+    onToggleImage: function onToggleImage() {
       dispatch("core/editor").editPost({
         meta: {
-          _carkeekblocks_featuredimage_hidden: hideFeaturedImage
+          _carkeekblocks_featuredimage_hidden: !hideImage
         }
       });
     }

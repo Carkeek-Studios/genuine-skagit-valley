@@ -13,3 +13,5 @@ themes/*/bower_components/
 
 !themes/wp-rig-waflt
 !themes/waflt-theme
+
+!mu-plugins/*/src/plugins

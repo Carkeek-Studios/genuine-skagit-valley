@@ -3,6 +3,22 @@
     "title": "Theme Settings",
     "fields": [
         {
+            "key": "field_5f04cc5a33989",
+            "label": "Footer Content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
             "key": "field_5ed95c1902fd0",
             "label": "Social Icons",
             "name": "social_icons",
@@ -154,6 +170,43 @@
                     "return_format": "url"
                 }
             ]
+        },
+        {
+            "key": "field_5f04cd763398c",
+            "label": "Protected Farms",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5f04cc7b3398a",
+            "label": "Protected Farms - Programs Block",
+            "name": "protected_farms_programs_block",
+            "type": "number",
+            "instructions": "Place Id of the reusable block that should appear on every farms page. To find the id, visit this page https:\/\/wafarmlandtrust.org\/wp-admin\/edit.php?post_type=wp_block and hover over the name of the block. Leave blank to remove.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": "",
+            "max": "",
+            "step": ""
         }
     ],
     "location": [
@@ -173,5 +226,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1592158202
+    "modified": 1594150289
 }

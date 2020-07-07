@@ -34,10 +34,10 @@
 }
 
 .protected_farms {
-	padding-bottom: 3rem;
 
-	& .wp-block-mapped-posts-mappedpost-links {
+	& .page-content > .wp-block-mapped-posts-mappedpost-links {
 		margin-bottom: 2rem;
+		margin-top: 0;
 
 		&::after {
 			content: "";
@@ -57,5 +57,20 @@
 	.slide-content__wrapper {
 		padding-left: calc(2 * var(--gutter-width));
 		padding-right: calc(2 * var(--gutter-width));
+	}
+}
+
+@media (--tablet-wide-up) {
+
+	.protected_farms {
+
+		& .page-content > .wp-block-mapped-posts-mappedpost-links {
+			margin-bottom: 3rem;
+			margin-top: 0;
+
+			& .wp-block-mapped-posts-link:last-of-type {
+				padding-bottom: 3rem;
+			}
+		}
 	}
 }
