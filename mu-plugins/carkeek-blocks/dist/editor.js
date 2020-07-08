@@ -250,13 +250,6 @@ var CollapseSectionEdit = /*#__PURE__*/function (_Component) {
           lineNumber: 27,
           columnNumber: 25
         }
-      }), wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35,
-          columnNumber: 25
-        }
       })) : wp.element.createElement("h4", {
         className: "wp-block-carkeek-blocks-expand-section__header ".concat(headerStyle),
         __self: this,
@@ -265,7 +258,14 @@ var CollapseSectionEdit = /*#__PURE__*/function (_Component) {
           lineNumber: 38,
           columnNumber: 21
         }
-      }, title));
+      }, title), wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40,
+          columnNumber: 17
+        }
+      }));
     }
   }]);
 

@@ -32,12 +32,12 @@ class CollapseSectionEdit extends Component {
                                 "carkeek-blocks"
                             )}
                         />
-                        <InnerBlocks />
+
                     </>
                 ) : (
                     <h4 className={`wp-block-carkeek-blocks-expand-section__header ${headerStyle}`}>{title}</h4>
                 )}
-
+                <InnerBlocks />
 
             </>
         )
