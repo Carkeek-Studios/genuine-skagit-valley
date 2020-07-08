@@ -128,7 +128,7 @@ registerBlockType("carkeek-blocks/team-members", {
         );
     },
 
-    save({ attributes, className }) {
+    save({ attributes }) {
         const { columns, layout } = attributes;
         return (
             <div className={`has-${columns}-columns is-${layout}-style`} data-layout={layout}>

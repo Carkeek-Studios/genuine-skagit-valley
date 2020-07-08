@@ -62,6 +62,7 @@ class CarkeekBlocks_Block_Register {
 			'link-tile',
 			'link-gallery',
 			'slider',
+			'expand-collapse-section',
 		);
 
 		foreach ( $blocks as $block ) {

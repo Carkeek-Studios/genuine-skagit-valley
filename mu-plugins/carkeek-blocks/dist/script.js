@@ -3897,6 +3897,63 @@ if (true) {
 
 /***/ }),
 
+/***/ "./src/blocks/accordion/script.js":
+/*!****************************************!*\
+  !*** ./src/blocks/accordion/script.js ***!
+  \****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/accordion/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+(function ($) {
+  $(document).ready(function () {
+    $('.wp-block-carkeek-blocks-expand-section__header').click(function () {
+      var openMe = true;
+      var accordion = $(this).parents('.wp-block-carkeek-blocks-expand-collapse').attr('data-accordion'); //if accordion we only open one at a time
+
+      if ('true' == accordion) {
+        if ($(this).parent().hasClass('open')) {
+          openMe = false;
+        }
+
+        $('.wp-block-carkeek-blocks-expand-collapse-section').removeClass('open');
+        $('.wp-block-carkeek-blocks-expand-section__content').slideUp().attr('aria-expanded', false);
+      }
+
+      if (openMe) {
+        $(this).parent().toggleClass('open');
+
+        if ($(this).parent().hasClass('open')) {
+          $(this).siblings().slideDown().attr('aria-expanded', true);
+        } else {
+          $(this).siblings().slideUp().attr('aria-expanded', false);
+        }
+      }
+    });
+  });
+})(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/***/ }),
+
+/***/ "./src/blocks/accordion/style.scss":
+/*!*****************************************!*\
+  !*** ./src/blocks/accordion/style.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/blocks/custom-archive/script.js":
 /*!*********************************************!*\
   !*** ./src/blocks/custom-archive/script.js ***!
@@ -6867,6 +6924,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_link_gallery_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./blocks/link-gallery/script */ "./src/blocks/link-gallery/script.js");
 /* harmony import */ var _blocks_team_member_script__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/team-member/script */ "./src/blocks/team-member/script.js");
 /* harmony import */ var _blocks_slider_script__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/slider/script */ "./src/blocks/slider/script.js");
+/* harmony import */ var _blocks_accordion_script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/accordion/script */ "./src/blocks/accordion/script.js");
+
 
 
 

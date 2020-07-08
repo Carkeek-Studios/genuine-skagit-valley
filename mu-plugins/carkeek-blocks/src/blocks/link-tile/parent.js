@@ -5,7 +5,6 @@ import { InnerBlocks } from "@wordpress/block-editor";
 const attributes = {
     align: {
         type: "string",
-        default: "wide"
     }
 };
 

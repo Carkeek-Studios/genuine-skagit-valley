@@ -1,0 +1,30 @@
+$icon-font-family: "carkeek-blocks" !default;
+$icon-expand: '\e808' !default;
+$icon-collapse: '\e809' !default;
+
+.wp-block-carkeek-blocks-expand-collapse {
+    .wp-block-carkeek-blocks-expand-section__content {
+        display: none;
+        padding: 1rem 0 2rem;
+    }
+    .wp-block-carkeek-blocks-expand-section__header {
+        cursor: pointer;
+        &:after {
+            font-family: $icon-font-family;
+            content: $icon-expand;
+            font-size: 80%;
+            padding-left: 5px;
+            font-weight: normal;
+        }
+    }
+    .open {
+        .wp-block-carkeek-blocks-expand-section__header {
+            &:after {
+                content: $icon-collapse;
+            }
+        }
+        .wp-block-carkeek-blocks-expand-section__content {
+            //display: block;
+        }
+    }
+}

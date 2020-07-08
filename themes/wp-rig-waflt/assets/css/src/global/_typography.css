@@ -31,7 +31,12 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
 	margin-top: 0;
 	color: var(--color-theme-green);
 	line-height: 1.15;
@@ -110,6 +115,7 @@ h6,
 	font-size: var(--font-size-h6);
 	margin-bottom: 0.5rem;
 	color: var(--global-font-color);
+	font-weight: 700;
 }
 
 
