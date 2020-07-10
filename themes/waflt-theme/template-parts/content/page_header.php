@@ -24,11 +24,23 @@ if ( is_404() ) {
 	</header><!-- .page-header -->
 	<?php
 } elseif ( is_home() && ! is_front_page() ) {
+	$page_for_posts = get_option( 'page_for_posts' );
+	$parent         = wp_get_post_parent_id( $page_for_posts );
 	?>
-	<header class="page-header">
-		<h1 class="page-title">
-			<?php single_post_title(); ?>
-		</h1>
+	<header class="archive-header">
+		<div class="entry-title">
+			<span><?php echo get_the_title( $parent ); ?></span>
+			<h1 class="page-title">
+
+				<?php single_post_title(); ?>
+			</h1>
+		</div>
+		<?php if ( is_active_sidebar( 'blog-archive-intro' ) ) { ?>
+			<div class="widget_wrapper">
+				<?php dynamic_sidebar( 'blog-archive-intro' ); ?>
+			</div>
+		<?php } ?>
+		<?php get_template_part( 'template-parts/content/blogs-category-select' ); ?>
 	</header><!-- .page-header -->
 	<?php
 } elseif ( is_search() ) {
@@ -47,16 +59,25 @@ if ( is_404() ) {
 	<?php
 } elseif ( is_archive() ) {
 	?>
-	<header class="page-header">
+	<header class="archive-header">
+		<div class="entry-title">
+		<?php
+		$page_for_posts = get_option( 'page_for_posts' );
+		?>
+		<span><a href="<?php the_permalink($page_for_posts); ?>" ><?php echo get_the_title( $page_for_posts ); ?></a></span>
 		<?php
 		the_archive_title( '<h1 class="page-title">', '</h1>' );
+		?>
+		</div>
+		<?php
 		the_archive_description( '<div class="archive-description">', '</div>' );
 		?>
+		<?php get_template_part( 'template-parts/content/blogs-category-select' ); ?>
 	</header><!-- .page-header -->
 	<?php
 } elseif ( is_singular() && ! is_page() ) {
-	$hide_title = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
-	$hide_image = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+	$hide_title   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
+	$hide_image   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$slider       = get_field( 'slide' );
 	$header_class = '';
 	if ( ! empty( $slider ) && count( $slider ) > 0 && ! empty( $slider[0]['image'] ) ) {

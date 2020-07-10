@@ -13,6 +13,7 @@
 	--highlight-font-family: hollis, sans-serif;
 	--navigation-font-family: frank-new, sans-serif;
 	--form-field-font-family: frank-new, sans-serif;
+	--icons-font-family: carkeek-blocks, sans-serif;
 	--content-width: calc(1130px + (2 * var(--gutter-width) )); /* including padding 824 + 4 rem*/
 	--content-width-actual: 1130px;
 	--header-width: 1400px;

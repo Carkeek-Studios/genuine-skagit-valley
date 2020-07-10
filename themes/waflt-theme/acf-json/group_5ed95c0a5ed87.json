@@ -172,6 +172,49 @@
             ]
         },
         {
+            "key": "field_5f07aba5eda6b",
+            "label": "Randomized Images",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5f07abcceda6c",
+            "label": "Placeholder Images",
+            "name": "placeholder_images",
+            "type": "gallery",
+            "instructions": "Add images that will be used as placeholders when a blog post does not have a featured image.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5f04cd763398c",
             "label": "Protected Farms",
             "name": "",
@@ -226,5 +269,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1594150289
+    "modified": 1594339189
 }

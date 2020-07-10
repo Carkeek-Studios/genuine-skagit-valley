@@ -8,6 +8,7 @@
 namespace WP_Rig\WP_Rig\Jetpack;
 
 use WP_Rig\WP_Rig\Component_Interface;
+use function WP_Rig\WP_Rig\waflt_theme;
 use function add_action;
 use function add_theme_support;
 use function have_posts;
@@ -35,6 +36,9 @@ class Component implements Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'after_setup_theme', array( $this, 'action_add_jetpack_support' ) );
+		add_action( 'loop_start', array( $this, 'jptweak_remove_share' ) );
+		add_filter( 'jetpack_images_get_images', array( $this, 'posts_custom_image' ), 10, 3 );
+		add_filter( 'infinite_scroll_js_settings', array( $this, 'filter_jetpack_infinite_scroll_js_settings' ) );
 	}
 
 	/**
@@ -83,4 +87,56 @@ class Component implements Component_Interface {
 			)
 		);
 	}
+
+	/**
+	 * Remove the jetpack share buttons that are autoplaced, We manually place them at the top of the page in the single template.
+	 */
+	public function jptweak_remove_share() {
+		remove_filter( 'the_content', 'sharing_display', 19 );
+		remove_filter( 'the_excerpt', 'sharing_display', 19 );
+		if ( class_exists( 'Jetpack_Likes' ) ) {
+			remove_filter( 'the_content', array( \Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+		}
+	}
+
+	/**
+	 * Get a random image if no image is found for jetpack functions
+	 *
+	 * @param array  $media url of current item.
+	 * @param string $post_id current post.
+	 * @param array  $args args object.
+	 */
+	public function posts_custom_image( $media, $post_id, $args ) {
+		if ( $media ) {
+			return $media;
+		} else {
+			$permalink = get_permalink( $post_id );
+			$random    = waflt_theme()->get_random_thumbnail();
+			$url       = apply_filters( 'jetpack_photon_url', $random );
+
+			return array(
+				array(
+					'type' => 'image',
+					'from' => 'custom_fallback',
+					'src'  => esc_url( $url ),
+					'href' => $permalink,
+				),
+			);
+		}
+	}
+
+	/**
+	 * Update text on load more button.
+	 *
+	 * @param array $settings current settings object.
+	 */
+	public function filter_jetpack_infinite_scroll_js_settings( $settings ) {
+		$settings['text'] = __( 'Load more<i class="icon-plus"></i>', 'waflt-theme' );
+
+		return $settings;
+	}
+
+
+
+
 }

@@ -483,7 +483,6 @@ html.overflow-hidden {
 .site-main .posts-navigation,
 .site-main .post-navigation,
 .site-main .pagination {
-	border-top: 1px solid var(--color-theme-grey-light);
 	margin: 0 auto 2em;
 	max-width: var(--content-width);
 	overflow: hidden;

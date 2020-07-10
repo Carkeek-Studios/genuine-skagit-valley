@@ -33,7 +33,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Need this function even though its empty
 	 */
 	public function initialize() {
-
+		add_filter( 'get_the_terms', array( $this, 'hide_categories_terms' ), 10, 3 );
+		add_filter( 'excerpt_more', array( $this, 'my_theme_excerpt_more' ) );
 	}
 
 	/**
@@ -45,8 +46,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function template_tags() : array {
 		return array(
-			'get_social_links'  => array( $this, 'get_social_links' ),
-			'get_accreditation' => array( $this, 'get_accreditation' ),
+			'get_social_links'     => array( $this, 'get_social_links' ),
+			'get_accreditation'    => array( $this, 'get_accreditation' ),
+			'get_random_thumbnail' => array( $this, 'get_random_thumbnail' ),
 		);
 	}
 
@@ -98,4 +100,72 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 		return $html;
 	}
+
+	/**
+	 * Hide the blog category when getting terms
+	 *
+	 * @param array $terms array of terms to filter.
+	 * @param array $post_id id of current post.
+	 * @param array $taxonomy id of current taxonomy.
+	 * @return array $terms updated terms list.
+	 */
+	public function hide_categories_terms( $terms, $post_id, $taxonomy ) {
+
+		// get term to exclude by name, by id or maybe by slug.
+		$exclude = get_term_by( 'name', 'blog', 'category', ARRAY_A );
+
+		if ( ! is_admin() ) {
+			foreach ( $terms as $key => $term ) {
+				if ( 'category' === $term->taxonomy ) {
+					if ( in_array( $key, $exclude ) ) {
+						unset( $terms[ $key ] );
+					}
+				}
+			}
+		}
+
+		return $terms;
+	}
+
+	/**
+	 * Get a randomized image from the collection - use when blog post has no image
+	 *
+	 * @param string  $size desired image size.
+	 * @param boolean $object whether to return just url or full object.
+	 * @return array  $url of image.
+	 * TODO Backup image as default;
+	 */
+	public function get_random_thumbnail( $size = 'large', $object = false ) {
+		$images = get_field( 'placeholder_images', 'options' );
+		if ( empty( $images ) || 0 == count( $images ) ) {
+			return;
+		}
+
+		$random = rand( 0, count( $images ) - 1 );
+
+		$feat_image = $images[ $random ];
+
+		if ( $object ) {
+
+			return $feat_image;
+
+		} else {
+			$feat_image_url = $feat_image['sizes'][ $size ];
+
+			return $feat_image_url;
+		}
+
+	}
+
+	/**
+	 * Customize excerpt more ending
+	 *
+	 * @param string $more current value.
+	 */
+	public function my_theme_excerpt_more( $more ) {
+		return '&hellip;';
+	}
+
 }
+
+

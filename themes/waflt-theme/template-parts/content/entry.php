@@ -9,8 +9,8 @@ namespace WP_Rig\WP_Rig;
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry archive-entry' ); ?>>
-
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'entry archive-entry alignfull' ); ?>>
+<div class="archive-entry--thumb">
 	<?php
 
 
@@ -19,14 +19,13 @@ namespace WP_Rig\WP_Rig;
 	}
 
 	?>
+	</div>
 	<div class="archive-entry--content">
 	<?php
 	get_template_part( 'template-parts/content/entry_header', get_post_type() );
 
-	if ( get_post_type() !== 'portfolio' ) {
-		get_template_part( 'template-parts/content/entry_summary', get_post_type() );
-		get_template_part( 'template-parts/content/entry_footer', get_post_type() );
-	}
+	get_template_part( 'template-parts/content/entry_summary', get_post_type() );
+
 	?>
 	</div>
 </article><!-- #post-<?php the_ID(); ?> -->

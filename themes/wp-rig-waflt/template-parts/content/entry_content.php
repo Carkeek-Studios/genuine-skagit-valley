@@ -9,7 +9,9 @@ namespace WP_Rig\WP_Rig;
 
 ?>
 
-<div class="entry-content">
+
+<div class="entry-content page-content">
+	<?php get_template_part( 'template-parts/content/entry_header', get_post_type() ); ?>
 	<?php
 	the_content(
 		sprintf(

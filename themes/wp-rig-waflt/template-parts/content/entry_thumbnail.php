@@ -7,6 +7,7 @@
 
 namespace WP_Rig\WP_Rig;
 
+
 // Audio or video attachments can have featured images, so they need to be specifically checked.
 $support_slug = get_post_type();
 if ( 'attachment' === $support_slug ) {
@@ -17,11 +18,14 @@ if ( 'attachment' === $support_slug ) {
 	}
 }
 
-if ( post_password_required() || ! post_type_supports( $support_slug, 'thumbnail' ) || ! has_post_thumbnail() ) {
+if ( post_password_required() || ! post_type_supports( $support_slug, 'thumbnail' ) ) {
 	return;
 }
 
 if ( is_singular( get_post_type() ) ) {
+	if ( ! has_post_thumbnail() ) {
+		return;
+	}
 	?>
 	<div class="post-thumbnail">
 		<?php the_post_thumbnail( 'wp-rig-featured', array( 'class' => 'skip-lazy' ) ); ?>
@@ -32,13 +36,21 @@ if ( is_singular( get_post_type() ) ) {
 	<?php } ?>
 	<?php
 } else {
+	if ( ! has_post_thumbnail() ) {
+		$feat_image = wp_rig()->get_random_thumbnail( 'large', true );
+		$feat_image_id = $feat_image['ID'];
+	} else {
+		$feat_image_id = get_post_thumbnail_id();
+	}
 	?>
 	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
 		<?php
 		global $wp_query;
 		if ( 0 === $wp_query->current_post ) {
-			the_post_thumbnail(
+			echo wp_get_attachment_image(
+				$feat_image_id,
 				'post-thumbnail',
+				false,
 				array(
 					'class' => 'skip-lazy',
 					'alt'   => the_title_attribute(
@@ -49,8 +61,10 @@ if ( is_singular( get_post_type() ) ) {
 				)
 			);
 		} else {
-			the_post_thumbnail(
+			echo wp_get_attachment_image(
+				$feat_image_id,
 				'post-thumbnail',
+				false,
 				array(
 					'alt' => the_title_attribute(
 						array(

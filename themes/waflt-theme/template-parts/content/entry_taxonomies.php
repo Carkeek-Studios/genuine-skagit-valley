@@ -21,14 +21,14 @@ $taxonomies = wp_list_filter(
 	foreach ( $taxonomies as $taxonomy ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		/* translators: separator between taxonomy terms */
-		$separator = _x( ', ', 'list item separator', 'waflt-theme' );
+		$separator = _x( ' | ', 'list item separator', 'waflt-theme' );
 
 		switch ( $taxonomy->name ) {
 			case 'category':
 				$class = 'category-links term-links';
 				$list  = get_the_category_list( esc_html( $separator ), '', $post->ID );
 				/* translators: %s: list of taxonomy terms */
-				$placeholder_text = __( 'Posted in %s', 'waflt-theme' );
+				$placeholder_text = __( '%s', 'waflt-theme' );
 				break;
 			case 'post_tag':
 				$class = 'tag-links term-links';

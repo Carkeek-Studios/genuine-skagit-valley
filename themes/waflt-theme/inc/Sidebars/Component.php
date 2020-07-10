@@ -31,6 +31,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	const FOOTER_SIDEBAR_SLUG       = 'sidebar-footer';
 	const FOOTER_LOWER_SIDEBAR_SLUG = 'sidebar-footer-lower';
 	const FOOTER_BOTTOM_SIDEBAR_SLUG = 'sidebar-footer-bottom';
+	const BLOG_ARCHIVE_SLUG = 'blog-archive-intro';
 
 	/**
 	 * Gets the unique identifier for the theme component.
@@ -94,6 +95,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'name'          => esc_html__( 'Footer Bottom', 'waflt-theme' ),
 				'id'            => static::FOOTER_BOTTOM_SIDEBAR_SLUG,
 				'description'   => esc_html__( 'Footer Widgets Widgets Bottom (includes HR)', 'waflt-theme' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			)
+		);
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Blog Archive Intro', 'waflt-theme' ),
+				'id'            => static::BLOG_ARCHIVE_SLUG,
+				'description'   => esc_html__( 'Place content that will appear on the blog archive below the title and above the filters', 'waflt-theme' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="widget-title">',

@@ -9,12 +9,23 @@ namespace WP_Rig\WP_Rig;
 
 ?>
 
-<header class="entry-header">
+<div class="entry-title">
+	<?php get_template_part( 'template-parts/content/entry_taxonomies', get_post_type() ); ?>
+	<?php if (is_archive() || is_home()) {
+		the_title( '<h2>', '</h2>' );
+	} else {
+		the_title( '<h1>', '</h1>' );
+	}
+	?>
+	<div class="postdate"><?php the_date( 'F j, Y' ); ?></div>
 	<?php
-	get_template_part( 'template-parts/content/entry_title', get_post_type() );
-	if ( get_post_type() === 'post' ) {
-		get_template_part( 'template-parts/content/entry_meta', get_post_type() );
+	if ( function_exists( 'sharing_display' ) ) {
+		sharing_display( '', true );
 	}
 
+	if ( class_exists( 'Jetpack_Likes' ) ) {
+		$custom_likes = new \Jetpack_Likes();
+		echo $custom_likes->post_likes( '' );
+	}
 	?>
-</header><!-- .entry-header -->
+</div>
