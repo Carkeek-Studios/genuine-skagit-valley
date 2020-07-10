@@ -60,9 +60,15 @@ h6 {
 		color: var(--color-theme-green);
 		font-weight: var(--font-weight-bold);
 
+
+
 		&:visited {
 			color: var(--color-theme-green);
 		}
+	}
+
+	&:hover a {
+		color: var(--color-link);
 	}
 }
 

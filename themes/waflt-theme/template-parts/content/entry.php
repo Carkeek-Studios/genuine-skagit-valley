@@ -15,7 +15,7 @@ namespace WP_Rig\WP_Rig;
 
 
 	if ( ! is_search() ) {
-		get_template_part( 'template-parts/content/entry_thumbnail', get_post_type() );
+		include( locate_template( 'template-parts/content/entry_thumbnail.php', false, false ) );
 	}
 
 	?>

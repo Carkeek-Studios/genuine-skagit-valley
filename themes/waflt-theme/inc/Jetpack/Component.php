@@ -137,6 +137,4 @@ class Component implements Component_Interface {
 	}
 
 
-
-
 }

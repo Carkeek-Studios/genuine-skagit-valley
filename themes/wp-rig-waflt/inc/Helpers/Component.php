@@ -49,6 +49,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'get_social_links'     => array( $this, 'get_social_links' ),
 			'get_accreditation'    => array( $this, 'get_accreditation' ),
 			'get_random_thumbnail' => array( $this, 'get_random_thumbnail' ),
+			'get_random_images_array' => array( $this, 'get_random_images_array' ),
 		);
 	}
 
@@ -110,21 +111,34 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return array $terms updated terms list.
 	 */
 	public function hide_categories_terms( $terms, $post_id, $taxonomy ) {
+		if ( 'category' !== $taxonomy ) {
+			return $terms;
+		}
+
+		$term_keys = array_map(
+			function( $t ) {
+				return $t->slug;
+			},
+			$terms
+		);
 
 		// get term to exclude by name, by id or maybe by slug.
-		$exclude = get_term_by( 'name', 'blog', 'category', ARRAY_A );
-
+		$exclude = array( 'blog' );
 		if ( ! is_admin() ) {
-			foreach ( $terms as $key => $term ) {
-				if ( 'category' === $term->taxonomy ) {
-					if ( in_array( $key, $exclude ) ) {
-						unset( $terms[ $key ] );
-					}
+			foreach ( $term_keys as $i => $key ) {
+				if ( in_array( $key, $exclude ) ) {
+					unset( $terms[ $i ] );
 				}
 			}
 		}
-
 		return $terms;
+	}
+
+	public function get_random_images_array() {
+		$images = get_field( 'placeholder_images', 'options' );
+		$nbrs   = range( 0, count( $images ) - 1 );
+		shuffle( $nbrs );
+		return $nbrs;
 	}
 
 	/**
@@ -132,16 +146,21 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *
 	 * @param string  $size desired image size.
 	 * @param boolean $object whether to return just url or full object.
+	 * @param integer $nbr tracks random number from index.
 	 * @return array  $url of image.
 	 * TODO Backup image as default;
 	 */
-	public function get_random_thumbnail( $size = 'large', $object = false ) {
+	public function get_random_thumbnail( $size = 'large', $object = false, $nbr = null ) {
 		$images = get_field( 'placeholder_images', 'options' );
 		if ( empty( $images ) || 0 == count( $images ) ) {
 			return;
 		}
 
-		$random = rand( 0, count( $images ) - 1 );
+		if ( is_numeric( $nbr ) ) {
+			$random = $nbr;
+		} else {
+			$random = rand( 0, count( $images ) - 1 );
+		}
 
 		$feat_image = $images[ $random ];
 

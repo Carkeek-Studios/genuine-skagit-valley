@@ -12,7 +12,13 @@ namespace WP_Rig\WP_Rig;
 <div class="entry-title">
 	<?php get_template_part( 'template-parts/content/entry_taxonomies', get_post_type() ); ?>
 	<?php if (is_archive() || is_home()) {
-		the_title( '<h2>', '</h2>' );
+		?>
+		<h2><a class="post-permalink" href="<?php the_permalink(); ?>" aria-hidden="true">
+		<?php
+		the_title( );
+		?>
+		</a></h2>
+		<?php
 	} else {
 		the_title( '<h1>', '</h1>' );
 	}

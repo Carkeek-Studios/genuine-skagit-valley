@@ -60,7 +60,6 @@ class Component implements Component_Interface {
 		// Disable gradients.
 		add_theme_support( '__experimental-editor-gradient-presets', array() );
 
-		add_image_size( 'x-large', 1800, 1200, array( 'center', 'center' ) );
 
 		/**
 		 * Add support for color palettes.

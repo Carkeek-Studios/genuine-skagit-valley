@@ -7,7 +7,6 @@
 
 namespace WP_Rig\WP_Rig;
 
-
 // Audio or video attachments can have featured images, so they need to be specifically checked.
 $support_slug = get_post_type();
 if ( 'attachment' === $support_slug ) {
@@ -37,7 +36,7 @@ if ( is_singular( get_post_type() ) ) {
 	<?php
 } else {
 	if ( ! has_post_thumbnail() ) {
-		$feat_image = waflt_theme()->get_random_thumbnail( 'large', true );
+		$feat_image = waflt_theme()->get_random_thumbnail( 'large', true, $random_number );
 		$feat_image_id = $feat_image['ID'];
 	} else {
 		$feat_image_id = get_post_thumbnail_id();
@@ -49,7 +48,7 @@ if ( is_singular( get_post_type() ) ) {
 		if ( 0 === $wp_query->current_post ) {
 			echo wp_get_attachment_image(
 				$feat_image_id,
-				'post-thumbnail',
+				'medium_large',
 				false,
 				array(
 					'class' => 'skip-lazy',
@@ -63,7 +62,7 @@ if ( is_singular( get_post_type() ) ) {
 		} else {
 			echo wp_get_attachment_image(
 				$feat_image_id,
-				'post-thumbnail',
+				'medium_large',
 				false,
 				array(
 					'alt' => the_title_attribute(

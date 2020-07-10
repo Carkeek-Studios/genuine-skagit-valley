@@ -47,6 +47,6 @@ class Component implements Component_Interface {
 	 * Adds custom image sizes.
 	 */
 	public function action_add_image_sizes() {
-		add_image_size( 'waflt-theme-featured', 1080, 740, true );
+		add_image_size( 'waflt-theme-featured', 1800, 1200, false );
 	}
 }
