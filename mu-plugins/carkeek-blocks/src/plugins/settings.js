@@ -1,7 +1,7 @@
 import { Component } from "@wordpress/element";
 import { PluginDocumentSettingPanel } from "@wordpress/edit-post";
 import { __ } from "@wordpress/i18n";
-import { CheckboxControl } from "@wordpress/components";
+import { CheckboxControl, TextControl } from "@wordpress/components";
 import { select, withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 
@@ -46,14 +46,24 @@ class PageHeaderSettings extends Component {
     render() {
         const {
 			onToggleTitle,
-			onToggleImage,
+            onToggleImage,
+            onbylineChange,
 			postmeta,
             posttype,
             featuredImage
 		} = this.props;
 		if ( [ 'wp_block' ].includes( posttype ) ) {
 			return false;
-		}
+        }
+        let byLineField;
+        if ( [ 'post' ].includes( posttype ) && typeof postmeta !== 'undefined' ) {
+            const byline = typeof postmeta.byline !== 'undefined' ? postmeta.byline : '';
+			byLineField = <TextControl
+                            value={byline}
+                            label={__("Post Byline", "carkeek-blocks")}
+                            onChange={value => onbylineChange(value)}
+                        />;
+        }
 		const isTitleHidden = typeof postmeta !== 'undefined' && typeof postmeta._carkeekblocks_title_hidden !== 'undefined' ? postmeta._carkeekblocks_title_hidden : false;
 		const isImageHidden = typeof postmeta !== 'undefined' && typeof postmeta._carkeekblocks_featuredimage_hidden !== 'undefined' ? postmeta._carkeekblocks_featuredimage_hidden : false;
 		let hideImageCheckbox;
@@ -99,6 +109,7 @@ class PageHeaderSettings extends Component {
                     }
                 />
                 {hideImageCheckbox}
+                {byLineField}
             </PluginDocumentSettingPanel>
         );
     }
@@ -122,7 +133,8 @@ export default compose(
 		let hideImage;
 		if ( typeof ownProps.postmeta !== 'undefined' && typeof ownProps.postmeta._carkeekblocks_featuredimage_hidden !== 'undefined' ) {
 			hideImage = ownProps.postmeta._carkeekblocks_featuredimage_hidden ;
-		}
+        }
+
         return {
             onToggleTitle() {
                 dispatch("core/editor").editPost({
@@ -133,6 +145,13 @@ export default compose(
                 dispatch("core/editor").editPost({
                     meta: {
                         _carkeekblocks_featuredimage_hidden: ! hideImage
+                    }
+                });
+            },
+            onbylineChange(byline) {
+                dispatch("core/editor").editPost({
+                    meta: {
+                        byline: byline
                     }
                 });
             }

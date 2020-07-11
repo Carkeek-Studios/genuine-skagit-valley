@@ -11,11 +11,12 @@ namespace WP_Rig\WP_Rig;
 
 <div class="entry-title">
 	<?php get_template_part( 'template-parts/content/entry_taxonomies', get_post_type() ); ?>
-	<?php if (is_archive() || is_home()) {
+	<?php
+	if ( is_archive() || is_home() ) {
 		?>
 		<h2><a class="post-permalink" href="<?php the_permalink(); ?>" aria-hidden="true">
 		<?php
-		the_title( );
+		the_title();
 		?>
 		</a></h2>
 		<?php
@@ -23,7 +24,12 @@ namespace WP_Rig\WP_Rig;
 		the_title( '<h1>', '</h1>' );
 	}
 	?>
-	<div class="postdate"><?php the_date( 'F j, Y' ); ?></div>
+	<div class="postmeta">
+	<div class="postdate"><?php echo get_the_date( 'F j, Y' ); ?></div>
+	<?php if ( get_field( 'byline' ) ) { ?>
+		<div class="byline">By <?php the_field( 'byline' ); ?></div>
+	<?php } ?>
+	</div>
 	<?php
 	if ( function_exists( 'sharing_display' ) ) {
 		sharing_display( '', true );
@@ -34,4 +40,5 @@ namespace WP_Rig\WP_Rig;
 		echo $custom_likes->post_likes( '' );
 	}
 	?>
+
 </div>

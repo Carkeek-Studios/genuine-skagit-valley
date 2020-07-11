@@ -276,6 +276,7 @@
 
 }
 
+.archive .site-main,
 .blog .site-main,
 .archive-wrapper,
 .infinite-wrap {
@@ -326,8 +327,12 @@
 		margin-bottom: 0.5rem;
 	}
 
-	& .postdate {
+	& .postmeta {
 		color: var(--color-theme-grey);
+	}
+
+	& .byline {
+		font-weight: var(--font-weight-bold);
 	}
 
 	& .entry-summary {
@@ -454,11 +459,15 @@
 			}
 		}
 
-		& .postdate {
+		& .postmeta {
 			color: var(--color-theme-grey);
 			font-size: 12px;
 			margin-top: 1rem;
 			margin-bottom: 2rem;
+		}
+
+		& .byline {
+			font-weight: var(--font-weight-bold);
 		}
 
 		&::after {

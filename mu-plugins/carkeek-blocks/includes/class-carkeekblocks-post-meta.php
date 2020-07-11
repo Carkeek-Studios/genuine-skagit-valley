@@ -57,6 +57,16 @@ class CarkeekBlocks_Post_Meta {
 			)
 		);
 
+		register_meta(
+			'post',
+			'byline',
+			array(
+				'show_in_rest' => true,
+				'single'       => true,
+				'type'         => 'string',
+			)
+		);
+
 	}
 
 	public function set_body_classes( $classes ) {

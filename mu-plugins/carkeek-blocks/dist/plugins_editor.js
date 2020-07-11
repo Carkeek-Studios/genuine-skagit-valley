@@ -226,12 +226,32 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
       var _this$props = this.props,
           onToggleTitle = _this$props.onToggleTitle,
           onToggleImage = _this$props.onToggleImage,
+          onbylineChange = _this$props.onbylineChange,
           postmeta = _this$props.postmeta,
           posttype = _this$props.posttype,
           featuredImage = _this$props.featuredImage;
 
       if (['wp_block'].includes(posttype)) {
         return false;
+      }
+
+      var byLineField;
+
+      if (['post'].includes(posttype) && typeof postmeta !== 'undefined') {
+        var byline = typeof postmeta.byline !== 'undefined' ? postmeta.byline : '';
+        byLineField = wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["TextControl"], {
+          value: byline,
+          label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Post Byline", "carkeek-blocks"),
+          onChange: function onChange(value) {
+            return onbylineChange(value);
+          },
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 61,
+            columnNumber: 18
+          }
+        });
       }
 
       var isTitleHidden = typeof postmeta !== 'undefined' && typeof postmeta._carkeekblocks_title_hidden !== 'undefined' ? postmeta._carkeekblocks_title_hidden : false;
@@ -248,7 +268,7 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62,
+            lineNumber: 72,
             columnNumber: 17
           }
         });
@@ -261,7 +281,7 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82,
+          lineNumber: 92,
           columnNumber: 13
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
@@ -273,10 +293,10 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87,
+          lineNumber: 97,
           columnNumber: 17
         }
-      }), hideImageCheckbox);
+      }), hideImageCheckbox, byLineField);
     }
   }]);
 
@@ -314,6 +334,13 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
       dispatch("core/editor").editPost({
         meta: {
           _carkeekblocks_featuredimage_hidden: !hideImage
+        }
+      });
+    },
+    onbylineChange: function onbylineChange(byline) {
+      dispatch("core/editor").editPost({
+        meta: {
+          byline: byline
         }
       });
     }
