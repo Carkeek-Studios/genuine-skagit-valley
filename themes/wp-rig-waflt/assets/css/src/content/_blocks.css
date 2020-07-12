@@ -59,6 +59,12 @@
 	max-width: 100%;
 }
 
+.page-content > .wp-block-embed.alignwide,
+.page-content > .wp-block-image.alignwide {
+	padding-left: var(--gutter-width-small);
+	padding-right: var(--gutter-width-small);
+}
+
 .page-content > .wp-block-columns + .wp-block-columns,
 .page-content > .alignfull.has-background + .alignfull.has-background,
 .page-content > .alignfull.has-background + .wp-block-cover {
@@ -239,8 +245,6 @@
 	}
 
 	&.alignwide {
-		padding-left: var(--gutter-width-small);
-		padding-right: var(--gutter-width-small);
 
 		& img {
 			height: calc(66vw - (2 * var(--gutter-width-small)));
