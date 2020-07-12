@@ -44,7 +44,7 @@ h5,
 
 	&.is-style-highlight {
 		text-transform: uppercase;
-		letter-spacing: 9.6px;
+		letter-spacing: 2.5px;
 		font-family: var(--highlight-font-family);
 	}
 }

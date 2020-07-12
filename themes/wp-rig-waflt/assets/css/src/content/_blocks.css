@@ -51,7 +51,9 @@
 }
 
 .page-content > .has-background,
-.page-content > .wp-block-carkeek-blocks-slider.alignfull {
+.page-content > .wp-block-carkeek-blocks-slider.alignfull,
+.page-content > .wp-block-embed.alignfull,
+.page-content > .wp-block-image.alignfull {
 	padding-left: 0;
 	padding-right: 0;
 	max-width: 100%;
@@ -225,6 +227,28 @@
 --------------------------------------------------------------*/
 .wp-block-image {
 	margin-bottom: var(--gutter-width-mobile);
+
+	&.alignfull {
+
+		& img {
+			height: 66vw;
+			min-height: 400px;
+			max-height: 870px;
+			object-fit: cover;
+		}
+	}
+
+	&.alignwide {
+		padding-left: var(--gutter-width-small);
+		padding-right: var(--gutter-width-small);
+
+		& img {
+			height: calc(66vw - (2 * var(--gutter-width-small)));
+			min-height: 400px;
+			max-height: 870px;
+			object-fit: cover;
+		}
+	}
 }
 
 .wp-block-image.is-style-rounded {
@@ -351,7 +375,6 @@
 	.wp-block-media-text {
 		display: grid;
 
-
 		& .wp-block-media-text__content {
 			padding: var(--gutter-width-small);
 			padding-right: 0;
@@ -375,7 +398,6 @@
 			}
 
 		}
-
 
 		&.has-background {
 			height: 56vw;
@@ -422,7 +444,6 @@
 	}
 }
 
-
 /*--------------------------------------------------------------
 # Cover Block - overrides core styles
 --------------------------------------------------------------*/
@@ -453,7 +474,6 @@
 		}
 	}
 }
-
 
 .wp-block-cover__inner-container > * {
 	max-width: var(--content-width);
@@ -509,7 +529,6 @@
 		max-height: 870px;
 	}
 }
-
 
 /*--------------------------------------------------------------
 # Social Links
@@ -568,7 +587,6 @@
 	}
 }
 
-
 @media (max-width: 781px) and (min-width: 600px) {
 
 	.wp-block-columns {
@@ -613,7 +631,6 @@
 		}
 	}
 }
-
 
 .wp-block-latest-posts,
 .wp-block-latest-comments {
@@ -748,7 +765,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	width: inherit;
 }
 
-
 .blocks-gallery-item:last-child:nth-child(odd) {
 	grid-column: span 2;
 }
@@ -788,7 +804,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	}
 }
 
-
 /*--------------------------------------------------------------
 # CUSTOM BLOCK OVERRIDES
 --------------------------------------------------------------*/
@@ -800,7 +815,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 		margin-bottom: 0;
 	}
 }
-
 
 /* override the wp style */
 .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
@@ -822,7 +836,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 		}
 	}
 }
-
 
 /*--------------------------------------------------------------
 # CUSTOM BLOCK OVERRIDES - Link Tiles
@@ -950,3 +963,4 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 	}
 }
+

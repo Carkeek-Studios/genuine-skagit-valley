@@ -580,6 +580,10 @@ div.sharedaddy {
 	}
 }
 
+p + #jp-relatedposts {
+	margin-top: 2rem;
+}
+
 #jp-relatedposts {
 	padding-top: var(--block-padding-vert);
 	margin: 0 auto;
