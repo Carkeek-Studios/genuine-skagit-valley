@@ -4076,6 +4076,7 @@ __webpack_require__.r(__webpack_exports__);
       $(this).children().each(function () {
         $(this).wrap('<div class="slide-' + type + '"></div>');
       });
+      $(this).find('img').addClass('skip-lazy');
       $(this).slick(options);
     });
     $('.section-slider').each(function () {

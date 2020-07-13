@@ -25,6 +25,7 @@ import "./style.scss";
             $(this).children().each(function(){
                 $(this).wrap('<div class="slide-' +  type + '"></div>');
             });
+            $(this).find('img').addClass('skip-lazy');
             $(this).slick(options);
         });
 

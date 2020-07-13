@@ -60,7 +60,6 @@ class Component implements Component_Interface {
 		// Disable gradients.
 		add_theme_support( '__experimental-editor-gradient-presets', array() );
 
-
 		/**
 		 * Add support for color palettes.
 		 *
@@ -192,6 +191,8 @@ class Component implements Component_Interface {
 			'add-top-margin',
 			'add-bottom-margin',
 			'add-bottom-margin-small',
+			'anchor-top',
+			'anchor-bottom',
 		);
 
 		return $theme_classes;
