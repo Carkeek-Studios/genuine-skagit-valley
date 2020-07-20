@@ -35,6 +35,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function initialize() {
 		add_filter( 'get_the_terms', array( $this, 'hide_categories_terms' ), 10, 3 );
 		add_filter( 'excerpt_more', array( $this, 'my_theme_excerpt_more' ) );
+		add_filter( 'tribe_events_event_schedule_details_formatting', array( $this, 'tribe_events_schedule_details' ) );
+		add_filter( 'tribe_events_editor_default_template', array( $this, 'tribe_events_editor_default_template' ), 11, 1 );
+		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
 	}
 
 	/**
@@ -46,10 +49,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function template_tags() : array {
 		return array(
-			'get_social_links'     => array( $this, 'get_social_links' ),
-			'get_accreditation'    => array( $this, 'get_accreditation' ),
-			'get_random_thumbnail' => array( $this, 'get_random_thumbnail' ),
+			'get_social_links'        => array( $this, 'get_social_links' ),
+			'get_accreditation'       => array( $this, 'get_accreditation' ),
+			'get_random_thumbnail'    => array( $this, 'get_random_thumbnail' ),
 			'get_random_images_array' => array( $this, 'get_random_images_array' ),
+			'get_custom_excerpt'      => array( $this, 'get_custom_excerpt' ),
+			'make_social_share_links' => array( $this, 'make_social_share_links' ),
 		);
 	}
 
@@ -175,6 +180,22 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 	}
+	/**
+	 * Customize the length of an excerpt
+	 *
+	 * @param integer $limit the number of words to return.
+	 */
+	public function get_custom_excerpt( $limit ) {
+		$excerpt = explode( ' ', get_the_excerpt(), $limit );
+		if ( count( $excerpt ) >= $limit ) {
+			array_pop( $excerpt );
+			$excerpt = implode( ' ', $excerpt ) . '...';
+		} else {
+			$excerpt = implode( ' ', $excerpt );
+		}
+		$excerpt = preg_replace( '`[[^]]*]`', '', $excerpt );
+		return $excerpt;
+	}
 
 	/**
 	 * Customize excerpt more ending
@@ -183,6 +204,109 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function my_theme_excerpt_more( $more ) {
 		return '&hellip;';
+	}
+
+	/**
+	 * Customize date view on event list
+	 *
+	 * @param array $settings current settings.
+	 */
+	public function tribe_events_schedule_details( $settings ) {
+		$settings['time'] = false;
+		return $settings;
+	}
+
+	/**
+	 * Customize block order on the events template
+	 *
+	 * @param array $template default template, each item represents a block.
+	 */
+	public function tribe_events_editor_default_template( $template ) {
+		$template = array(
+			array(
+				'core/group',
+				array(
+					'className' => 'wft-event-details',
+				),
+				array(
+					array( 'tribe/event-datetime' ),
+					array( 'tribe/event-venue' ),
+					array( 'tribe/event-links' ),
+				),
+			),
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => __( 'Add Description...', 'waflt-theme' ),
+				),
+			),
+		);
+		return $template;
+	}
+
+	/**
+	 * Make New Window Script
+	 */
+	private function make_new_window() {
+		return "onclick=\"javascript:window.open(this.href, '_blank', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;\"";
+	}
+
+	/**
+	 * Make FB Links
+	 *
+	 * @param string $text optional text before the icon.
+	 */
+	private function make_fb_button( $text = null ) {
+		$url = get_the_permalink();
+
+		$fb_link = '<a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=' . urlencode( $url ) . '"' . $this->make_new_window() . ' title="Share on Facebook"><i class="icon-facebook" aria-hidden="true"></i> ' . $text . '</a>';
+		return $fb_link;
+	}
+
+	/**
+	 * Make Twttter Links
+	 *
+	 * @param string $text optional text before the icon.
+	 */
+	private function make_twitter_button( $text = null ) {
+		$url   = get_the_permalink();
+		$title = get_the_title();
+		$tweet = '<a class="share-link" href="http://twitter.com/intent/tweet?text=' . $title . '&url=' . $url . '"' . $this->make_new_window() . ' title="Share on Twitter"><i class="icon-twitter" aria-hidden="true"></i>' . $text . '</a>';
+		return $tweet;
+	}
+
+	/**
+	 * Make Email Links
+	 *
+	 * @param string $text optional text before the icon.
+	 */
+	private function make_email_button( $text = null ) {
+		$url   = get_the_permalink();
+		$title = get_the_title();
+		$email = '<a class="share-link" href="mailto:?subject=' . $title . '&body=' . urlencode( $url ) . '" title="Share Via Email"><i class="icon-mail"  aria-hidden="true"></i> ' . $text . '</a>';
+		return $email;
+	}
+
+	/**
+	 * Make Social Links
+	 */
+	public function make_social_share_links() {
+		echo '<ul class="social-share-links list-inline">
+			<li class="list-inline-item social-share-links__label">Share: </li>
+			<li class="list-inline-item">' . $this->make_fb_button() . '</li>
+			<li class="list-inline-item">' . $this->make_twitter_button() . '</li>
+			<li class="list-inline-item">' . $this->make_email_button() . '</li>
+		</ul>';
+	}
+
+	/**
+	 * Return Abbreviated State
+	 */
+	public function tribe_get_region( $output, $venue_id ) {
+		if ( 'Washington' === $output ) {
+			$output = 'WA';
+		}
+		return $output;
 	}
 
 }

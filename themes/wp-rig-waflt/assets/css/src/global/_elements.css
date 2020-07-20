@@ -32,8 +32,11 @@ body {
 
 /* stylelint-disable */
 hr {
-	margin-bottom: 1.5em;
+	margin-top: var(--block-padding-vert);
+	margin-bottom: var(--block-padding-vert);
 	box-sizing: border-box;
+	border: none;
+	border-bottom: 2px solid var(--color-border);
 }
 /* stylelint-enable */
 
@@ -66,6 +69,15 @@ ul.no-list {
 	padding: 0;
 }
 
+ul.list-inline {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li.list-inline-item {
+	display: inline-block;
+}
 
 dt {
 	font-weight: 700;

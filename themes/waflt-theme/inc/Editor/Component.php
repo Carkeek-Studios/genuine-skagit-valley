@@ -193,6 +193,11 @@ class Component implements Component_Interface {
 			'add-bottom-margin-small',
 			'anchor-top',
 			'anchor-bottom',
+			'no-padding',
+			'no-padding-top',
+			'no-padding-right',
+			'no-padding-bottom',
+			'no-padding-left',
 		);
 
 		return $theme_classes;

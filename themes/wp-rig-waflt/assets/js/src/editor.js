@@ -33,6 +33,11 @@ wp.domReady( function() {
 		label: 'No Bullets',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/list', {
+		name: 'circle-checked',
+		label: 'Circled Checks',
+	} );
+
 	// Remove Core Button Style.
 	wp.blocks.unregisterBlockStyle( 'core/button', 'outline' );
 

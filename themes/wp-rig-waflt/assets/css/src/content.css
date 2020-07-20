@@ -1,22 +1,12 @@
-/*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
-----------------------------------------------------------------
-# Imports
-	# Blocks
-	# Media
-		# Captions
-		# Galleries (Legacy)
-# Post and page content
-	# Alignments
-	# Custom block colors
-	# Custom font sizes
---------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 # Imports
 --------------------------------------------------------------*/
 
 @import "global/_media.css";
+@import "content/_page-header.css";
+@import "content/_layout.css";
+@import "content/_shares.css";
 @import "content/_posts.css";
 @import "content/_farms.css";
 @import "content/_blocks-props.css";

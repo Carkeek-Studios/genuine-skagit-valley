@@ -32,7 +32,8 @@ a:active {
 .arrow-link > a {
 	font-weight: 600;
 	text-decoration: none;
-	color: var(--global-font-color);
+	color: var(--color-link);
+	font-size: 16px;
 }
 
 .arrow-link > a:hover,

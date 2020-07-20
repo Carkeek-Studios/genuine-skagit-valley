@@ -63,6 +63,7 @@
 	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
+
 .icon-mail::before {
 	content: "\e800";
 } /* '' */
@@ -93,6 +94,9 @@
 .icon-minus-light::before {
 	content: "\e809";
 } /* '' */
+.icon-ok::before {
+	content: "\e80a";
+} /* '' */
 .icon-twitter::before {
 	content: "\f099";
 } /* '' */
@@ -111,6 +115,12 @@
 .icon-angle-down::before {
 	content: "\f107";
 } /* '' */
+.icon-circle-empty::before {
+	content: "\f10c";
+} /* '' */
+.icon-circle::before {
+	content: "\f111";
+} /* '' */
 .icon-angle-circled-left::before {
 	content: "\f137";
 } /* '' */
@@ -120,3 +130,6 @@
 .icon-instagram::before {
 	content: "\f16d";
 } /* '' */
+.icon-dot-circled::before {
+	content: "\f192";
+} /* '' */

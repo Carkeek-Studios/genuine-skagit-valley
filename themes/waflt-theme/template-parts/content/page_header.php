@@ -64,7 +64,7 @@ if ( is_404() ) {
 		<?php
 		$page_for_posts = get_option( 'page_for_posts' );
 		?>
-		<span><a href="<?php the_permalink($page_for_posts); ?>" ><?php echo get_the_title( $page_for_posts ); ?></a></span>
+		<span><a href="<?php the_permalink( $page_for_posts ); ?>" ><?php echo get_the_title( $page_for_posts ); ?></a></span>
 		<?php
 		the_archive_title( '<h1 class="page-title">', '</h1>' );
 		?>
@@ -120,7 +120,7 @@ if ( is_404() ) {
 			?>
 		<div class="entry-title">
 			<?php
-			if ( 0 !== $post->parent ) {
+			if ( 0 !== $post->post_parent && ! empty( $post->post_parent ) ) {
 				echo '<span>' . wp_kses_post( get_the_title( $post->post_parent ) ) . '</span>';
 			}
 			the_title( '<h1>', '</h1>' );
