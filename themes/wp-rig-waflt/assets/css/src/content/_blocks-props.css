@@ -316,15 +316,14 @@ ul.is-style-circle-checked {
 	color: var(--color-theme-white);
 
 	& a,
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
+	& h1:not(.has-text-color),
+	& h2:not(.has-text-color),
+	& h3:not(.has-text-color),
+	& h4:not(.has-text-color),
+	& h5:not(.has-text-color) {
 
-		&:not(.has-text-color) {
-			color: var(--color-theme-white);
-		}
+		color: var(--color-theme-white);
+
 	}
 }
 
@@ -336,15 +335,14 @@ ul.is-style-circle-checked {
 
 	& .link-tile__hover_title,
 	& a,
-	& h1,
-	& h2,
-	& h3,
-	& h4,
-	& h5 {
+	& h1:not(.has-text-color),
+	& h2:not(.has-text-color),
+	& h3:not(.has-text-color),
+	& h4:not(.has-text-color),
+	& h5:not(.has-text-color) {
 
-		&:not(.has-text-color) {
-			color: var(--color-theme-grey-dark);
-		}
+		color: var(--color-theme-grey-dark);
+
 	}
 }
 

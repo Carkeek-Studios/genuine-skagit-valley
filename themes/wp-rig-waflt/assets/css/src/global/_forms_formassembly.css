@@ -402,3 +402,11 @@
 	}
 }
 
+@media (--tablet-wide-up) {
+
+	.column-donate__form {
+		padding-left: var(--gutter-width-small);
+		padding-right: var(--gutter-width-small);
+	}
+}
+
