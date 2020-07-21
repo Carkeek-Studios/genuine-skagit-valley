@@ -35,5 +35,5 @@ if ( ! empty( $featured ) ) {
 		</div>
 	</header><!-- .page-header -->
 	<?php if ( ! empty( $intro ) ) { ?>
-	<div class="events-intro"><?php the_field( 'events_intro_text', 'options' ); ?> </div>
+	<div class="events-custom-content"><?php the_field( 'events_intro_text', 'options' ); ?> </div>
 	<?php } ?>

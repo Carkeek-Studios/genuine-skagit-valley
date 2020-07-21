@@ -1,4 +1,4 @@
-.events-intro {
+.events-custom-content {
 	margin-right: auto;
 	margin-left: auto;
 	padding-right: var(--gutter-width-mobile);
@@ -9,7 +9,7 @@
 
 @media (--tablet-small-up) {
 
-	.events-intro {
+	.events-custom-content {
 		padding-right: var(--gutter-width);
 		padding-left: var(--gutter-width);
 		margin-bottom: var(--block-padding-vert-tablet);

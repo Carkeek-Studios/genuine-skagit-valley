@@ -312,6 +312,25 @@
             "delay": 0
         },
         {
+            "key": "field_5f16355c52ac6",
+            "label": "No Events Content",
+            "name": "events_no_events_content",
+            "type": "wysiwyg",
+            "instructions": "Place content here to display when there are no events.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
             "key": "field_5f04cd763398c",
             "label": "Protected Farms",
             "name": "",
@@ -347,6 +366,25 @@
             "min": "",
             "max": "",
             "step": ""
+        },
+        {
+            "key": "field_5f163507a1c83",
+            "label": "No Events Content",
+            "name": "no_events_content",
+            "type": "wysiwyg",
+            "instructions": "Place content here that should be displayed when there are no events.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -366,5 +404,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1594749722
+    "modified": 1595291494
 }

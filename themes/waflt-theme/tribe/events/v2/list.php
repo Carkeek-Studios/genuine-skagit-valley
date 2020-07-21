@@ -38,6 +38,7 @@ if ( $events_count > 3 ) {
 }
 ?>
 <?php get_template_part( './template-parts/content/page_header', 'events' ); ?>
+<?php if ( ! empty( $events ) ) { ?>
 <div
 	<?php tribe_classes( $container_classes ); ?>
 	data-js="tribe-events-view"
@@ -53,39 +54,49 @@ if ( $events_count > 3 ) {
 >
 
 	<div class="wfl-events-list">
-			<?php $this->template( 'components/loader', array( 'text' => __( 'Loading...', 'the-events-calendar' ) ) ); ?>
+		<?php $this->template( 'components/loader', array( 'text' => __( 'Loading...', 'the-events-calendar' ) ) ); ?>
 
-			<?php $this->template( 'components/json-ld-data' ); ?>
+		<?php $this->template( 'components/json-ld-data' ); ?>
 
-			<?php $this->template( 'components/data' ); ?>
+		<?php $this->template( 'components/data' ); ?>
 
-			<?php $this->template( 'components/before' ); ?>
+		<?php $this->template( 'components/before' ); ?>
 
-			<div class="tribe-events-calendar-list">
+		<div class="tribe-events-calendar-list">
 
-				<?php foreach ( $events as $count => $event ) : ?>
-					<?php $this->setup_postdata( $event ); ?>
-					<?php
-					if ( $count === $events_break ) {
-						?>
-						<div class="wfl-events-more-wrapper">
-							<div class="wfl-events-more">
-								<div class="h5 is-style-highlight wfl-events-more__headline">More Events</div>
-								<div class="wfl-events-more-row">
-
-
-						<?php
-					}
-					$this->template( 'list/event', array( 'event' => $event ) );
-					if ( $events_count > 3 && $count === $events_count - 1  ) {
-						echo '</div></div></div>';
-					}
+			<?php foreach ( $events as $count => $event ) : ?>
+				<?php $this->setup_postdata( $event ); ?>
+				<?php
+				if ( $count === $events_break ) {
 					?>
+					<div class="wfl-events-more-wrapper">
+						<div class="wfl-events-more">
+							<div class="h5 is-style-highlight wfl-events-more__headline">More Events</div>
+							<div class="wfl-events-more-row">
 
-				<?php endforeach; ?>
 
-			</div>
+					<?php
+				}
+						$this->template( 'list/event', array( 'event' => $event ) );
+				if ( $events_count > 3 && $count === $events_count - 1 ) {
+					echo '</div></div></div>';
+				}
+				?>
+
+			<?php endforeach; ?>
 
 		</div>
+
+	</div>
+
 </div>
+<?php } else { ?>
+		<div class="page-content">
+		<div class="wp-block-custom-content">
+		<?php the_field( 'events_no_events_content', 'options' ); ?>
+
+		</div>
+		</div>
+
+			<?php } ?>
 <?php $this->template( 'components/breakpoints' ); ?>
