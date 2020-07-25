@@ -307,14 +307,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'wp-rig-events'    => array(
 				'file'             => 'events.min.css',
 				'preload_callback' => '__return_true',
-			),
-			'wp-rig-front-page' => array(
-				'file'             => 'front-page.min.css',
-				'preload_callback' => function() {
-					global $template;
-					return 'front-page.php' === basename( $template );
-				},
-			),
+			)
 		);
 
 		/**

@@ -13,6 +13,10 @@ const attributes = {
     accordionStyle: {
         type: 'boolean',
         default: false
+    },
+    rangeSliderStyle: {
+        type: 'boolean',
+        default: false
     }
 }
 
@@ -43,7 +47,7 @@ registerBlockType("carkeek-blocks/expand-collapse", {
     ],
 
     edit({ attributes, className, setAttributes }) {
-        const { headerStyle, accordionStyle } = attributes;
+        const { headerStyle, accordionStyle, rangeSliderStyle } = attributes;
 
         return (
             <div className={`${className}`}>
@@ -64,6 +68,25 @@ registerBlockType("carkeek-blocks/expand-collapse", {
                                     )
                                     : __(
                                         "Multiple sections can be open at a time",
+                                        "carkeek-blocks"
+                                    )
+                            }
+                        />
+                        <CheckboxControl
+                            className="carkeek-accordion-range-style-label"
+                            label="Display as a Range Slider"
+                            checked={ rangeSliderStyle }
+                            onChange={value =>
+                                setAttributes({ rangeSliderStyle: value })
+                            }
+                            help={
+                                accordionStyle
+                                    ? __(
+                                        "Each section will display as a point on a range scale",
+                                        "carkeek-blocks"
+                                    )
+                                    : __(
+                                        "",
                                         "carkeek-blocks"
                                     )
                             }
@@ -93,10 +116,16 @@ registerBlockType("carkeek-blocks/expand-collapse", {
     },
 
     save({ attributes } ) {
-        const{ accordionStyle } = attributes;
+        const{ accordionStyle, headerStyle, rangeSliderStyle} = attributes;
+        const rangeStyle = rangeSliderStyle ? ' is-range-style' : '';
+        const blockStyle = 'innerblock-headline-style-' + headerStyle + rangeStyle;
         return (
-            <div data-accordion={accordionStyle}>
+            <div data-accordion={accordionStyle} className={ blockStyle }>
+                {rangeSliderStyle && (
+                    <div className={'range-slider-element'}></div>
+                )}
                 <InnerBlocks.Content />
+
             </div>
         );
     }

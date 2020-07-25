@@ -42,10 +42,10 @@ registerBlockType("carkeek-blocks/expand-collapse-section", {
     edit,
 
     save({ attributes } ) {
-        const{ title, inheritedHeaderStyle } = attributes;
+        const{ title } = attributes;
         return (
             <div>
-                <div className={`wp-block-carkeek-blocks-expand-section__header ${inheritedHeaderStyle}`}>{title}</div>
+                <div className={`wp-block-carkeek-blocks-expand-section__header inner-block-headline`}>{title}</div>
                 <div className="wp-block-carkeek-blocks-expand-section__content" aria-expanded="false">
                     <InnerBlocks.Content />
                 </div>

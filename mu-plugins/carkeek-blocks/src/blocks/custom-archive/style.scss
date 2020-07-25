@@ -1,30 +1,32 @@
-.wp-block-ck-custom_posttype__list {
-    > ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        li {
-            margin-bottom: 1rem;
-        }
-    }
 
-    &.is-grid {
-        ul {
-            display: flex;
-            flex-wrap: wrap;
+.wp-block-carkeek-blocks-custom-archive__headline {
+    text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+    .wp-block-carkeek-blocks-custom-archive {
+        &.is-grid {
+            .wp-block-carkeek-blocks-custom-archive__list {
+                display: flex;
+                flex-wrap: wrap;
+                > * {
+                    flex: 1 1 50%;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
         }
     }
 }
 
-@media screen and (min-width: 768px) {
-    .wp-block-ck-custom_posttype__list {
+@media screen and (min-width: 1024px) {
+    .wp-block-carkeek-blocks-custom-archive {
         &.is-grid {
-            ul {
-                margin-left: -15px;
-                margin-right: -15px;
-                > li {
-                    width: 50%;
-                    padding: 15px;
+            .wp-block-carkeek-blocks-custom-archive__list {
+                display: flex;
+                flex-wrap: wrap;
+                > * {
+                    flex: 1 1 33%;
                 }
             }
         }

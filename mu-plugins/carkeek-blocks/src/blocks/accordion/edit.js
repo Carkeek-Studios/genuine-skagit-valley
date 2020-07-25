@@ -1,10 +1,7 @@
 import { Component } from "@wordpress/element";
 import { withSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
-import {
-    RichText,
-    InnerBlocks
-} from "@wordpress/block-editor";
+import { RichText, InnerBlocks } from "@wordpress/block-editor";
 import { TextControl } from "@wordpress/components";
 
 
@@ -17,27 +14,23 @@ class CollapseSectionEdit extends Component {
         this.props.setAttributes({ inheritedHeaderStyle : this.props.headerStyle });
     }
     render() {
-        const { headerStyle, attributes, isSelected } = this.props;
+        const { headerStyle, attributes, isSelected, setAttributes } = this.props;
         const { title } = attributes;
         const showControls = (isSelected || !title) ? true : false;
         return(
             <>
-                {showControls ? (
-                    <>
-                        <TextControl
-                            onChange={this.onChangeTitle}
-                            value={title}
-                            placeholder={__(
-                                "Title",
-                                "carkeek-blocks"
-                            )}
-                        />
+            <RichText
+                tagName={ headerStyle }
+                value={ title }
+                className={'wp-block-carkeek-blocks-expand-section__header'}
+                onChange={ ( title ) => setAttributes( { title } ) }
+                placeholder={ __('Section Heading...')}
+                formattingControls={ [ ] }
+            />
 
-                    </>
-                ) : (
-                    <h4 className={`wp-block-carkeek-blocks-expand-section__header ${headerStyle}`}>{title}</h4>
-                )}
-                <InnerBlocks />
+            <InnerBlocks
+                className={'wp-block-carkeek-blocks-expand-section__inner-blocks'}
+            />
 
             </>
         )

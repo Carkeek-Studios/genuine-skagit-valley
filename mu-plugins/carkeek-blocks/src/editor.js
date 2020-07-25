@@ -4,4 +4,6 @@ import "./blocks/custom-archive";
 import "./blocks/link-gallery";
 import "./blocks/slider";
 import "./blocks/accordion";
+import "./blocks/form-assembly";
+import "./blocks/rollover-images";
 

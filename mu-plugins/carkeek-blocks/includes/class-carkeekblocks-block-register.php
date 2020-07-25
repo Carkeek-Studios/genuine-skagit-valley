@@ -63,6 +63,7 @@ class CarkeekBlocks_Block_Register {
 			'link-gallery',
 			'slider',
 			'expand-collapse-section',
+			'rollover-image',
 		);
 
 		foreach ( $blocks as $block ) {
@@ -74,29 +75,35 @@ class CarkeekBlocks_Block_Register {
 			array(
 				'render_callback' => array( 'CarkeekBlocks_CustomPost', 'carkeek_blocks_render_custom_posttype_archive' ),
 				'attributes'      => array(
-					'numberOfPosts'           => array(
+					'numberOfPosts'      => array(
 						'type'    => 'number',
 						'default' => 3,
 					),
-					'displayFeaturedImage'    => array(
-						'type'    => 'boolean',
-						'default' => true,
+					'postTypeSelected'   => array(
+						'type' => 'string',
 					),
-					'displayPostTitle'        => array(
-						'type'    => 'boolean',
-						'default' => true,
-					),
-					'postLayout'              => array(
+					'postLayout'         => array(
 						'type'    => 'string',
 						'default' => 'grid',
 					),
-					'displayPostContent'      => array(
+					'displayPostExcerpt' => array(
 						'type'    => 'boolean',
-						'default' => false,
+						'default' => true,
 					),
-					'displayPostContentRadio' => array(
-						'type'    => 'string',
-						'default' => 'excerpt',
+					'excerptLength'      => array(
+						'type'    => 'number',
+						'default' => 30,
+					),
+				),
+			)
+		);
+		$this->carkeek_blocks_register_block(
+			'form-assembly',
+			array(
+				'render_callback' => array( $this, 'carkeek_blocks_render_formassembly_form' ),
+				'attributes'      => array(
+					'formId' => array(
+						'type' => 'string',
 					),
 				),
 			)
@@ -139,6 +146,18 @@ class CarkeekBlocks_Block_Register {
 				),
 			)
 		);
+	}
+
+	public function carkeek_blocks_render_formassembly_form( $atts ) {
+		if ( ! empty( $atts['formId'] ) ) {
+			$shortcode   = '[formassembly formid=' . $atts['formId'] . ']';
+			$form_block  = '<div class="wp-block-carkeek-blocks-form-assembly">';
+			$form_block .= do_shortcode( ( $shortcode ) );
+			$form_block .= '</div>';
+			return $form_block;
+		} else {
+			return;
+		}
 	}
 
 }

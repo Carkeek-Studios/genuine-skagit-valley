@@ -880,13 +880,13 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 /* override the wp style */
 .page-content > .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
 	width: calc(100% - (2 * var(--gutter-width-mobile)));
-	max-width: calc(var(--content-width) - 2 * var(--gutter-width));
-
 }
 
-@media (--tablet-wide-up) {
+@media (--tablet-small-up) {
 
 	.page-content > .wp-block-separator:not(.is-style-wide):not(.is-style-dots) {
+		width: calc(100% - (2 * var(--gutter-width)));
+		max-width: var(--content-width-actual);
 
 		&.alignwide {
 			max-width: calc(100% - ( 2 * var(--gutter-width)));
@@ -1025,3 +1025,96 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	}
 }
 
+.wp-block-carkeek-blocks-custom-archive.is-list.post-type-tribe_events {
+	padding-left: 0;
+	padding-right: 0;
+
+	& .archive-entry {
+		margin-bottom: 0;
+
+		&:first-of-type::before {
+			display: none;
+		}
+
+		&::after {
+			display: none;
+		}
+
+		& .entry-taxonomies {
+			margin-bottom: 0;
+		}
+	}
+
+	& .entry-title {
+		color: inherit;
+	}
+
+	& .archive-entry--content {
+		margin-top: 0;
+		padding: calc(2 * var(--gutter-width-mobile)) var(--gutter-width-mobile);
+
+		& .event-title {
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	& .tribe-events-calendar-list__event-more-link {
+		margin-top: 1.5rem;
+	}
+}
+
+.wp-block-carkeek-blocks-custom-archive.post-type-post {
+
+	& .archive-entry {
+
+		&:first-of-type::before {
+			display: none;
+		}
+
+		&::after {
+			display: none;
+		}
+	}
+}
+
+@media (--tablet-small-up) {
+
+	.wp-block-carkeek-blocks-custom-archive.is-list.post-type-tribe_events {
+
+		& .post-thumbnail {
+			height: 100%;
+		}
+
+		& .archive-entry:nth-of-type(even) {
+			flex-direction: row-reverse;
+		}
+
+		& .archive-entry {
+			height: 56vw;
+			max-height: 760px;
+
+		}
+
+		& .archive-entry--content {
+			margin-top: 0;
+			padding: var(--block-padding-vert-tablet) var(--gutter-width-small);
+		}
+	}
+}
+
+@media (--tablet-small-up) {
+
+	.wp-block-carkeek-blocks-custom-archive.is-list.post-type-tribe_events {
+
+		& .archive-entry {
+
+			& .archive-entry--thumb,
+			& .archive-entry--content {
+				flex-basis: 50%;
+			}
+
+
+		}
+	}
+
+}

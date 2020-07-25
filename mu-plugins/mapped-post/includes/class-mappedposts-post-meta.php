@@ -24,6 +24,7 @@ class MappedPosts_Post_Meta {
 	 */
 	public function __construct() {
 		add_filter( 'init', array( $this, 'register_meta' ) );
+		add_action( 'save_post', array( $this, 'set_farm_excerpt' ) );
 	}
 
 	/**
@@ -73,6 +74,25 @@ class MappedPosts_Post_Meta {
 			)
 		);
 
+	}
+
+	function set_farm_excerpt( $post_id ) {
+		if ( ! wp_is_post_revision( $post_id ) && 'protected_farms' === get_post_type( $post_id )) {
+
+			// unhook this function so it doesn't loop infinitely.
+			remove_action( 'save_post', array( $this, 'set_farm_excerpt' ) );
+
+			$acreage  = get_post_meta( $post_id, 'mappedposts_acreage', true );
+			$location = get_post_meta( $post_id, 'mappedposts_location', true );
+			$update   = array(
+				'ID'           => $post_id,
+				'post_excerpt' => $acreage . ' acres in ' . $location,
+			);
+			wp_update_post( $update );
+
+			// re-hook this function.
+			add_action( 'save_post', array( $this, 'set_farm_excerpt' ) );
+		}
 	}
 
 }

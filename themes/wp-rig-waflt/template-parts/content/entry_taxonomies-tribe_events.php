@@ -15,7 +15,7 @@ $taxonomies = wp_list_filter(
 );
 
 ?>
-<div class="entry-taxonomies">
+<div class="entry-taxonomies tribe_events_cats">
 	<?php
 	// Show terms for all taxonomies associated with the post.
 	foreach ( $taxonomies as $taxonomy ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited

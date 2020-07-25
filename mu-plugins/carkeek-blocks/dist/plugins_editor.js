@@ -145,6 +145,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/compose */ "@wordpress/compose");
 /* harmony import */ var _wordpress_compose__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_compose__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
 var _jsxFileName = "/Users/pattyohara/Sites/wa-farmland-trust/app/public/wp-content/mu-plugins/carkeek-blocks/src/plugins/settings.js";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -159,7 +161,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
@@ -168,6 +170,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -227,9 +230,11 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
           onToggleTitle = _this$props.onToggleTitle,
           onToggleImage = _this$props.onToggleImage,
           onbylineChange = _this$props.onbylineChange,
+          onColorChange = _this$props.onColorChange,
           postmeta = _this$props.postmeta,
           posttype = _this$props.posttype,
-          featuredImage = _this$props.featuredImage;
+          featuredImage = _this$props.featuredImage,
+          colors = _this$props.colors;
 
       if (['wp_block'].includes(posttype)) {
         return false;
@@ -248,7 +253,7 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61,
+            lineNumber: 65,
             columnNumber: 18
           }
         });
@@ -268,20 +273,49 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 72,
+            lineNumber: 76,
             columnNumber: 17
           }
         });
       }
 
-      return wp.element.createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__["PluginDocumentSettingPanel"], {
+      var colorField;
+
+      if (['protected_farms', 'tribe_events'].includes(posttype) && typeof postmeta !== 'undefined') {
+        var selectedColor = typeof postmeta._carkeekblocks_archive_background_color !== 'undefined' ? Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getColorObjectByAttributeValues"])(colors, postmeta._carkeekblocks_archive_background_color) : '';
+        colorField = wp.element.createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__["PluginDocumentSettingPanel"], {
+          name: "bgcolor-panel",
+          title: "Background Color",
+          className: "bgcolor-panel",
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99,
+            columnNumber: 17
+          }
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])('Set a background color that will be used in certain views of this item.'), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["ColorPalette"], {
+          title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Color Settings", "carkeek-blocks"),
+          colors: colors,
+          value: selectedColor.color,
+          onChange: onColorChange,
+          disableCustomColors: true,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 105,
+            columnNumber: 17
+          }
+        }));
+      }
+
+      return wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__["PluginDocumentSettingPanel"], {
         name: "page-header-settings-panel",
         title: "Page Header Settings",
         className: "page-header-settings-panel",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 92,
+          lineNumber: 118,
           columnNumber: 13
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__["CheckboxControl"], {
@@ -293,10 +327,10 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97,
+          lineNumber: 123,
           columnNumber: 17
         }
-      }), hideImageCheckbox, byLineField);
+      }), hideImageCheckbox, byLineField), colorField);
     }
   }]);
 
@@ -307,7 +341,8 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
   return {
     postmeta: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("meta"),
     featuredImage: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("featured_media"),
-    posttype: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("type")
+    posttype: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/editor").getEditedPostAttribute("type"),
+    colors: Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["select"])("core/block-editor").getSettings().colors
   };
 }), Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_4__["withDispatch"])(function (dispatch, ownProps) {
   var hideTitle;
@@ -334,6 +369,14 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
       dispatch("core/editor").editPost({
         meta: {
           _carkeekblocks_featuredimage_hidden: !hideImage
+        }
+      });
+    },
+    onColorChange: function onColorChange(bgcolor) {
+      var selected = Object(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["getColorObjectByColorValue"])(ownProps.colors, bgcolor);
+      dispatch("core/editor").editPost({
+        meta: {
+          _carkeekblocks_archive_background_color: selected.slug
         }
       });
     },
@@ -371,6 +414,17 @@ var PageHeaderSettings = /*#__PURE__*/function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plugins */ "./src/plugins/index.js");
 
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = wp["blockEditor"];
 
 /***/ }),
 

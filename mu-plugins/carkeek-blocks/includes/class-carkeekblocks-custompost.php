@@ -95,55 +95,129 @@ class CarkeekBlocks_CustomPost {
 		if ( empty( $attributes['postTypeSelected'] ) ) {
 			return;
 		}
-		$args  = array(
+		$layout = $attributes['postLayout'];
+		$args   = array(
 			'posts_per_page' => $attributes['numberOfPosts'],
 			'post_type'      => $attributes['postTypeSelected'],
+			'order'          => 'DESC',
 		);
+		if ( 'tribe_events' === $attributes['postTypeSelected'] ) {
+			$args['meta_query'] = array(
+				array(
+					'key'     => '_EventEndDate',
+					'value'   => gmdate( 'Y-m-d' ),
+					'compare' => '>=',
+					'type'    => 'NUMERIC,',
+				),
+			);
+			$args['orderby']    = 'meta_value';
+			$args['meta_key']   = '_EventEndDate';
+			$args['order']      = 'ASC';
+		}
+		if ( true === $attributes['filterByTaxonomy'] && ! empty( $attributes['taxonomySelected'] ) && ! empty( $attributes['taxTermsSelected'] ) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => $attributes['taxonomySelected'],
+					'field'    => 'term_id',
+					'terms'    => explode( ',', $attributes['taxTermsSelected'] ),
+				),
+			);
+		}
+
+		$args  = apply_filters( 'carkeek_block_custom_post_layout__query_args', $args, $attributes );
 		$query = new WP_Query( $args );
 		$posts = '';
 
-		$classname = 'is-' . $attributes['postLayout'] . ' post-type-' . $attributes['postTypeSelected'] . ' align' . $attributes['align'];
+		$class_pre         = 'wp-block-carkeek-blocks-custom-archive';
+		$css_classes_outer = array(
+			$class_pre,
+			'is-' . $attributes['postLayout'],
+			'post-type-' . $attributes['postTypeSelected'],
+			'align' . $attributes['align'],
+		);
 
+		$css_classes_outer = apply_filters( 'carkeek_block_custom_post_layout__css_classes_outer', $css_classes_outer, $attributes );
+		$block_start       = '<div class="' . implode( ' ', $css_classes_outer ) . '">';
+		if ( ! empty( $attributes['headline'] ) ) {
+			$tag_name     = 'h' . $attributes['headlineLevel'];
+			$block_start .= '<' . $tag_name . ' class="' . $class_pre . '__headline">' . $attributes['headline'] . '</' . $tag_name . '>';
+		}
 		if ( $query->have_posts() ) {
-			$posts .= '<div class="wp-block-ck-custom_posttype__list ' . $classname . '"><ul>';
+			$posts           .= $block_start;
+			$css_classes_list = array(
+				$class_pre . '__list',
+			);
+			if ( 'link-tile' === $layout ) {
+				$css_classes_list[] = 'wp-block-carkeek-blocks-link-tiles';
+				$css_classes_list[] = 'wp-block-columns';
+			}
+
+			$css_classes_list = apply_filters( 'carkeek_block_custom_post_layout__css_classes_list', $css_classes_list, $attributes );
+			$posts           .= '<div class="' . implode( ' ', $css_classes_list ) . '">';
+			$count            = 0;
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				$featured_image = '';
-				$post_title     = '';
-				$post_content   = '';
-				$class_pre      = 'wp-block-ck-custom_posttype__';
-				$class_excerpt  = '';
+				global $post;
 
-				if ( true == $attributes['displayFeaturedImage'] ) {
-					$featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
-					$featured_image .= get_the_post_thumbnail( null, 'medium_large' );
-					$featured_image .= '</a>';
+				$css_classes_item = array(
+					$class_pre . '__item',
+				);
+				if ( 'link-tile' === $layout ) {
+					$css_classes_item[] = 'wp-block-carkeek-blocks-link-tile';
+					$css_classes_item[] = 'wp-block-column';
+					$css_classes_item[] = 'has-' . CarkeekBlocks_Post_Meta::get_selected_or_random_color( $post->ID, $count ) . '-background-color';
 				}
 
-				if ( true == $attributes['displayPostTitle'] ) {
-					$post_title  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'text-link">';
-					$post_title .= get_the_title();
-					$post_title .= '</a>';
-				}
+				$css_classes_list = apply_filters( 'carkeek_block_custom_post_layout__css_classes_item', $css_classes_item, $attributes );
 
-				if ( true == $attributes['displayPostContent'] ) {
-					if ( 'excerpt' === $attributes['displayPostContentRadio'] ) {
-						$post_content   = get_the_excerpt();
-						$class_excerpt .= 'excerpt';
-					} else {
-						$post_content   = get_the_content();
-						$class_excerpt .= 'full-content';
+				$post_title     = get_the_title();
+				$featured_image = get_the_post_thumbnail_url( null, 'medium_large' );
+				$excerpt        = '';
+
+				if ( true == $attributes['displayPostExcerpt'] ) {
+					$excerpt = get_the_excerpt();
+					$limit   = $attributes['excerptLength'];
+					if ( str_word_count( $excerpt, 0 ) > $limit ) {
+						$words   = str_word_count( $excerpt, 2 );
+						$pos     = array_keys( $words );
+						$excerpt = substr( $excerpt, 0, $pos[ $limit ] );
 					}
-					$post_content = '<div class="' . $class_pre . $class_excerpt . '">' . $post_content . '</div>';
 				}
-
-				$posts .= '<li>' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $post_content . '</div></li>';
+				$post_html = '<div class="' . implode( ' ', $css_classes_item ) . '">';
+				if ( 'link-tile' == $attributes['postLayout'] ) {
+					$post_html .= '<a class="wp-block-carkeek-blocks-link-tile__link wp-block-carkeek-blocks-link-tile__inner" href="' . get_permalink() . '">
+									<div style="background-image:url(' . $featured_image . ')"
+										class="wp-block-carkeek-blocks-link-tile__img wp-block-carkeek-blocks-link-tile__inner"
+										>
+										<span class="link-tile__title">' . $post_title . '</span>
+									</div>
+									<span class="link-tile__hover_title">' . $excerpt . '</span>
+									</a>';
+				} else {
+					$post_html .= '<a class="' . $class_pre . '__image_link" href="' . get_permalink() . '">
+									<img src="' . $featured_image . '"/>
+								  </a>
+								  <div class="' . $class_pre . '__content-wrap">
+									  <a class="' . $class_pre . '__title_link" href="' . get_permalink() . '">' . $post_title . '</a>';
+					if ( ! empty( $excerpt ) ) {
+							$post_html .= '<div class="' . $class_pre . '__excerpt">' . $excerpt . '</div>';
+					}
+					$post_html .= '</div>';
+				}
+				$post_html .= '</div>';
+				$posts     .= apply_filters( 'carkeek_block_custom_post_layout', $post_html, $post, $attributes );
+				$count++;
 			}
-			$posts .= '</ul></div>';
+			$posts .= '</div></div>';
 			wp_reset_postdata();
 			return $posts;
 		} else {
-			return '<div>' . __( 'No Posts Found', 'carkeek-blocks' ) . '</div>';
+			if ( false === $attributes['hideIfEmpty'] ) {
+				$block_content = '<div class="' . $class_pre . '__list empty">' . $attributes['emptyMessage'] . '</div>';
+				return $block_start . $block_content . '</div>';
+			} else {
+				return;
+			}
 		}
 	}
 

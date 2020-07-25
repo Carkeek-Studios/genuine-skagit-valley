@@ -4,5 +4,7 @@ import "./blocks/link-gallery/script";
 import "./blocks/team-member/script";
 import "./blocks/slider/script";
 import "./blocks/accordion/script";
+import "./blocks/rollover-images/script";
+import "./plugins/script";
 
 

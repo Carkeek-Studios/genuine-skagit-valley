@@ -1,9 +1,11 @@
 import { Component } from "@wordpress/element";
 import { PluginDocumentSettingPanel } from "@wordpress/edit-post";
 import { __ } from "@wordpress/i18n";
-import { CheckboxControl, TextControl } from "@wordpress/components";
+import { CheckboxControl, TextControl, ColorPalette } from "@wordpress/components";
 import { select, withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
+import { getColorObjectByColorValue, getColorObjectByAttributeValues } from "@wordpress/block-editor";
+
 
 class PageHeaderSettings extends Component {
     constructor() {
@@ -48,10 +50,12 @@ class PageHeaderSettings extends Component {
 			onToggleTitle,
             onToggleImage,
             onbylineChange,
+            onColorChange,
 			postmeta,
             posttype,
-            featuredImage
-		} = this.props;
+            featuredImage,
+            colors
+        } = this.props;
 		if ( [ 'wp_block' ].includes( posttype ) ) {
 			return false;
         }
@@ -88,7 +92,29 @@ class PageHeaderSettings extends Component {
                 />
             );
         }
+        let colorField;
+        if ( [ 'protected_farms', 'tribe_events' ].includes( posttype ) && typeof postmeta !== 'undefined' ) {
+            const selectedColor = typeof postmeta._carkeekblocks_archive_background_color !== 'undefined' ? getColorObjectByAttributeValues(colors, postmeta._carkeekblocks_archive_background_color): '';
+            colorField = (
+                <PluginDocumentSettingPanel
+                    name="bgcolor-panel"
+                    title="Background Color"
+                    className="bgcolor-panel"
+                >
+                { __( 'Set a background color that will be used in certain views of this item.' ) }
+                <ColorPalette
+                    title={__("Color Settings", "carkeek-blocks")}
+                    colors= { colors }
+                    value= { selectedColor.color }
+                    onChange= { onColorChange }
+                    disableCustomColors= {true}
+                ></ColorPalette>
+                </PluginDocumentSettingPanel>
+            );
+        }
+
         return (
+            <>
             <PluginDocumentSettingPanel
                 name="page-header-settings-panel"
                 title="Page Header Settings"
@@ -110,7 +136,10 @@ class PageHeaderSettings extends Component {
                 />
                 {hideImageCheckbox}
                 {byLineField}
+
             </PluginDocumentSettingPanel>
+            {colorField}
+            </>
         );
     }
 }
@@ -122,7 +151,8 @@ export default compose(
             featuredImage: select("core/editor").getEditedPostAttribute(
                 "featured_media"
             ),
-            posttype: select("core/editor").getEditedPostAttribute("type")
+            posttype: select("core/editor").getEditedPostAttribute("type"),
+            colors: select("core/block-editor").getSettings().colors,
         };
     }),
     withDispatch( ( dispatch, ownProps ) => {
@@ -145,6 +175,14 @@ export default compose(
                 dispatch("core/editor").editPost({
                     meta: {
                         _carkeekblocks_featuredimage_hidden: ! hideImage
+                    }
+                });
+            },
+            onColorChange(bgcolor) {
+                const selected = getColorObjectByColorValue(ownProps.colors, bgcolor);
+                dispatch("core/editor").editPost({
+                    meta: {
+                        _carkeekblocks_archive_background_color: selected.slug
                     }
                 });
             },

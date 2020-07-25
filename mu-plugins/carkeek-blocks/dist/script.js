@@ -3915,6 +3915,36 @@ __webpack_require__.r(__webpack_exports__);
 
 (function ($) {
   $(document).ready(function () {
+    $('.wp-block-carkeek-blocks-expand-collapse.is-range-style').each(function () {
+      var count = $(this).find(".wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)").length;
+      var $this = $(this);
+      var $sliderEl = $('<div></div>');
+      console.log(count);
+      $(this).find(".range-slider-element").append($sliderEl);
+      $sliderEl.slider({
+        value: 1,
+        min: 0,
+        max: count - 1,
+        step: 1,
+        slide: function slide(event, ui) {
+          $this.find('.wp-block-carkeek-blocks-expand-section__content').hide();
+          $sliderEl.find('label').removeClass('selected');
+          var $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)').eq(ui.value);
+          $section.find('.wp-block-carkeek-blocks-expand-section__content').show();
+          $sliderEl.find('label.label-' + ui.value).addClass('selected');
+        }
+      });
+      var padding = 100 / (count + 2) + '%';
+      $sliderEl.css({
+        'marginLeft': padding,
+        'marginRight': padding
+      });
+      $(this).find(".wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)").each(function (index) {
+        var label = $(this).find('.wp-block-carkeek-blocks-expand-section__header').text();
+        var el = $('<label class="label-' + index + '">' + label + '</label>').css('left', index / (count - 1) * 100 + '%');
+        $sliderEl.append(el);
+      });
+    });
     $('.wp-block-carkeek-blocks-expand-section__header').click(function () {
       var openMe = true;
       var accordion = $(this).parents('.wp-block-carkeek-blocks-expand-collapse').attr('data-accordion'); //if accordion we only open one at a time
@@ -4025,6 +4055,69 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./src/blocks/link-tile/style.scss ***!
   \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/blocks/rollover-images/script.js":
+/*!**********************************************!*\
+  !*** ./src/blocks/rollover-images/script.js ***!
+  \**********************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/rollover-images/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+(function ($) {
+  $(document).ready(function () {
+    //make the elements focusable
+    $('.wp-block-carkeek-blocks-rollover-image').each(function () {
+      $(this).attr('tabindex', '0'); //save original default to outer element so we can get it back;
+
+      if ($(this).hasClass('venn-default')) {
+        var src = $(this).find('.image-01 img').attr('src');
+        $(this).attr('data-default', src);
+      }
+    });
+    $('.wp-block-carkeek-blocks-rollover-image').on("mouseenter focus touchstart", function () {
+      var content = $(this).find('.image-rollover__hover_text').html();
+      var $parent = $(this).parents('.wp-block-carkeek-blocks-rollover-images');
+      $parent.find('.rollover-images__default-content').hide();
+      $parent.find('.rollover-images__hover-content').html(content).show();
+
+      if ($parent.hasClass('venn-diagram')) {
+        var currentImage = $(this).find('.image-01 img').attr('src');
+        $parent.find('.venn-default .image-01 img').attr('src', currentImage);
+      }
+    });
+    $(".wp-block-carkeek-blocks-rollover-images").mouseout(function () {
+      $(this).find('.rollover-images__hover-content').hide();
+      $(this).find('.rollover-images__default-content').show();
+
+      if ($(this).hasClass('venn-diagram')) {
+        var defaultImg = $(this).find('.venn-default').attr('data-default');
+        $(this).find('.venn-default .image-01 img').attr('src', defaultImg);
+      }
+    });
+  });
+})(jquery__WEBPACK_IMPORTED_MODULE_0___default.a);
+
+/***/ }),
+
+/***/ "./src/blocks/rollover-images/style.scss":
+/*!***********************************************!*\
+  !*** ./src/blocks/rollover-images/style.scss ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6911,6 +7004,32 @@ popupGroups.forEach(function (popupGroup) {
 
 /***/ }),
 
+/***/ "./src/plugins/script.js":
+/*!*******************************!*\
+  !*** ./src/plugins/script.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.scss */ "./src/plugins/styles.scss");
+/* harmony import */ var _styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_styles_scss__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/***/ }),
+
+/***/ "./src/plugins/styles.scss":
+/*!*********************************!*\
+  !*** ./src/plugins/styles.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./src/script.js":
 /*!***********************!*\
   !*** ./src/script.js ***!
@@ -6926,6 +7045,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_team_member_script__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./blocks/team-member/script */ "./src/blocks/team-member/script.js");
 /* harmony import */ var _blocks_slider_script__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./blocks/slider/script */ "./src/blocks/slider/script.js");
 /* harmony import */ var _blocks_accordion_script__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./blocks/accordion/script */ "./src/blocks/accordion/script.js");
+/* harmony import */ var _blocks_rollover_images_script__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./blocks/rollover-images/script */ "./src/blocks/rollover-images/script.js");
+/* harmony import */ var _plugins_script__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./plugins/script */ "./src/plugins/script.js");
+
+
 
 
 

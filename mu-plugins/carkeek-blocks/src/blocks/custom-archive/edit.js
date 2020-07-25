@@ -12,9 +12,10 @@ import {
     Spinner,
     Placeholder,
     ToolbarGroup,
-    SelectControl
+    SelectControl,
+    TextareaControl
 } from "@wordpress/components";
-import { InspectorControls, BlockControls } from "@wordpress/block-editor";
+import { InspectorControls, BlockControls, RichText } from "@wordpress/block-editor";
 
 class CustomArchiveEdit extends Component {
     onChangeNumberOfPosts = numberOfPosts => {
@@ -25,25 +26,42 @@ class CustomArchiveEdit extends Component {
         this.props.setAttributes({ postTypeSelected });
     };
 
+    onChangeTaxonomy = taxonomySelected => {
+        this.props.setAttributes({ taxonomySelected });
+    };
+
+    onSelectTerms = terms => {
+        this.props.setAttributes({ taxTermsSelected : terms.join(",") });
+    };
+
     render() {
+
         const {
             posts,
+            taxonomies,
+            taxTerms,
             postTypes,
             className,
             attributes,
-            setAttributes
+            setAttributes,
+            isSelected
         } = this.props;
         const {
             numberOfPosts,
-            displayPostContent,
-            displayPostTitle,
-            displayPostContentRadio,
+            displayPostExcerpt,
             excerptLength,
-            displayFeaturedImage,
             postLayout,
             postsToShow,
-            postTypeSelected
+            postTypeSelected,
+            filterByTaxonomy,
+            taxonomySelected,
+            taxTermsSelected,
+            hideIfEmpty,
+            emptyMessage,
+            headline,
+            headlineLevel,
         } = attributes;
+        const headlineStyle = 'h' + headlineLevel;
         const icons = {
             pin: (
                 <svg
@@ -57,33 +75,6 @@ class CustomArchiveEdit extends Component {
                     <path d="M22 13h-8v-2h8v2zm0-6h-8v2h8V7zm-8 10h8v-2h-8v2zm-2-8v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2zm-1.5 6l-2.25-3-1.75 2.26-1.25-1.51L3.5 15h7z" />
                 </svg>
             ),
-            list: (
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="black"
-                    width="18px"
-                    height="18px"
-                >
-                    <g fill="none">
-                        <path d="M0 0h24v24H0V0z" />
-                        <path d="M0 0h24v24H0V0z" opacity=".87" />
-                    </g>
-                    <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7zm-4 6h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" />
-                </svg>
-            ),
-            grid: (
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="black"
-                    width="18px"
-                    height="18px"
-                >
-                    <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z" />
-                </svg>
-            )
         };
         const postTypeSelect = (
             <SelectControl
@@ -99,10 +90,56 @@ class CustomArchiveEdit extends Component {
                 value={postTypeSelected}
             />
         );
+
+        const taxonomySelect = (
+            <>
+                <ToggleControl
+                    label={__("Filter by Taxonomy")}
+                    checked={filterByTaxonomy}
+                    onChange={value =>
+                        setAttributes({ filterByTaxonomy: value })
+                    }
+                />
+                {filterByTaxonomy && (
+                    <>
+                        <SelectControl
+                            label={__("Select Taxonomy", "carkeek-blocks")}
+                            onChange={this.onChangeTaxonomy}
+                            options={
+                                taxonomies &&
+                                taxonomies.map(type => ({
+                                    value: type.slug,
+                                    label: type.name
+                                }))
+                            }
+                            value={taxonomySelected}
+                        />
+                        {taxonomySelected && (
+                            <SelectControl
+                                multiple
+                                label={__("Select Terms", "carkeek-blocks")}
+                                onChange={this.onSelectTerms}
+                                options={
+                                    taxTerms &&
+                                    taxTerms.map(type => ({
+                                        value: type.id,
+                                        label: type.name
+                                    }))
+                                }
+                                value={taxTermsSelected && taxTermsSelected.split(',')}
+                            />
+                        )}
+                    </>
+                )}
+            </>
+        );
         const inspectorControls = (
             <InspectorControls>
                 <PanelBody title={__("Posts Settings", "carkeek-blocks")}>
                     {postTypeSelect}
+                    {postTypeSelected && (
+                       <> {taxonomySelect} </>
+                    )}
                     <RangeControl
                         label={__("Number of Posts", "carkeek-blocks")}
                         value={numberOfPosts}
@@ -110,41 +147,43 @@ class CustomArchiveEdit extends Component {
                         min={1}
                         max={10}
                     />
-                    <ToggleControl
-                        label={__("Show Post Title")}
-                        checked={displayPostTitle}
+
+                </PanelBody>
+                <PanelBody title={__("Layout", "carkeek-blocks")}>
+                <RadioControl
+                    label={__("Layout Style")}
+                    selected={postLayout}
+                    options={[
+                        { label: __("Grid"), value: "grid" },
+                        { label: __("List"), value: "list"},
+                        { label: __("Link Tile"), value: "link-tile"}
+                    ]}
+                    onChange={value =>
+                        setAttributes({
+                            postLayout: value
+                        })
+                    }
+                />
+                <RangeControl
+                        label={__("Heading Size", "carkeek-blocks")}
+                        value={headlineLevel}
                         onChange={value =>
-                            setAttributes({ displayPostTitle: value })
+                            setAttributes({ headlineLevel: value })
                         }
+                        min={2}
+                        max={6}
                     />
+
                     <ToggleControl
-                        label={__("Post content")}
-                        checked={displayPostContent}
+                        label={__("Include Exerpt")}
+                        checked={displayPostExcerpt}
                         onChange={value =>
-                            setAttributes({ displayPostContent: value })
+                            setAttributes({ displayPostExcerpt: value })
                         }
                     />
 
-                    {displayPostContent && (
-                        <RadioControl
-                            label={__("Show:")}
-                            selected={displayPostContentRadio}
-                            options={[
-                                { label: __("Excerpt"), value: "excerpt" },
-                                {
-                                    label: __("Full post"),
-                                    value: "full_post"
-                                }
-                            ]}
-                            onChange={value =>
-                                setAttributes({
-                                    displayPostContentRadio: value
-                                })
-                            }
-                        />
-                    )}
-                    {displayPostContent &&
-                        displayPostContentRadio === "excerpt" && (
+
+                    {displayPostExcerpt && (
                             <RangeControl
                                 label={__("Max number of words in excerpt")}
                                 value={excerptLength}
@@ -152,17 +191,27 @@ class CustomArchiveEdit extends Component {
                                     setAttributes({ excerptLength: value })
                                 }
                                 min={10}
-                                max={30}
+                                max={75}
                             />
                         )}
 
                     <ToggleControl
-                        label={__("Display featured image")}
-                        checked={displayFeaturedImage}
+                        label={__("Hide Block if Empty")}
+                        checked={hideIfEmpty}
                         onChange={value =>
-                            setAttributes({ displayFeaturedImage: value })
+                            setAttributes({ hideIfEmpty: value })
                         }
                     />
+                    { !hideIfEmpty&& (
+                        <TextareaControl
+                            label={__("Text to Display if Empty")}
+                            value={emptyMessage}
+                            onChange={value =>
+                                setAttributes({ emptyMessage: value })
+                            }
+                        />
+                    )}
+
                 </PanelBody>
             </InspectorControls>
         );
@@ -170,15 +219,26 @@ class CustomArchiveEdit extends Component {
         const hasPosts = Array.isArray(posts) && posts.length;
 
         if (!hasPosts) {
+            const message = hideIfEmpty ? __("No Posts Found: Block will not display") : emptyMessage;
             const noPostMessage =
                 typeof postTypeSelected !== "undefined"
-                    ? __("No Posts Found")
+                    ? message
                     : __("Select a Post Type from the Block Settings");
+            const showHeadline = isSelected || (headline && ! hideIfEmpty) ? true : false;
             return (
                 <>
                     {inspectorControls}
+                    { showHeadline && (
+                    <RichText
+                        tagName={ headlineStyle }
+                        value={ headline }
+                        onChange={ ( headline ) => setAttributes( { headline } ) }
+                        placeholder={ __('Heading...')}
+                        formattingControls={ [ ] }
+                    />
+                   ) }
 
-                    <Placeholder icon={icons.pin} label={__("Latest Posts")}>
+                    <Placeholder icon={icons.pin} label={ headline ? headline : __("Latest Posts")}>
                         {!Array.isArray(posts) ? <Spinner /> : noPostMessage}
                     </Placeholder>
                 </>
@@ -189,34 +249,28 @@ class CustomArchiveEdit extends Component {
         const displayPosts =
             posts.length > postsToShow ? posts.slice(0, postsToShow) : posts;
 
-        const layoutControls = [
-            {
-                icon: icons.list,
-                title: __("List view"),
-                onClick: () => setAttributes({ postLayout: "list" }),
-                isActive: postLayout === "list"
-            },
-            {
-                icon: icons.grid,
-                title: __("Grid view"),
-                onClick: () => setAttributes({ postLayout: "grid" }),
-                isActive: postLayout === "grid"
-            }
-        ];
+
         return (
             <>
                 {inspectorControls}
-                <BlockControls>
-                    <ToolbarGroup controls={layoutControls} />
-                </BlockControls>
                 <div
                     className={classnames(className, {
-                        "wp-block-ck-custom_posttype__list": true,
+                        "wp-block-carkeek-blocks-custom-archive": true,
                         "is-grid": postLayout === "grid",
-                        "is-list": postLayout === "list"
+                        "is-list": postLayout === "list",
+                        "is-link-tile": postLayout === "link-tile"
                     })}
                 >
-                    <ul>
+                   { (isSelected || headline) && (
+                    <RichText
+                        tagName={ headlineStyle }
+                        value={ headline }
+                        onChange={ ( headline ) => setAttributes( { headline } ) }
+                        placeholder={ __('Heading...')}
+                        formattingControls={ [ ] }
+                    />
+                   ) }
+                    <div className="wp-block-carkeek-blocks-custom-archive__list">
                         {displayPosts.map(post => {
                             const titleTrimmed = invoke(post, [
                                 "title",
@@ -237,7 +291,7 @@ class CustomArchiveEdit extends Component {
                             const imageSourceUrl = post.featuredImageSourceUrl;
 
                             const imageClasses = classnames({
-                                "wp-block-ck-custom_posttype__featured-image": true
+                                "wp-block-carkeek-blocks-custom-archive__featured-image": true
                             });
 
                             const postExcerpt = (
@@ -247,19 +301,12 @@ class CustomArchiveEdit extends Component {
                                         .split(" ", excerptLength)
                                         .join(" ")}
                                     {/* translators: excerpt truncation character, default …  */}
-                                    <a
-                                        href={post.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        {__("Read more")}
-                                    </a>
                                 </>
                             );
 
                             return (
-                                <li key={post.id}>
-                                    {displayFeaturedImage && (
+                                <div key={post.id}>
+
                                         <div className={imageClasses}>
                                             {imageSourceUrl && (
                                                 <img
@@ -268,13 +315,8 @@ class CustomArchiveEdit extends Component {
                                                 />
                                             )}
                                         </div>
-                                    )}
-                                    {displayPostTitle && (
-                                        <a
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            href={post.link}
-                                        >
+                                        <div className="wp-block-carkeek-blocks-custom-archive__content">
+                                        <div className="wp-block-carkeek-blocks-custom-archive__title">
                                             {titleTrimmed ? (
                                                 <RawHTML>
                                                     {titleTrimmed}
@@ -282,28 +324,20 @@ class CustomArchiveEdit extends Component {
                                             ) : (
                                                 __("(no title)")
                                             )}
-                                        </a>
+                                       </div>
+
+                                    {displayPostExcerpt &&(
+                                        <div className="wp-block-carkeek-blocks-custom-archive__post-excerpt">
+                                            {postExcerpt}
+                                        </div>
                                     )}
-                                    {displayPostContent &&
-                                        displayPostContentRadio ===
-                                            "excerpt" && (
-                                            <div className="wp-block-ck-custom_posttype__post-excerpt">
-                                                {postExcerpt}
-                                            </div>
-                                        )}
-                                    {displayPostContent &&
-                                        displayPostContentRadio ===
-                                            "full_post" && (
-                                            <div className="wp-block-ck-custom_posttype__post-full-content">
-                                                <RawHTML key="html">
-                                                    {post.content.raw.trim()}
-                                                </RawHTML>
-                                            </div>
-                                        )}
-                                </li>
-                            );
+                                    </div>
+                                </div>
+                            )
                         })}
-                    </ul>
+                    </div>
+                    <p style={{textAlign: 'center', fontSize: '10px'}}>(Showing Recent {postTypeSelected}: Posts rendered here may differ than the actual query.)</p>
+
                 </div>
             </>
         );
@@ -312,13 +346,23 @@ class CustomArchiveEdit extends Component {
 
 export default withSelect((select, props) => {
     const { attributes } = props;
-    const { numberOfPosts, postTypeSelected } = attributes;
-    const { getEntityRecords, getMedia, getPostTypes } = select("core");
+    const { numberOfPosts, postTypeSelected, taxonomySelected, taxTermsSelected, filterByTaxonomy } = attributes;
+    const { getEntityRecords, getMedia, getPostTypes, getTaxonomies } = select("core");
+    const taxTerms = getEntityRecords('taxonomy', taxonomySelected, { per_page: -1 } );
     let query = { per_page: numberOfPosts };
+    if (filterByTaxonomy && taxonomySelected && taxTermsSelected) {
+        query[taxonomySelected] = taxTermsSelected;
+    }
     const latestPosts = getEntityRecords("postType", postTypeSelected, query);
+    const taxonomies = getTaxonomies();
 
     return {
         postTypes: getPostTypes(),
+        taxonomies: !Array.isArray(taxonomies)
+            ? taxonomies
+            : taxonomies.filter(tax => tax.types.includes(postTypeSelected))
+        ,
+        taxTerms: taxTerms,
         posts: !Array.isArray(latestPosts)
             ? latestPosts
             : latestPosts.map(post => {

@@ -59,6 +59,19 @@ class CarkeekBlocks_Post_Meta {
 
 		register_meta(
 			'post',
+			'_carkeekblocks_archive_background_color',
+			array(
+				'show_in_rest'  => true,
+				'single'        => true,
+				'type'          => 'string',
+				'auth_callback' => function() {
+					return current_user_can( 'edit_posts' );
+				},
+			)
+		);
+
+		register_meta(
+			'post',
 			'byline',
 			array(
 				'show_in_rest' => true,
@@ -82,6 +95,51 @@ class CarkeekBlocks_Post_Meta {
 			}
 		}
 		return $classes;
+	}
+
+	public function get_selected_or_random_color( $post_id, $nbr = null ) {
+		$selected_color = get_post_meta( $post_id, '_carkeekblocks_archive_background_color', true );
+		$colors         = array(
+			array(
+				'name'  => __( 'Blue', 'wp-rig' ),
+				'slug'  => 'theme-blue',
+				'color' => '#a2c6d2',
+			),
+			array(
+				'name'  => __( 'Green', 'wp-rig' ),
+				'slug'  => 'theme-green',
+				'color' => '#637d36',
+			),
+			array(
+				'name'  => __( 'Yellow', 'wp-rig' ),
+				'slug'  => 'theme-yellow',
+				'color' => '#CAB44B',
+			),
+			array(
+				'name'  => __( 'Orange', 'wp-rig' ),
+				'slug'  => 'theme-orange',
+				'color' => '#bc8a24',
+			),
+			array(
+				'name'  => __( 'Red', 'wp-rig' ),
+				'slug'  => 'theme-red',
+				'color' => '#a55525',
+			),
+			array(
+				'name'  => __( 'Green Light', 'wp-rig' ),
+				'slug'  => 'theme-green-light',
+				'color' => '#a7ad37',
+			),
+		);
+		if ( empty( $selected_color ) ) {
+			if ( isset( $nbr ) && $nbr < count( $colors ) ) {
+				return $colors[ $nbr ]['slug'];
+			} else {
+				return $colors[ wp_rand( 0, count( $colors ) - 1 ) ]['slug'];
+			}
+		} else {
+			return $selected_color;
+		}
 	}
 
 }
