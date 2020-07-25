@@ -8,7 +8,6 @@ import "./style.scss";
             const count = $(this).find(".wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)").length;
             const $this = $(this);
             const $sliderEl = $('<div></div>')
-            console.log(count);
             $(this).find(".range-slider-element").append($sliderEl);
             $sliderEl.slider({
                 value: 1,

@@ -20,7 +20,7 @@ import "./style.scss";
 
             if ($parent.hasClass('venn-diagram')) {
                 const currentImage = $(this).find('.image-01 img').attr('src');
-                $parent.find('.venn-default .image-01 img').attr('src', currentImage);
+                $parent.find('.venn-default .image-01 img').attr('src', currentImage).attr('srcset', '');
             }
 
 

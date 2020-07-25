@@ -3919,7 +3919,6 @@ __webpack_require__.r(__webpack_exports__);
       var count = $(this).find(".wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)").length;
       var $this = $(this);
       var $sliderEl = $('<div></div>');
-      console.log(count);
       $(this).find(".range-slider-element").append($sliderEl);
       $sliderEl.slider({
         value: 1,
@@ -4097,7 +4096,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if ($parent.hasClass('venn-diagram')) {
         var currentImage = $(this).find('.image-01 img').attr('src');
-        $parent.find('.venn-default .image-01 img').attr('src', currentImage);
+        $parent.find('.venn-default .image-01 img').attr('src', currentImage).attr('srcset', '');
       }
     });
     $(".wp-block-carkeek-blocks-rollover-images").mouseout(function () {
