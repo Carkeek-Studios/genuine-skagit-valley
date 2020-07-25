@@ -7,6 +7,7 @@
 
 namespace WP_Rig\WP_Rig\Helpers;
 
+use Tribe__Template;
 use WP_Rig\WP_Rig\Component_Interface;
 use WP_Rig\WP_Rig\Templating_Component_Interface;
 
@@ -38,6 +39,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'tribe_events_event_schedule_details_formatting', array( $this, 'tribe_events_schedule_details' ) );
 		add_filter( 'tribe_events_editor_default_template', array( $this, 'tribe_events_editor_default_template' ), 11, 1 );
 		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
+		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
+		add_filter( 'carkeek_block_custom_post_layout__css_classes', array( $this, 'carkeek_block_custom_post_layout__css_classes' ), 11, 2 );
 	}
 
 	/**
@@ -240,6 +243,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 					'placeholder' => __( 'Add Description...', 'waflt-theme' ),
 				),
 			),
+			array( 'core/separator' ),
+			array( 'carkeek-blocks/form-assembly' ),
 		);
 		return $template;
 	}
@@ -307,6 +312,37 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$output = 'WA';
 		}
 		return $output;
+	}
+
+
+	public function carkeek_block_custom_post_layout__css_classes( $css_classes, $attributes ) {
+		$post_type = $attributes['postTypeSelected'];
+		$layout    = $attributes['postLayout'];
+
+		if ( 'protected_farms' == $post_type && 'grid' == $layout ) {
+			$css_clases[] = 'wp-block-carkeek-blocks-link-tiles';
+			$css_clases[] = 'wp-block-columns';
+		}
+
+		return $css_classes;
+	}
+
+	public function carkeek_block_custom_post_layout( $post_html, $post, $attributes ) {
+		$post_type = $attributes['postTypeSelected'];
+		$layout    = $post_type . '_' . $attributes['postLayout'];
+		switch ( $layout ) {
+			case 'post_grid':
+			case 'post_list':
+				ob_start();
+					get_template_part( 'template-parts/content/entry', get_post_type() );
+				return ob_get_clean();
+			case 'tribe_events_list':
+				ob_start();
+				get_template_part( 'template-parts/content/entry', 'tribe_events' );
+				return ob_get_clean();
+			default:
+				return $post_html;
+		}
 	}
 
 }
