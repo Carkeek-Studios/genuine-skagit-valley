@@ -41,6 +41,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
 		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
 		add_filter( 'carkeek_block_custom_post_layout__css_classes', array( $this, 'carkeek_block_custom_post_layout__css_classes' ), 11, 2 );
+		add_action( 'acf/save_post', array( $this, 'acf_save_post' ) );
 	}
 
 	/**
@@ -342,6 +343,18 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				return ob_get_clean();
 			default:
 				return $post_html;
+		}
+	}
+
+	function acf_save_post( $post_id ) {
+		// set location fields
+		$address = get_field( 'lookup_location', $post_id );
+		if (!empty($address) && isset($address['lat'])){
+		$vals = array(
+			'lat' => $address['lat'],
+			'lng' => $address['lng'],
+		);
+		update_field( 'field_5f1f117865bda', $vals, $post_id );
 		}
 	}
 

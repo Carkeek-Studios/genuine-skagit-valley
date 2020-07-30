@@ -688,7 +688,10 @@
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center; }
+    justify-content: center;
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto; }
   .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image {
     position: relative;
     cursor: pointer; }

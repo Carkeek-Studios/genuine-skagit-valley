@@ -187,6 +187,7 @@ class MappedPosts_CustomPost {
 		if ( empty( $attributes['postTypeSelected'] ) ) {
 			return;
 		}
+		error_log( print_r( $attributes, true ) );
 		$args  = array(
 			'posts_per_page' => -1,
 			'post_type'      => $attributes['postTypeSelected'],
@@ -196,8 +197,12 @@ class MappedPosts_CustomPost {
 		$query = new WP_Query( $args );
 		$posts = '';
 
+		if ( empty( $attributes['latFieldSelected'] ) || empty( $attributes['lngFieldSelected'] ) ) {
+			return 'You need to select the location fields in order to display posts on a map, edit the page and select the fields in the block settings';
+		}
+
 		if ( $query->have_posts() ) {
-			$posts .= '<div class="wp-block-mapped-posts-archive"><ul>';
+			$posts .= '<div class="wp-block-mapped-posts-archive"><div id="mapped-posts-map"></div><ul id="mapped-posts-data">';
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				global $post;
@@ -207,13 +212,15 @@ class MappedPosts_CustomPost {
 				$class_pre      = 'wp-block-mapped-posts-archive__';
 				$class_excerpt  = '';
 				$loc            = get_post_meta( $post->ID, 'lookup_location', true );
-				if ( ! empty( $loc ) ) {
+				$lat            = get_post_meta( $post->ID, $attributes['latFieldSelected'], true );
+				$lng            = get_post_meta( $post->ID, $attributes['lngFieldSelected'], true );
+				if ( ! empty( $lat ) && ! empty( $lng ) ) {
 
-					// if ( true == $attributes['popupImage'] ) {
-					// $featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
-					// $featured_image .= get_the_post_thumbnail( null, 'medium_large' );
-					// $featured_image .= '</a>';
-					// }
+					if ( true == $attributes['popupImage'] ) {
+					$featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
+					$featured_image .= get_the_post_thumbnail( null, 'medium_large' );
+					$featured_image .= '</a>';
+					}
 
 					if ( true == $attributes['popupTitle'] ) {
 						$post_title = '';
@@ -234,7 +241,7 @@ class MappedPosts_CustomPost {
 						$post_content   = '<div class="' . $class_pre . $class_excerpt . '">' . $post_content . '</div>';
 					// }
 
-					$posts .= '<li data-id="' . $post->ID . '" data-lat="' . $loc['lat'] . '" data-lng="' . $loc['lng'] . '">' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $post_content . '</div></li>';
+					$posts .= '<li data-id="' . $post->ID . '" data-lat="' . $lat . '" data-lng="' . $lng . '">' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $post_content . '</div></li>';
 				}
 			}
 			$posts .= '</ul></div>';

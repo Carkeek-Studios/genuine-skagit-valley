@@ -11,6 +11,12 @@ const attributes = {
     postTypeSelected: {
         type: "string"
     },
+    latFieldSelected: {
+        type: "string"
+    },
+    lngFieldSelected: {
+        type: "string"
+    },
     popupImage: {
         type: "boolean",
         default: true

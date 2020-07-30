@@ -115,13 +115,13 @@ class MappedPosts_Block_Assets {
 
 			wp_localize_script( $this->slug . '-script', 'mapped_post', $mp_vars );
 
-			// Register frontend styles. Include block style file in editor if you want backend styles.
-			// wp_enqueue_style(
-			// $this->slug . '-style',
-			// $this->url . '/' . $style_path,
-			// array(),
-			// filemtime( $this->dir . $style_path ),
-			// );
+			//Register frontend styles. Include block style file in editor if you want backend styles.
+			wp_enqueue_style(
+			$this->slug . '-style',
+			$this->url . '/' . $style_path,
+			array(),
+			filemtime( $this->dir . $style_path ),
+			);
 	}
 	/**
 	 * Enqueue block frontend/backend JS & CSS

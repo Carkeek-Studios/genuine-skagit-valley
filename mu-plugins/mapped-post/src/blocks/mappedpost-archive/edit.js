@@ -19,6 +19,12 @@ class MappedPostsArchiveEdit extends Component {
     onChangePostType = postTypeSelected => {
         this.props.setAttributes({ postTypeSelected });
     };
+    onChangeLatField = latFieldSelected => {
+        this.props.setAttributes({ latFieldSelected });
+    };
+    onChangeLngField = lngFieldSelected => {
+        this.props.setAttributes({ lngFieldSelected });
+    };
 
     render() {
         const {
@@ -33,21 +39,56 @@ class MappedPostsArchiveEdit extends Component {
             popupImage,
             excerptLength,
             postsToShow,
-            postTypeSelected
+            postTypeSelected,
+            latFieldSelected,
+            lngFieldSelected
         } = attributes;
+        let latlngfieldOptions;
+        if (postTypes && postTypeSelected) {
+            const typeObj = postTypes.find( ({ slug }) => slug === postTypeSelected );
+            if (typeObj.metafields) {
+            latlngfieldOptions = typeObj.metafields && typeObj.metafields.map( type => ({
+                value: type.meta_key,
+                label: type.meta_key
+            }))
+        }
+        }
+
         const postTypeSelect = (
-            <SelectControl
-                label={__("Post Type", "carkeek-blocks")}
-                onChange={this.onChangePostType}
-                options={
-                    postTypes &&
-                    postTypes.map(type => ({
-                        value: type.slug,
-                        label: type.name
-                    }))
-                }
-                value={postTypeSelected}
-            />
+            <>
+                <SelectControl
+                    label={__("Post Type", "carkeek-blocks")}
+                    onChange={this.onChangePostType}
+                    options={
+                        postTypes &&
+                        postTypes.map(type => ({
+                            value: type.slug,
+                            label: type.name
+                        }))
+                    }
+                    value={postTypeSelected}
+                />
+                {postTypeSelected && (
+                    <>
+                    <SelectControl
+                        label={__("Lat Field", "carkeek-blocks")}
+                        onChange={this.onChangeLatField}
+                        options={
+                            latlngfieldOptions
+                        }
+                        value={latFieldSelected}
+                    />
+                    <SelectControl
+                        label={__("Lng Field", "carkeek-blocks")}
+                        onChange={this.onChangeLngField}
+                        options={
+                            latlngfieldOptions
+                        }
+                        value={lngFieldSelected}
+                    />
+                    </>
+                )}
+            </>
         );
         const inspectorControls = (
             <InspectorControls>

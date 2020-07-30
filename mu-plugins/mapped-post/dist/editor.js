@@ -231,6 +231,18 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onChangeLatField", function (latFieldSelected) {
+      _this.props.setAttributes({
+        latFieldSelected: latFieldSelected
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChangeLngField", function (lngFieldSelected) {
+      _this.props.setAttributes({
+        lngFieldSelected: lngFieldSelected
+      });
+    });
+
     return _this;
   }
 
@@ -249,8 +261,28 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           popupImage = attributes.popupImage,
           excerptLength = attributes.excerptLength,
           postsToShow = attributes.postsToShow,
-          postTypeSelected = attributes.postTypeSelected;
-      var postTypeSelect = wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+          postTypeSelected = attributes.postTypeSelected,
+          latFieldSelected = attributes.latFieldSelected,
+          lngFieldSelected = attributes.lngFieldSelected;
+      var latlngfieldOptions;
+
+      if (postTypes && postTypeSelected) {
+        var typeObj = postTypes.find(function (_ref) {
+          var slug = _ref.slug;
+          return slug === postTypeSelected;
+        });
+
+        if (typeObj.metafields) {
+          latlngfieldOptions = typeObj.metafields && typeObj.metafields.map(function (type) {
+            return {
+              value: type.meta_key,
+              label: type.meta_key
+            };
+          });
+        }
+      }
+
+      var postTypeSelect = wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Post Type", "carkeek-blocks"),
         onChange: this.onChangePostType,
         options: postTypes && postTypes.map(function (type) {
@@ -263,15 +295,37 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39,
-          columnNumber: 13
+          lineNumber: 59,
+          columnNumber: 17
         }
-      });
+      }), postTypeSelected && wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Lat Field", "carkeek-blocks"),
+        onChange: this.onChangeLatField,
+        options: latlngfieldOptions,
+        value: latFieldSelected,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73,
+          columnNumber: 21
+        }
+      }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Lng Field", "carkeek-blocks"),
+        onChange: this.onChangeLngField,
+        options: latlngfieldOptions,
+        value: lngFieldSelected,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 81,
+          columnNumber: 21
+        }
+      })));
       var inspectorControls = wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["InspectorControls"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53,
+          lineNumber: 94,
           columnNumber: 13
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
@@ -279,7 +333,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54,
+          lineNumber: 95,
           columnNumber: 17
         }
       }, postTypeSelect, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
@@ -294,7 +348,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56,
+          lineNumber: 97,
           columnNumber: 21
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
@@ -308,7 +362,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66,
+          lineNumber: 107,
           columnNumber: 21
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
@@ -322,7 +376,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75,
+          lineNumber: 116,
           columnNumber: 21
         }
       }), popupExcerpt && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["RangeControl"], {
@@ -338,7 +392,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85,
+          lineNumber: 126,
           columnNumber: 25
         }
       })));
@@ -351,14 +405,14 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 110,
+            lineNumber: 151,
             columnNumber: 21
           }
         }, !Array.isArray(posts) ? wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Spinner"], {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 111,
+            lineNumber: 152,
             columnNumber: 50
           }
         }) : noPostMessage));
@@ -370,14 +424,14 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125,
+          lineNumber: 166,
           columnNumber: 17
         }
       }, wp.element.createElement("ul", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 126,
+          lineNumber: 167,
           columnNumber: 21
         }
       }, displayPosts.map(function (post) {
@@ -397,7 +451,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 157,
+            lineNumber: 198,
             columnNumber: 37
           }
         }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Read more")));
@@ -406,7 +460,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 168,
+            lineNumber: 209,
             columnNumber: 33
           }
         }, popupImage && wp.element.createElement("div", {
@@ -414,7 +468,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 170,
+            lineNumber: 211,
             columnNumber: 41
           }
         }, imageSourceUrl && wp.element.createElement("img", {
@@ -423,7 +477,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 172,
+            lineNumber: 213,
             columnNumber: 49
           }
         })), popupTitle && wp.element.createElement("a", {
@@ -433,14 +487,14 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 180,
+            lineNumber: 221,
             columnNumber: 41
           }
         }, titleTrimmed ? wp.element.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["RawHTML"], {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 186,
+            lineNumber: 227,
             columnNumber: 49
           }
         }, titleTrimmed) : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("(no title)")), popupExcerpt && wp.element.createElement("div", {
@@ -448,7 +502,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 196,
+            lineNumber: 237,
             columnNumber: 45
           }
         }, postExcerpt));
@@ -524,6 +578,12 @@ var attributes = {
   postTypeSelected: {
     type: "string"
   },
+  latFieldSelected: {
+    type: "string"
+  },
+  lngFieldSelected: {
+    type: "string"
+  },
   popupImage: {
     type: "boolean",
     default: true
@@ -556,7 +616,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("map
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48,
+        lineNumber: 54,
         columnNumber: 13
       }
     });

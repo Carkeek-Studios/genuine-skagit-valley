@@ -128,4 +128,5 @@ class Portfolio_Post_Type_Post_Type {
 
 		return $messages;
 	}
+
 }
