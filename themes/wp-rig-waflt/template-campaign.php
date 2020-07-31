@@ -13,18 +13,25 @@ namespace WP_Rig\WP_Rig;
 
 get_header();
 
-wp_rig()->print_styles( 'wp-rig-content' );
+wp_rig()->print_styles( 'wp-rig-campaign' );
 
 ?>
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main page-content">
 	<?php
 	while ( have_posts() ) {
 			the_post();
 
-			get_template_part( 'template-parts/content/page-campaign' );
+			the_content();
 	}
 	?>
+	<div class="campaign-template-footer">
+		<ul class="colophon">
+			<li><strong>WA Farmland Trust</strong></li>
+			<li>Copyright &copy; <?php echo date("Y"); ?> - All Rights Reserved</li>
+		</ul>
 
+		<?php wp_rig()->display_campaign_footer_nav_menu( array( 'menu_id' => 'campaign_footer' ) ); ?>
+</div>
 	</main><!-- #primary -->
 <?php
 get_footer();

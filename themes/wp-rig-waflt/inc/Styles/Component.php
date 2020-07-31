@@ -304,10 +304,14 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'file'             => 'content.min.css',
 				'preload_callback' => '__return_true',
 			),
+			'wp-rig-campaign'    => array(
+				'file'             => 'campaign.min.css',
+				'preload_callback' => '__return_true',
+			),
 			'wp-rig-events'    => array(
 				'file'             => 'events.min.css',
 				'preload_callback' => '__return_true',
-			)
+			),
 		);
 
 		/**
