@@ -22,8 +22,6 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
-        &:hover,
         &:focus {
             outline: none;
             figure:last-of-type {
@@ -77,6 +75,9 @@
 
 
 .wp-block-carkeek-blocks-rollover-images.venn-diagram {
+    .wp-block-image {
+        margin-bottom: 0;
+    }
     .rollover-images__inner {
         position: relative;
         width: 600px;

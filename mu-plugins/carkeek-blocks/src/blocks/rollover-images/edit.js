@@ -1,9 +1,6 @@
 import { Component } from "@wordpress/element";
 import { withSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
-import {
-    TextareaControl
-} from "@wordpress/components";
 import { InnerBlocks, RichText } from "@wordpress/block-editor";
 
 
@@ -11,7 +8,6 @@ class ImageRollover extends Component {
     render() {
         const {
             attributes,
-            isSelected,
             setAttributes,
             className,
             innerBlocksHeadlineLevel

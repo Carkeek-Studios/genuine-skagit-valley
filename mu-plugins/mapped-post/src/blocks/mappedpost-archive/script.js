@@ -1,7 +1,7 @@
 //import React, { Component } from 'react';
 //import { render } from 'react-dom';
 import "leaflet/dist/leaflet.css";
-const { render, Component } = wp.element;
+const { render } = wp.element;
 import Map from './components/Map';
 import markerData from "./components/getData";
 import L from 'leaflet';

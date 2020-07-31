@@ -1,12 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Map, ZoomControl, Popup } from "react-leaflet";
+import { Map, ZoomControl } from "react-leaflet";
 import MapBoxGLLayer from "./MapBoxGLLayer";
-import Pin from './Pin.js';
 import Pins from './Pins.js';
-import L from 'leaflet';
-import icons from './icons';
-
-
 
 function PointsList(props) {
     const { data, onItemClick, selectedIndex, onHeaderClick } = props;
@@ -20,7 +15,7 @@ function PointsList(props) {
                 {data.map((item) => (
                 <li
                     key={item.id}
-                    onClick={e => {
+                    onClick={() => {
                     onItemClick(item.id);
                     }}
                     className = {selectedIndex == item.id ? 'selected' : '' }

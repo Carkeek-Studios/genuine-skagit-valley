@@ -11,11 +11,10 @@ import {
     RadioControl,
     Spinner,
     Placeholder,
-    ToolbarGroup,
     SelectControl,
     TextareaControl
 } from "@wordpress/components";
-import { InspectorControls, BlockControls, RichText } from "@wordpress/block-editor";
+import { InspectorControls, RichText } from "@wordpress/block-editor";
 
 class CustomArchiveEdit extends Component {
     onChangeNumberOfPosts = numberOfPosts => {

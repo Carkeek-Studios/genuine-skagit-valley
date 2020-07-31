@@ -645,16 +645,18 @@
     height: 30px; }
     .range-slider-element .ui-slider .ui-slider-handle {
       border: 2px solid #000;
-      background: #BC8A24 url(img/hand_grab.svg) no-repeat center center;
+      background: #BC8A24 url(img/noun_point_white.svg) no-repeat center center;
       height: 52px;
       width: 52px;
       position: absolute;
       z-index: 2;
-      cursor: default;
+      cursor: pointer;
       touch-action: none;
       transform: translateX(-50%); }
       .range-slider-element .ui-slider .ui-slider-handle:focus {
         outline: none; }
+      .range-slider-element .ui-slider .ui-slider-handle:hover {
+        background: #BC8A24 url(img/noun_grab_white.svg) no-repeat center center; }
     .range-slider-element .ui-slider label {
       position: absolute;
       top: -40px;
@@ -682,6 +684,10 @@
     .ui-slider label:nth-of-type(even):after {
       margin-top: 51px; } }
 
+@media screen and (min-width: 1360px) {
+  .range-slider-element .ui-slider label:after {
+    margin-top: 25px; } }
+
 .wp-block-carkeek-blocks-rollover-images {
   text-align: center; }
   .wp-block-carkeek-blocks-rollover-images .rollover-images__inner {
@@ -701,9 +707,9 @@
       left: 0;
       opacity: 0;
       transition: opacity 0.3s ease; }
-    .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image:hover, .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image:focus {
+    .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image:focus {
       outline: none; }
-      .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image:hover figure:last-of-type, .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image:focus figure:last-of-type {
+      .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image:focus figure:last-of-type {
         opacity: 1; }
     .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image .image-rollover__hover_text {
       display: none; }
@@ -724,6 +730,9 @@
     flex-basis: 20%; }
   .wp-block-carkeek-blocks-rollover-images.has-6-columns .wp-block-carkeek-blocks-rollover-image {
     flex-basis: 16.66666%; }
+
+.wp-block-carkeek-blocks-rollover-images.venn-diagram .wp-block-image {
+  margin-bottom: 0; }
 
 .wp-block-carkeek-blocks-rollover-images.venn-diagram .rollover-images__inner {
   position: relative;

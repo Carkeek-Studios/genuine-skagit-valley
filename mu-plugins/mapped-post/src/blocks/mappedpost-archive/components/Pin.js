@@ -31,7 +31,7 @@ const Pin = (props) => {
             position={center}
             icon={myIcon}
             ref={markerRef}
-            onClick={e => {
+            onClick={() => {
                 onItemClick(itemId);
             }}>
         <Popup><div className={'map-archive-popup'} dangerouslySetInnerHTML={{__html: content}} /></Popup>

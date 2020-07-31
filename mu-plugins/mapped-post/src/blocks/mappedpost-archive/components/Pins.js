@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import L from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import Pin from './Pin.js';

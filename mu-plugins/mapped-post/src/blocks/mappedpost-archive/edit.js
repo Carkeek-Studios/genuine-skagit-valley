@@ -7,7 +7,6 @@ import { __ } from "@wordpress/i18n";
 import {
     RangeControl,
     PanelBody,
-    Text,
     Spinner,
     Placeholder,
     SelectControl,

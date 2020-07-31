@@ -12,25 +12,24 @@ import "./style.scss";
                 $(this).attr('data-default', src);
             }
         });
-        $('.wp-block-carkeek-blocks-rollover-image').on("mouseenter focus touchstart", function(){
+
+        $('.wp-block-carkeek-blocks-rollover-image').on("mouseenter", function(){
+            $(this).focus();
+        })
+
+        //$('.wp-block-carkeek-blocks-rollover-image').on("mouseenter focus touchstart", function(){
+        $('.wp-block-carkeek-blocks-rollover-image').on("focus", function(){
+            if ($(this).hasClass('venn-default')) {
+                return;
+            }
             const content = $(this).find('.image-rollover__hover_text').html();
             const $parent = $(this).parents('.wp-block-carkeek-blocks-rollover-images')
             $parent.find('.rollover-images__default-content').hide();
             $parent.find('.rollover-images__hover-content').html(content).show();
-
             if ($parent.hasClass('venn-diagram')) {
                 const currentImage = $(this).find('.image-01 img').attr('src');
                 $parent.find('.venn-default .image-01 img').attr('src', currentImage).attr('srcset', '');
-            }
 
-
-        });
-        $( ".wp-block-carkeek-blocks-rollover-images" ).mouseout(function() {
-            $(this).find('.rollover-images__hover-content').hide();
-            $(this).find('.rollover-images__default-content').show();
-            if ($(this).hasClass('venn-diagram')) {
-                const defaultImg = $(this).find('.venn-default').attr('data-default');
-                $(this).find('.venn-default .image-01 img').attr('src', defaultImg);
             }
         });
     });

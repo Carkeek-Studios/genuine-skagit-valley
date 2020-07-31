@@ -52,7 +52,7 @@ registerBlockType("carkeek-blocks/rollover-images", {
 
     attributes,
 
-    edit({ className, attributes, setAttributes, isSelected }) {
+    edit({ className, attributes, setAttributes }) {
         const { columns, headline, headlineLevel, innerBlocksHeadlineLevel, staticContent } = attributes;
         const headlineStyle = 'h' + headlineLevel;
         const updateColumns = ( value ) => {

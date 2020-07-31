@@ -10,29 +10,28 @@ import "./style.scss";
             const $sliderEl = $('<div></div>')
             $(this).find(".range-slider-element").append($sliderEl);
             $sliderEl.slider({
-                value: 1,
+                value: 0,
                 min: 0,
-                max: count-1,
                 step: 1,
+                max: 100,
                 slide: function( event, ui ) {
+                    const val = Math.round( ui.value / (100/(count+1)) );
                     $this.find( '.wp-block-carkeek-blocks-expand-section__content' ).hide();
                     $sliderEl.find( 'label' ).removeClass('selected');
-                    const  $section = $this.find( '.wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)').eq( ui.value );
+                    let $section = $this.find( '.wp-block-carkeek-blocks-expand-collapse-section.expand-collapse-default');
+                    if (val !== 0 & val !== count+1) {
+                        $section = $this.find( '.wp-block-carkeek-blocks-expand-collapse-section').eq( val - 1 );
+                    }
                     $section.find( '.wp-block-carkeek-blocks-expand-section__content' ).show();
-                    $sliderEl.find('label.label-' + ui.value ).addClass('selected');
+                    $sliderEl.find('label.label-' + (val-1) ).addClass('selected');
                 }
-              });
-
-              const padding = 100/(count + 2) + '%';
-              $sliderEl.css({
-                'marginLeft': padding,
-                'marginRight': padding
               });
 
 
               $(this).find(".wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)").each(function( index ){
                   var label = $(this).find('.wp-block-carkeek-blocks-expand-section__header').text();
-                  var el = $('<label class="label-' + index + '">' + label+ '</label>').css( 'left' , (index/(count-1)*100) + '%');
+                  var spacing = 100/(count + 1);
+                  var el = $('<label class="label-' + index + '">' + label+ '</label>').css( 'left' , ( ((index+1) * spacing) + '%'));
                   $sliderEl.append(el);
               });
         });

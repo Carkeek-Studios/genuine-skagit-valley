@@ -770,7 +770,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 67,
+            lineNumber: 66,
             columnNumber: 17
           }
         }, wp.element.createElement("path", {
@@ -779,7 +779,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 74,
+            lineNumber: 73,
             columnNumber: 21
           }
         }), wp.element.createElement("path", {
@@ -787,7 +787,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75,
+            lineNumber: 74,
             columnNumber: 21
           }
         }))
@@ -805,7 +805,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80,
+          lineNumber: 79,
           columnNumber: 13
         }
       });
@@ -820,7 +820,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 96,
+          lineNumber: 95,
           columnNumber: 17
         }
       }), filterByTaxonomy && wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
@@ -836,7 +836,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105,
+          lineNumber: 104,
           columnNumber: 25
         }
       }), taxonomySelected && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
@@ -853,7 +853,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118,
+          lineNumber: 117,
           columnNumber: 29
         }
       })));
@@ -861,7 +861,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 137,
+          lineNumber: 136,
           columnNumber: 13
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
@@ -869,7 +869,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 138,
+          lineNumber: 137,
           columnNumber: 17
         }
       }, postTypeSelect, postTypeSelected && wp.element.createElement(wp.element.Fragment, null, " ", taxonomySelect, " "), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["RangeControl"], {
@@ -881,7 +881,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143,
+          lineNumber: 142,
           columnNumber: 21
         }
       })), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
@@ -889,7 +889,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152,
+          lineNumber: 151,
           columnNumber: 17
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["RadioControl"], {
@@ -913,7 +913,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 153,
+          lineNumber: 152,
           columnNumber: 17
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["RangeControl"], {
@@ -929,7 +929,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 167,
+          lineNumber: 166,
           columnNumber: 17
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
@@ -943,7 +943,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 177,
+          lineNumber: 176,
           columnNumber: 21
         }
       }), displayPostExcerpt && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["RangeControl"], {
@@ -959,7 +959,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 187,
+          lineNumber: 186,
           columnNumber: 29
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
@@ -973,7 +973,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 198,
+          lineNumber: 197,
           columnNumber: 21
         }
       }), !hideIfEmpty && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["TextareaControl"], {
@@ -987,7 +987,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 206,
+          lineNumber: 205,
           columnNumber: 25
         }
       })));
@@ -1010,7 +1010,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 232,
+            lineNumber: 231,
             columnNumber: 21
           }
         }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Placeholder"], {
@@ -1019,14 +1019,14 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 241,
+            lineNumber: 240,
             columnNumber: 21
           }
         }, !Array.isArray(posts) ? wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Spinner"], {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 242,
+            lineNumber: 241,
             columnNumber: 50
           }
         }) : noPostMessage));
@@ -1044,7 +1044,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 256,
+          lineNumber: 255,
           columnNumber: 17
         }
       }, (isSelected || headline) && wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__["RichText"], {
@@ -1060,7 +1060,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 265,
+          lineNumber: 264,
           columnNumber: 21
         }
       }), wp.element.createElement("div", {
@@ -1068,7 +1068,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 273,
+          lineNumber: 272,
           columnNumber: 21
         }
       }, displayPosts.map(function (post) {
@@ -1087,7 +1087,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 308,
+            lineNumber: 307,
             columnNumber: 33
           }
         }, wp.element.createElement("div", {
@@ -1095,7 +1095,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 310,
+            lineNumber: 309,
             columnNumber: 41
           }
         }, imageSourceUrl && wp.element.createElement("img", {
@@ -1104,7 +1104,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 312,
+            lineNumber: 311,
             columnNumber: 49
           }
         })), wp.element.createElement("div", {
@@ -1112,7 +1112,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 318,
+            lineNumber: 317,
             columnNumber: 41
           }
         }, wp.element.createElement("div", {
@@ -1120,14 +1120,14 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 319,
+            lineNumber: 318,
             columnNumber: 41
           }
         }, titleTrimmed ? wp.element.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["RawHTML"], {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 321,
+            lineNumber: 320,
             columnNumber: 49
           }
         }, titleTrimmed) : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("(no title)")), displayPostExcerpt && wp.element.createElement("div", {
@@ -1135,7 +1135,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 330,
+            lineNumber: 329,
             columnNumber: 41
           }
         }, postExcerpt)));
@@ -1147,7 +1147,7 @@ var CustomArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 339,
+          lineNumber: 338,
           columnNumber: 21
         }
       }, "(Showing Recent ", postTypeSelected, ": Posts rendered here may differ than the actual query.)")));
@@ -2356,10 +2356,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_data__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_data__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
 var _jsxFileName = "/Users/pattyohara/Sites/wa-farmland-trust/app/public/wp-content/mu-plugins/carkeek-blocks/src/blocks/rollover-images/edit.js";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -2389,7 +2387,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-
 var ImageRollover = /*#__PURE__*/function (_Component) {
   _inherits(ImageRollover, _Component);
 
@@ -2406,7 +2403,6 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
     value: function render() {
       var _this$props = this.props,
           attributes = _this$props.attributes,
-          isSelected = _this$props.isSelected,
           setAttributes = _this$props.setAttributes,
           className = _this$props.className,
           innerBlocksHeadlineLevel = _this$props.innerBlocksHeadlineLevel;
@@ -2418,7 +2414,7 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 21,
           columnNumber: 13
         }
       }, wp.element.createElement("div", {
@@ -2426,10 +2422,10 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 22,
           columnNumber: 17
         }
-      }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["InnerBlocks"], {
+      }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
         templateLock: true,
         template: [["core/image", {
           className: 'image-01'
@@ -2440,7 +2436,7 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 23,
           columnNumber: 21
         }
       })), wp.element.createElement("div", {
@@ -2448,10 +2444,10 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36,
+          lineNumber: 32,
           columnNumber: 17
         }
-      }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
+      }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
         tagName: headerTag,
         value: rolloverHeadline,
         onChange: function onChange(rolloverHeadline) {
@@ -2464,10 +2460,10 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 33,
           columnNumber: 21
         }
-      }), wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__["RichText"], {
+      }), wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
         tagName: 'p',
         value: rolloverText,
         onChange: function onChange(rolloverText) {
@@ -2479,7 +2475,7 @@ var ImageRollover = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 40,
           columnNumber: 21
         }
       })));
@@ -2720,8 +2716,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
   edit: function edit(_ref) {
     var className = _ref.className,
         attributes = _ref.attributes,
-        setAttributes = _ref.setAttributes,
-        isSelected = _ref.isSelected;
+        setAttributes = _ref.setAttributes;
     var columns = attributes.columns,
         headline = attributes.headline,
         headlineLevel = attributes.headlineLevel,

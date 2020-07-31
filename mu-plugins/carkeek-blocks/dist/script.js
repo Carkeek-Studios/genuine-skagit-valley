@@ -3921,26 +3921,28 @@ __webpack_require__.r(__webpack_exports__);
       var $sliderEl = $('<div></div>');
       $(this).find(".range-slider-element").append($sliderEl);
       $sliderEl.slider({
-        value: 1,
+        value: 0,
         min: 0,
-        max: count - 1,
         step: 1,
+        max: 100,
         slide: function slide(event, ui) {
+          var val = Math.round(ui.value / (100 / (count + 1)));
           $this.find('.wp-block-carkeek-blocks-expand-section__content').hide();
           $sliderEl.find('label').removeClass('selected');
-          var $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)').eq(ui.value);
+          var $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section.expand-collapse-default');
+
+          if (val !== 0 & val !== count + 1) {
+            $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section').eq(val - 1);
+          }
+
           $section.find('.wp-block-carkeek-blocks-expand-section__content').show();
-          $sliderEl.find('label.label-' + ui.value).addClass('selected');
+          $sliderEl.find('label.label-' + (val - 1)).addClass('selected');
         }
-      });
-      var padding = 100 / (count + 2) + '%';
-      $sliderEl.css({
-        'marginLeft': padding,
-        'marginRight': padding
       });
       $(this).find(".wp-block-carkeek-blocks-expand-collapse-section:not(.expand-collapse-default)").each(function (index) {
         var label = $(this).find('.wp-block-carkeek-blocks-expand-section__header').text();
-        var el = $('<label class="label-' + index + '">' + label + '</label>').css('left', index / (count - 1) * 100 + '%');
+        var spacing = 100 / (count + 1);
+        var el = $('<label class="label-' + index + '">' + label + '</label>').css('left', (index + 1) * spacing + '%');
         $sliderEl.append(el);
       });
     });
@@ -4088,7 +4090,15 @@ __webpack_require__.r(__webpack_exports__);
         $(this).attr('data-default', src);
       }
     });
-    $('.wp-block-carkeek-blocks-rollover-image').on("mouseenter focus touchstart", function () {
+    $('.wp-block-carkeek-blocks-rollover-image').on("mouseenter", function () {
+      $(this).focus();
+    }); //$('.wp-block-carkeek-blocks-rollover-image').on("mouseenter focus touchstart", function(){
+
+    $('.wp-block-carkeek-blocks-rollover-image').on("focus", function () {
+      if ($(this).hasClass('venn-default')) {
+        return;
+      }
+
       var content = $(this).find('.image-rollover__hover_text').html();
       var $parent = $(this).parents('.wp-block-carkeek-blocks-rollover-images');
       $parent.find('.rollover-images__default-content').hide();
@@ -4097,15 +4107,6 @@ __webpack_require__.r(__webpack_exports__);
       if ($parent.hasClass('venn-diagram')) {
         var currentImage = $(this).find('.image-01 img').attr('src');
         $parent.find('.venn-default .image-01 img').attr('src', currentImage).attr('srcset', '');
-      }
-    });
-    $(".wp-block-carkeek-blocks-rollover-images").mouseout(function () {
-      $(this).find('.rollover-images__hover-content').hide();
-      $(this).find('.rollover-images__default-content').show();
-
-      if ($(this).hasClass('venn-diagram')) {
-        var defaultImg = $(this).find('.venn-default').attr('data-default');
-        $(this).find('.venn-default .image-01 img').attr('src', defaultImg);
       }
     });
   });

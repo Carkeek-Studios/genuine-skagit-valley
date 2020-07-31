@@ -84,17 +84,20 @@ $icon-collapse: '\e809' !default;
 
         .ui-slider-handle {
             border: 2px solid #000;
-            background: #BC8A24 url('hand_grab.svg') no-repeat center center;
+            background: #BC8A24 url('noun_point_white.svg') no-repeat center center;
             height: 52px;
             width: 52px;
             position: absolute;
             z-index: 2;
-            cursor: default;
+            cursor: pointer;
             -ms-touch-action: none;
             touch-action: none;
             transform: translateX(-50%);
             &:focus {
                 outline: none;
+            }
+            &:hover {
+                background: #BC8A24 url('noun_grab_white.svg') no-repeat center center;
             }
         }
         label {
@@ -133,6 +136,20 @@ $icon-collapse: '\e809' !default;
                 top: -60px;
                 &:after {
                     margin-top: 51px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1360px) {
+    .range-slider-element {
+
+        .ui-slider {
+            label {
+
+                &:after {
+                    margin-top: 25px;
                 }
             }
         }
