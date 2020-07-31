@@ -3,14 +3,22 @@ import "./style.scss";
 
 ( function( $ ) {
     $(document).ready(function(){
+
+        //set up the venn diagram zones
+        $('.wp-block-carkeek-blocks-rollover-images.venn-diagram').each(function(){
+            var innerblocks = $(this).find('.rollover-images__inner');
+            var zones = ['venn-top', 'venn-bottom-left', 'venn-bottom-right'];
+            var zonesEl = zones.map(function(val){
+                var el = '<div class="venn-zone zone-' + val + '" data-target="' + val + '" tabindex="0"></div>';
+                return el;
+            });
+            innerblocks.prepend(zonesEl);
+        })
+
         //make the elements focusable
         $('.wp-block-carkeek-blocks-rollover-image').each(function(){
             $(this).attr('tabindex', '0');
-            //save original default to outer element so we can get it back;
-            if ($(this).hasClass('venn-default')) {
-                const src = $(this).find('.image-01 img').attr('src');
-                $(this).attr('data-default', src);
-            }
+
         });
 
         $('.wp-block-carkeek-blocks-rollover-image').on("mouseenter", function(){
@@ -26,11 +34,20 @@ import "./style.scss";
             const $parent = $(this).parents('.wp-block-carkeek-blocks-rollover-images')
             $parent.find('.rollover-images__default-content').hide();
             $parent.find('.rollover-images__hover-content').html(content).show();
-            if ($parent.hasClass('venn-diagram')) {
-                const currentImage = $(this).find('.image-01 img').attr('src');
-                $parent.find('.venn-default .image-01 img').attr('src', currentImage).attr('srcset', '');
+        });
 
-            }
+        $(document).on("mouseenter", '.wp-block-carkeek-blocks-rollover-images.venn-diagram .venn-zone', function(){
+            $(this).focus();
+        })
+
+        $(document).on("focus", '.venn-zone', function(){
+            var target=$(this).data('target');
+            const content = $('.' + target).find('.image-rollover__hover_text').html();
+            const $parent = $('.' + target).parents('.wp-block-carkeek-blocks-rollover-images');
+            $parent.find('.wp-block-carkeek-blocks-rollover-image').removeClass('current');
+            $('.' + target).addClass('current');
+            $parent.find('.rollover-images__default-content').hide();
+            $parent.find('.rollover-images__hover-content').html(content).show();
         });
     });
 }( jQuery ) );
