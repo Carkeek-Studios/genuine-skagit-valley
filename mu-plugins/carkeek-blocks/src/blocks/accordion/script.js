@@ -20,7 +20,7 @@ import "./style.scss";
                     $sliderEl.find( 'label' ).removeClass('selected');
                     let $section = $this.find( '.wp-block-carkeek-blocks-expand-collapse-section.expand-collapse-default');
                     if (val !== 0 & val !== count+1) {
-                        $section = $this.find( '.wp-block-carkeek-blocks-expand-collapse-section').eq( val - 1 );
+                        $section = $this.find( '.wp-block-carkeek-blocks-expand-collapse-section').eq( val );
                     }
                     $section.find( '.wp-block-carkeek-blocks-expand-section__content' ).show();
                     $sliderEl.find('label.label-' + (val-1) ).addClass('selected');

@@ -3932,7 +3932,7 @@ __webpack_require__.r(__webpack_exports__);
           var $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section.expand-collapse-default');
 
           if (val !== 0 & val !== count + 1) {
-            $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section').eq(val - 1);
+            $section = $this.find('.wp-block-carkeek-blocks-expand-collapse-section').eq(val);
           }
 
           $section.find('.wp-block-carkeek-blocks-expand-section__content').show();
