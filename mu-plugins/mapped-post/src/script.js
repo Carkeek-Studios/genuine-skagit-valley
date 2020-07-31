@@ -1,4 +1,4 @@
-import "./blocks/mappedpost-archive/script_old";
+import "./blocks/mappedpost-archive/script";
 
 
 
