@@ -25,10 +25,10 @@
 
     .data-list {
         position: absolute;
-        width: var(--am-list-width);
+        width: 100%;
         z-index: 500;
         background-color: #fff;
-        padding: 1rem;
+        padding: 1rem 1.5rem;
         transition: height 0.5s ease, top 0.3s ease, left 0.3s ease, width 0.3s ease;
         font-weight: var(--font-weight-medium);
 
@@ -101,8 +101,21 @@
     }
 }
 
+@media screen and (max-width: 599px) {
+    .archive-map-wrapper {
+        &.list-visible {
+            .leaflet-control-container {
+                display: none;
+            }
+        }
+    }
+}
+
 @media screen and (min-width: 600px) {
     .archive-map-wrapper {
+        .data-list {
+            width: var(--am-list-width);
+        }
         &.list-visible {
 
             .data-map {
@@ -139,13 +152,16 @@
             width: 100%;
             height: auto;
         }
-        a {
-            color: var(--color-theme-green);
+        .wp-block-mapped-posts-archive__text-link {
+
             font-size: 18px;
             padding-top:0.25rem;
             padding-bottom: 0.25rem;
             font-weight: var(--font-weight-bold);
             display: block;
+        }
+        a.wp-block-mapped-posts-archive__text-link {
+            color: var(--color-theme-green);
             &:hover {
                 color: var(--color-theme-green-light-links);
             }

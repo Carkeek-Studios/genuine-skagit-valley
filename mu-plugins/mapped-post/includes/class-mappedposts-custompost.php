@@ -187,7 +187,7 @@ class MappedPosts_CustomPost {
 		if ( empty( $attributes['postTypeSelected'] ) ) {
 			return;
 		}
-		error_log( print_r( $attributes, true ) );
+
 		$args  = array(
 			'posts_per_page' => -1,
 			'post_type'      => $attributes['postTypeSelected'],
@@ -214,23 +214,24 @@ class MappedPosts_CustomPost {
 				$loc            = get_post_meta( $post->ID, 'lookup_location', true );
 				$lat            = get_post_meta( $post->ID, $attributes['latFieldSelected'], true );
 				$lng            = get_post_meta( $post->ID, $attributes['lngFieldSelected'], true );
+				$title_tag      = get_post_meta( $post->ID, 'mappedposts_maponly', true ) == true ? 'span' : 'a';
+
 				if ( ! empty( $lat ) && ! empty( $lng ) ) {
 
 					if ( true == $attributes['popupImage'] ) {
-					$featured_image  = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
-					$featured_image .= get_the_post_thumbnail( null, 'medium_large' );
-					$featured_image .= '</a>';
+
+						$featured_image = '<' . $title_tag . ' href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'image-link">';
+						$featured_image .= get_the_post_thumbnail( null, 'medium_large' );
+						$featured_image .= '</' . $title_tag . '>';
+
 					}
 
 					if ( true == $attributes['popupTitle'] ) {
 						$post_title = '';
-						if ( true !== get_post_meta( $post->ID, 'mappedposts_maponly', true ) ) {
-							$post_title = '<a href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'text-link">';
-						}
+
+						$post_title = '<' . $title_tag . ' href="' . esc_url( get_the_permalink() ) . '" class="' . $class_pre . 'text-link">';
 						$post_title .= get_the_title();
-						if ( true !== get_post_meta( $post->ID, 'mappedposts_maponly', true ) ) {
-							$post_title .= '</a>';
-						}
+						$post_title .= '</' . $title_tag . '>';
 					}
 
 					// if ( true == $attributes['popupExcerpt'] ) {

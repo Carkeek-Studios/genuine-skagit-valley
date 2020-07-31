@@ -20960,6 +20960,10 @@ function MapCluster(props) {
 
   function handleItemClick(index) {
     setSelected(index);
+
+    if (window.innerWidth < 601) {
+      setHideList(true);
+    }
   }
 
   function handleHeaderClick() {
@@ -20979,7 +20983,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67,
+      lineNumber: 70,
       columnNumber: 9
     }
   }, wp.element.createElement(PointsList, {
@@ -20991,7 +20995,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68,
+      lineNumber: 71,
       columnNumber: 9
     }
   }), wp.element.createElement("div", {
@@ -20999,7 +21003,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75,
+      lineNumber: 78,
       columnNumber: 13
     }
   }, wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["Map"], {
@@ -21012,7 +21016,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76,
+      lineNumber: 79,
       columnNumber: 9
     }
   }, wp.element.createElement(_MapBoxGLLayer__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -21022,7 +21026,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77,
+      lineNumber: 80,
       columnNumber: 9
     }
   }), wp.element.createElement(_Pins_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -21032,7 +21036,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82,
+      lineNumber: 85,
       columnNumber: 13
     }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["ZoomControl"], {
@@ -21040,7 +21044,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83,
+      lineNumber: 86,
       columnNumber: 13
     }
   }))));

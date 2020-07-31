@@ -45,6 +45,9 @@ function MapCluster(props) {
 
     function handleItemClick(index) {
         setSelected(index);
+        if (window.innerWidth < 601) {
+            setHideList(true);
+        }
     }
 
     function handleHeaderClick() {
