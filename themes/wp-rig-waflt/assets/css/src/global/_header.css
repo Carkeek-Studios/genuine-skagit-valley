@@ -29,7 +29,7 @@
 	/* transform: translate3d(0, -100%, 0); */
 	transition-delay: 0s;
 
-	width: 100vw;
+	width: 100%;
 	border-top: 2px solid var(--color-border);
 	border-bottom: 2px solid var(--color-border);
 
@@ -170,6 +170,10 @@
 		padding: 1.5rem 2rem;
 	}
 
+	.header-search {
+		z-index: -1;
+	}
+
 }
 
 @media (--desktop-up) {
@@ -178,6 +182,18 @@
 
 		& img {
 			max-width: 280px;
+		}
+	}
+
+	.header-search {
+		top: 112px;
+		width: 100vw;
+		margin-left: calc(-1 * ( (100vw - var(--header-width) ) / 2 ));
+
+		& .search-form {
+			max-width: var(--content-width-actual);
+			margin-right: auto;
+			margin-left: auto;
 		}
 	}
 }

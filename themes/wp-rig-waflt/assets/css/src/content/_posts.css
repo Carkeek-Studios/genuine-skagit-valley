@@ -114,6 +114,8 @@
 
 .archive .site-main,
 .blog .site-main,
+.error404 .site-main,
+.search .site-main,
 .archive-wrapper,
 .infinite-wrap {
 	margin-bottom: var(--block-padding-vert);
@@ -123,6 +125,8 @@
 @media (--tablet-up) {
 
 	.blog .site-main,
+	.search .site-main,
+	.error404 .site-main,
 	.archive-wrapper,
 	.infinite-wrap {
 		margin-bottom: var(--block-padding-vert-tablet);

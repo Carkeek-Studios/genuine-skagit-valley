@@ -75,7 +75,7 @@ class MappedPosts_CustomPost {
 			'protected_farms',
 			array(
 				'labels'       => array(
-					'name'          => __( 'Farms', 'textdomain' ),
+					'name'          => __( 'Protected Farms', 'textdomain' ),
 					'singular_name' => __( 'Farm', 'textdomain' ),
 					'menu_name'     => __( 'Protected Farms', 'textdomain' ),
 				),
