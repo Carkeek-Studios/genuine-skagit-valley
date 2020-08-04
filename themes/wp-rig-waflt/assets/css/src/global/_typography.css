@@ -47,6 +47,10 @@ h5,
 		letter-spacing: 2.5px;
 		font-family: var(--highlight-font-family);
 	}
+
+	&:focus {
+		outline: none;
+	}
 }
 
 h5,
