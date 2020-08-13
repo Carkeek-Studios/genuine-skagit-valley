@@ -2,6 +2,7 @@
 # Elements
 --------------------------------------------------------------*/
 /* stylelint-disable */
+
 html {
 	box-sizing: border-box;
 	overflow-x: hidden;
@@ -14,6 +15,7 @@ html {
  * components that leverage other behavior; see
  * http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
  */
+
 *,
 *::before,
 *::after {
@@ -21,12 +23,13 @@ html {
 }
 
 /* stylelint-disable */
+
+/* Fallback for when there is no custom background color defined. */
+
 body {
 	background: #fff;
 	overflow-x: hidden;
 	max-width: 100vw;
-
-	/* Fallback for when there is no custom background color defined. */
 }
 /* stylelint-enable */
 

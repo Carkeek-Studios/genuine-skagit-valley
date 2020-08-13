@@ -142,7 +142,7 @@ class CarkeekBlocks_Block_Assets {
 			$this->slug . '-editor-style',
 			$this->url . $editor_style_path,
 			array( 'wp-edit-blocks' ),
-			filemtime( $this->dir . $editor_js_path ),
+			filemtime( $this->dir . $editor_style_path ),
 		);
 
 	}

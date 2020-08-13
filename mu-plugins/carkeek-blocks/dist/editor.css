@@ -1,13 +1,17 @@
 .wp-block-carkeek-blocks-team-members {
   margin-left: 0;
   margin-right: 0; }
-  .wp-block-carkeek-blocks-team-members .wp-block-carkeek-blocks-team-member img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover; }
-  .wp-block-carkeek-blocks-team-members .wp-block-carkeek-blocks-team-member .wp-block-carkeek-blocks-team-member__details {
-    margin-top: 1rem;
-    margin-bottom: 1rem; }
+  .wp-block-carkeek-blocks-team-members .wp-block-carkeek-blocks-team-member {
+    padding: 12px; }
+    .wp-block-carkeek-blocks-team-members .wp-block-carkeek-blocks-team-member img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover; }
+    .wp-block-carkeek-blocks-team-members .wp-block-carkeek-blocks-team-member .wp-block-carkeek-blocks-team-member__details {
+      margin-top: 1rem;
+      margin-bottom: 1rem; }
+  .wp-block-carkeek-blocks-team-members .is-selected .wp-block-carkeek-blocks-team-member {
+    border: 1px solid var(--wp-admin-theme-color); }
 
 @media screen and (min-width: 768px) {
   .wp-block-carkeek-blocks-team-members.is-grid-style.has-1-columns .block-editor-block-list__block {
@@ -22,8 +26,6 @@
     width: calc(100% /5); }
   .wp-block-carkeek-blocks-team-members.is-grid-style.has-6-columns .block-editor-block-list__block {
     width: calc(100% /6); }
-  .wp-block-carkeek-blocks-team-members.is-grid-style .wp-block-carkeek-blocks-team-member {
-    padding: 12px; }
   .wp-block-carkeek-blocks-team-members.is-grid-style .block-editor-block-list__layout {
     display: flex;
     flex-wrap: wrap; } }

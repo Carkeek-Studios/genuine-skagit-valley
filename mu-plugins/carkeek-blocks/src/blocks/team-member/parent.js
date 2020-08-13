@@ -1,7 +1,7 @@
 import { Path, SVG } from '@wordpress/components';
 import { registerBlockType, createBlock } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks, InspectorControls } from "@wordpress/editor";
+import { InnerBlocks, InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, RangeControl, RadioControl } from "@wordpress/components";
 
 const attributes = {
@@ -122,6 +122,7 @@ registerBlockType("carkeek-blocks/team-members", {
                     </PanelBody>
                 </InspectorControls>
                 <InnerBlocks
+                    orientation = {layout == 'grid' ? 'horizontal' : 'vertical'}
                     allowedBlocks={["carkeek-blocks/team-member"]}
                 />
             </div>
