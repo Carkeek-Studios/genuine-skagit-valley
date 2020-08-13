@@ -32,6 +32,7 @@
 
 
 	& .gpopover {
+		z-index: 400;
 		color: var(--global-font-color);
 
 		& a {
@@ -172,7 +173,7 @@ form.the-crop-footer {
 .switcher .selected {
 	background-color: #fff;
 	position: relative;
-	z-index: 9999;
+	z-index: 399;
 }
 
 .switcher .selected a {
