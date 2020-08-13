@@ -27,13 +27,17 @@ namespace WP_Rig\WP_Rig;
 			<?php } ?>
 			<div class="colophon-wrapper">
 				<div class="colophon">
+
 					<ul class="colophon-info no-list">
+					<?php echo do_shortcode('[gtranslate]'); ?>
 						<li class="copyright">Washington Farmland Trust is a 501(c)(3) nonprofit, accredited land trust. &copy; <?php echo esc_attr( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.
 						<a class="info-popover" href="#" data-popover="site-credit-pop">Site Credits</a>.
 							<div class="gpopover no-list" id="site-credit-pop">
 								<ul class="no-list">
-									<li class="contact-info">Design: <a href="http://beansnrice.com" target="_blank">Beans n' Rice</a></li>
-									<li class="contact-info">Development: <a href="https://carkeekstudios.com"  target="_blank">Carkeek Studios</a></li>
+									<li class="contact-info">Brand Identity: <a href="https://deicreative.com/"  target="_blank">DEI Creative</a></li>
+									<li class="contact-info">Photography: <a href="https://www.karenkwang.com"  target="_blank">Karen Wang</a></li>
+									<li class="contact-info">Website Design: <a href="http://beansnrice.com" target="_blank">Beans n' Rice</a></li>
+									<li class="contact-info">Wesbite Development: <a href="https://carkeekstudios.com"  target="_blank">Carkeek Studios</a></li>
 								</ul>
 							</div>
 						</li>

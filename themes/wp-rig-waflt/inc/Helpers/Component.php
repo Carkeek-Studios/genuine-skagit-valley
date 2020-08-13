@@ -42,6 +42,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
 		add_filter( 'carkeek_block_custom_post_layout__css_classes', array( $this, 'carkeek_block_custom_post_layout__css_classes' ), 11, 2 );
 		add_action( 'acf/save_post', array( $this, 'acf_save_post' ) );
+		add_filter( 'rp4wp_thumbnail_size', array( $this, 'rp4wp_thumbnail_size' ) );
+		add_filter( 'rp4wp_post_title', array( $this, 'rp4wp_post_title' ), 10, 2 );
 	}
 
 	/**
@@ -349,13 +351,34 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	function acf_save_post( $post_id ) {
 		// set location fields
 		$address = get_field( 'lookup_location', $post_id );
-		if (!empty($address) && isset($address['lat'])){
-		$vals = array(
-			'lat' => $address['lat'],
-			'lng' => $address['lng'],
-		);
-		update_field( 'field_5f1f117865bda', $vals, $post_id );
+		if ( ! empty( $address ) && isset( $address['lat'] ) ) {
+			$vals = array(
+				'lat' => $address['lat'],
+				'lng' => $address['lng'],
+			);
+			update_field( 'field_5f1f117865bda', $vals, $post_id );
 		}
+	}
+
+	/**
+	 * Return Thumbnail size for  related posts
+	 */
+
+	function rp4wp_thumbnail_size() {
+		return 'large';
+	}
+
+	/**
+	 * A little hack to pass a thumbnail to the related post as there is no available filter for that
+	 */
+
+	function rp4wp_post_title( $title, $rp4wp_post ) {
+		$append = '';
+		if ( ! has_post_thumbnail( $rp4wp_post->ID ) ) {
+			$thumb = $this->get_random_thumbnail();
+			$append = '<span class="random_image"><img src="' . $thumb . '"/></span>';
+		}
+		return $append . $title;
 	}
 
 }
