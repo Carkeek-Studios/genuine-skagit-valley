@@ -432,7 +432,45 @@
   justify-content: center; }
 
 .wp-block-carkeek-blocks-rollover-images.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout, .wp-block-carkeek-blocks-rollover-images.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout, .wp-block-carkeek-blocks-rollover-images.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout, .wp-block-carkeek-blocks-rollover-images.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout, .wp-block-carkeek-blocks-rollover-images.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout, .wp-block-carkeek-blocks-rollover-images.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
+  .wp-block-carkeek-blocks-rollover-images.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image, .wp-block-carkeek-blocks-rollover-images.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image, .wp-block-carkeek-blocks-rollover-images.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image, .wp-block-carkeek-blocks-rollover-images.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image, .wp-block-carkeek-blocks-rollover-images.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image, .wp-block-carkeek-blocks-rollover-images.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image {
+    display: flex;
+    flex-direction: column; }
+
+.wp-block-carkeek-blocks-rollover-images.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-carkeek-blocks-rollover-image {
+  flex-direction: row; }
+
+.wp-block-carkeek-blocks-rollover-images.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .block-editor-block-list__block {
+  display: none; }
+  .wp-block-carkeek-blocks-rollover-images.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout .block-editor-block-list__block:first-of-type {
+    display: block; }
+
+.wp-block-carkeek-blocks-rollover-images.rollovertext-below {
+  display: flex;
+  flex-direction: column; }
+  .wp-block-carkeek-blocks-rollover-images.rollovertext-below .block-editor-inner-blocks {
+    order: 2; }
+  .wp-block-carkeek-blocks-rollover-images.rollovertext-below p.rich-text {
+    order: 3; }
+
+.wp-block-carkeek-blocks-rollover-images.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > * {
+  width: 100%; }
+
+.wp-block-carkeek-blocks-rollover-images.has-2-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > * {
+  width: 50%; }
+
+.wp-block-carkeek-blocks-rollover-images.has-3-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > * {
+  width: 33%; }
+
+.wp-block-carkeek-blocks-rollover-images.has-4-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > * {
+  width: 25%; }
+
+.wp-block-carkeek-blocks-rollover-images.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > * {
+  width: 20%; }
+
+.wp-block-carkeek-blocks-rollover-images.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout > * {
+  width: 16%; }
 
 .wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image--images .block-editor-block-list__layout > .block-editor-block-list__block:last-of-type,
 .wp-block.is-selected .wp-block-carkeek-blocks-rollover-images .wp-block-carkeek-blocks-rollover-image--images .block-editor-block-list__layout > .block-editor-block-list__block:last-of-type {
@@ -450,6 +488,15 @@
 .wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-5-columns > .block-editor-inner-blocks > .block-editor-block-list__layout,
 .wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-6-columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
   flex-wrap: wrap; }
+
+.wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images.has-1-columns .block-editor-block-list__block, .wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images.has-2-columns .block-editor-block-list__block, .wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images.has-3-columns .block-editor-block-list__block, .wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images.has-4-columns .block-editor-block-list__block, .wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images.has-5-columns .block-editor-block-list__block, .wp-block.has-child-selected .wp-block-carkeek-blocks-rollover-images.has-6-columns .block-editor-block-list__block,
+.wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-1-columns .block-editor-block-list__block,
+.wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-2-columns .block-editor-block-list__block,
+.wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-3-columns .block-editor-block-list__block,
+.wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-4-columns .block-editor-block-list__block,
+.wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-5-columns .block-editor-block-list__block,
+.wp-block.is-selected .wp-block-carkeek-blocks-rollover-images.has-6-columns .block-editor-block-list__block {
+  display: block; }
 
 
 /*# sourceMappingURL=editor.css.map*/

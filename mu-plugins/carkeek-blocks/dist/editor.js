@@ -2698,6 +2698,10 @@ var attributes = {
   innerBlocksHeadlineLevel: {
     type: "number",
     default: '3'
+  },
+  rollovertextLocation: {
+    type: "string",
+    default: "below"
   }
 };
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("carkeek-blocks/rollover-images", {
@@ -2721,7 +2725,8 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
         headline = attributes.headline,
         headlineLevel = attributes.headlineLevel,
         innerBlocksHeadlineLevel = attributes.innerBlocksHeadlineLevel,
-        staticContent = attributes.staticContent;
+        staticContent = attributes.staticContent,
+        rollovertextLocation = attributes.rollovertextLocation;
     var headlineStyle = 'h' + headlineLevel;
 
     var updateColumns = function updateColumns(value) {
@@ -2734,17 +2739,38 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65,
+        lineNumber: 69,
         columnNumber: 13
       }
     }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["PanelBody"], {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66,
+        lineNumber: 70,
         columnNumber: 21
       }
-    }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["RangeControl"], {
+    }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["RadioControl"], {
+      label: "Rollover Text Location",
+      selected: rollovertextLocation,
+      options: [{
+        label: "Above the Images",
+        value: 'above'
+      }, {
+        label: "Below the Images",
+        value: 'below'
+      }],
+      onChange: function onChange(value) {
+        return setAttributes({
+          rollovertextLocation: value
+        });
+      },
+      __self: this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 71,
+        columnNumber: 25
+      }
+    }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["RangeControl"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__["__"])("Columns", "carkeek-blocks"),
       value: columns,
       onChange: updateColumns,
@@ -2753,7 +2779,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 67,
+        lineNumber: 80,
         columnNumber: 25
       }
     }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["RangeControl"], {
@@ -2769,7 +2795,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74,
+        lineNumber: 87,
         columnNumber: 25
       }
     }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__["RangeControl"], {
@@ -2785,15 +2811,15 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 83,
+        lineNumber: 96,
         columnNumber: 25
       }
     }))), wp.element.createElement("div", {
-      className: "".concat(className, " has-").concat(columns, "-columns"),
+      className: "".concat(className, " has-").concat(columns, "-columns rollovertext-").concat(rollovertextLocation),
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 94,
+        lineNumber: 107,
         columnNumber: 17
       }
     }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
@@ -2809,7 +2835,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 95,
+        lineNumber: 108,
         columnNumber: 21
       }
     }), wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"], {
@@ -2824,7 +2850,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 102,
+        lineNumber: 115,
         columnNumber: 21
       }
     }), wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"], {
@@ -2834,7 +2860,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 109,
+        lineNumber: 122,
         columnNumber: 17
       }
     })));
@@ -2845,14 +2871,15 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
         headlineLevel = attributes.headlineLevel,
         headline = attributes.headline,
         innerBlocksHeadlineLevel = attributes.innerBlocksHeadlineLevel,
-        staticContent = attributes.staticContent;
+        staticContent = attributes.staticContent,
+        rollovertextLocation = attributes.rollovertextLocation;
     var headlineStyle = 'h' + headlineLevel;
     return wp.element.createElement("div", {
-      className: "has-".concat(columns, "-columns innerblock-headline-style-h").concat(innerBlocksHeadlineLevel),
+      className: "has-".concat(columns, "-columns innerblock-headline-style-h").concat(innerBlocksHeadlineLevel, " rollovertext-").concat(rollovertextLocation),
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 125,
+        lineNumber: 138,
         columnNumber: 13
       }
     }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
@@ -2862,7 +2889,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 126,
+        lineNumber: 139,
         columnNumber: 17
       }
     }), wp.element.createElement("div", {
@@ -2870,14 +2897,14 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 127,
+        lineNumber: 140,
         columnNumber: 17
       }
     }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InnerBlocks"].Content, {
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 128,
+        lineNumber: 141,
         columnNumber: 21
       }
     })), wp.element.createElement("div", {
@@ -2885,7 +2912,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 130,
+        lineNumber: 143,
         columnNumber: 17
       }
     }, wp.element.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["RichText"].Content, {
@@ -2895,7 +2922,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 131,
+        lineNumber: 144,
         columnNumber: 21
       }
     }), wp.element.createElement("div", {
@@ -2903,7 +2930,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__["registerBlockType"])("car
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 132,
+        lineNumber: 145,
         columnNumber: 21
       }
     })));

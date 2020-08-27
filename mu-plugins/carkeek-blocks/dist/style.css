@@ -730,6 +730,13 @@
     flex-basis: 20%; }
   .wp-block-carkeek-blocks-rollover-images.has-6-columns .wp-block-carkeek-blocks-rollover-image {
     flex-basis: 16.66666%; }
+  .wp-block-carkeek-blocks-rollover-images.rollovertext-above {
+    display: flex;
+    flex-direction: column; }
+    .wp-block-carkeek-blocks-rollover-images.rollovertext-above .rollover-images__footer {
+      order: 2; }
+    .wp-block-carkeek-blocks-rollover-images.rollovertext-above .rollover-images__inner {
+      order: 3; }
 
 .wp-block-carkeek-blocks-rollover-images.venn-diagram {
   cursor: pointer; }

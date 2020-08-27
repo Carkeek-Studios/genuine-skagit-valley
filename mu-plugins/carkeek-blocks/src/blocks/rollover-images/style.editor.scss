@@ -39,6 +39,78 @@
     &.has-6-columns {
         > .block-editor-inner-blocks > .block-editor-block-list__layout {
             display: flex;
+            flex-wrap: wrap;
+            .wp-block-carkeek-blocks-rollover-image {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+    &.has-1-columns > .block-editor-inner-blocks > .block-editor-block-list__layout {
+        .wp-block-carkeek-blocks-rollover-image {
+            flex-direction: row;
+
+        }
+        .block-editor-block-list__block{
+            display: none;
+            &:first-of-type {
+                display: block;
+            }
+        }
+    }
+}
+
+.wp-block-carkeek-blocks-rollover-images {
+    &.rollovertext-below {
+        display: flex;
+        flex-direction: column;
+        .block-editor-inner-blocks {
+            order: 2;
+        }
+        p.rich-text {
+            order: 3;
+        }
+    }
+    &.has-1-columns {
+        > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            > * {
+                width: 100%;
+            }
+        }
+    }
+    &.has-2-columns {
+        > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            > * {
+                width: 50%;
+            }
+        }
+    }
+    &.has-3-columns {
+        > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            > * {
+                width: 33%;
+            }
+        }
+    }
+    &.has-4-columns {
+        > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            > * {
+                width: 25%;
+            }
+        }
+    }
+    &.has-5-columns {
+        > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            > * {
+                width: 20%;
+            }
+        }
+    }
+    &.has-6-columns {
+        > .block-editor-inner-blocks > .block-editor-block-list__layout {
+            > * {
+                width: 16%;
+            }
         }
     }
 }
@@ -71,6 +143,9 @@
         &.has-6-columns {
             > .block-editor-inner-blocks > .block-editor-block-list__layout {
                 flex-wrap: wrap;
+            }
+            .block-editor-block-list__block{
+                    display: block;
             }
         }
     }

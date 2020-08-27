@@ -3,7 +3,7 @@ import icons from './icons';
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks, InspectorControls, RichText } from "@wordpress/block-editor";
-import { PanelBody, RangeControl } from "@wordpress/components";
+import { PanelBody, RangeControl, RadioControl } from "@wordpress/components";
 
 const attributes = {
     columns: {
@@ -23,6 +23,10 @@ const attributes = {
     innerBlocksHeadlineLevel: {
         type: "number",
         default: '3'
+    },
+    rollovertextLocation: {
+        type: "string",
+        default: "below"
     }
 };
 
@@ -53,7 +57,7 @@ registerBlockType("carkeek-blocks/rollover-images", {
     attributes,
 
     edit({ className, attributes, setAttributes }) {
-        const { columns, headline, headlineLevel, innerBlocksHeadlineLevel, staticContent } = attributes;
+        const { columns, headline, headlineLevel, innerBlocksHeadlineLevel, staticContent, rollovertextLocation } = attributes;
         const headlineStyle = 'h' + headlineLevel;
         const updateColumns = ( value ) => {
             setAttributes( {
@@ -64,6 +68,15 @@ registerBlockType("carkeek-blocks/rollover-images", {
             <>
             <InspectorControls>
                     <PanelBody>
+                        <RadioControl
+                            label="Rollover Text Location"
+                            selected = {rollovertextLocation}
+                            options = {[
+                                { label: "Above the Images", value: 'above' },
+                                { label: "Below the Images", value: 'below' },
+                            ]}
+                            onChange={ value => setAttributes( { rollovertextLocation:value } ) }
+                        />
                         <RangeControl
                             label={__("Columns", "carkeek-blocks")}
                             value={columns}
@@ -91,7 +104,7 @@ registerBlockType("carkeek-blocks/rollover-images", {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className={`${className} has-${columns}-columns`}>
+                <div className={`${className} has-${columns}-columns rollovertext-${rollovertextLocation}`}>
                     <RichText
                         tagName={ headlineStyle }
                         value={ headline }
@@ -119,10 +132,10 @@ registerBlockType("carkeek-blocks/rollover-images", {
     },
 
     save( { attributes } ) {
-        const { columns, headlineLevel, headline, innerBlocksHeadlineLevel, staticContent } = attributes;
+        const { columns, headlineLevel, headline, innerBlocksHeadlineLevel, staticContent, rollovertextLocation } = attributes;
         const headlineStyle = 'h' + headlineLevel ;
         return (
-            <div className={`has-${columns}-columns innerblock-headline-style-h${innerBlocksHeadlineLevel}`}>
+            <div className={`has-${columns}-columns innerblock-headline-style-h${innerBlocksHeadlineLevel} rollovertext-${rollovertextLocation}`}>
                 <RichText.Content tagName={ headlineStyle } className={'rollover-images__headline'} value={ headline } />
                 <div className={'rollover-images__inner'}>
                     <InnerBlocks.Content />

@@ -71,6 +71,16 @@
             flex-basis: 16.66666%;
         }
     }
+    &.rollovertext-above {
+        display: flex;
+        flex-direction: column;
+        .rollover-images__footer {
+            order: 2;
+        }
+        .rollover-images__inner {
+            order: 3;
+        }
+    }
 }
 
 
