@@ -734,7 +734,8 @@
     display: flex;
     flex-direction: column; }
     .wp-block-carkeek-blocks-rollover-images.rollovertext-above .rollover-images__footer {
-      order: 2; }
+      order: 2;
+      margin-bottom: 2rem; }
     .wp-block-carkeek-blocks-rollover-images.rollovertext-above .rollover-images__inner {
       order: 3; }
 
