@@ -106,14 +106,14 @@ html.overflow-hidden {
 	}
 
 	.nav--toggle-small.nav--toggled-on:not(.subnav--toggled-on) .menu {
-		height: calc(100vh - 150px);
-		overflow: scroll;
+		height: 100vh;
+		overflow: hidden;
 		padding-bottom: 50px;
 	}
 
 	.nav--toggle-small.subnav--toggled-on .sub-menu {
-		height: calc(100vh - 150px);
-		overflow: scroll;
+		height: calc(100vh);
+		overflow: hidden auto;
 		padding-bottom: 50px;
 	}
 
