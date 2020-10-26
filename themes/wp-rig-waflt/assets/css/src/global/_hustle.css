@@ -13,13 +13,13 @@
 
 }
 
-.hustle-ui.module_id_1 .hustle-layout .hustle-title {
+.hustle-ui.hustle-slidein .hustle-layout .hustle-title {
 	font-family: var(--global-font-family) !important;
 	color: #fff;
 	font-weight: var(--font-weight-bold) !important;
 }
 
-.hustle-ui.module_id_1 .hustle-layout .hustle-subtitle {
+.hustle-ui.hustle-slidein .hustle-layout .hustle-subtitle {
 	color: #fff;
 }
 
