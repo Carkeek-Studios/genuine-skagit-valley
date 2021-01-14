@@ -532,6 +532,13 @@
 				align-self: center;
 			}
 		}
+
+		&.is-image-fill {
+
+			& figure.wp-block-media-text__media {
+				min-height: 300px;
+			}
+		}
 	}
 }
 
@@ -542,6 +549,17 @@
 		& .wp-block-media-text__content {
 			padding-top: var(--gutter-width-small);
 			padding-bottom: var(--gutter-width-small);
+		}
+	}
+
+}
+
+@media (--desktop-up) {
+
+	.wp-block-media-text.is-image-fill {
+
+		& figure.wp-block-media-text__media {
+			min-height: 425px;
 		}
 	}
 
