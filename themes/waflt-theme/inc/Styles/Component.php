@@ -76,6 +76,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'wp_head', array( $this, 'action_preload_styles' ) );
 		add_action( 'after_setup_theme', array( $this, 'action_add_editor_styles' ) );
 		add_filter( 'wp_resource_hints', array( $this, 'filter_resource_hints' ), 10, 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_style' ) );
 	}
 
 	/**
@@ -178,6 +179,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			echo '<link rel="preload" id="' . esc_attr( $handle ) . '-preload" href="' . esc_url( $preload_uri ) . '" as="style">';
 			echo "\n";
 		}
+	}
+
+	/** styles for admin area (not just blocks) */
+	public function admin_style() {
+		$css_uri = get_theme_file_uri( '/assets/css/' );
+		wp_enqueue_style( 'wft-admin-styles', $css_uri . '/admin.min.css' );
 	}
 
 	/**
@@ -290,25 +297,25 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		$css_files = array(
-			'waflt-theme-global'     => array(
+			'waflt-theme-global'   => array(
 				'file'   => 'global.min.css',
 				'global' => true,
 			),
-			'waflt-theme-comments'   => array(
+			'waflt-theme-comments' => array(
 				'file'             => 'comments.min.css',
 				'preload_callback' => function() {
 					return ! post_password_required() && is_singular() && ( comments_open() || get_comments_number() );
 				},
 			),
-			'waflt-theme-content'    => array(
+			'waflt-theme-content'  => array(
 				'file'             => 'content.min.css',
 				'preload_callback' => '__return_true',
 			),
-			'waflt-theme-campaign'    => array(
+			'waflt-theme-campaign' => array(
 				'file'             => 'campaign.min.css',
 				'preload_callback' => '__return_true',
 			),
-			'waflt-theme-events'    => array(
+			'waflt-theme-events'   => array(
 				'file'             => 'events.min.css',
 				'preload_callback' => '__return_true',
 			),
