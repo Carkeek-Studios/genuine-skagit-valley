@@ -1,0 +1,40 @@
+{
+    "key": "group_60198de43b959",
+    "title": "Blog: Video Header",
+    "fields": [
+        {
+            "key": "field_60198e12c1c7e",
+            "label": "Video Header",
+            "name": "blog_video_link",
+            "type": "oembed",
+            "instructions": "If a video is provided, it will replace the featured image on the page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "width": "",
+            "height": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1612290916
+}

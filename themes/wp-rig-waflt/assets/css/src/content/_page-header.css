@@ -14,8 +14,22 @@
 		text-align: left;
 
 	}
-}
 
+	&.has-post-video {
+		width: 100%;
+		height: 56vw;
+		position: relative;
+		margin-bottom: 4rem;
+
+		& iframe {
+			height: 100% !important;
+			width: 100% !important;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+}
 
 .entry-title {
 	color: var(--color-theme-green);

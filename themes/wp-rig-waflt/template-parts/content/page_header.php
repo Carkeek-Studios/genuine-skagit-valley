@@ -79,12 +79,19 @@ if ( is_404() ) {
 	$hide_title   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$hide_image   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$slider       = get_field( 'slide' );
+	$iframe       = get_field( 'blog_video_link' );
 	$header_class = '';
+	// slider used on farms page
 	if ( ! empty( $slider ) && count( $slider ) > 0 && ! empty( $slider[0]['image'] ) ) {
 		$has_slider    = true;
 		$header_class .= 'has-post-thumbnail has-post-slider';
 	}
-	if ( true !== $hide_image && has_post_thumbnail() ) {
+
+	if ( ! empty( $iframe ) ) {
+		$has_video     = true;
+		$header_class .= 'has-post-video';
+
+	} elseif ( true !== $hide_image && has_post_thumbnail() ) {
 		$header_class .= 'has-post-thumbnail';
 	}
 	?>
@@ -93,6 +100,26 @@ if ( is_404() ) {
 	<?php
 	if ( true === $has_slider ) {
 		get_template_part( 'template-parts/content/entry_slider', get_post_type() );
+	} elseif ( true == $has_video ) {
+		// Use preg_match to find iframe src.
+		preg_match( '/src="(.+?)"/', $iframe, $matches );
+		$src = $matches[1];
+
+		// Add extra parameters to src and replcae HTML.
+		// rel = 0 makes it so related videos come from same source
+		$params  = array(
+			'rel' => 0
+		);
+		$new_src = add_query_arg( $params, $src );
+		$iframe  = str_replace( $src, $new_src, $iframe );
+
+		// Add extra attributes to iframe HTML.
+		$attributes = 'frameborder="0"';
+		$iframe     = str_replace( '></iframe>', ' ' . $attributes . '></iframe>', $iframe );
+
+		// Display customized HTML.
+		echo $iframe;
+
 	} elseif ( true !== $hide_image && has_post_thumbnail() ) {
 		get_template_part( 'template-parts/content/entry_thumbnail', get_post_type() );
 	}
