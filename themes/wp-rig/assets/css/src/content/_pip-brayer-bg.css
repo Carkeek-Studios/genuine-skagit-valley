@@ -1,0 +1,43 @@
+.has-brayer-background {
+	background-image: url(../images/src/Medium-brayer-1_pink.jpg);
+	background-repeat: no-repeat;
+	min-height: 400px;
+	background-size: cover;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+.brayer-background-blue {
+	background-image: url(../images/Small-brayer-1_blue02.jpg);
+}
+
+.brayer-background-yellow {
+	background-image: url(../images/src/Medium-brayer-1_yellow.jpg);
+}
+
+.brayer-background-right {
+	background-position: 95% top;
+}
+
+.brayer-background-left {
+	background-position: 5% top;
+}
+
+.brayer-background-center {
+	background-position: center center;
+}
+
+@media (--tablet-up) {
+
+	.brayer-background-right {
+		background-position: right top;
+	}
+
+	.brayer-background-left {
+		background-position: left top;
+	}
+
+}

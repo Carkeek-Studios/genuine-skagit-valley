@@ -1,9 +1,10 @@
 import "./style.editor.scss";
 import icons from './icons';
-import { registerBlockType } from "@wordpress/blocks";
+import { registerBlockType, createBlock } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import { InnerBlocks, InspectorControls } from "@wordpress/block-editor";
 import { PanelBody, RadioControl, CheckboxControl } from "@wordpress/components";
+import { dispatch } from "@wordpress/data";
 
 const attributes = {
     headerStyle: {
@@ -14,14 +15,10 @@ const attributes = {
         type: 'boolean',
         default: false
     },
-    rangeSliderStyle: {
-        type: 'boolean',
-        default: false
-    }
 }
 
-registerBlockType("carkeek-blocks/expand-collapse", {
-    title: __("Expand/Colllapse", "carkeek-blocks"),
+registerBlockType("carkeek-blocks/accordion", {
+    title: __("Accordion", "carkeek-blocks"),
 
     description: __(
         "Make an accordion of inner blocks",
@@ -46,9 +43,8 @@ registerBlockType("carkeek-blocks/expand-collapse", {
         __("collapse", "carkeek-blocks")
     ],
 
-    edit({ attributes, className, setAttributes }) {
-        const { headerStyle, accordionStyle, rangeSliderStyle } = attributes;
-
+    edit({ attributes, className, setAttributes, clientId }) {
+        const { headerStyle, accordionStyle } = attributes;
         return (
             <div className={`${className}`}>
                 <InspectorControls>
@@ -63,34 +59,16 @@ registerBlockType("carkeek-blocks/expand-collapse", {
                             help={
                                 accordionStyle
                                     ? __(
-                                        "Only one section will be expanded at a time",
+                                        "One section will be expanded at a time",
                                         "carkeek-blocks"
                                     )
                                     : __(
-                                        "Multiple sections can be open at a time",
+                                        "If selected only one section will be expanded at a time",
                                         "carkeek-blocks"
                                     )
                             }
                         />
-                        <CheckboxControl
-                            className="carkeek-accordion-range-style-label"
-                            label="Display as a Range Slider"
-                            checked={ rangeSliderStyle }
-                            onChange={value =>
-                                setAttributes({ rangeSliderStyle: value })
-                            }
-                            help={
-                                accordionStyle
-                                    ? __(
-                                        "Each section will display as a point on a range scale",
-                                        "carkeek-blocks"
-                                    )
-                                    : __(
-                                        "",
-                                        "carkeek-blocks"
-                                    )
-                            }
-                        />
+
                         <RadioControl
                             label="Section Header Style"
                             selected = {headerStyle}
@@ -108,7 +86,16 @@ registerBlockType("carkeek-blocks/expand-collapse", {
                     </PanelBody>
                 </InspectorControls>
                 <InnerBlocks
-                    allowedBlocks={["carkeek-blocks/expand-collapse-section"]}
+                    className="wp-blocks-carkeek-accordion__panel"
+                    allowedBlocks={["carkeek-blocks/accordion-panel"]}
+                    template={[['carkeek-blocks/accordion-panel']]}
+                    renderAppender={ () => (
+                        <button className="custom-appender"onClick={() => {
+							dispatch('core/block-editor').insertBlocks(createBlock('carkeek-blocks/accordion-panel'), 9999, clientId);
+						}}>
+							{__('Add Accordion Section')}
+                        </button>
+                    )}
 
                 />
             </div>
@@ -116,16 +103,11 @@ registerBlockType("carkeek-blocks/expand-collapse", {
     },
 
     save({ attributes } ) {
-        const{ accordionStyle, headerStyle, rangeSliderStyle} = attributes;
-        const rangeStyle = rangeSliderStyle ? ' is-range-style' : '';
-        const blockStyle = 'innerblock-headline-style-' + headerStyle + rangeStyle;
+        const{ accordionStyle, headerStyle} = attributes;
+        const blockStyle = 'innerblock-headline-style-' + headerStyle;
         return (
             <div data-accordion={accordionStyle} className={ blockStyle }>
-                {rangeSliderStyle && (
-                    <div className={'range-slider-element'}></div>
-                )}
                 <InnerBlocks.Content />
-
             </div>
         );
     }

@@ -133,7 +133,8 @@ module.exports = (env, argv) => {
             "@wordpress/compose": ["wp", "compose"],
             "@wordpress/plugins": ["wp", "plugins"],
             "@wordpress/edit-post": ["wp", "editPost"],
-            "@wordpress/icons": ["wp", "icons"]
+            "@wordpress/icons": ["wp", "icons"],
+            "@wordpress/keycodes": ["wp", "keycodes"]
         }
     };
     return config;

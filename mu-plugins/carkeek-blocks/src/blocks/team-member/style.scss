@@ -1,29 +1,21 @@
+@import "_boostrapvars";
+@import "_modal";
+
 .wp-block-carkeek-blocks-team-members {
 
     &.is-grid-style {
         .wp-block-carkeek-blocks-team-member {
             margin-bottom: 2rem;
-            .wp-block-carkeek-blocks-team-member__additional {
+            .ck-team-member__additional {
                 display: none;
-            }
-            .popup-content {
-                .wp-block-carkeek-blocks-team-member__additional {
-                    display: block;
-                }
             }
         }
     }
     &.is-list-style {
         .wp-block-carkeek-blocks-team-member {
-            .wp-block-carkeek-blocks-team-member__image,
-            .wp-block-carkeek-blocks-team-member__additional {
+            .ck-team-member__image,
+            .ck-team-member__additional {
                 display: none;
-            }
-            .popup-content {
-                .wp-block-carkeek-blocks-team-member__image,
-                .wp-block-carkeek-blocks-team-member__additional {
-                    display: block;
-                }
             }
         }
     }
@@ -31,14 +23,15 @@
 
 .wp-block-carkeek-blocks-team-member {
     cursor: pointer;
-    &__name {
-        font-size: 18px;
+    .ck-team-member__name {
+        font-size: 19px;
         margin-bottom: 0;
+        font-weight: 900;
     }
-    &__title {
+    .ck-team-member__title {
         margin-bottom: 5px;
     }
-    &__image {
+    .ck-team-member__image {
         position: relative;
         &:before {
             content: "";
@@ -70,13 +63,12 @@
         text-align: right;
         display: block;
     }
-    .popup-content {
-        padding: 1rem;
-        width: 90% !important;
-
-        .content {
-            max-height: 80vh;
-            overflow-y: auto;
+    .ck-team-member__additional {
+        .ck-team-member__image {
+            margin-bottom: 2rem;
+        }
+        .ck-team-member__details {
+            margin-top: 1rem;
         }
     }
 }
@@ -94,7 +86,7 @@
                 }
             }
             .wp-block-carkeek-blocks-team-member {
-                padding: 12px;
+                padding: 22px;
             }
         }
         &.is-list-style {

@@ -114,8 +114,12 @@ class TeamMemberEdit extends Component {
 
     render() {
         //console.log(this.props);
-        const { className, attributes, noticeUI, isSelected, layout } = this.props;
-        const { title, name, url, alt, id, details, email, emailLabel } = attributes;
+        const { className, attributes, noticeUI, isSelected, layout, clientId, setAttributes } = this.props;
+        const { title, name, url, alt, id, details, email, emailLabel, blockId } = attributes;
+
+        if ( ! blockId ) {
+            setAttributes( { blockId: clientId } );
+        }
         return (
             <>
                 <InspectorControls>

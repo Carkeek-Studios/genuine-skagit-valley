@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { get, invoke } from "lodash";
+import icons from './icons';
 
 import { Component, RawHTML } from "@wordpress/element";
 import { withSelect } from "@wordpress/data";
@@ -14,7 +15,7 @@ import {
     SelectControl,
     TextareaControl
 } from "@wordpress/components";
-import { InspectorControls, RichText } from "@wordpress/block-editor";
+import { InspectorControls, RichText, useBlockProps } from "@wordpress/block-editor";
 
 class CustomArchiveEdit extends Component {
     onChangeNumberOfPosts = numberOfPosts => {
@@ -28,6 +29,14 @@ class CustomArchiveEdit extends Component {
     onChangeTaxonomy = taxonomySelected => {
         this.props.setAttributes({ taxonomySelected });
     };
+
+    onChangeTaxFilter = value => {
+        this.props.setAttributes({ filterByTaxonomy: value });
+        if (Array.isArray(this.props.taxonomies) && this.props.taxonomies.length == 1) {
+            this.props.setAttributes({ taxonomySelected : this.props.taxonomies[0].slug});
+        }
+    }
+
 
     onSelectTerms = terms => {
         this.props.setAttributes({ taxTermsSelected : terms.join(",") });
@@ -43,7 +52,7 @@ class CustomArchiveEdit extends Component {
             className,
             attributes,
             setAttributes,
-            isSelected
+            isSelected,
         } = this.props;
         const {
             numberOfPosts,
@@ -53,28 +62,16 @@ class CustomArchiveEdit extends Component {
             postsToShow,
             postTypeSelected,
             filterByTaxonomy,
-            taxonomySelected,
             taxTermsSelected,
+            taxonomySelected,
             hideIfEmpty,
             emptyMessage,
             headline,
             headlineLevel,
+            sortBy,
+            order
         } = attributes;
         const headlineStyle = 'h' + headlineLevel;
-        const icons = {
-            pin: (
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="black"
-                    width="18px"
-                    height="18px"
-                >
-                    <path d="M0 0h24v24H0V0z" fill="none" />
-                    <path d="M22 13h-8v-2h8v2zm0-6h-8v2h8V7zm-8 10h8v-2h-8v2zm-2-8v6c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V9c0-1.1.9-2 2-2h6c1.1 0 2 .9 2 2zm-1.5 6l-2.25-3-1.75 2.26-1.25-1.51L3.5 15h7z" />
-                </svg>
-            ),
-        };
         const postTypeSelect = (
             <SelectControl
                 label={__("Post Type", "carkeek-blocks")}
@@ -95,9 +92,7 @@ class CustomArchiveEdit extends Component {
                 <ToggleControl
                     label={__("Filter by Taxonomy")}
                     checked={filterByTaxonomy}
-                    onChange={value =>
-                        setAttributes({ filterByTaxonomy: value })
-                    }
+                    onChange={this.onChangeTaxFilter}
                 />
                 {filterByTaxonomy && (
                     <>
@@ -142,10 +137,40 @@ class CustomArchiveEdit extends Component {
                     <RangeControl
                         label={__("Number of Posts", "carkeek-blocks")}
                         value={numberOfPosts}
+                        help={__("Select -1 to show all")}
                         onChange={this.onChangeNumberOfPosts}
-                        min={1}
-                        max={10}
+                        min={-1}
+                        max={21}
                     />
+                    <SelectControl
+                            label={__("Sort By", "carkeek-blocks")}
+                            onChange={value =>
+                                setAttributes({
+                                    sortBy: value
+                                })
+                            }
+                            options={[
+                                { label: __("Publish Date"), value: "date"},
+                                { label: __("Title (alpha)"), value: "title"},
+                                { label: __("Menu Order"), value: "menu_order"},
+                                { label: __("Random"), value: "rand"}
+                            ]}
+                            value={sortBy}
+                        />
+                    <RadioControl
+                    label={__("Order")}
+                    selected={order}
+                    options={[
+                        { label: __("ASC"), value: "ASC"},
+                        { label: __("DESC"), value: "DESC"},
+
+                    ]}
+                    onChange={value =>
+                        setAttributes({
+                            order: value
+                        })
+                    }
+                />
 
                 </PanelBody>
                 <PanelBody title={__("Layout", "carkeek-blocks")}>
@@ -155,7 +180,6 @@ class CustomArchiveEdit extends Component {
                     options={[
                         { label: __("Grid"), value: "grid" },
                         { label: __("List"), value: "list"},
-                        { label: __("Link Tile"), value: "link-tile"}
                     ]}
                     onChange={value =>
                         setAttributes({
@@ -237,7 +261,7 @@ class CustomArchiveEdit extends Component {
                     />
                    ) }
 
-                    <Placeholder icon={icons.pin} label={ headline ? headline : __("Latest Posts")}>
+                    <Placeholder icon={icons.layout} label={ headline ? headline : __("Latest Posts")}>
                         {!Array.isArray(posts) ? <Spinner /> : noPostMessage}
                     </Placeholder>
                 </>
@@ -248,17 +272,15 @@ class CustomArchiveEdit extends Component {
         const displayPosts =
             posts.length > postsToShow ? posts.slice(0, postsToShow) : posts;
 
+        //const blockProps = useBlockProps();
 
         return (
             <>
                 {inspectorControls}
-                <div
-                    className={classnames(className, {
-                        "wp-block-carkeek-blocks-custom-archive": true,
+                <div className={ classnames(className, {
                         "is-grid": postLayout === "grid",
                         "is-list": postLayout === "list",
-                        "is-link-tile": postLayout === "link-tile"
-                    })}
+                    }) }
                 >
                    { (isSelected || headline) && (
                     <RichText
@@ -276,7 +298,7 @@ class CustomArchiveEdit extends Component {
                                 "rendered",
                                 "trim"
                             ]);
-                            let excerpt = post.excerpt.rendered;
+                            let excerpt = post.excerpt ? post.excerpt.rendered : '';
 
                             const excerptElement = document.createElement(
                                 "div"
@@ -344,23 +366,26 @@ class CustomArchiveEdit extends Component {
 }
 
 export default withSelect((select, props) => {
+
     const { attributes } = props;
-    const { numberOfPosts, postTypeSelected, taxonomySelected, taxTermsSelected, filterByTaxonomy } = attributes;
+    const { numberOfPosts, postTypeSelected, taxonomySelected, taxTermsSelected, filterByTaxonomy, order, sortBy } = attributes;
     const { getEntityRecords, getMedia, getPostTypes, getTaxonomies } = select("core");
     const taxTerms = getEntityRecords('taxonomy', taxonomySelected, { per_page: -1 } );
-    let query = { per_page: numberOfPosts };
+    let query = { per_page: numberOfPosts, order: order.toLowerCase() , orderby: sortBy };
     if (filterByTaxonomy && taxonomySelected && taxTermsSelected) {
         query[taxonomySelected] = taxTermsSelected;
     }
     const latestPosts = getEntityRecords("postType", postTypeSelected, query);
-    const taxonomies = getTaxonomies();
+    let taxonomies = getTaxonomies();
+    taxonomies = !Array.isArray(taxonomies)
+            ? taxonomies
+            : taxonomies.filter(tax => tax.types.includes(postTypeSelected));
+
 
     return {
         postTypes: getPostTypes(),
-        taxonomies: !Array.isArray(taxonomies)
-            ? taxonomies
-            : taxonomies.filter(tax => tax.types.includes(postTypeSelected))
-        ,
+        taxonomies: taxonomies,
+        taxSelected:  Array.isArray(taxonomies) && taxonomies.length == 1 ? taxonomies[0] : taxonomySelected,
         taxTerms: taxTerms,
         posts: !Array.isArray(latestPosts)
             ? latestPosts

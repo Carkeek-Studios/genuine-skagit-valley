@@ -4,7 +4,7 @@
  * Plugin URI: https://carkeekstudios.com/
  * Description: Series of blocks designed to work with the Carkeek Theme
  * Author: pattyok
- * Version: 1.0
+ * Version: 1.6
  * Author URI https://carkeekstudios.com/
  * Text Domain: carkeek-blocks
  */
@@ -88,12 +88,13 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 		private function setup_constants() {
 
 			$this->define( 'CARKEEKBLOCKS_DEBUG', true );
-			$this->define( 'CARKEEKBLOCKS_VERSION', '1.2' );
+			$this->define( 'CARKEEKBLOCKS_VERSION', '1.5' );
 			$this->define( 'CARKEEKBLOCKS_HAS_PRO', false );
 			$this->define( 'CARKEEKBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 			$this->define( 'CARKEEKBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 			$this->define( 'CARKEEKBLOCKS_PLUGIN_FILE', __FILE__ );
 			$this->define( 'CARKEEKBLOCKS_PLUGIN_BASE', plugin_basename( __FILE__ ) );
+
 		}
 
 		/**
@@ -121,6 +122,7 @@ if ( ! class_exists( 'CarkeekBlocks' ) ) :
 			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-block-register.php';
 			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-custompost.php';
 			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-post-meta.php';
+			require_once CARKEEKBLOCKS_PLUGIN_DIR . 'includes/class-carkeekblocks-template-loader.php';
 
 		}
 
