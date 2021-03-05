@@ -100,11 +100,22 @@ class CarkeekBlocks_Block_Assets {
 			$frontend_js_path = '/dist/script.js';
 			$style_path       = '/dist/style.css';
 
+			// wp_enqueue_script( 'jquery-ui-slider' );
+			// wp_enqueue_style( 'jquery-ui' );
+			// Register frontend styles. Include block style file in editor if you want backend styles.
+			wp_enqueue_script(
+				'bootstrap-js',
+				$this->url . '/vendor/bootstrap.bundle.js',
+				array('jquery'),
+				filemtime( $this->dir . $style_path ),
+				true
+			);
+
 			// Register editor only styles.
 			wp_enqueue_script(
 				$this->slug . '-script',
 				$this->url . $frontend_js_path,
-				array( 'jquery', 'wp-element', 'wp-blocks' ),
+				array( 'jquery', 'bootstrap-js', 'wp-element', 'wp-blocks' ),
 				filemtime( $this->dir . $frontend_js_path ),
 				true
 			);

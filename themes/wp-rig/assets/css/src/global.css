@@ -20,6 +20,8 @@
 /*--------------------------------------------------------------
 # Imports
 --------------------------------------------------------------*/
+
+@import "global/_fontello.css";
 @import "global/_custom-properties.css";
 @import "global/_reset.css";
 @import "global/_global-styles.css";
@@ -28,7 +30,6 @@
 @import "global/_elements.css";
 @import "global/_links.css";
 @import "global/_search.css";
-@import "global/_hustle.css";
 @import "global/_forms.css";
 @import "global/_forms_gravity.css";
 @import "global/_header.css";

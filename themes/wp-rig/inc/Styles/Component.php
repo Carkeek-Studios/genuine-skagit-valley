@@ -311,10 +311,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'file'             => 'content.min.css',
 				'preload_callback' => '__return_true',
 			),
-			'wp-rig-campaign' => array(
-				'file'             => 'campaign.min.css',
-				'preload_callback' => '__return_true',
-			),
 			'wp-rig-events'   => array(
 				'file'             => 'events.min.css',
 				'preload_callback' => '__return_true',
@@ -422,6 +418,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return string Google Fonts URL, or empty string if no Google Fonts should be used.
 	 */
 	protected function get_typekit_fonts_url() : string {
-		return 'https://use.typekit.net/qto3pik.css';
+		return 'https://use.typekit.net/ygm8xoe.css';
 	}
 }

@@ -1,5 +1,7 @@
 import "./styles.editor.scss";
 import edit from "./edit";
+import icons from './icons';
+
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 
@@ -18,6 +20,14 @@ const attributes = {
     postLayout: {
         type: "string",
         default: "grid"
+    },
+    sortBy: {
+        type: "string",
+        default: "date"
+    },
+    order: {
+        type: "string",
+        default: "ASC"
     },
     excerptLength: {
         type: "number",
@@ -50,12 +60,13 @@ const attributes = {
 };
 
 registerBlockType("carkeek-blocks/custom-archive", {
+    apiVersion: 2,
     title: __("Custom Post Type Archive", "carkeek-blocks"),
     description: __(
         "Block showing the latest items by post type.",
         "carkeek-blocks"
     ),
-    icon: "book-alt",
+    icon: icons.layout,
     category: "widgets",
     edit: edit,
     attributes: attributes,

@@ -62,8 +62,8 @@ class CarkeekBlocks_Block_Register {
 			'link-tile',
 			'link-gallery',
 			'slider',
-			'expand-collapse-section',
-			'rollover-image',
+			'image-slider',
+			'accordion',
 		);
 
 		foreach ( $blocks as $block ) {
@@ -94,9 +94,49 @@ class CarkeekBlocks_Block_Register {
 						'type'    => 'number',
 						'default' => 30,
 					),
+					'order'              => array(
+						'type'    => 'string',
+						'default' => 'ASC',
+					),
+					'sortBy'             => array(
+						'type'    => 'string',
+						'default' => 'date',
+					),
 				),
 			)
 		);
+
+		$this->carkeek_blocks_register_block(
+			'custom-link-list',
+			array(
+				'render_callback' => array( 'CarkeekBlocks_CustomPost', 'carkeek_blocks_render_custom_linklist' ),
+				'attributes'      => array(
+					'order'           => array(
+						'type'    => 'string',
+						'default' => 'ASC',
+					),
+					'makeCollapsible' => array(
+						'type'    => 'boolean',
+						'default' => true,
+					),
+					'headline'        => array(
+						'type' => 'string',
+					),
+					'sortBy'          => array(
+						'type'    => 'string',
+						'default' => 'menu_order',
+					),
+					'headlineLevel'   => array(
+						'type'    => 'number',
+						'default' => 2,
+					),
+					'listSelected'    => array(
+						'type' => 'string',
+					),
+				),
+			)
+		);
+
 		$this->carkeek_blocks_register_block(
 			'form-assembly',
 			array(
@@ -106,6 +146,14 @@ class CarkeekBlocks_Block_Register {
 						'type' => 'string',
 					),
 				),
+			)
+		);
+		$this->carkeek_blocks_register_block(
+			'title-block',
+			array(
+				'render_callback' => function() {
+					return '<h1 class="entry-title">' . get_the_title() . '</h1>';
+				},
 			)
 		);
 	}

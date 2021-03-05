@@ -36,9 +36,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function initialize() {
 		add_filter( 'get_the_terms', array( $this, 'hide_categories_terms' ), 10, 3 );
 		add_filter( 'excerpt_more', array( $this, 'my_theme_excerpt_more' ) );
-		add_filter( 'tribe_events_event_schedule_details_formatting', array( $this, 'tribe_events_schedule_details' ) );
-		add_filter( 'tribe_events_editor_default_template', array( $this, 'tribe_events_editor_default_template' ), 11, 1 );
-		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
 		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
 		add_filter( 'carkeek_block_custom_post_layout__css_classes', array( $this, 'carkeek_block_custom_post_layout__css_classes' ), 11, 2 );
 		add_action( 'acf/save_post', array( $this, 'acf_save_post' ) );
@@ -56,7 +53,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function template_tags() : array {
 		return array(
 			'get_social_links'        => array( $this, 'get_social_links' ),
-			'get_accreditation'       => array( $this, 'get_accreditation' ),
 			'get_random_thumbnail'    => array( $this, 'get_random_thumbnail' ),
 			'get_random_images_array' => array( $this, 'get_random_images_array' ),
 			'get_custom_excerpt'      => array( $this, 'get_custom_excerpt' ),
@@ -70,7 +66,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param string $styles Optional. Css classes to add to component.
 	 * @return string Whether the AMP plugin is active and the current request is for an AMP endpoint.
 	 */
-	public function get_social_links( $styles = null ) : string {
+	public function get_social_links( $styles = null ) {
+		if ( ! function_exists( 'get_field' ) ) {
+			return;
+		}
 		$social = get_field( 'social_icons', 'option' );
 		$html   = '';
 		if ( ! empty( $social ) ) {
@@ -85,33 +84,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $html;
 	}
 
-	/**
-	 * Get Accreditaion as defined in the Theme options
-	 *
-	 * @param string $styles Optional. Css classes to add to component.
-	 * @return string Html of component.
-	 */
-	public function get_accreditation( $styles = null ) : string {
-		$accs = get_field( 'accreditation', 'option' );
-		$html = '';
-		if ( ! empty( $accs ) ) {
-			$html = '<ul class="no-list accreditation ' . $styles . '">';
-			foreach ( $accs as $acc ) {
-				if ( ! empty( $acc['image'] ) ) {
-					$html .= '<li>';
-					$img   = '<img src="' . $acc['image']['url'] . '" alt="' . $acc['link_title'] . '" />';
-					if ( ! empty( $acc['link'] ) ) {
-						$html .= '<a href="' . $acc['link'] . '" target="_blank">' . $img . '</a>';
-					} else {
-						$html .= $img;
-					}
-					$html .= '</li>';
-				}
-			}
-			$html .= '</ul>';
-		}
-		return $html;
-	}
+
 
 	/**
 	 * Hide the blog category when getting terms
@@ -146,6 +119,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	public function get_random_images_array() {
+		if ( ! function_exists( 'get_field' ) ) {
+			return;
+		}
 		$images = get_field( 'placeholder_images', 'options' );
 		$nbrs   = range( 0, count( $images ) - 1 );
 		shuffle( $nbrs );
@@ -162,6 +138,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * TODO Backup image as default;
 	 */
 	public function get_random_thumbnail( $size = 'large', $object = false, $nbr = null ) {
+		if ( ! function_exists( 'get_field' ) ) {
+			return;
+		}
 		$images = get_field( 'placeholder_images', 'options' );
 		if ( empty( $images ) || 0 == count( $images ) ) {
 			return;
@@ -210,46 +189,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function my_theme_excerpt_more( $more ) {
 		return '&hellip;';
-	}
-
-	/**
-	 * Customize date view on event list
-	 *
-	 * @param array $settings current settings.
-	 */
-	public function tribe_events_schedule_details( $settings ) {
-		$settings['time'] = false;
-		return $settings;
-	}
-
-	/**
-	 * Customize block order on the events template
-	 *
-	 * @param array $template default template, each item represents a block.
-	 */
-	public function tribe_events_editor_default_template( $template ) {
-		$template = array(
-			array(
-				'core/group',
-				array(
-					'className' => 'wft-event-details',
-				),
-				array(
-					array( 'tribe/event-datetime' ),
-					array( 'tribe/event-venue' ),
-					array( 'tribe/event-links' ),
-				),
-			),
-			array(
-				'core/paragraph',
-				array(
-					'placeholder' => __( 'Add Description...', 'wp-rig' ),
-				),
-			),
-			array( 'core/separator' ),
-			array( 'carkeek-blocks/form-assembly' ),
-		);
-		return $template;
 	}
 
 	/**
@@ -307,16 +246,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		</ul>';
 	}
 
-	/**
-	 * Return Abbreviated State
-	 */
-	public function tribe_get_region( $output, $venue_id ) {
-		if ( 'Washington' === $output ) {
-			$output = 'WA';
-		}
-		return $output;
-	}
-
 
 	public function carkeek_block_custom_post_layout__css_classes( $css_classes, $attributes ) {
 		$post_type = $attributes['postTypeSelected'];
@@ -349,6 +278,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	function acf_save_post( $post_id ) {
+		if ( ! function_exists( 'get_field' ) ) {
+			return;
+		}
 		// set location fields
 		$address = get_field( 'lookup_location', $post_id );
 		if ( ! empty( $address ) && isset( $address['lat'] ) ) {
@@ -375,7 +307,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	function rp4wp_post_title( $title, $rp4wp_post ) {
 		$append = '';
 		if ( ! has_post_thumbnail( $rp4wp_post->ID ) ) {
-			$thumb = $this->get_random_thumbnail();
+			$thumb  = $this->get_random_thumbnail();
 			$append = '<span class="random_image"><img src="' . $thumb . '"/></span>';
 		}
 		return $append . $title;

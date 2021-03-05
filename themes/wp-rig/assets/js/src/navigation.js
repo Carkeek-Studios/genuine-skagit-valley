@@ -88,7 +88,7 @@ function initEachNavToggleSubmenu( nav ) {
 		// Replace dropdown with toggle button.
 		dropdown.parentNode.replaceChild( thisDropdownButton, dropdown );
 
-		firstSubItem.appendChild( childDropdownButton );
+		//firstSubItem.appendChild( childDropdownButton );
 
 		// Toggle the submenu when we click the dropdown button.
 		thisDropdownButton.addEventListener( 'click', ( e ) => {
@@ -100,10 +100,10 @@ function initEachNavToggleSubmenu( nav ) {
 			toggleSubMenu( findAncestor( e.target, '.menu-item--has-toggle' ) );
 		} );
 
-		// Clean up the toggle if a mouse takes over from keyboard.
-		parentMenuItem.addEventListener( 'mouseleave', ( e ) => {
-			toggleSubMenu( e.target, false );
-		} );
+		// // Clean up the toggle if a mouse takes over from keyboard.
+		// parentMenuItem.addEventListener( 'mouseleave', ( e ) => {
+		// 	toggleSubMenu( e.target, false );
+		// } );
 
 		// When we focus on a menu link, make sure all siblings are closed.
 		parentMenuItem.querySelector( 'a' ).addEventListener( 'focus', ( e ) => {
@@ -169,6 +169,7 @@ function initEachNavToggleSmall( nav ) {
 	menuTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	menuTOGGLE.addEventListener( 'click', ( e ) => {
+		console.log( e );
 		/** Toggle search / menus when one is open and clicking on the other */
 		const toggleOff = e.currentTarget.getAttribute( 'data-toggleoff' );
 		const toggleOffBtn = document.getElementById( toggleOff );
@@ -177,6 +178,16 @@ function initEachNavToggleSmall( nav ) {
 		}
 
 		nav.classList.toggle( 'nav--toggled-on' );
+
+		//set the nav height so it doesnt fluctuate when we show the sub-menu on mobile
+		if ( window.innerWidth < 1024 ) {
+			const primary = document.getElementById( 'primary-menu' );
+			if ( ! primary.classList.contains( 'fixed-height' ) ) {
+				const pHeight = primary.offsetHeight;
+				primary.style.height = pHeight + 'px';
+				primary.classList.add( 'fixed-height' );
+			}
+		}
 
 		//should not scroll when  nav is open (mobile only but that is handled with css)
 		if ( nav.classList.contains( 'nav--toggled-on' ) && nav.classList.contains( 'main-navigation' ) ) {
@@ -299,3 +310,13 @@ function findAncestor( el, sel ) {
 	}
 	return el;
 }
+
+/**
+ * Remove height on menu when window size changes
+ */
+
+window.addEventListener( 'resize', function() {
+	const primary = document.getElementById( 'primary-menu' );
+	primary.classList.remove( 'fixed-height' );
+	primary.style.removeProperty( 'height' );
+} );

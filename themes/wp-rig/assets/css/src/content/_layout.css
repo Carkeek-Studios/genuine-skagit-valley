@@ -11,6 +11,12 @@
 		padding-left: var(--gutter-width);
 		max-width: var(--content-width);
 	}
+
+	& > .alignfull {
+		padding-left: 0;
+		padding-right: 0;
+		max-width: none;
+	}
 }
 
 .page-content > ul,
@@ -41,12 +47,7 @@
 		}
 
 
-		& > .alignfull {
-			padding-right: var(--gutter-width-small);
-			padding-left: var(--gutter-width-small);
-			max-width: 100%;
 
-		}
 	}
 
 	.page-content > ul,

@@ -40,7 +40,7 @@ class Component implements Component_Interface {
 	 * Dont use core block styles
 	 */
 	public function deregister_block_styles() {
-		wp_dequeue_style( 'wp-block-library' );
+		//wp_dequeue_style( 'wp-block-library' );
 	}
 
 	/**
@@ -85,49 +85,29 @@ class Component implements Component_Interface {
 			'editor-color-palette',
 			array(
 				array(
-					'name'  => __( 'Green', 'wp-rig' ),
-					'slug'  => 'theme-green',
-					'color' => '#637d36',
+					'name'  => __( 'Primary', 'wp-rig' ),
+					'slug'  => 'theme-primary',
+					'color' => '#00acc4',
+				),
+				array(
+					'name'  => __( 'Secondary', 'wp-rig' ),
+					'slug'  => 'theme-secondary',
+					'color' => '#e1588d',
 				),
 				array(
 					'name'  => __( 'Yellow', 'wp-rig' ),
 					'slug'  => 'theme-yellow',
-					'color' => '#CAB44B',
+					'color' => '#f1c400',
 				),
 				array(
-					'name'  => __( 'Orange', 'wp-rig' ),
-					'slug'  => 'theme-orange',
-					'color' => '#bc8a24',
-				),
-				array(
-					'name'  => __( 'Blue', 'wp-rig' ),
-					'slug'  => 'theme-blue',
-					'color' => '#a2c6d2',
-				),
-				array(
-					'name'  => __( 'Red', 'wp-rig' ),
-					'slug'  => 'theme-red',
-					'color' => '#a55525',
-				),
-				array(
-					'name'  => __( 'Green Light', 'wp-rig' ),
-					'slug'  => 'theme-green-light',
-					'color' => '#a7ad37',
-				),
-				array(
-					'name'  => __( 'Grey', 'wp-rig' ),
-					'slug'  => 'theme-grey',
-					'color' => '#6b6b6b',
-				),
-				array(
-					'name'  => __( 'Grey Light', 'wp-rig' ),
-					'slug'  => 'theme-grey-light',
-					'color' => '#e0e0e0',
+					'name'  => __( 'Light', 'wp-rig' ),
+					'slug'  => 'theme-light',
+					'color' => '#faf7f4',
 				),
 				array(
 					'name'  => __( 'Grey Dark', 'wp-rig' ),
 					'slug'  => 'theme-grey-dark',
-					'color' => '#383838',
+					'color' => '454543',
 				),
 
 				array(
@@ -150,26 +130,20 @@ class Component implements Component_Interface {
 				array(
 					'name'      => __( 'Small', 'wp-rig' ),
 					'shortName' => __( 'S', 'wp-rig' ),
-					'size'      => 16,
+					'size'      => 15,
 					'slug'      => 'small',
 				),
 				array(
 					'name'      => __( 'Medium', 'wp-rig' ),
 					'shortName' => __( 'M', 'wp-rig' ),
-					'size'      => 18,
+					'size'      => 17,
 					'slug'      => 'medium',
 				),
 				array(
 					'name'      => __( 'Large', 'wp-rig' ),
 					'shortName' => __( 'L', 'wp-rig' ),
-					'size'      => 31,
+					'size'      => 21,
 					'slug'      => 'large',
-				),
-				array(
-					'name'      => __( 'Larger', 'wp-rig' ),
-					'shortName' => __( 'XL', 'wp-rig' ),
-					'size'      => 39,
-					'slug'      => 'larger',
 				),
 			)
 		);

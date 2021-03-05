@@ -13,11 +13,6 @@ wp.domReady( function() {
 		label: 'Vertical Centered',
 	} );
 
-	wp.blocks.registerBlockStyle( 'core/heading', {
-		name: 'highlight',
-		label: 'Highlight',
-	} );
-
 	wp.blocks.registerBlockStyle( 'core/media-text', {
 		name: 'small-image',
 		label: 'Small Image',
@@ -41,11 +36,6 @@ wp.domReady( function() {
 	wp.blocks.registerBlockStyle( 'core/list', {
 		name: 'no-bullets',
 		label: 'No Bullets',
-	} );
-
-	wp.blocks.registerBlockStyle( 'core/list', {
-		name: 'circle-checked',
-		label: 'Circled Checks',
 	} );
 
 	// Remove Core Button Style.

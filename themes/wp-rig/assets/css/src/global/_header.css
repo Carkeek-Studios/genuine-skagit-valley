@@ -8,10 +8,31 @@
 	flex-wrap: nowrap;
 	justify-content: space-between;
 	align-items: center;
-	padding: 1.25rem 0.75rem;
+	padding: 1.25rem 1rem;
 	background-color: var(--color-theme-white);
 	position: relative;
 	z-index: 2000;
+
+	& a {
+		color: var(--color-nav-links);
+
+		&:hover {
+			color: var(--color-nav-links-hover);
+		}
+	}
+
+	& .icon-basket {
+		font-size: 24px;
+		margin-bottom: 3px;
+	}
+
+	& .hamburger-box {
+		margin-top: 2px;
+	}
+
+	& .nav--toggled-on .hamburger-box {
+		margin-top: 0;
+	}
 }
 
 .header-search {
@@ -47,6 +68,7 @@
 
 	& input {
 		border-color: transparent;
+		font-size: var(--font-size-nav);
 	}
 }
 
@@ -74,11 +96,10 @@
 
 .site-branding {
 	margin: 0;
-	padding-right: 2rem;
 	width: 50%;
 
 	& img {
-		max-width: 184px;
+		max-width: 150px;
 	}
 }
 
@@ -121,14 +142,7 @@
 @media (--tablet-up) {
 
 	.site-header--inner {
-		padding: 1rem 0.75rem;
-	}
-
-	.site-branding {
-
-		& img {
-			max-width: 236px;
-		}
+		padding: 1rem 2rem 0;
 	}
 
 	.header-search-wrapper {
@@ -138,8 +152,31 @@
 		height: 66px;
 		padding-left: 10px;
 		padding-top: 10px;
-		border-left: 2px solid var(--color-theme-grey-light);
+
 	}
+
+	.site-header .icon-basket {
+		padding-right: 1rem;
+	}
+
+	.site-branding {
+		margin: 0;
+		padding-right: 2rem;
+		padding-bottom: 1.5rem;
+		width: 50%;
+
+		& img {
+			max-width: 195px;
+		}
+	}
+
+	.top-navigation {
+		padding-right: 1.5rem;
+		border-right: 1px solid #ccc;
+		margin-right: 10px;
+		display: flex;
+	}
+
 }
 
 @media (--tablet-wide-up) {
@@ -152,12 +189,10 @@
 		flex-wrap: nowrap;
 		max-width: var(--header-width);
 		margin: 0 auto;
-		padding: 0.5rem 2rem;
 	}
 
 	.header-search-wrapper {
 		margin-left: 10px;
-		margin-right: 10px;
 		margin-top: 0;
 		margin-bottom: 0;
 		height: auto;
@@ -165,6 +200,8 @@
 		padding-top: 0;
 		border-left: none;
 	}
+
+
 
 	button.search-toggle {
 		padding: 1.5rem 2rem;
@@ -174,26 +211,26 @@
 		z-index: -1;
 	}
 
-}
-
-@media (--desktop-up) {
-
-	.site-branding {
-
-		& img {
-			max-width: 280px;
-		}
+	.header-search-wrapper {
+		order: 2;
 	}
 
-	.header-search {
-		top: 112px;
-		width: 100vw;
-		margin-left: calc(-1 * ( (100vw - var(--header-width) ) / 2 ));
-
-		& .search-form {
-			max-width: var(--content-width-actual);
-			margin-right: auto;
-			margin-left: auto;
-		}
+	.icon-basket {
+		order: 3;
 	}
+
+	.top-navigation {
+		margin-right: 0;
+		padding-right: 0;
+		border-right: 0;
+		order: 4;
+	}
+
+	.main-navigation {
+		order: 0;
+	}
+
 }
+
+
+

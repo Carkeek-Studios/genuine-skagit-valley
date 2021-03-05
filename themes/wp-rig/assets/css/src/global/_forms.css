@@ -7,23 +7,26 @@ textarea {
 }
 /* stylelint-enable */
 
+
 /* stylelint-disable */
 button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
 a.button,
-.page-content .wFormContainer input[type="submit"] {
+.page-content .wFormContainer input[type="submit"],
+.menu-button a {
 	border: 1px solid;
 	border-color: transparent;
 	border-radius: 0;
 	background: var(--color-button-background);
 	color: var(--color-button-text);
-	font-size: var(--font-size-button);
+	font-size: var(--font-size-forms);
 	font-family: var(--form-field-font-family);
 	font-weight: var(--font-weight-medium);
 	line-height: 1;
-	padding: 1.25rem 2rem;
+	text-transform: uppercase;
+	padding: 1rem 1.25rem;
 	cursor: pointer;
 	transition: background 0.5s ease;
 	display: block;
@@ -33,14 +36,17 @@ a.button:hover,
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+.menu-button a:hover {
 	background: var(--color-button-hover);
+	color: var(--color-button-text);
 }
 
 a.button.is-style-cta {
 	background-color: transparent;
 	color: var(--color-link);
 	font-weight: var(--font-weight-medium);
+	font-size: var(--font-size-cta);
 	padding-left: 0;
 
 	&::after {
@@ -92,9 +98,10 @@ textarea {
 	border: 2px solid var(--color-border);
 	border-radius: 0;
 	padding: 1rem;
-	font-size: var(--font-size-regular);
+	font-size: var(--font-size-forms);
 	font-family: var(--form-field-font-family);
 	width: 100%;
+	line-height: 1;
 }
 
 input[type="text"]:focus,

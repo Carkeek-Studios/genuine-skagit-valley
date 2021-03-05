@@ -289,6 +289,15 @@ ul.is-style-circle-checked {
 	background-color: var(--color-theme-white);
 }
 
+.has-theme-light-color,
+.has-theme-light-color a {
+	color: var(--color-theme-light);
+}
+
+.has-theme-light-background-color {
+	background-color: var(--color-theme-light);
+}
+
 .has-custom-daylight-color,
 .has-custom-daylight-color a {
 	color: var(--color-custom-daylight);
@@ -307,6 +316,9 @@ ul.is-style-circle-checked {
 	background-color: var(--color-custom-sun);
 }
 
+.brayer-background-pink,
+.brayer-background-blue,
+.has-theme-secondary-background-color,
 .has-theme-black-background-color,
 .has-theme-green-background-color,
 .has-theme-red-background-color,
@@ -316,6 +328,7 @@ ul.is-style-circle-checked {
 	color: var(--color-theme-white);
 
 	& a,
+	& .is-style-arrow-cta .wp-block-button__link,
 	& h1:not(.has-text-color),
 	& h2:not(.has-text-color),
 	& h3:not(.has-text-color),
@@ -332,11 +345,13 @@ ul.is-style-circle-checked {
 	}
 }
 
+.brayer-background-yellow,
+.has-theme-primary-background-color,
 .has-theme-grey-light-background-color,
 .has-theme-yellow-background-color,
 .has-theme-green-light-background-color,
 .has-theme-blue-background-color {
-	color: var(--color-theme-grey-dark);
+	color: var(--global-font-color);
 
 	& .link-tile__hover_title,
 	& a,
@@ -346,7 +361,7 @@ ul.is-style-circle-checked {
 	& h4:not(.has-text-color),
 	& h5:not(.has-text-color) {
 
-		color: var(--color-theme-grey-dark);
+		color: var(--global-font-color);
 
 	}
 
@@ -403,3 +418,4 @@ ul.is-style-circle-checked {
 .innerblock-headline-style-h6 .inner-block-headline {
 	font-size: var(--font-size-h6);
 }
+

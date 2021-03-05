@@ -83,7 +83,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			array(
 				'name'          => esc_html__( 'Footer Lower', 'wp-rig' ),
 				'id'            => static::FOOTER_LOWER_SIDEBAR_SLUG,
-				'description'   => esc_html__( 'Footer Widgets Lower Section (includes HR)', 'wp-rig' ),
+				'description'   => esc_html__( 'Footer Widgets Lower Section', 'wp-rig' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="widget-title">',
@@ -94,7 +94,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			array(
 				'name'          => esc_html__( 'Footer Bottom', 'wp-rig' ),
 				'id'            => static::FOOTER_BOTTOM_SIDEBAR_SLUG,
-				'description'   => esc_html__( 'Footer Widgets Widgets Bottom (includes HR)', 'wp-rig' ),
+				'description'   => esc_html__( 'Footer Widgets Widgets Bottom', 'wp-rig' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="widget-title">',

@@ -165,7 +165,7 @@
 	&.is-page-intro {
 
 		& .wp-block-group__inner-container {
-			padding: var(--gutter-width);
+			padding: 0 var(--gutter-width);
 		}
 
 	}
@@ -187,13 +187,7 @@
 			}
 		}
 
-		&.is-page-intro {
 
-			& .wp-block-group__inner-container {
-				padding: var(--gutter-width-small) var(--gutter-width);
-			}
-
-		}
 	}
 }
 
@@ -217,7 +211,8 @@
 .is-style-arrow-cta .wp-block-button__link {
 	background-color: transparent;
 	color: var(--color-link);
-	font-weight: var(--font-weight-medium);
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-cta);
 	padding-left: 0;
 }
 
@@ -242,6 +237,10 @@
 .wp-block-image {
 	margin-bottom: var(--gutter-width);
 
+	& figcaption {
+		font-size: var(--font-size-caption);
+	}
+
 	&.alignfull {
 
 		& img {
@@ -249,6 +248,11 @@
 			min-height: 400px;
 			max-height: 870px;
 			object-fit: cover;
+		}
+
+		& figcaption {
+			padding-left: 1rem;
+			padding-right: 1rem;
 		}
 	}
 
@@ -261,6 +265,8 @@
 			object-fit: cover;
 		}
 	}
+
+
 }
 
 .wp-block-image.is-style-rounded {
@@ -436,15 +442,21 @@
 		padding-left: var(--gutter-width);
 		padding-right: var(--gutter-width);
 
-		&.alignwide:not(.has-background) {
+		&.alignwide {
 			padding-left: var(--gutter-width);
 			padding-right: var(--gutter-width);
 		}
 
-		&.alignfull:not(.has-background) {
-			padding-left: var(--gutter-width-small);
-			padding-right: var(--gutter-width-small);
+		&.alignfull {
+			padding-left: 0;
 		}
+
+		&.alignfull.has-media-on-the-right {
+			padding-left: var(--gutter-width);
+			padding-right: 0;
+		}
+
+
 	}
 
 	.wp-block-media-text {
@@ -567,6 +579,9 @@
 
 	padding-top: var(--block-padding-vert);
 	padding-bottom: var(--block-padding-vert);
+
+	background-size: cover;
+	background-repeat: no-repeat;
 
 	&:not(.is-cover-quote) {
 		height: 66vw;
@@ -1014,89 +1029,6 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 /*--------------------------------------------------------------
 # CUSTOM BLOCK OVERRIDES - Team Members
 --------------------------------------------------------------*/
-.wp-block-carkeek-blocks-team-members {
-
-	&.is-grid-style,
-	& .popup-content {
-
-		& .wp-block-carkeek-blocks-team-member__name {
-			font-size: var(--font-size-h5);
-			font-weight: var(--font-weight-bold);
-			color: var(--color-theme-green);
-			margin-top: 0.75rem;
-		}
-	}
-}
-
-.wp-block-carkeek-blocks-team-member {
-
-	& .popup-content {
-		position: relative;
-
-		&.modal-header {
-			background-color: var(--color-theme-white);
-			text-align: right;
-		}
-
-		& .content {
-			padding-left: 1rem;
-			padding-right: 1rem;
-			margin-bottom: 2rem;
-		}
-
-		& .wp-block-carkeek-blocks-team-member__additional {
-			margin-top: var(--gutter-width);
-		}
-
-		& .close {
-			font-size: 30px;
-			line-height: 30px;
-			margin-bottom: 5px;
-			text-transform: uppercase;
-		}
-	}
-}
-
-@media (--tablet-up) {
-
-	.wp-block-carkeek-blocks-team-member {
-
-		& .popup-content {
-			width: 80% !important;
-			max-width: 720px;
-
-			& .modal-header {
-				height: 4rem;
-			}
-
-			& .close {
-				padding-right: 5px;
-			}
-
-			& .content {
-				padding-left: 10%;
-				padding-right: 10%;
-				margin-bottom: 4rem;
-				max-height: 70vh;
-			}
-
-			& .wp-block-carkeek-blocks-team-member__additional {
-				margin-top: 2rem;
-			}
-		}
-	}
-}
-
-@media (--desktop-up) {
-
-	.wp-block-carkeek-blocks-team-member {
-
-		& .wp-block-carkeek-blocks-team-member__name {
-			font-size: var(--font-size-h5-hd);
-		}
-
-	}
-}
 
 .wp-block-carkeek-blocks-custom-archive.is-list.post-type-tribe_events {
 	padding-left: 0;

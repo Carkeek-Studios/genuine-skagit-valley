@@ -9,13 +9,13 @@
 	--global-font-color: #454543;
 	--global-font-family: museo-sans, sans-serif;
 	--global-font-size: 16;
-	--global-font-line-height: 1.7;
+	--global-font-line-height: 1.6;
 	--highlight-font-family: museo-sans, sans-serif;
 	--navigation-font-family: museo-sans, sans-serif;
 	--form-field-font-family: museo-sans, sans-serif;
-	--icons-font-family: carkeek-blocks, sans-serif;
-	--content-width: calc(1130px + (2 * var(--gutter-width) )); /* including padding 824 + 4 rem*/
-	--content-width-actual: 1130px;
+	--icon-font-family: carkeek-blocks, sans-serif;
+	--content-width: calc(800px + (2 * var(--gutter-width) )); /* including padding 824 + 4 rem*/
+	--content-width-actual: 800px;
 	--header-width: 1400px;
 	--dropdown-symbol-width: 0.7em;
 
@@ -39,6 +39,7 @@
 	--color-theme-yellow: #f1c400;
 	--color-theme-orange: #e4bc09;
 	--color-theme-light: #faf7f4;
+	--color-theme-white: #fff;
 
 
 	--color-theme-grey-dark: #454543;
@@ -47,10 +48,15 @@
 
 	--color-theme-grey-lightest: #e3e3e3;
 
+	--color-background-main: #faf7f4;
+
 
 	--color-button-background: var(--color-theme-yellow);
 	--color-button-text: var(--color-theme-white);
 	--color-button-hover: var(--color-theme-orange);
+
+	--color-nav-links: var(--color-theme-grey-dark);
+	--color-nav-links-hover: var(--color-theme-secondary);
 
 	--color-link: var(--color-theme-secondary);
 	--color-link-visited: var(--color-theme-secondary);
@@ -62,13 +68,17 @@
 	--color-border-dark: #979797;
 
 	/* Custom editor font sizes */
-	--font-size-small: calc(16 / var(--global-font-size) * 1rem);
-	--font-size-xsmall: calc(12 / var(--global-font-size) * 1rem);
-	--font-size-medium: calc(18 / var(--global-font-size) * 1rem); /** intro text **/
-	--font-size-regular: calc(19 / var(--global-font-size) * 1rem);
+	--font-size-small: calc(15 / var(--global-font-size) * 1rem);
+	--font-size-xsmall: calc(14 / var(--global-font-size) * 1rem);
+	--font-size-medium: calc(17 / var(--global-font-size) * 1rem); /** intro text **/
+	--font-size-regular: calc(17 / var(--global-font-size) * 1rem);
 	--font-size-large: calc(21 / var(--global-font-size) * 1rem); /** quote **/
-	--font-size-nav: calc(18 / var(--global-font-size) * 1rem);
-	--font-size-button: calc(16 / var(--global-font-size) * 1rem);
+
+	--font-size-nav: calc(17 / var(--global-font-size) * 1rem);
+	--font-size-forms: calc(15 / var(--global-font-size) * 1rem);
+	--font-size-caption: calc(15 / var(--global-font-size) * 1rem);
+	--font-size-cta: calc(18 / var(--global-font-size) * 1rem);
+
 
 
 	/* Main family font weights */
@@ -78,8 +88,8 @@
 
 
 	/* Heading font sizes */
-	--font-size-h1: calc(28 / var(--global-font-size) * 1rem);
-	--font-size-h2: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-h1: calc(42 / var(--global-font-size) * 1rem);
+	--font-size-h2: calc(28 / var(--global-font-size) * 1rem);
 	--font-size-h3: calc(30 / var(--global-font-size) * 1rem);
 	--font-size-h4: calc(24 / var(--global-font-size) * 1rem);
 	--font-size-h5: calc(21 / var(--global-font-size) * 1rem);
@@ -91,13 +101,22 @@
 @media (--tablet-up) {
 
 	:root {
-		--gutter-width: 8.5vw;
+		--gutter-width: 2.75rem;
 
-		--font-size-regular: calc(18 / var(--global-font-size) * 1rem);
-		--font-size-h1: calc(242 / var(--global-font-size) * 1rem);
-		--font-size-h2: 1.875rem;
-		--font-size-h3: 1.625rem;
-		--font-size-h4: 1rem;
+		--font-size-regular: calc(19 / var(--global-font-size) * 1rem);
+		--font-size-h1: calc(56 / var(--global-font-size) * 1rem);
+		--font-size-h2: calc(32 / var(--global-font-size) * 1rem);
+
+		--font-size-caption: calc(17 / var(--global-font-size) * 1rem);
+		--font-size-cta: calc(21 / var(--global-font-size) * 1rem);
+
+	}
+}
+
+@media (--tablet-wide-up) {
+
+	:root {
+		--font-size-nav: calc(14 / var(--global-font-size) * 1rem);
 
 	}
 }

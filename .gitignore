@@ -11,9 +11,8 @@ themes/*/node_modules/
 themes/*/bower_components/
 
 
-!themes/wp-rig-waflt
-!themes/waflt-theme
+!themes/wp-rig
+!themes/pip-theme
 
-mu-plugins/jetpack-testing.php
 
 !mu-plugins/*/src/plugins

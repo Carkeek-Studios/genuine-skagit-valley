@@ -98,8 +98,16 @@ were hidden (via .neverending) before. */
 }
 
 /*--------------------------------------------------------------
-# Infinite scroll
+# Responsive
 --------------------------------------------------------------*/
+@media (--tablet-up) {
+
+	.hidden-tablet-up {
+		display: none;
+	}
+}
+
+
 @media (--tablet-wide-up) {
 
 	.hidden-tablet-wide-up {

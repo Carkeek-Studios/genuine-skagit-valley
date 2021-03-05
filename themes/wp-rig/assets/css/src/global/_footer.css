@@ -2,34 +2,17 @@
 # Footer
 --------------------------------------------------------------*/
 .footer-main {
-	background-color: var(--color-theme-green);
-	color: var(--color-theme-white);
 	font-size: 14px;
 	line-height: 1.45;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding-left: var(--gutter-width);
-	padding-right: var(--gutter-width);
-	padding-top: var(--block-padding-vert);
-	padding-bottom: var(--block-padding-vert);
 
 
 	& a {
-		color: var(--color-theme-white);
+		color: var(--global-font-color);
 	}
-
-
-	& hr {
-		margin-top: var(--block-padding-vert);
-		margin-bottom: var(--block-padding-vert);
-		width: 100%;
-
-		margin-left: 0;
-		margin-right: auto;
-	}
-
 
 	& .gpopover {
 		z-index: 400;
@@ -41,49 +24,107 @@
 	}
 }
 
-.colophon {
-	font-size: 12px;
-
-}
-
 .footer-section {
+	padding-left: var(--gutter-width);
+	padding-right: var(--gutter-width);
+	padding-top: var(--block-padding-vert);
+	padding-bottom: var(--block-padding-vert);
 
 	& p {
 		padding-bottom: 1.5rem;
 	}
 
 	& .colophon {
-		display: grid;
-		grid-template-areas:
-			"info info"
-			"social accreditation";
 		align-items: center;
 		padding-top: var(--gutter-width);
 		padding-bottom: var(--gutter-width);
+		text-align: center;
+		color: #70706d;
+
+		& li {
+			padding-bottom: 10px;
+		}
+
+		& a {
+			color: #70706d;
+		}
 	}
 
 	& .footer-social {
 		padding-top: 1rem;
-		grid-area: social;
+
+		& ul {
+			padding: 0;
+			margin-top: 1rem;
+			margin-bottom: 0;
+			display: flex;
+			justify-content: center;
+		}
 
 		& li {
-			display: inline-block;
 			font-size: 24px;
+			list-style: none;
+		}
+
+		& a {
+			color: var(--global-font-color);
+			padding: 1rem 0.5rem;
 		}
 	}
 
-	& .footer-accreditation {
-		padding-top: 20px;
-		grid-area: accreditation;
+	&.footer-lower {
+		padding-top: 0;
+	}
 
-		& img {
-			max-width: 55px;
+	& .gform_widget {
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+
+		& h2.widget-title {
+			color: #fff;
+			text-align: center;
+			font-size: 32px;
+			text-transform: none;
+			margin-bottom: 0.5rem;
 		}
+
+		& .gform_description {
+			font-size: 17px;
+			text-align: center;
+			margin-bottom: 1rem;
+		}
+
+		& .gform_body {
+			display: flex;
+
+		}
+
+		& .gform_fields {
+			width: 100%;
+			margin-bottom: 0;
+		}
+
+		& .gform_wrapper {
+			padding-top: 0;
+		}
+
+		& .gform_footer {
+			text-align: center;
+
+			& .gform_button {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		& input[type="email"] {
+			width: 100%;
+			border: none;
+		}
+
 	}
 
-	&.colophon-info {
-		grid-area: info;
-	}
 }
 
 .footer-section .widget_wrapper {
@@ -92,298 +133,97 @@
 	justify-content: center;
 	align-content: center;
 
-	& .the-crop-image {
+	& .widget_media_image {
+
+		& img {
+			margin-right: auto;
+			margin-left: auto;
+			max-width: 185px !important;
+		}
+	}
+
+	&.footer-bottom-widgets {
+		margin-top: 10px;
+	}
+
+}
+
+
+.widget_media_image {
+
+	& a {
+		display: block;
+	}
+}
+
+
+@media (--tablet-up) {
+
+	.footer-lower {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		max-width: var(--content-width);
 		width: 100%;
-		margin: 0 auto;
-		padding: var(--gutter-width);
-
-		& img {
-			width: 70vw !important;
-			margin: 0 auto;
-			padding-bottom: var(--gutter-width);
-		}
-
-		& a {
-			display: block;
-		}
-	}
-
-	& .wa-farmland-logo {
-		width: 100% !important;
-
-		& img {
-			width: 100%;
-			max-width: 400px !important;
-		}
-	}
-
-	& h2.widget-title {
-		font-size: 28px;
-		margin-bottom: 1rem;
-	}
-}
-
-form.the-crop-footer {
-	display: flex;
-	flex-wrap: nowrap;
-
-	& input {
-		border: none;
-		padding: 1rem;
-	}
-
-	& button {
-		padding: 1rem 1.25rem;
-	}
-}
-
-
-.switcher {
-	font-size: 1rem;
-	text-align: left;
-	cursor: pointer;
-	overflow: hidden;
-	width: 200px;
-	line-height: 17px;
-	margin-bottom: 1rem;
-}
-
-.switcher a {
-	text-decoration: none;
-	display: block;
-	font-size: 12pt;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-}
-
-.switcher a img {
-	vertical-align: middle;
-	display: inline;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	opacity: 0.8;
-}
-
-.switcher a:hover img {
-	opacity: 1;
-}
-
-.switcher .selected {
-	background-color: #fff;
-	position: relative;
-	z-index: 399;
-}
-
-.switcher .selected a {
-	border: 1px solid #ccc;
-	color: #666;
-	padding: 3px 5px;
-	width: 100%;
-}
-
-.switcher .selected a::after {
-	height: 24px;
-	display: inline-block;
-	position: absolute;
-	right: 10px;
-	width: 15px;
-	background-position: 50%;
-	background-size: 11px;
-	background-image: url(../images/angle-down.svg);
-	background-repeat: no-repeat;
-	content: "" !important;
-	transition: all 0.2s;
-}
-
-.switcher .selected a.open::after {
-	-webkit-transform: rotate(-180deg);
-	transform: rotate(-180deg);
-}
-
-.switcher .selected a:hover {
-	background: #fff;
-}
-
-.switcher .option {
-	position: absolute;
-	z-index: 9998;
-	border-left: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	background-color: #eee;
-	display: none;
-	width: 198px;
-	max-height: 198px;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
-
-.switcher .option a {
-	color: #000;
-	padding: 3px 5px;
-}
-
-.switcher .option a:hover {
-	background: #fff;
-}
-
-.switcher .option a.selected {
-	background: #fff;
-}
-
-#selected_lang_name {
-	float: none;
-}
-
-.l_name {
-	float: none !important;
-	margin: 0;
-}
-
-.switcher .option::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-	border-radius: 5px;
-	background-color: #f5f5f5;
-}
-
-.switcher .option::-webkit-scrollbar {
-	width: 5px;
-}
-
-.switcher .option::-webkit-scrollbar-thumb {
-	border-radius: 5px;
-	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-	background-color: #888;
-}
-
-
-@media (--tablet-small-up) {
-
-
-	.footer-main {
-		background-image: url(../images/footer-pattern.png);
-		background-position: top right;
-		background-repeat: repeat-y;
-		background-size: 212px;
-		overflow: hidden;
-		padding-left: var(--gutter-width);
-		padding-right: var(--gutter-width);
-		padding-top: var(--block-padding-vert-tablet);
-		padding-bottom: var(--block-padding-vert-tablet);
-		height: 56vw;
-		min-height: 650px;
-		max-height: 800px;
-
-
-		& hr {
-
-			max-width: calc(30% + 485px);
-		}
+		margin-right: auto;
+		margin-left: auto;
 	}
 
 	.footer-section {
 
-		& .widget_wrapper {
+		& .footer-social ul {
 			justify-content: flex-start;
+		}
 
-			& .the-crop-image {
-				padding-left: 0;
-				padding-right: 0;
+		& .colophon {
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+			text-align: left;
+
+			& li {
+				padding-bottom: 5px;
 			}
+		}
+
+		& .widget_wrapper.footer-bottom-widgets {
+
+			& .widget_media_image {
+
+				& img {
+					margin-left: 0;
+				}
+			}
+		}
+
+		& .gform_widget {
 
 			& h2.widget-title {
-				font-size: 30px;
-			}
-		}
-	}
-
-	.footer-upper {
-
-		& .widget_wrapper {
-			display: flex;
-			flex-wrap: nowrap;
-			flex-direction: row;
-		}
-
-		& .widget-1 {
-			flex-basis: 30%;
-		}
-
-		& .widget-2 {
-			flex-basis: 70%;
-		}
-
-		& .the-crop-form {
-			padding-left: 3rem;
-
-
-			& > * {
-				max-width: 418px;
+				font-size: 42px;
 			}
 
+			& .gform_description {
+				font-size: var(--font-size-large);
+				text-align: center;
+				width: 100%;
+				margin-bottom: 2rem;
+			}
 
-		}
-	}
+			& .validation_error {
+				margin-bottom: 0;
+				padding-top: 0;
+			}
 
-	.footer-lower {
-		display: flex;
-		justify-content: space-between;
-		padding-top: 1rem;
+			& input[type="email"] {
+				height: 50px;
+				width: 360px;
+				margin-right: 10px;
+			}
 
-		& .widget_wrapper {
-			flex: 1 1 30%;
-		}
-
-		& .colophon-wrapper {
-			flex: 1 1 70%;
-		}
-
-		& .colophon {
-
-			max-width: 450px;
-			padding-top: 0;
-			padding-left: 3rem;
-			margin-right: var(--gutter-width);
-			grid-template-areas:
-				"info accreditation"
-				"social social";
-
-		}
-
-		& .colophon-info {
-			align-self: flex-start;
-
-		}
-
-		& .footer-accreditation {
-			padding-top: 0;
-			align-self: flex-start;
-			padding-left: 20px;
-		}
-	}
-}
-
-@media (--desktop-up) {
-
-	.footer-lower {
-
-
-		& .colophon {
-
-
-			padding-left: 4rem;
-		}
-	}
-
-	.footer-upper {
-
-		& .the-crop-form {
-			padding-left: 4rem;
+			& form {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
 		}
 	}
 }

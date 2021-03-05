@@ -1,0 +1,77 @@
+.wp-block-carkeek-blocks-image-slider {
+
+	& .carkeek-slider-item {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+	}
+
+	& .slick-dots {
+		text-align: center;
+		padding: 0;
+		bottom: auto;
+		top: 55vw;
+	}
+
+	& .slick-prev,
+	& .slick-next {
+		top: 33vw;
+	}
+
+	& .wp-block-carkeek-blocks-slider__slide-wrapper {
+		height: auto;
+	}
+
+	& .carkeek-slider-item__image {
+		height: 66vw;
+	}
+
+	& .carkeek-slider-item__caption {
+		color: var(--global-font-color);
+		position: relative;
+		font-size: var(--font-size-medium);
+		padding-left: var(--gutter-width);
+		padding-right: var(--gutter-width);
+		text-align: center;
+
+		& a {
+
+			&::after {
+				content: "\203A";
+
+				padding-left: 5px;
+			}
+		}
+	}
+
+}
+
+.wp-block-carkeek-blocks-pip-brayer {
+
+	& .brayer-background-inner {
+		max-width: var(--content-width);
+		padding-left: var(--gutter-width);
+		padding-right: var(--gutter-width);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+@media (--tablet-up) {
+
+	.wp-block-carkeek-blocks-image-slider {
+
+		& .slick-dots {
+			top: 50vw;
+		}
+
+		& .carkeek-slider-item__image {
+			height: 56vw;
+		}
+
+		& .slick-prev,
+		& .slick-next {
+			top: 28vw;
+		}
+	}
+}

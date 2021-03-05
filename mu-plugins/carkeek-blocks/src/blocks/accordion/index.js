@@ -4,7 +4,8 @@ import icons from './icons';
 import edit from "./edit";
 import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
-import { InnerBlocks } from "@wordpress/block-editor";
+import { InnerBlocks, RichText } from "@wordpress/block-editor";
+import { cleanForSlug } from "@wordpress/editor";
 
 const attributes = {
     title: {
@@ -12,11 +13,14 @@ const attributes = {
     },
     inheritedHeaderStyle: {
         type: "string"
+    },
+    content: {
+        type: "string"
     }
 }
 
-registerBlockType("carkeek-blocks/expand-collapse-section", {
-    title: __("Expand Collapse Section", "carkeek-blocks"),
+registerBlockType("carkeek-blocks/accordion-panel", {
+    title: __("Accordion Panel", "carkeek-blocks"),
 
     description: __(
         "Build an Accordion with inner blocks",
@@ -31,7 +35,7 @@ registerBlockType("carkeek-blocks/expand-collapse-section", {
 
     attributes,
 
-    parent: ["carkeek-blocks/expand-collapse"],
+    parent: ["carkeek-blocks/accordion"],
 
     keywords: [
         __("accordion", "carkeek-blocks"),
@@ -42,14 +46,17 @@ registerBlockType("carkeek-blocks/expand-collapse-section", {
     edit,
 
     save({ attributes } ) {
-        const{ title } = attributes;
+        const{ title, content } = attributes;
+        const acc_id = 'accordion-' + cleanForSlug(title);
+        const panel_id = 'accordion-panel' + cleanForSlug(title);
         return (
-            <div>
-                <div className={`wp-block-carkeek-blocks-expand-section__header inner-block-headline`}>{title}</div>
-                <div className="wp-block-carkeek-blocks-expand-section__content" aria-expanded="false">
+            <>
+                <div className={`wp-blocks-carkeek-accordion__header`}><button id={acc_id} aria-expanded="false" aria-controls={panel_id}>{title}</button></div>
+                <div className="wp-blocks-carkeek-accordion__panel" id={panel_id} role="region" aria-labelledby={acc_id} aria-hidden="true">
+                    <RichText.Content tagName="div" value={ content } />
                     <InnerBlocks.Content />
                 </div>
-            </div>
+            </>
         );
     }
 });

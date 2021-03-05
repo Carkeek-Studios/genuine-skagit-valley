@@ -1,31 +1,38 @@
+/* stylelint-disable */
 @font-face {
-	font-family: "carkeek-blocks";
-	src: url("fonts/carkeek-blocks.eot?63798272");
+	font-family: carkeek-blocks;
+	src: url("../fonts/carkeek-blocks.eot?74982249");
 	src:
-		url("fonts/carkeek-blocks.eot?63798272#iefix") format("embedded-opentype"),
-		url("fonts/carkeek-blocks.woff2?63798272") format("woff2"),
-		url("fonts/carkeek-blocks.woff?63798272") format("woff"),
-		url("fonts/carkeek-blocks.ttf?63798272") format("truetype");
+		url("../fonts/carkeek-blocks.eot?74982249#iefix") format("embedded-opentype"),
+		url("../fonts/carkeek-blocks.woff2?74982249") format("woff2"),
+		url("../fonts/carkeek-blocks.woff?74982249") format("woff"),
+		url("../fonts/carkeek-blocks.ttf?74982249") format("truetype");
 	font-weight: normal;
 	font-style: normal;
 }
+/* stylelint-enable */
 
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Chrome hack: SVG is rendered more smooth in Windozze.
+	100% magic, uncomment if you need it. */
 
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/* Note, that will break hinting!
+	In other OS-es font will be not as sharp as it could be */
 
-/*
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
+/* stylelint-disable */
+
+/* @media screen and (-webkit-min-device-pixel-ratio: 0) {
+
 	@font-face {
-	  font-family: 'carkeek-blocks';
-	  src: url('../font/carkeek-blocks.svg?63798271#carkeek-blocks') format('svg');
+		font-family: "carkeek-blocks";
+		src: url("../font/carkeek-blocks.svg?63798271#carkeek-blocks")
+		 format("svg");
 	}
-  }
-  */
+} */
+
 
 [class^="icon-"]::before,
 [class*=" icon-"]::before {
-	font-family: "carkeek-blocks";
+	font-family: carkeek-blocks;
 	font-style: normal;
 	font-weight: normal;
 	speak: never;
@@ -43,7 +50,7 @@
 	text-transform: none;
 
 	/* fix buttons height, for twitter bootstrap */
-	line-height: 1em;
+	line-height: 1;
 
 	/* Animation center compensation - margins should be symmetric */
 
@@ -63,7 +70,7 @@
 	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-
+/* stylelint-enable */
 .icon-mail::before {
 	content: "\e800";
 } /* '' */
@@ -97,12 +104,21 @@
 .icon-ok::before {
 	content: "\e80a";
 } /* '' */
+.icon-lock::before {
+	content: "\e80b";
+} /* '' */
+.icon-basket::before {
+	content: "\e80c";
+} /* '' */
 .icon-twitter::before {
 	content: "\f099";
 } /* '' */
 .icon-facebook::before {
 	content: "\f09a";
 } /* '' */
+.icon-linkedin::before {
+	content: "\f0e1";
+} /* '' */
 .icon-angle-left::before {
 	content: "\f104";
 } /* '' */
@@ -127,9 +143,15 @@
 .icon-angle-circled-right::before {
 	content: "\f138";
 } /* '' */
+.icon-lock-open-alt::before {
+	content: "\f13e";
+} /* '' */
 .icon-instagram::before {
 	content: "\f16d";
 } /* '' */
 .icon-dot-circled::before {
 	content: "\f192";
 } /* '' */
+.icon-pinterest::before {
+	content: "\f231";
+} /* '' */
