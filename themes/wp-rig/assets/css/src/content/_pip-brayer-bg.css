@@ -1,5 +1,5 @@
 .has-brayer-background {
-	background-image: url(../images/src/Medium-brayer-1_pink.jpg);
+	background-image: url(../images/Medium-brayer-1_pink.jpg);
 	background-repeat: no-repeat;
 	min-height: 400px;
 	background-size: cover;
@@ -15,7 +15,7 @@
 }
 
 .brayer-background-yellow {
-	background-image: url(../images/src/Medium-brayer-1_yellow.jpg);
+	background-image: url(../images/Medium-brayer-1_yellow.jpg);
 }
 
 .brayer-background-right {
