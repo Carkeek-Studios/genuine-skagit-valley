@@ -188,6 +188,13 @@
 			margin-bottom: 0;
 		}
 	}
+
+	& .wp-block-group:not(.alignfull),
+	& .wp-block-group:not(.alignwide) {
+		max-width: var(--content-width);
+		margin-right: auto;
+		margin-left: auto;
+	}
 }
 
 @media (--tablet-up) {
