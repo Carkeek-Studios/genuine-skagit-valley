@@ -25,7 +25,7 @@
 
 	/*block padding */
 	--block-padding-vert: 3.25rem;
-	--block-padding-vert-tablet: 7vw;
+
 
 	--global-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 
@@ -79,8 +79,6 @@
 	--font-size-caption: calc(15 / var(--global-font-size) * 1rem);
 	--font-size-cta: calc(18 / var(--global-font-size) * 1rem);
 
-
-
 	/* Main family font weights */
 	--font-weight-regular: 500;
 	--font-weight-bold: 900;
@@ -109,6 +107,8 @@
 
 		--font-size-caption: calc(17 / var(--global-font-size) * 1rem);
 		--font-size-cta: calc(21 / var(--global-font-size) * 1rem);
+
+		--block-padding-vert: 7vw;
 
 	}
 }

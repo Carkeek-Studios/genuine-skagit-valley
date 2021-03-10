@@ -33,14 +33,14 @@ class Component implements Component_Interface {
 	public function initialize() {
 		add_action( 'after_setup_theme', array( $this, 'action_add_editor_support' ) );
 		add_filter( 'editorskit_block_editor_classnames', array( $this, 'editorskit_classnames' ) );
-		add_action( 'wp_print_styles', array( $this, 'deregister_block_styles'), 100 );
+		add_action( 'wp_print_styles', array( $this, 'deregister_block_styles' ), 100 );
 	}
 
 		/**
-	 * Dont use core block styles
-	 */
+		 * Dont use core block styles
+		 */
 	public function deregister_block_styles() {
-		//wp_dequeue_style( 'wp-block-library' );
+		// wp_dequeue_style( 'wp-block-library' );
 	}
 
 	/**
@@ -51,7 +51,7 @@ class Component implements Component_Interface {
 		add_theme_support( 'editor-styles' );
 
 		// Add support for default block styles.
-		//add_theme_support( 'wp-block-styles' );
+		add_theme_support( 'wp-block-styles' );
 
 		// Add support for responsive embeds.
 		add_theme_support( 'responsive-embeds' );
@@ -147,6 +147,155 @@ class Component implements Component_Interface {
 				),
 			)
 		);
+
+		register_block_pattern_category(
+			'layout',
+			array( 'label' => _x( 'Layouts', 'Block pattern category', 'pip-theme' ) )
+		);
+		register_block_pattern_category(
+			'brayers',
+			array( 'label' => _x( 'Brayers', 'Block pattern category', 'pip-theme' ) )
+		);
+
+		register_block_pattern(
+			'carkeek-blocks/brayer-yellow-left',
+			array(
+				'title'       => __( 'Brayer Yellow (Left)', 'pip-theme' ),
+				'description' => _x( 'Group Block with Brayer Background', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'brayers' ),
+				'content'     => '<!-- wp:group {"align":"full","className":"has-background has-brayer-background brayer-background-yellow"} -->
+				<div class="wp-block-group alignfull has-background has-brayer-background brayer-background-yellow"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Our Mission</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">We bring people together by using old printing presses to amplify new voices, share knowledge, and spark creativity.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+		register_block_pattern(
+			'carkeek-blocks/brayer-yellow-right',
+			array(
+				'title'       => __( 'Brayer Yellow (Right)', 'pip-theme' ),
+				'description' => _x( 'Group Block with Brayer Background', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'brayers' ),
+				'content'     => '<!-- wp:group {"align":"full","className":"has-background has-brayer-background brayer-background-yellow brayer-background-right"} -->
+				<div class="wp-block-group alignfull has-background has-brayer-background brayer-background-yellow brayer-background-right"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Our Mission</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">We bring people together by using old printing presses to amplify new voices, share knowledge, and spark creativity.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+		register_block_pattern(
+			'carkeek-blocks/brayer-pink-right',
+			array(
+				'title'       => __( 'Brayer Pink (Right)', 'pip-theme' ),
+				'description' => _x( 'Group Block with Brayer Background', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'brayers' ),
+				'content'     => '<!-- wp:group {"align":"full","className":"has-background has-brayer-background brayer-background-pink brayer-background-right"} -->
+				<div class="wp-block-group alignfull has-background has-brayer-background brayer-background-pink brayer-background-right"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Our Mission</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">We bring people together by using old printing presses to amplify new voices, share knowledge, and spark creativity.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+		register_block_pattern(
+			'carkeek-blocks/brayer-pink-left',
+			array(
+				'title'       => __( 'Brayer Pink (Left)', 'pip-theme' ),
+				'description' => _x( 'Group Block with Brayer Background', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'brayers' ),
+				'content'     => '<!-- wp:group {"align":"full","className":"has-background has-brayer-background brayer-background-pink"} -->
+				<div class="wp-block-group alignfull has-background has-brayer-background brayer-background-pink"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Our Mission</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">We bring people together by using old printing presses to amplify new voices, share knowledge, and spark creativity.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+		register_block_pattern(
+			'carkeek-blocks/brayer-blue-left',
+			array(
+				'title'       => __( 'Brayer Blue (Left)', 'pip-theme' ),
+				'description' => _x( 'Group Block with Brayer Background', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'brayers' ),
+				'content'     => '<!-- wp:group {"align":"full","className":"has-background has-brayer-background brayer-background-blue"} -->
+				<div class="wp-block-group alignfull has-background has-brayer-background brayer-background-blue"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Our Mission</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">We bring people together by using old printing presses to amplify new voices, share knowledge, and spark creativity.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+		register_block_pattern(
+			'carkeek-blocks/brayer-blue-right',
+			array(
+				'title'       => __( 'Brayer Blue (Right)', 'pip-theme' ),
+				'description' => _x( 'Group Block with Brayer Background', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'brayers' ),
+				'content'     => '<!-- wp:group {"align":"full","className":"has-background has-brayer-background brayer-background-blue brayer-background-right"} -->
+				<div class="wp-block-group alignfull has-background has-brayer-background brayer-background-blue brayer-background-right"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Our Mission</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">We bring people together by using old printing presses to amplify new voices, share knowledge, and spark creativity.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+
 	}
 
 	/**
@@ -163,23 +312,23 @@ class Component implements Component_Interface {
 			'h3',
 			'h5',
 			'h6',
-			'no-top-margin',
-			'no-bottom-margin',
-			'is-style-arrow-cta',
-			'is-style-small-image',
-			'is-page-header',
-			'is-crop-form',
-			'add-top-margin-small',
-			'add-top-margin',
-			'add-bottom-margin',
-			'add-bottom-margin-small',
-			'anchor-top',
-			'anchor-bottom',
-			'no-padding',
-			'no-padding-top',
-			'no-padding-right',
-			'no-padding-bottom',
-			'no-padding-left',
+			'no - top - margin',
+			'no - bottom - margin',
+			'is - style - arrow - cta',
+			'is - style - small - image',
+			'is - page - header',
+			'is - crop - form',
+			'add - top - margin - small',
+			'add - top - margin',
+			'add - bottom - margin',
+			'add - bottom - margin - small',
+			'anchor - top',
+			'anchor - bottom',
+			'no - padding',
+			'no - padding - top',
+			'no - padding - right',
+			'no - padding - bottom',
+			'no - padding - left',
 		);
 
 		return $theme_classes;

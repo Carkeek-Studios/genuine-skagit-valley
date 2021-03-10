@@ -199,9 +199,8 @@
 		padding-left: 0;
 		padding-top: 0;
 		border-left: none;
+		order: 2;
 	}
-
-
 
 	button.search-toggle {
 		padding: 1.5rem 2rem;
@@ -209,10 +208,6 @@
 
 	.header-search {
 		z-index: -1;
-	}
-
-	.header-search-wrapper {
-		order: 2;
 	}
 
 	.icon-basket {
@@ -231,6 +226,4 @@
 	}
 
 }
-
-
 

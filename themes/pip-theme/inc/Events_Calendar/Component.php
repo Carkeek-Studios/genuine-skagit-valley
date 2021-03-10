@@ -36,10 +36,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function initialize() {
 		add_action( 'init', array( $this, 'register_additional_tax' ) );
 		add_filter( 'tribe_events_event_schedule_details_formatting', array( $this, 'tribe_events_schedule_details' ) );
-		add_filter( 'tribe_events_editor_default_template', array( $this, 'tribe_events_editor_default_template' ), 11, 1 );
 		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
-		add_filter( 'register_post_type_args', array( $this, 'custom_post_type_args'), 20, 2 );
-
 	}
 
 	/**
@@ -55,16 +52,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		);
 	}
 
-	function custom_post_type_args( $args, $post_type ) {
-		error_log(print_r($args, true));
-		if ( $post_type == "animal-species" ) {
-			$args['rewrite'] = array(
-				'slug' => 'animal'
-			);
-		}
-
-		return $args;
-	}
 
 	/**
 	 * Register Taxonomy for Organizers
@@ -102,35 +89,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $settings;
 	}
 
-	/**
-	 * Customize block order on the events template
-	 *
-	 * @param array $template default template, each item represents a block.
-	 */
-	public function tribe_events_editor_default_template( $template ) {
-		$template = array(
-			array(
-				'core/group',
-				array(
-					'className' => 'wft-event-details',
-				),
-				array(
-					array( 'tribe/event-datetime' ),
-					array( 'tribe/event-venue' ),
-					array( 'tribe/event-links' ),
-				),
-			),
-			array(
-				'core/paragraph',
-				array(
-					'placeholder' => __( 'Add Description...', 'pip-theme' ),
-				),
-			),
-			array( 'core/separator' ),
-			array( 'carkeek-blocks/form-assembly' ),
-		);
-		return $template;
-	}
 
 	/**
 	 * Return Abbreviated State

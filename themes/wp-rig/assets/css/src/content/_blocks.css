@@ -34,6 +34,10 @@
 	margin-top: var(--block-padding-vert);
 	margin-bottom: var(--block-padding-vert);
 
+	&:first-child {
+		margin-top: 0;
+	}
+
 	&.is-page-intro,
 	&.is-page-header {
 		margin-top: 0;
@@ -87,8 +91,8 @@
 @media (--tablet-up) {
 
 	.page-content > [class^="wp-block-"] {
-		margin-top: var(--block-padding-vert-tablet);
-		margin-bottom: var(--block-padding-vert-tablet);
+		margin-top: var(--block-padding-vert);
+		margin-bottom: var(--block-padding-vert);
 
 		&.no-top-margin {
 			margin-top: 0;
@@ -113,14 +117,14 @@
 	.page-content > .alignfull.has-background + .alignfull.has-background,
 	.page-content > .alignfull.has-background + .wp-block-cover,
 	.page-content > .wp-block-cover + .alignfull.has-background {
-		margin-top: calc(-1 * var(--block-padding-vert-tablet));
+		margin-top: calc(-1 * var(--block-padding-vert));
 	}
 
 	/* override to core */
 	.page-content > .wp-block-group.has-background,
 	.page-content > .wp-block-cover {
-		padding-top: var(--block-padding-vert-tablet);
-		padding-bottom: var(--block-padding-vert-tablet);
+		padding-top: var(--block-padding-vert);
+		padding-bottom: var(--block-padding-vert);
 
 		& > * {
 			max-width: var(--content-width-actual);
@@ -128,14 +132,6 @@
 			margin-left: auto;
 		}
 
-		&.alignwide,
-		&.alignfull {
-
-			& > * {
-				max-width: 100%;
-			}
-
-		}
 	}
 
 }
@@ -172,7 +168,25 @@
 
 	/*this is to override core */
 	&.has-background {
-		padding: var(--block-padding-vert) var(--gutter-width);
+
+		& .wp-block-group__inner-container {
+			padding: var(--block-padding-vert) var(--gutter-width);
+		}
+	}
+
+	&.alignfull {
+
+		& .wp-block-group__inner-container {
+			padding: 0 var(--gutter-width);
+		}
+	}
+
+	& .wp-block-group__inner-container > * {
+		margin-bottom: var(--gutter-width);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -183,7 +197,7 @@
 		&.is-group-quote {
 
 			& .wp-block-group__inner-container {
-				padding: var(--block-padding-vert-tablet) var(--gutter-width);
+				padding: var(--block-padding-vert) var(--gutter-width);
 			}
 		}
 
@@ -191,6 +205,10 @@
 	}
 }
 
+
+.wp-block-buttons > .wp-block-button {
+	margin-bottom: 0;
+}
 
 .wp-block-button__link {
 	border-radius: 0;
@@ -214,6 +232,14 @@
 	font-weight: var(--font-weight-bold);
 	font-size: var(--font-size-cta);
 	padding-left: 0;
+}
+
+.aligncenter,
+.is-content-justification-center {
+
+	& .is-style-arrow-cta .wp-block-button__link {
+		padding: 14px 1rem;
+	}
 }
 
 .is-style-arrow-cta .wp-block-button__link::after {
@@ -622,19 +648,19 @@
 		align-items: center;
 
 		&.is-cover-quote {
-			padding: var(--block-padding-vert-tablet) var(--gutter-width);
+			padding: var(--block-padding-vert) var(--gutter-width);
 		}
 
 		& .wp-block-cover__inner-container {
 			max-width: var(--content-width);
-			padding: var(--block-padding-vert-tablet) var(--gutter-width);
+			padding: var(--block-padding-vert) var(--gutter-width);
 		}
 
 		&.alignwide {
 
 			& .wp-block-cover__inner-container {
 
-				padding: var(--block-padding-vert-tablet) var(--gutter-width);
+				padding: var(--block-padding-vert) var(--gutter-width);
 				max-width: 100%;
 			}
 		}
@@ -642,7 +668,7 @@
 		&.alignfull {
 
 			& .wp-block-cover__inner-container {
-				padding: var(--block-padding-vert-tablet) var(--gutter-width-small);
+				padding: var(--block-padding-vert) var(--gutter-width-small);
 				max-width: 100%;
 			}
 		}
@@ -711,8 +737,8 @@
 	.wp-block-columns {
 
 		&.is-style-vertical-centered {
-			padding-top: var(--block-padding-vert-tablet);
-			padding-bottom: var(--block-padding-vert-tablet);
+			padding-top: var(--block-padding-vert);
+			padding-bottom: var(--block-padding-vert);
 
 			& .wp-block-column {
 				display: flex;
@@ -835,7 +861,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 	.wp-block-quote {
 		margin: 0;
-		padding: var(--block-padding-vert-tablet) 0;
+		padding: var(--block-padding-vert) 0;
 	}
 }
 
@@ -843,7 +869,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 	.wp-block-quote {
 		margin: 0;
-		padding: var(--block-padding-vert-tablet) 0;
+		padding: var(--block-padding-vert) 0;
 	}
 
 	.wp-block-quote__citation,
@@ -1102,7 +1128,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 		& .archive-entry--content {
 			margin-top: 0;
-			padding: var(--block-padding-vert-tablet) var(--gutter-width-small);
+			padding: var(--block-padding-vert) var(--gutter-width-small);
 		}
 	}
 }

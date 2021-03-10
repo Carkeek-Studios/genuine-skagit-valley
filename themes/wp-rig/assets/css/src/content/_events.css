@@ -12,7 +12,6 @@
 	.events-custom-content {
 		padding-right: var(--gutter-width);
 		padding-left: var(--gutter-width);
-		margin-bottom: var(--block-padding-vert-tablet);
 	}
 }
 
@@ -155,17 +154,17 @@
 
 	& .tribe-events-calendar-list__event-details {
 		width: 50%;
-		padding: var(--block-padding-vert-tablet) var(--gutter-width);
+		padding: var(--block-padding-vert) var(--gutter-width);
 	}
 
 	& .wfl-events-more-wrapper {
 		border-top: 2px solid var(--color-border);
-		padding: var(--block-padding-vert-tablet) var(--gutter-width-small);
+		padding: var(--block-padding-vert) var(--gutter-width-small);
 
 		& .wfl-events-more__headline {
 			display: block;
 			width: 100%;
-			margin-bottom: var(--block-padding-vert-tablet);
+			margin-bottom: var(--block-padding-vert);
 		}
 	}
 

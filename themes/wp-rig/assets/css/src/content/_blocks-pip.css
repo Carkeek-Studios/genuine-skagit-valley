@@ -1,16 +1,13 @@
-.wp-block-carkeek-blocks-image-slider {
+.wp-block-carkeek-blocks-carkeek-slider {
 
-	& .carkeek-slider-item {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: flex-end;
-	}
+	&.alignfull {
 
-	& .slick-dots {
-		text-align: center;
-		padding: 0;
-		bottom: auto;
-		top: 55vw;
+		& .slick-dots {
+			justify-content: center;
+			padding: 0;
+			bottom: auto;
+			top: 55vw;
+		}
 	}
 
 	& .slick-prev,
@@ -22,16 +19,11 @@
 		height: auto;
 	}
 
-	& .carkeek-slider-item__image {
-		height: 66vw;
-	}
-
-	& .carkeek-slider-item__caption {
+	& figcaption {
 		color: var(--global-font-color);
 		position: relative;
 		font-size: var(--font-size-medium);
-		padding-left: var(--gutter-width);
-		padding-right: var(--gutter-width);
+		padding: 10px var(--gutter-width);
 		text-align: center;
 
 		& a {
@@ -46,27 +38,37 @@
 
 }
 
-.wp-block-carkeek-blocks-pip-brayer {
+.ck-custom-archive__content-wrap {
+	margin-bottom: 1.5rem;
 
-	& .brayer-background-inner {
-		max-width: var(--content-width);
-		padding-left: var(--gutter-width);
-		padding-right: var(--gutter-width);
-		margin-right: auto;
-		margin-left: auto;
+	& > a {
+		font-size: 19px;
+		line-height: 1.25;
+		font-weight: var(--font-weight-bold);
+
 	}
 }
 
 @media (--tablet-up) {
 
-	.wp-block-carkeek-blocks-image-slider {
+	.wp-block-carkeek-blocks-carkeek-slider {
 
-		& .slick-dots {
-			top: 50vw;
+
+		&.alignfull {
+
+			& .slick-dots {
+				top: 50vw;
+			}
 		}
 
-		& .carkeek-slider-item__image {
-			height: 56vw;
+		& .wp-block-carkeek-blocks-fixed-image {
+
+			& .ck-fixed-image-wrap {
+
+				&::before {
+					padding-top: 56%;
+				}
+			}
 		}
 
 		& .slick-prev,
