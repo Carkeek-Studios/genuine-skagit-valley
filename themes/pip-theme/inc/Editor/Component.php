@@ -158,6 +158,34 @@ class Component implements Component_Interface {
 		);
 
 		register_block_pattern(
+			'carkeek-blocks/archive-with-intro',
+			array(
+				'title'       => __( 'Post List with Intro', 'pip-theme' ),
+				'description' => _x( 'Header, Intro, Post List and Link', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'layout' ),
+				'content'     => '<!-- wp:group {"align":"full"} -->
+				<div class="wp-block-group alignfull"><div class="wp-block-group__inner-container"><!-- wp:group -->
+				<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Classes</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">Our Long-Distance Letterpress offerings are nearly as satisfying as the real thing, delivering expert instruction—no matter where in the world you live.</p>
+				<!-- /wp:paragraph --></div></div>
+				<!-- /wp:group -->
+
+				<!-- wp:carkeek-blocks/custom-archive {"postTypeSelected":"tribe_events","blockId":"efba5dcd-93ad-4ada-b066-31da53339b18","align":"wide"} /-->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">See all classes</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
 			'carkeek-blocks/brayer-yellow-left',
 			array(
 				'title'       => __( 'Brayer Yellow (Left)', 'pip-theme' ),

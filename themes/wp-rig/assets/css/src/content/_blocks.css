@@ -190,8 +190,15 @@
 	}
 
 	& .wp-block-group:not(.alignfull),
-	& .wp-block-group:not(.alignwide) {
+	& .wp-block-group {
 		max-width: var(--content-width);
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	& .wp-block-group.alignwide,
+	& * > .alignwide {
+		max-width: var(--content-wide-width);
 		margin-right: auto;
 		margin-left: auto;
 	}

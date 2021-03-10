@@ -155,6 +155,7 @@ class Theme {
 			new Scripts\Component(),
 			new Blocks\Component(),
 			new Helpers\Component(),
+			new CKBlocks_Overrides\Component(),
 			new Events_Calendar\Component(),
 		);
 

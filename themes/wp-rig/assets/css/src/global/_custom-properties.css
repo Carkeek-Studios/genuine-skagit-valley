@@ -17,6 +17,7 @@
 	--content-width: calc(800px + (2 * var(--gutter-width) )); /* including padding 824 + 4 rem*/
 	--content-width-actual: 800px;
 	--header-width: 1400px;
+	--content-wide-width: calc(1400px + (2 * var(--gutter-width) )); /* including padding 824 + 4 rem*/
 	--dropdown-symbol-width: 0.7em;
 
 

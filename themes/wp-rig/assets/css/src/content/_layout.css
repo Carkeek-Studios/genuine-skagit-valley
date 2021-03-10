@@ -12,6 +12,10 @@
 		max-width: var(--content-width);
 	}
 
+	& > .alignwide {
+		max-width: var(--content-wide-width);
+	}
+
 	& > .alignfull {
 		padding-left: 0;
 		padding-right: 0;
