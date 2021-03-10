@@ -7,6 +7,8 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	background-position: 5% top;
+
 }
 
 
@@ -16,6 +18,7 @@
 
 .brayer-background-yellow {
 	background-image: url(../images/src/Medium-brayer-1_yellow.jpg);
+	background-position: 5% -30px;
 }
 
 .brayer-background-right {
@@ -32,6 +35,11 @@
 
 @media (--tablet-up) {
 
+	.has-brayer-background {
+		min-height: 400px;
+		background-position: left top;
+	}
+
 	.brayer-background-right {
 		background-position: right top;
 	}
@@ -39,5 +47,6 @@
 	.brayer-background-left {
 		background-position: left top;
 	}
+
 
 }

@@ -72,7 +72,7 @@
 	.archive-header {
 
 		& .select-list-wrapper {
-			margin-bottom: var(--block-padding-vert-tablet);
+			margin-bottom: var(--block-padding-vert);
 		}
 	}
 }
@@ -129,7 +129,7 @@
 	.error404 .site-main,
 	.archive-wrapper,
 	.infinite-wrap {
-		margin-bottom: var(--block-padding-vert-tablet);
+		margin-bottom: var(--block-padding-vert);
 	}
 }
 
@@ -202,24 +202,6 @@
 
 }
 
-@media (--tablet-up) {
-
-	.archive-entry {
-		margin-bottom: var(--block-padding-vert-tablet);
-
-		&::after {
-			margin-top: var(--block-padding-vert-tablet);
-		}
-
-		&:first-of-type {
-			padding-top: 0;
-
-			&::before {
-				margin-bottom: var(--block-padding-vert-tablet);
-			}
-		}
-	}
-}
 
 .infinite-wrap {
 
