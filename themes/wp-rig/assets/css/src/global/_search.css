@@ -37,13 +37,6 @@
 
 @media (--tablet-up) {
 
-	.search-entry {
-
-		& .search-entry--content {
-			padding-top: var(--block-padding-vert-tablet);
-			padding-bottom: var(--block-padding-vert-tablet);
-		}
-	}
 
 	.search-no-results {
 

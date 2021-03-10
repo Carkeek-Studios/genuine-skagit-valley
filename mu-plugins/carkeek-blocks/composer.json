@@ -1,8 +1,0 @@
-{
-    "require": {
-        "gamajo/template-loader": "^1.3"
-    },
-    "require-dev": {
-        "coenjacobs/mozart": "^0.7.1"
-    }
-}

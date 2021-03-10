@@ -2,13 +2,6 @@
 	$( document ).ready( function() {
 		$( '.info-popover' ).gpopover();
 
-		$( '.toggle-slide' ).click( function( e ) {
-			e.preventDefault();
-			const target = $( this ).data( 'target' );
-			$( '#' + target ).slideToggle();
-			$( this ).toggleClass( 'open' );
-		} );
-
 		// Select all links with hashes
 		$( 'a[href*="#"]' )
 		// Remove links that don't actually link to anything

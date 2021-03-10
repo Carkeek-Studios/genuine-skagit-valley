@@ -5,7 +5,7 @@
         {
             "key": "field_604176dd847ff",
             "label": "Role",
-            "name": "role",
+            "name": "organizers_role",
             "type": "text",
             "instructions": "",
             "required": 0,
@@ -39,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1614903192
+    "modified": 1614986070
 }
