@@ -7,7 +7,6 @@
 	text-align: center;
 	border-top: 2px solid var(--color-theme-grey-lightest);
 	padding: 4.625rem 1rem 0;
-	color: var(--color-theme-green);
 
 	& .image-caption {
 		padding: 0.5rem  var(--gutter-width);
