@@ -2,6 +2,13 @@
 	$( document ).ready( function() {
 		$( '.info-popover' ).gpopover();
 
+		$( '#gform_submit_button_1' ).on( 'click', function( e ) {
+			e.preventDefault();
+			const email = $( '#input_1_1' ).val();
+			const url = $( '#input_1_2' ).val();
+			window.location.href = url + '&MERGE0=' + email;
+		} );
+
 		// Select all links with hashes
 		$( 'a[href*="#"]' )
 		// Remove links that don't actually link to anything

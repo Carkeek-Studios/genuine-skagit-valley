@@ -61,7 +61,6 @@ function initEachNavToggleSubmenu( nav ) {
 	for ( let i = 0; i < SUBMENUS.length; i++ ) {
 		const parentMenuItem = SUBMENUS[ i ].parentNode;
 		let dropdown = parentMenuItem.querySelector( '.dropdown' );
-		const firstSubItem = SUBMENUS[ i ].firstElementChild;
 
 		// If no dropdown, create one.
 		if ( ! dropdown ) {
@@ -169,7 +168,6 @@ function initEachNavToggleSmall( nav ) {
 	menuTOGGLE.setAttribute( 'aria-expanded', 'false' );
 
 	menuTOGGLE.addEventListener( 'click', ( e ) => {
-		console.log( e );
 		/** Toggle search / menus when one is open and clicking on the other */
 		const toggleOff = e.currentTarget.getAttribute( 'data-toggleoff' );
 		const toggleOffBtn = document.getElementById( toggleOff );

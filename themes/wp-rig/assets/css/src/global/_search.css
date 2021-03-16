@@ -2,8 +2,8 @@
 
 	& .search-entry--content {
 		border-bottom: 2px solid var(--color-border);
-		padding-top: var(--block-padding-vert);
-		padding-bottom: var(--block-padding-vert);
+		padding-top: var(--block-spacing-vert);
+		padding-bottom: var(--block-spacing-vert);
 
 		& .search-breadcrumb {
 			margin-top: 1rem;

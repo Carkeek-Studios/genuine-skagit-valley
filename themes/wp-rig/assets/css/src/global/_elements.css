@@ -34,8 +34,8 @@ body {
 
 /* stylelint-disable */
 hr {
-	margin-top: var(--block-padding-vert);
-	margin-bottom: var(--block-padding-vert);
+	margin-top: var(--block-spacing-vert);
+	margin-bottom: var(--block-spacing-vert);
 	box-sizing: border-box;
 	border: none;
 	border-bottom: 2px solid var(--color-border);

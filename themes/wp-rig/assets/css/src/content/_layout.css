@@ -7,13 +7,13 @@
 	& > * {
 		margin-right: auto;
 		margin-left: auto;
-		padding-right: var(--gutter-width);
-		padding-left: var(--gutter-width);
+		padding-right: var(--gutter-width-page);
+		padding-left: var(--gutter-width-page);
 		max-width: var(--content-width);
 	}
 
 	& > .alignwide {
-		max-width: var(--content-wide-width);
+		max-width: var(--content-width-wide);
 	}
 
 	& > .alignfull {
@@ -31,25 +31,6 @@
 }
 
 @media (--tablet-small-up) {
-
-	.page-content,
-	.entry-content,
-	.archive-header,
-	.archive-wrapper,
-	.infinite-wrap {
-
-		& > * {
-			margin-right: auto;
-			margin-left: auto;
-			padding-right: var(--gutter-width);
-			padding-left: var(--gutter-width);
-		}
-
-		& > .alignwide,
-		& > .is-style-wide {
-			max-width: 100%;
-		}
-	}
 
 	.page-content > ul,
 	.page-content > ol,

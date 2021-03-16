@@ -13,7 +13,7 @@
       "https": false
     },
     "styles": {
-      "stage": 3,
+      "stage": 0,
       "autoprefixer": {
         "grid": false
       },

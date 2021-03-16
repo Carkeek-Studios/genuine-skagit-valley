@@ -23,7 +23,7 @@
 }
 
 .add-top-margin {
-	margin-top: var(--block-padding-vert);
+	margin-top: var(--block-spacing-vert);
 }
 
 .add-top-margin-small {
@@ -35,7 +35,7 @@
 }
 
 .add-bottom-margin {
-	margin-bottom: var(--block-padding-vert);
+	margin-bottom: var(--block-spacing-vert);
 }
 
 .add-bottom-margin-small {
@@ -49,7 +49,7 @@
 	}
 
 	&.add-top-margin {
-		margin-top: var(--block-padding-vert);
+		margin-top: var(--block-spacing-vert);
 	}
 
 	&.add-top-margin-small {
@@ -61,7 +61,7 @@
 	}
 
 	&.add-bottom-margin {
-		margin-bottom: var(--block-padding-vert);
+		margin-bottom: var(--block-spacing-vert);
 	}
 
 	&.add-bottom-margin-small {
@@ -93,7 +93,7 @@
 @media (--tablet-small-up) {
 
 	.add-top-margin {
-		margin-top: var(--block-padding-vert);
+		margin-top: var(--block-spacing-vert);
 	}
 
 	.add-top-margin-small {
@@ -101,7 +101,7 @@
 	}
 
 	.add-bottom-margin {
-		margin-bottom: var(--block-padding-vert);
+		margin-bottom: var(--block-spacing-vert);
 	}
 
 	.add-bottom-margin-small {
@@ -111,7 +111,7 @@
 	[class^="wp-block-"] {
 
 		&.add-top-margin {
-			margin-top: var(--block-padding-vert);
+			margin-top: var(--block-spacing-vert);
 		}
 
 		&.add-top-margin-small {
@@ -119,7 +119,7 @@
 		}
 
 		&.add-bottom-margin {
-			margin-bottom: var(--block-padding-vert);
+			margin-bottom: var(--block-spacing-vert);
 		}
 
 		&.add-bottom-margin-small {
@@ -316,8 +316,7 @@ ul.is-style-circle-checked {
 	background-color: var(--color-custom-sun);
 }
 
-.brayer-background-pink,
-.brayer-background-blue,
+
 .has-theme-secondary-background-color,
 .has-theme-black-background-color,
 .has-theme-green-background-color,
@@ -345,7 +344,6 @@ ul.is-style-circle-checked {
 	}
 }
 
-.brayer-background-yellow,
 .has-theme-primary-background-color,
 .has-theme-grey-light-background-color,
 .has-theme-yellow-background-color,
@@ -367,7 +365,7 @@ ul.is-style-circle-checked {
 
 	& a:not(.wp-block-carkeek-blocks-link-tile__link):hover,
 	& a:not(.wp-block-carkeek-blocks-link-tile__link):active {
-		color: var(--color-theme-white);
+		color: var(--global-font-color);
 	}
 }
 

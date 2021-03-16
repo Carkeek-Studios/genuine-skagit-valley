@@ -64,7 +64,7 @@ p + h6 {
 }
 
 h2 + [class^="wp-block-"] {
-	margin-top: var(--block-padding-vert);
+	margin-top: var(--block-spacing-vert);
 }
 
 h1,

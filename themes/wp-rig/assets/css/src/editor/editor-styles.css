@@ -33,6 +33,10 @@
 /*--------------------------------------------------------------
 # Adjustments for the editor
 --------------------------------------------------------------*/
+body {
+	background-color: var(--color-background-main);
+}
+
 button,
 select,
 option {

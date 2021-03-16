@@ -37,10 +37,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'get_the_terms', array( $this, 'hide_categories_terms' ), 10, 3 );
 		add_filter( 'excerpt_more', array( $this, 'my_theme_excerpt_more' ) );
 		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
-		add_filter( 'carkeek_block_custom_post_layout__css_classes', array( $this, 'carkeek_block_custom_post_layout__css_classes' ), 11, 2 );
-		add_action( 'acf/save_post', array( $this, 'acf_save_post' ) );
-		add_filter( 'rp4wp_thumbnail_size', array( $this, 'rp4wp_thumbnail_size' ) );
-		add_filter( 'rp4wp_post_title', array( $this, 'rp4wp_post_title' ), 10, 2 );
 	}
 
 	/**
@@ -118,6 +114,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $terms;
 	}
 
+	/** Get Random Images
+	 *
+	 * Can be used to generate a random from a group if needed.
+	 */
 	public function get_random_images_array() {
 		if ( ! function_exists( 'get_field' ) ) {
 			return;
@@ -238,27 +238,24 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Make Social Links
 	 */
 	public function make_social_share_links() {
-		echo '<ul class="social-share-links list-inline">
+		echo wp_kses_post(
+			'<ul class="social-share-links list-inline">
 			<li class="list-inline-item social-share-links__label">Share: </li>
 			<li class="list-inline-item">' . $this->make_fb_button() . '</li>
 			<li class="list-inline-item">' . $this->make_twitter_button() . '</li>
 			<li class="list-inline-item">' . $this->make_email_button() . '</li>
-		</ul>';
+		</ul>'
+		);
 	}
 
 
-	public function carkeek_block_custom_post_layout__css_classes( $css_classes, $attributes ) {
-		$post_type = $attributes['postTypeSelected'];
-		$layout    = $attributes['postLayout'];
-
-		if ( 'protected_farms' == $post_type && 'grid' == $layout ) {
-			$css_clases[] = 'wp-block-carkeek-blocks-link-tiles';
-			$css_clases[] = 'wp-block-columns';
-		}
-
-		return $css_classes;
-	}
-
+	/**
+	 * Carkeek Blocks Custom Post Type templates
+	 *
+	 * @param string $post_html - existing content.
+	 * @param object $post current post.
+	 * @param array  $attributes as passed to block.
+	 */
 	public function carkeek_block_custom_post_layout( $post_html, $post, $attributes ) {
 		$post_type = $attributes['postTypeSelected'];
 		$layout    = $post_type . '_' . $attributes['postLayout'];
@@ -276,43 +273,4 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				return $post_html;
 		}
 	}
-
-	function acf_save_post( $post_id ) {
-		if ( ! function_exists( 'get_field' ) ) {
-			return;
-		}
-		// set location fields
-		$address = get_field( 'lookup_location', $post_id );
-		if ( ! empty( $address ) && isset( $address['lat'] ) ) {
-			$vals = array(
-				'lat' => $address['lat'],
-				'lng' => $address['lng'],
-			);
-			update_field( 'field_5f1f117865bda', $vals, $post_id );
-		}
-	}
-
-	/**
-	 * Return Thumbnail size for  related posts
-	 */
-
-	function rp4wp_thumbnail_size() {
-		return 'large';
-	}
-
-	/**
-	 * A little hack to pass a thumbnail to the related post as there is no available filter for that
-	 */
-
-	function rp4wp_post_title( $title, $rp4wp_post ) {
-		$append = '';
-		if ( ! has_post_thumbnail( $rp4wp_post->ID ) ) {
-			$thumb  = $this->get_random_thumbnail();
-			$append = '<span class="random_image"><img src="' . $thumb . '"/></span>';
-		}
-		return $append . $title;
-	}
-
 }
-
-

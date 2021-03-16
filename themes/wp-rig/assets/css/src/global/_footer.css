@@ -27,8 +27,8 @@
 .footer-section {
 	padding-left: var(--gutter-width);
 	padding-right: var(--gutter-width);
-	padding-top: var(--block-padding-vert);
-	padding-bottom: var(--block-padding-vert);
+	padding-top: var(--block-spacing-vert);
+	padding-bottom: var(--block-spacing-vert);
 
 	& p {
 		padding-bottom: 1.5rem;

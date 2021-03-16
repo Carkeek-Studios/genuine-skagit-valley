@@ -384,7 +384,7 @@ html.overflow-hidden {
 }
 
 .menu-button a {
-	color: #fff;
+	color: var(--color-button-text);
 	font-size: var(--font-size-button);
 }
 

@@ -33,15 +33,8 @@ class Component implements Component_Interface {
 	public function initialize() {
 		add_action( 'after_setup_theme', array( $this, 'action_add_editor_support' ) );
 		add_filter( 'editorskit_block_editor_classnames', array( $this, 'editorskit_classnames' ) );
-		add_action( 'wp_print_styles', array( $this, 'deregister_block_styles' ), 100 );
 	}
 
-		/**
-		 * Dont use core block styles
-		 */
-	public function deregister_block_styles() {
-		// wp_dequeue_style( 'wp-block-library' );
-	}
 
 	/**
 	 * Adds support for various editor features.
@@ -87,7 +80,7 @@ class Component implements Component_Interface {
 				array(
 					'name'  => __( 'Primary', 'pip-theme' ),
 					'slug'  => 'theme-primary',
-					'color' => '#00acc4',
+					'color' => '#01a1b7',
 				),
 				array(
 					'name'  => __( 'Secondary', 'pip-theme' ),
@@ -202,7 +195,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="">Learn More</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
 				<!-- /wp:group -->',
@@ -225,7 +218,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="">Learn More</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
 				<!-- /wp:group -->',
@@ -248,7 +241,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="">Learn More</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
 				<!-- /wp:group -->',
@@ -271,7 +264,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="">Learn More</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
 				<!-- /wp:group -->',
@@ -294,7 +287,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="">Learn More</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
 				<!-- /wp:group -->',
@@ -317,7 +310,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="http://partners-in-print.local/">Learn More</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="">Learn More</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
 				<!-- /wp:group -->',

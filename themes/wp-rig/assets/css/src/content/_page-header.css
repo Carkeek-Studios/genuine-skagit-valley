@@ -37,7 +37,7 @@
 		max-width: 100%;
 		position: relative;
 		color: var(--color-theme-white);
-		margin-bottom: var(--block-padding-vert);
+		margin-bottom: var(--block-spacing-vert);
 
 		& .post-thumbnail {
 			border-bottom: none;

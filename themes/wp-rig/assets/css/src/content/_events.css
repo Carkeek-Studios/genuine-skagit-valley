@@ -4,7 +4,7 @@
 	padding-right: var(--gutter-width);
 	padding-left: var(--gutter-width);
 	max-width: var(--content-width);
-	margin-bottom: var(--block-padding-vert);
+	margin-bottom: var(--block-spacing-vert);
 }
 
 @media (--tablet-small-up) {
@@ -154,17 +154,17 @@
 
 	& .tribe-events-calendar-list__event-details {
 		width: 50%;
-		padding: var(--block-padding-vert) var(--gutter-width);
+		padding: var(--block-spacing-vert) var(--gutter-width);
 	}
 
 	& .wfl-events-more-wrapper {
 		border-top: 2px solid var(--color-border);
-		padding: var(--block-padding-vert) var(--gutter-width-small);
+		padding: var(--block-spacing-vert) var(--gutter-width-small);
 
 		& .wfl-events-more__headline {
 			display: block;
 			width: 100%;
-			margin-bottom: var(--block-padding-vert);
+			margin-bottom: var(--block-spacing-vert);
 		}
 	}
 
@@ -295,7 +295,7 @@
 		display: flex;
 		align-content: flex-end;
 		justify-content: space-between;
-		margin-bottom: var(--block-padding-vert);
+		margin-bottom: var(--block-spacing-vert);
 
 		& .share-link-calendar-wrapper {
 			font-size: var(--font-size-large);

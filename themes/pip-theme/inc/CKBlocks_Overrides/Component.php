@@ -35,6 +35,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'ck_custom_archive_layout__after_title', array( $this, 'ck_blocks_custom_archive_after_title' ), 10, 1 );
+		add_action( 'admin_menu', array( $this, 'remove_menu_items' ) );
 	}
 
 	/**
@@ -52,7 +53,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Override to custom archive item
 	 * place content after the title
 	 *
-	 * @param object $data holds the block properties
+	 * @param object $data holds the block properties.
 	 */
 	public function ck_blocks_custom_archive_after_title( $data ) {
 		global $post;
@@ -65,6 +66,14 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			echo wp_kses_post( '<div class="ck-item-event_date>Start Date</div>' );
 		}
 	}
+
+	/**Hide Custom Links from Menu */
+	public function remove_menu_items() {
+
+			remove_menu_page( 'edit.php?post_type=custom_link' );
+
+	}
+
 
 }
 

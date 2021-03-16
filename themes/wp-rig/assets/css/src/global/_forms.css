@@ -23,13 +23,15 @@ a.button,
 	color: var(--color-button-text);
 	font-size: var(--font-size-forms);
 	font-family: var(--form-field-font-family);
-	font-weight: var(--font-weight-medium);
+	font-weight: var(--font-weight-button);
 	line-height: 1;
 	text-transform: uppercase;
 	padding: 1rem 1.25rem;
 	cursor: pointer;
 	transition: background 0.5s ease;
 	display: block;
+	text-transform: uppercase;
+	height: 50px;
 }
 /* stylelint-enable */
 a.button:hover,
@@ -40,6 +42,7 @@ input[type="submit"]:hover,
 .menu-button a:hover {
 	background: var(--color-button-hover);
 	color: var(--color-button-text);
+	text-decoration: none;
 }
 
 a.button.is-style-cta {
@@ -48,6 +51,7 @@ a.button.is-style-cta {
 	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-cta);
 	padding-left: 0;
+	text-transform: none;
 
 	&::after {
 		content: "\203A";

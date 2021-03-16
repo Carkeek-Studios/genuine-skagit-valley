@@ -13,12 +13,29 @@
 
 
 .brayer-background-blue {
-	background-image: url(../images/Small-brayer-1_blue02.jpg);
+	background-image: url(../images/Small-brayer-1_blue03.jpg);
 }
 
 .brayer-background-yellow {
 	background-image: url(../images/Medium-brayer-1_yellow.jpg);
 	background-position: 5% -30px;
+
+	color: var(--color-theme-grey-dark);
+
+	& a,
+	& .is-style-arrow-cta .wp-block-button__link,
+	& h1:not(.has-text-color),
+	& h2:not(.has-text-color),
+	& h3:not(.has-text-color),
+	& h4:not(.has-text-color),
+	& h5:not(.has-text-color) {
+
+		color: var(--color-theme-grey-dark);
+
+		&:hover {
+			color: var(--color-theme-grey-dark);
+		}
+	}
 }
 
 .brayer-background-right {
@@ -32,6 +49,27 @@
 .brayer-background-center {
 	background-position: center center;
 }
+
+.brayer-background-pink,
+.brayer-background-blue {
+	color: var(--color-theme-white);
+
+	& a,
+	& .is-style-arrow-cta .wp-block-button__link,
+	& h1:not(.has-text-color),
+	& h2:not(.has-text-color),
+	& h3:not(.has-text-color),
+	& h4:not(.has-text-color),
+	& h5:not(.has-text-color) {
+
+		color: var(--color-theme-white);
+
+		&:hover {
+			color: var(--color-theme-white);
+		}
+	}
+}
+
 
 @media (--tablet-up) {
 
