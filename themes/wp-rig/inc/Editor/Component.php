@@ -55,6 +55,9 @@ class Component implements Component_Interface {
 		// Disable custom colors in the color picker.
 		add_theme_support( 'disable-custom-colors' );
 
+		// Remove core block patterns.
+		remove_theme_support( 'core-block-patterns' );
+
 		// Disable custom gradients.
 		add_theme_support( '__experimental-disable-custom-gradients' );
 
@@ -167,13 +170,43 @@ class Component implements Component_Interface {
 				<!-- /wp:paragraph --></div></div>
 				<!-- /wp:group -->
 
-				<!-- wp:carkeek-blocks/custom-archive {"postTypeSelected":"tribe_events","blockId":"efba5dcd-93ad-4ada-b066-31da53339b18","align":"wide"} /-->
+				<!-- wp:carkeek-blocks/custom-archive {"postTypeSelected":"tribe_events","align":"wide"} /-->
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
 				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">See all classes</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
+			'carkeek-blocks/programs',
+			array(
+				'title'       => __( 'Program Module', 'wp-rig' ),
+				'description' => _x( 'Section Header, Intro Text, Link and Image', 'Block pattern description', 'wp-rig' ),
+				'categories'  => array( 'layout' ),
+				'content'     => '<!-- wp:group {"align":"full"} -->
+				<div class="wp-block-group alignfull"><div class="wp-block-group__inner-container"><!-- wp:group -->
+				<div class="wp-block-group"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Program TItle</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">Etiam nec elementum turpis. Integer lorem dui, pellentesque sit amet ipsum sed, ultrices venenatis erat.</p>
+				<!-- /wp:paragraph --></div></div>
+				<!-- /wp:group -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">Learn about this program</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons -->
+
+				<!-- wp:image {"align":"full","id":72,"sizeSlug":"large","linkDestination":"none"} -->
+				<figure class="wp-block-image alignfull size-large"><img src="http://partners-in-print.local/wp-content/uploads/2021/02/broadside-project-1024x684.jpg" alt="" class="wp-image-72"/></figure>
+				<!-- /wp:image --></div></div>
 				<!-- /wp:group -->',
 			)
 		);

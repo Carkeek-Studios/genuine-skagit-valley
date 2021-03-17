@@ -170,6 +170,14 @@
 		}
 	}
 
+	&.alignfull {
+
+		& > .wp-block-group__inner-container > *:not(.alignfull) {
+			padding-left: var(--gutter-width-page);
+			padding-right: var(--gutter-width-page);
+		}
+	}
+
 }
 
 @media (--tablet-up) {
