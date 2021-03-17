@@ -9,6 +9,10 @@
 	justify-content: center;
 	background-position: 5% top;
 
+	& p {
+		font-size: var(--font-size-large);
+	}
+
 }
 
 

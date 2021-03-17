@@ -17,7 +17,7 @@ namespace WP_Rig\WP_Rig;
 get_header();
 
 wp_rig()->print_styles( 'wp-rig-content' );
-$nbrs = wp_rig()->get_random_images_array();
+
 
 ?>
 	<main id="primary" class="site-main">
@@ -35,19 +35,7 @@ $nbrs = wp_rig()->get_random_images_array();
 				the_post();
 
 				if ( ! is_singular() ) {
-					// track random number so that we can try not to repeat placeholder images.
-					if ( 'post' === get_post_type() && ! has_post_thumbnail() ) {
-						if ( count( $nbrs ) > 0 ) {
-							$random_number = array_shift( $nbrs );
-						} else {
-							$nbrs          = wp_rig()->get_random_images_array();
-							$random_number = array_shift( $nbrs );
-						}
-						// pass vars onto entry template.
-						include locate_template( 'template-parts/content/entry.php', false, false );
-					} else {
-						get_template_part( 'template-parts/content/entry', get_post_type() );
-					}
+					get_template_part( 'template-parts/content/entry', get_post_type() );
 				} else {
 					get_template_part( 'template-parts/content/single', get_post_type() );
 				}

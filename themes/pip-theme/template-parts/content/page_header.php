@@ -7,6 +7,11 @@
 
 namespace WP_Rig\WP_Rig;
 
+// if ( is_singular( 'product' ) ) {
+// 	return;
+// }
+
+
 if ( is_404() ) {
 	?>
 	<header class="page-header">
@@ -108,7 +113,7 @@ if ( is_404() ) {
 		// Add extra parameters to src and replcae HTML.
 		// rel = 0 makes it so related videos come from same source
 		$params  = array(
-			'rel' => 0
+			'rel' => 0,
 		);
 		$new_src = add_query_arg( $params, $src );
 		$iframe  = str_replace( $src, $new_src, $iframe );

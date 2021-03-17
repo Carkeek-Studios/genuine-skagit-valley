@@ -13,6 +13,10 @@ get_header();
 
 wp_rig()->print_styles( 'wp-rig-content', 'wp-rig-front-page' );
 
+if ( is_shop() ) {
+	wp_rig()->print_styles( 'wp-rig-woocommerce' );
+}
+
 ?>
 	<main id="primary" class="site-main">
 		<?php

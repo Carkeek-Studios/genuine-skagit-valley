@@ -81,7 +81,6 @@ class Component implements Component_Interface {
 		 *                         directory), and optionally 'dependencies'.
 		 */
 		$js_files = apply_filters( 'wp_rig_js_files', $js_files );
-
 		$this->js_files = array();
 		foreach ( $js_files as $handle => $data ) {
 			if ( is_string( $data ) ) {

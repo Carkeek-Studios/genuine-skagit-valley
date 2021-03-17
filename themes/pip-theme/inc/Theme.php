@@ -144,6 +144,7 @@ class Theme {
 			new AMP\Component(),
 			new PWA\Component(),
 			new Comments\Component(),
+			new Helpers\Component(),
 			new Nav_Menus\Component(),
 			new Sidebars\Component(),
 			new Custom_Background\Component(),
@@ -154,9 +155,9 @@ class Theme {
 			new Styles\Component(),
 			new Scripts\Component(),
 			new Blocks\Component(),
-			new Helpers\Component(),
 			new CKBlocks_Overrides\Component(),
 			new Events_Calendar\Component(),
+			new WooCommerce\Component(),
 		);
 
 		if ( defined( 'JETPACK__VERSION' ) ) {

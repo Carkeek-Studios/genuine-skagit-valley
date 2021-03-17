@@ -1,13 +1,12 @@
 <?php
 /**
- * WP_Rig\WP_Rig\AMP\Component class
+ * WP_Rig\WP_Rig\Helpers\Component class
  *
  * @package wp_rig
  */
 
 namespace WP_Rig\WP_Rig\Helpers;
 
-use Tribe__Template;
 use WP_Rig\WP_Rig\Component_Interface;
 use WP_Rig\WP_Rig\Templating_Component_Interface;
 

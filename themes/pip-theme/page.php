@@ -13,6 +13,10 @@ get_header();
 
 pip_theme()->print_styles( 'pip-theme-content', 'pip-theme-front-page' );
 
+if ( is_shop() ) {
+	pip_theme()->print_styles( 'pip-theme-woocommerce' );
+}
+
 ?>
 	<main id="primary" class="site-main">
 		<?php
