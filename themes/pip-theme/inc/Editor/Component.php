@@ -212,6 +212,32 @@ class Component implements Component_Interface {
 		);
 
 		register_block_pattern(
+			'carkeek-blocks/news-item',
+			array(
+				'title'       => __( 'News Item', 'pip-theme' ),
+				'description' => _x( 'Image, linked headline and text', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'layout' ),
+				'content'     => '<!-- wp:columns {"align":"wide"} -->
+				<div class="wp-block-columns alignwide"><!-- wp:column {"width":"33.33%"} -->
+				<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:carkeek-blocks/fixed-image {"id":73} -->
+				<figure class="wp-block-carkeek-blocks-fixed-image size-large"><div class="ck-fixed-image-wrap"><img src="https://partnersinprint.sitedistrict.com/wp-content/uploads/2021/02/long-distance-letterpress-daredevil-typesetting.jpg" alt="" class="wp-image-73"/></div></figure>
+				<!-- /wp:carkeek-blocks/fixed-image --></div>
+				<!-- /wp:column -->
+
+				<!-- wp:column {"width":"66.66%"} -->
+				<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:paragraph {"placeholder":"Add Link..."} -->
+				<p><a href="/">News Item Block </a></p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:paragraph {"placeholder":"Add content..."} -->
+				<p>This is a News Item Block. Its a pattern using columns. Images are a fixed size and will be cropped to 4:6 ratio. You can use the focal point picker to adjust the image if needed. </p>
+				<!-- /wp:paragraph --></div>
+				<!-- /wp:column --></div>
+				<!-- /wp:columns -->',
+			)
+		);
+
+		register_block_pattern(
 			'carkeek-blocks/brayer-yellow-left',
 			array(
 				'title'       => __( 'Brayer Yellow (Left)', 'pip-theme' ),

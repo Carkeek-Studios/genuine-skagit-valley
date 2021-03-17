@@ -99,26 +99,6 @@ wp.domReady( function() {
 		scope: [ 'inserter' ],
 		keywords: [ 'intro', 'page' ],
 	} );
-
-	wp.blocks.registerBlockVariation( 'core/columns', {
-		name: 'news-item',
-		title: 'News Item',
-		icon: 'megaphone',
-		innerBlocks: [
-			// [ 'core/column', { width: '33.33%' }, [ [ 'carkeek-blocks/fixed-image' ], {} ] ],
-			// [ 'core/column', { width: '66.66%%' }, [ [ 'core/paragraph' ], { placholder: 'Add Link...' } ], [ 'core/paragraph' ], { placholder: 'Add content...' } ],
-			[ 'core/column', { width: '33.33%' }, [
-				[ 'carkeek-blocks/fixed-image', {} ],
-			] ],
-			[ 'core/column', { width: '66.66%' }, [
-				[ 'core/paragraph', { placeholder: 'Add Link...' } ],
-				[ 'core/paragraph', { placeholder: 'Add content...' } ],
-			] ],
-		],
-		attributes: { align: 'wide' },
-		scope: [ 'inserter' ],
-		keywords: [ 'news', 'item' ],
-	} );
 } );
 
 //Set the default dimratio on the cover block to 0.
