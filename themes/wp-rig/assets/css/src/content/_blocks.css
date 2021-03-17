@@ -31,7 +31,6 @@
  * .wp-block-archives
  */
 .page-content > [class^="wp-block-"] {
-	margin-top: var(--block-spacing-vert);
 	margin-bottom: var(--block-spacing-vert);
 
 	&:first-child {
@@ -74,11 +73,15 @@
 	min-height: calc(400px - 2 * var(--block-spacing-vert));
 }
 
+.page-content > .wp-block-spacer,
+.wp-block-spacer {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
 @media (--tablet-up) {
 
 	.page-content > [class^="wp-block-"] {
-		margin-top: var(--block-spacing-vert);
-		margin-bottom: var(--block-spacing-vert);
 
 		&.no-top-margin {
 			margin-top: 0;

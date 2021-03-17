@@ -77,7 +77,7 @@ html.overflow-hidden {
 		transition:
 			background-color 0.5s ease 0.1s,
 			height 0s ease 0s;
-		z-index: 1000;
+		z-index: 800;
 	}
 }
 
@@ -352,7 +352,7 @@ html.overflow-hidden {
 	& a {
 		background-color: var(--color-button-background);
 		color: var(--color-theme-white);
-		padding: 1.5rem 1rem;
+		padding: 1.1rem 1rem;
 		text-align: center;
 		transition: background-color 0.6s ease;
 

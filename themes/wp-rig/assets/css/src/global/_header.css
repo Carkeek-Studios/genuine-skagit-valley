@@ -2,7 +2,9 @@
 # Header
 --------------------------------------------------------------*/
 .site-header {
+	position: relative;
 	background-color: var(--color-theme-white);
+	z-index: 1000;
 }
 
 .site-header--inner {
@@ -13,7 +15,7 @@
 	padding: 1.25rem 1rem;
 
 	position: relative;
-	z-index: 1000;
+
 
 	& a {
 		color: var(--color-nav-links);
