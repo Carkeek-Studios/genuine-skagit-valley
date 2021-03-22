@@ -1,4 +1,3 @@
-@import "global/_media.css";
 @import "content/_page-header.css";
 @import "content/_layout.css";
 @import "content/_shares.css";
@@ -6,4 +5,4 @@
 @import "content/_blocks-props.css";
 @import "content/_blocks.css";
 @import "content/_blocks-pip.css";
-@import "content/_pip-brayer-bg.css";
+@import "content/_pip-brayer-bg.css"

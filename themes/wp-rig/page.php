@@ -13,7 +13,7 @@ get_header();
 
 wp_rig()->print_styles( 'wp-rig-content', 'wp-rig-front-page' );
 
-if ( is_shop() ) {
+if ( is_shop() || is_cart() || is_checkout() ) {
 	wp_rig()->print_styles( 'wp-rig-woocommerce' );
 }
 

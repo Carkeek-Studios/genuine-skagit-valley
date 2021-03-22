@@ -7,11 +7,6 @@
 
 namespace WP_Rig\WP_Rig;
 
-// if ( is_singular( 'product' ) ) {
-// 	return;
-// }
-
-
 if ( is_404() ) {
 	?>
 	<header class="page-header">
@@ -34,7 +29,7 @@ if ( is_404() ) {
 	?>
 	<header class="archive-header">
 		<div class="entry-title">
-			<span><?php echo get_the_title( $parent ); ?></span>
+			<span><?php echo get_the_title( $parent ); // phpcs:ignore ?></span>
 			<h1 class="page-title">
 
 				<?php single_post_title(); ?>
@@ -69,7 +64,7 @@ if ( is_404() ) {
 		<?php
 		$page_for_posts = get_option( 'page_for_posts' );
 		?>
-		<span><a href="<?php the_permalink( $page_for_posts ); ?>" ><?php echo get_the_title( $page_for_posts ); ?></a></span>
+		<span><a href="<?php the_permalink( $page_for_posts ); ?>" ><?php echo get_the_title( $page_for_posts ); // phpcs:ignore?></a></span>
 		<?php
 		the_archive_title( '<h1 class="page-title">', '</h1>' );
 		?>
@@ -83,14 +78,8 @@ if ( is_404() ) {
 } elseif ( is_singular() && ! is_page() ) {
 	$hide_title   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$hide_image   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
-	$slider       = get_field( 'slide' );
 	$iframe       = get_field( 'blog_video_link' );
 	$header_class = '';
-	// slider used on farms page
-	if ( ! empty( $slider ) && count( $slider ) > 0 && ! empty( $slider[0]['image'] ) ) {
-		$has_slider    = true;
-		$header_class .= 'has-post-thumbnail has-post-slider';
-	}
 
 	if ( ! empty( $iframe ) ) {
 		$has_video     = true;
@@ -111,7 +100,7 @@ if ( is_404() ) {
 		$src = $matches[1];
 
 		// Add extra parameters to src and replcae HTML.
-		// rel = 0 makes it so related videos come from same source
+		// rel = 0 makes it so related videos come from same source.
 		$params  = array(
 			'rel' => 0,
 		);
@@ -123,7 +112,7 @@ if ( is_404() ) {
 		$iframe     = str_replace( '></iframe>', ' ' . $attributes . '></iframe>', $iframe );
 
 		// Display customized HTML.
-		echo $iframe;
+		echo wp_kses_post( $iframe );
 
 	} elseif ( true !== $hide_image && has_post_thumbnail() ) {
 		get_template_part( 'template-parts/content/entry_thumbnail', get_post_type() );

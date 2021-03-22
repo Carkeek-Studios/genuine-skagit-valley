@@ -152,6 +152,25 @@ class Component implements Component_Interface {
 			'brayers',
 			array( 'label' => _x( 'Brayers', 'Block pattern category', 'wp-rig' ) )
 		);
+		register_block_pattern_category(
+			'elements',
+			array( 'label' => _x( 'Elements', 'Block pattern category', 'wp-rig' ) )
+		);
+
+		register_block_pattern(
+			'carkeek-blocks/centered-cta',
+			array(
+				'title'       => __( 'Centered CTA', 'wp-rig' ),
+				'description' => _x( 'Centered CTA', 'Block pattern description', 'wp-rig' ),
+				'categories'  => array( 'elements' ),
+				'keywords'    => array( 'cta', 'button', 'links' ),
+				'content'     => '<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">See all classes</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons -->',
+			)
+		);
 
 		register_block_pattern(
 			'carkeek-blocks/archive-with-intro',

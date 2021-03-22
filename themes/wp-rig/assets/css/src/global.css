@@ -29,6 +29,7 @@
 @import "global/_typography.css";
 @import "global/_elements.css";
 @import "global/_links.css";
+@import "global/_media.css";
 @import "global/_search.css";
 @import "global/_forms.css";
 @import "global/_forms_gravity.css";

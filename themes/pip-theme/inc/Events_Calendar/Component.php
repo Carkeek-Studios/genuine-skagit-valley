@@ -37,6 +37,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'init', array( $this, 'register_additional_tax' ) );
 		add_filter( 'tribe_events_event_schedule_details_formatting', array( $this, 'tribe_events_schedule_details' ) );
 		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
+		add_action( 'admin_menu', array( $this, 'add_organizers_to_menu' ) );
 	}
 
 	/**
@@ -47,15 +48,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *               adding support for further arguments in the future.
 	 */
 	public function template_tags() : array {
-		return array(
-
-		);
+		return array();
 	}
 
 
 	/**
 	 * Register Taxonomy for Organizers
-	**/
+	 **/
 
 	public function register_additional_tax() {
 		$labels = array(
@@ -72,10 +71,20 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'show_in_nav_menus' => true,
 			'show_tagcloud'     => true,
 			'show_in_rest'      => true,
+			'show_in_menu'		=> true,
 		);
 
 		register_taxonomy( 'organizer_cats', array( 'tribe_organizer' ), $args );
+
+			}
+	/**
+	 * Add Taxonomy to menu
+	 */
+	public function add_organizers_to_menu() {
+		//create a submenu under Events
+		add_submenu_page( 'edit.php?post_type=tribe_events', 'Organizer Categories', 'Organizer Categories', 'manage_options', 'edit-tags.php?taxonomy=organizer_cats&post_type=tribe_events', '', 20 );
 	}
+
 
 
 	/**
@@ -84,7 +93,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param array $settings current settings.
 	 */
 
-	 public function tribe_events_schedule_details( $settings ) {
+	public function tribe_events_schedule_details( $settings ) {
 		$settings['time'] = false;
 		return $settings;
 	}

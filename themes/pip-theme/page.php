@@ -13,7 +13,7 @@ get_header();
 
 pip_theme()->print_styles( 'pip-theme-content', 'pip-theme-front-page' );
 
-if ( is_shop() ) {
+if ( is_shop() || is_cart() || is_checkout() ) {
 	pip_theme()->print_styles( 'pip-theme-woocommerce' );
 }
 
