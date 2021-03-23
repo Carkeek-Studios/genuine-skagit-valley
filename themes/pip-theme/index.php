@@ -13,7 +13,6 @@
  */
 
 namespace WP_Rig\WP_Rig;
-
 get_header();
 
 pip_theme()->print_styles( 'pip-theme-content' );

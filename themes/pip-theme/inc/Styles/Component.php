@@ -311,10 +311,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'file'             => 'content.min.css',
 				'preload_callback' => '__return_true',
 			),
-			'pip-theme-events'   => array(
-				'file'             => 'events.min.css',
-				'preload_callback' => '__return_true',
-			),
 			'pip-theme-woocommerce'   => array(
 				'file'             => 'woo.min.css',
 				'preload_callback' => '__return_true',

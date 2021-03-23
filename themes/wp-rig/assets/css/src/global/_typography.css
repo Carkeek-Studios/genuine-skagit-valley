@@ -42,11 +42,11 @@ h5,
 h6 {
 
 	& a {
-		color: var(--color-theme-green);
+		color: var(--color-link);
 		font-weight: var(--font-weight-bold);
 
 		&:visited {
-			color: inherit;
+			color: var(--color-link);
 		}
 	}
 
@@ -88,6 +88,7 @@ h3,
 	font-size: var(--font-size-h3);
 	color: var(--color-theme-primary);
 	margin-bottom: 0.75rem;
+	text-transform: none;
 }
 
 h4,

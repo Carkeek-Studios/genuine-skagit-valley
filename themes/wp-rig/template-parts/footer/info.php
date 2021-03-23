@@ -33,7 +33,7 @@ namespace WP_Rig\WP_Rig;
 								<div class="gpopover no-list" id="site-credit-pop">
 									<ul class="no-list">
 										<li class="contact-info">Website Design: <a href="http://beansnrice.com" target="_blank">Beans n' Rice</a></li>
-										<li class="contact-info">Wesbite Development: <a href="https://carkeekstudios.com"  target="_blank">Carkeek Studios</a></li>
+										<li class="contact-info">Website Development: <a href="https://carkeekstudios.com"  target="_blank">Carkeek Studios</a></li>
 									</ul>
 								</div>
 							</li>

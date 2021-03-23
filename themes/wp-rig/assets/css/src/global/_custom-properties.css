@@ -58,7 +58,7 @@
 
 	--color-button-background: var(--color-theme-yellow);
 	--color-button-text: var(--color-theme-grey-dark);
-	--color-button-hover: color-mod(var(--color-button-background) shade(20%));
+	--color-button-hover: color-mod(var(--color-button-background) shade(15%));
 
 	--color-button-background-alt: var(--color-theme-secondary);
 	--color-button-text-alt: var(--color-theme-white);

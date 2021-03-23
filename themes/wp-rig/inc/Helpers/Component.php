@@ -236,15 +236,18 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/**
 	 * Make Social Links
 	 */
-	public function make_social_share_links() {
-		echo wp_kses_post(
-			'<ul class="social-share-links list-inline">
-			<li class="list-inline-item social-share-links__label">Share: </li>
-			<li class="list-inline-item">' . $this->make_fb_button() . '</li>
-			<li class="list-inline-item">' . $this->make_twitter_button() . '</li>
-			<li class="list-inline-item">' . $this->make_email_button() . '</li>
-		</ul>'
-		);
+	public function make_social_share_links( $echo = false ) {
+		$links = '<ul class="social-share-links list-inline">
+		<li class="list-inline-item social-share-links__label">Share: </li>
+		<li class="list-inline-item">' . $this->make_fb_button() . '</li>
+		<li class="list-inline-item">' . $this->make_twitter_button() . '</li>
+		<li class="list-inline-item">' . $this->make_email_button() . '</li>
+	</ul>';
+		if ( $echo ) {
+			echo wp_kses_post( $links );
+		} else {
+			return $links;
+		}
 	}
 
 

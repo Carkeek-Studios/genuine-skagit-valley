@@ -8,6 +8,7 @@
 namespace WP_Rig\WP_Rig\Events_Calendar;
 
 use Tribe__Template;
+use WP_Rig\WP_Rig;
 use WP_Rig\WP_Rig\Component_Interface;
 use WP_Rig\WP_Rig\Templating_Component_Interface;
 
@@ -35,9 +36,19 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'init', array( $this, 'register_additional_tax' ) );
-		add_filter( 'tribe_events_event_schedule_details_formatting', array( $this, 'tribe_events_schedule_details' ) );
 		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
 		add_action( 'admin_menu', array( $this, 'add_organizers_to_menu' ) );
+		add_filter( 'register_post_type_args', array( $this, 'custom_post_type_args' ), 20, 2 );
+
+		// Change the display location for the share links.
+		remove_action( 'tribe_events_single_event_after_the_content', array( 'Tribe__Events__iCal', 'single_event_links' ) ); //This doesnt acutally work.
+		add_action( 'pip_theme_tribe_events_single_event_after_the_meta', array( 'Tribe__Events__iCal', 'single_event_links' ) );
+
+		//filter the results of the ical function
+		add_filter( 'tribe_events_ical_single_event_links', array( $this, 'tribe_events_ical_single_event_links' ) );
+
+		add_filter( 'tribe_get_ticket_label_plural', array( $this, 'tribe_get_ticket_label_plural' ), 10, 2);
+
 	}
 
 	/**
@@ -48,7 +59,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *               adding support for further arguments in the future.
 	 */
 	public function template_tags() : array {
-		return array();
+		return array(
+		);
 	}
 
 
@@ -71,32 +83,20 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			'show_in_nav_menus' => true,
 			'show_tagcloud'     => true,
 			'show_in_rest'      => true,
-			'show_in_menu'		=> true,
+			'show_in_menu'      => true,
 		);
 
 		register_taxonomy( 'organizer_cats', array( 'tribe_organizer' ), $args );
 
-			}
+	}
 	/**
 	 * Add Taxonomy to menu
 	 */
 	public function add_organizers_to_menu() {
-		//create a submenu under Events
+		// create a submenu under Events
 		add_submenu_page( 'edit.php?post_type=tribe_events', 'Organizer Categories', 'Organizer Categories', 'manage_options', 'edit-tags.php?taxonomy=organizer_cats&post_type=tribe_events', '', 20 );
 	}
 
-
-
-	/**
-	 * Customize date view on event list
-	 *
-	 * @param array $settings current settings.
-	 */
-
-	public function tribe_events_schedule_details( $settings ) {
-		$settings['time'] = false;
-		return $settings;
-	}
 
 
 	/**
@@ -109,6 +109,42 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $output;
 	}
 
+	/**
+	 * Make Organizers available to the rest API.
+	 * We dont want events in the REST API because the block editor for events doesnt work so good.
+	 * So we turn it off at the core level and just turn it on for organizers so we can use our block to display them.
+	 *
+	 * @param  array  $args post_type args.
+	 * @param  string $post_type current post type.
+	 */
+	public function custom_post_type_args( $args, $post_type ) {
+		if ( $post_type == 'tribe_organizer' ) {
+			$args['show_in_rest'] = true;
+		}
+
+		return $args;
+	}
+
+	/**
+	 * tribe_events_ical_single_event_links.
+	 */
+	public function tribe_events_ical_single_event_links($links) {
+		$html = '<div class="share-save-links">';
+		$html .= WP_Rig\pip_theme()->make_social_share_links();
+		$html .= '<div class="ical-links">Add to Calendar<button class="icon icon-calendar info-popover" data-toggle="popover" data-popover="cal-links"></button>';
+		$html .= '<div class="gpopover" id="cal-links">' . $links . '</div>';
+		$html .= '</div></div>';
+
+		return $html;
+	}
+
+	/**
+	 * Tickets label should be register
+	 */
+
+	 public function tribe_get_ticket_label_plural( $label, $context ) {
+		 return __('Register', 'pip-theme');
+	 }
 }
 
 

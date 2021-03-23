@@ -79,6 +79,7 @@ input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
 	border-color: #aaa #bbb #bbb;
+	outline: 1px dotted #aaa;
 }
 
 input[type="text"],
