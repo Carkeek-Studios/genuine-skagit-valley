@@ -1,0 +1,19 @@
+h2.sf-item-title {
+	text-transform: none;
+	font-size: var(--font-size-regular);
+	margin-bottom: 0.5rem;
+}
+
+.sf-item-thumbnail {
+	margin-bottom: 0.5rem;
+}
+
+.sf-item-date {
+	font-size: var(--font-size-medium);
+}
+
+.sf-result-item {
+	margin-bottom: var(--gutter-width);
+}
+
+

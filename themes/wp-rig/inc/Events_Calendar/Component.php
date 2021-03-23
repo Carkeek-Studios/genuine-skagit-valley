@@ -41,13 +41,15 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'register_post_type_args', array( $this, 'custom_post_type_args' ), 20, 2 );
 
 		// Change the display location for the share links.
-		remove_action( 'tribe_events_single_event_after_the_content', array( 'Tribe__Events__iCal', 'single_event_links' ) ); //This doesnt acutally work.
+		remove_action( 'tribe_events_single_event_after_the_content', array( 'Tribe__Events__iCal', 'single_event_links' ) ); // This doesnt acutally work.
 		add_action( 'wp_rig_tribe_events_single_event_after_the_meta', array( 'Tribe__Events__iCal', 'single_event_links' ) );
 
-		//filter the results of the ical function
+		// filter the results of the ical function
 		add_filter( 'tribe_events_ical_single_event_links', array( $this, 'tribe_events_ical_single_event_links' ) );
 
-		add_filter( 'tribe_get_ticket_label_plural', array( $this, 'tribe_get_ticket_label_plural' ), 10, 2);
+		add_filter( 'tribe_get_ticket_label_plural', array( $this, 'tribe_get_ticket_label_plural' ), 10, 2 );
+
+		add_filter( 'sf_edit_query_args', array( $this, 'filter_sf_results' ), 20, 2 );
 
 	}
 
@@ -59,8 +61,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *               adding support for further arguments in the future.
 	 */
 	public function template_tags() : array {
-		return array(
-		);
+		return array();
 	}
 
 
@@ -128,8 +129,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/**
 	 * tribe_events_ical_single_event_links.
 	 */
-	public function tribe_events_ical_single_event_links($links) {
-		$html = '<div class="share-save-links">';
+	public function tribe_events_ical_single_event_links( $links ) {
+		$html  = '<div class="share-save-links">';
 		$html .= WP_Rig\wp_rig()->make_social_share_links();
 		$html .= '<div class="ical-links">Add to Calendar<button class="icon icon-calendar info-popover" data-toggle="popover" data-popover="cal-links"></button>';
 		$html .= '<div class="gpopover" id="cal-links">' . $links . '</div>';
@@ -142,9 +143,29 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Tickets label should be register
 	 */
 
-	 public function tribe_get_ticket_label_plural( $label, $context ) {
-		 return __('Register', 'wp-rig');
-	 }
+	public function tribe_get_ticket_label_plural( $label, $context ) {
+		return __( 'Register', 'wp-rig' );
+	}
+
+	 /**
+	  * Search and Filter Query
+	  */
+	function filter_sf_results( $query_args, $sfid ) {
+
+		if ( 'tribe_events' == $query_args['post_type'] ) {
+			$query_args['meta_query'] = array(
+				'_EventStartDate' => array(
+					'value'   => date( 'Y-m-d H:i:s' ), // Compare against today's date.
+					'compare' => '>=', // Get events that are set to the value's date or in the future.
+					'type'    => 'DATE', // This is a date query.
+				),
+			);
+		}
+
+		return $query_args;
+	}
+
+
 }
 
 

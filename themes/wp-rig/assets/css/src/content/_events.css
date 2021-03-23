@@ -283,8 +283,9 @@ ul.tribe-related-events {
 .entry .entry-content .event-tickets .tribe-tickets__tickets-buy.tribe-common-c-btn:disabled,
 .event-tickets .tribe-tickets__attendee__fields__footer_checkout-button.tribe-common-c-btn:disabled,
 .event-tickets .tribe-tickets__tickets-buy.tribe-common-c-btn:disabled {
-	background-color: color-mod(var(--color-button-background) tint(50%));
-	color: color-mod(var(--color-button-text) tint(50%));
+	background-color: var(--color-button-background);
+	color: #fff;
+	opacity: 0.6;
 }
 
 

@@ -30,7 +30,7 @@ if ( is_array( $posts ) && ! empty( $posts ) ) : ?>
 	<?php foreach ( $posts as $post ) : ?>
 	<li>
 		<?php $thumb = ( has_post_thumbnail( $post->ID ) ) ? get_the_post_thumbnail( $post->ID, 'large' ) : '<img src="' . esc_url( trailingslashit( Tribe__Events__Pro__Main::instance()->pluginUrl ) . 'src/resources/images/tribe-related-events-placeholder.png' ) . '" alt="' . esc_attr( get_the_title( $post->ID ) ) . '" />'; ?>
-		<div class="tribe-related-events-thumbnail">
+		<div class="tribe-related-events-thumbnail aspect-ratio-thumbnail">
 			<a href="<?php echo esc_url( tribe_get_event_link( $post ) ); ?>" class="url" rel="bookmark" tabindex="-1"><?php echo $thumb ?></a>
 		</div>
 		<div class="tribe-related-event-info">
