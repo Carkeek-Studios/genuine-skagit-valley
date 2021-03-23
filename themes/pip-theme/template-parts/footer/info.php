@@ -25,7 +25,7 @@ namespace WP_Rig\WP_Rig;
 			<?php } ?>
 
 			<div class="colophon-wrapper">
-				<div class="footer-nav footer-social"><?php wp_nav_menu( array( 'menu_id' => 'footer-nav' ) ); ?></div>
+				<div class="footer-nav footer-social"><?php wp_nav_menu( array( 'theme_location' => 'pip-theme-footer-social-nav' ) ); ?></div>
 					<div class="colophon">
 						<ul class="colophon-info no-list">
 							<li class="copyright">&copy; <?php echo esc_attr( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.
@@ -42,7 +42,7 @@ namespace WP_Rig\WP_Rig;
 				</div>
 				<?php if ( is_active_sidebar( 'sidebar-footer-bottom' ) ) { ?>
 			<div class="widget_wrapper footer-bottom-widgets">
-				<?php dynamic_sidebar( 'sidebar-footer-bottom' ); ?>
+					<?php dynamic_sidebar( 'sidebar-footer-bottom' ); ?>
 			</div>
 			<?php } ?>
 			</div>

@@ -70,7 +70,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			array(
 				static::PRIMARY_NAV_MENU_SLUG   => esc_html__( 'Primary', 'wp-rig' ),
 				static::SECONDARY_NAV_MENU_SLUG => esc_html__( 'Secondary', 'wp-rig' ),
-				'footer-nav'                    => esc_html__( 'Footer', 'wp-rig' ),
+				'wp-rig-footer-social-nav'      => esc_html__( 'Footer', 'wp-rig' ),
 			)
 		);
 	}

@@ -70,7 +70,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			array(
 				static::PRIMARY_NAV_MENU_SLUG   => esc_html__( 'Primary', 'pip-theme' ),
 				static::SECONDARY_NAV_MENU_SLUG => esc_html__( 'Secondary', 'pip-theme' ),
-				'footer-nav'                    => esc_html__( 'Footer', 'pip-theme' ),
+				'pip-theme-footer-social-nav'      => esc_html__( 'Footer', 'pip-theme' ),
 			)
 		);
 	}
