@@ -12,3 +12,20 @@
 	margin: 0;
 	padding: 0.5rem 0.5rem 0.5rem 0;
 }
+
+#sb_instagram {
+	margin-bottom: var(--block-spacing-vert);
+
+	& .sbi_follow_btn a {
+		background-color: var(--color-button-background);
+		color: var(--color-button-text);
+		border-radius: 0;
+		text-transform: uppercase;
+
+		&:hover {
+			background-color: var(--color-button-hover);
+			box-shadow: none;
+		}
+	}
+
+}

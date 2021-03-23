@@ -1217,6 +1217,21 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	}
 }
 
+.wp-block-woocommerce-all-products {
+
+	& h2 .wc-block-components-product-name {
+		text-transform: none;
+		font-size: var(--font-size-large);
+	}
+
+	&.hide-add-to-cart {
+
+		& .wc-block-grid__product-add-to-cart {
+			display: none;
+		}
+	}
+}
+
 .wp-block-carkeek-blocks-accordion {
 	--ck-color-accordion-header-bg: #fff;
 	--ck-color-accordion-header-text: var(--color-link);
