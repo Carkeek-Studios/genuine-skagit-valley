@@ -154,23 +154,3 @@
 	/* stylelint-enable */
 }
 
-
-@media (--tablet-up) {
-
-	.wp-block-group .wp-block-group__inner-container .dflip-books {
-		max-width: 100%;
-		display: flex;
-		flex-direction: row;
-
-
-	}
-}
-
-.dflip-books {
-	/* stylelint-disable */
-	& ._df_book-cover {
-		background-size: cover;
-		background-position: center center;
-	}
-	/* stylelint-enable */
-}

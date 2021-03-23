@@ -1170,8 +1170,50 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 .wp-block-carkeek-blocks-widget-row {
 
 	& .ck-columns__wrap > * {
-		padding: 0 var(--gutter-width);
 		margin-bottom: var(--gutter-width);
+	}
+
+	&.partner-logos {
+
+		& .ck-columns__wrap > * {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			& figcaption {
+				justify-self: flex-end;
+				margin-bottom: 0;
+				font-size: var(--font-size-small);
+				line-height: 1.125;
+			}
+		}
+	}
+
+
+}
+
+@media (--mobile-only) {
+
+	.wp-block-carkeek-blocks-widget-row {
+
+		&.has-3-columns-mobile {
+
+			& .ck-columns__wrap {
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			& .ck-columns__wrap > * {
+				flex-basis: calc((100% - 2 * var(--ck-column-gap)) / 3);
+				margin-right: var(--ck-column-gap);
+
+				&:nth-child(3n+3) {
+					margin-right: 0;
+				}
+			}
+
+
+		}
 	}
 }
 

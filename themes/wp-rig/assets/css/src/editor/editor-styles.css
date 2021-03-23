@@ -74,6 +74,12 @@ option {
 /* Width of "full-wide" blocks */
 .wp-block[data-align="full"] {
 	max-width: none;
+
+	& > * {
+
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
 }
 
 .wp-block-cover h2,

@@ -173,6 +173,31 @@ class Component implements Component_Interface {
 		);
 
 		register_block_pattern(
+			'carkeek-blocks/partner-logos',
+			array(
+				'title'       => __( 'Partner Logos', 'pip-theme' ),
+				'description' => _x( 'Add partner logos into a 5 column row', 'Block pattern description', 'pip-theme' ),
+				'categories'  => array( 'layout' ),
+				'keywords'    => array( 'partners', 'logo', 'links' ),
+				'content'     => '<!-- wp:group {"align":"full","backgroundColor":"theme-white"} -->
+				<div class="wp-block-group alignfull has-theme-white-background-color has-background"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Public Sponsors</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">short text here to come</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:carkeek-blocks/widget-row {"innerBlockType":"core/image","allowItemsWrap":true,"itemsPerRow":5,"alignInnerBlocks":"center","align":"wide","className":"partner-logos vertical-align-center has-3-columns-mobile"} -->
+				<div class="wp-block-carkeek-blocks-widget-row alignwide partner-logos vertical-align-center has-3-columns-mobile ck-columns ck-columns-wrap-true ck-columns-align-center has-5-columns"><div class="ck-columns__wrap"><!-- wp:image {"id":10,"sizeSlug":"large","linkDestination":"none"} -->
+				<figure class="wp-block-image size-large"><img src="/wp-content/uploads/2021/02/PIP_Anchor_Logo.png" alt="" class="wp-image-10"/></figure>
+				<!-- /wp:image --></div></div>
+				<!-- /wp:carkeek-blocks/widget-row --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
 			'carkeek-blocks/archive-with-intro',
 			array(
 				'title'       => __( 'Post List with Intro', 'pip-theme' ),
