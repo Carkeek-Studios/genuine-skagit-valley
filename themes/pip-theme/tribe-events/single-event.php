@@ -30,12 +30,13 @@ WP_Rig\pip_theme()->print_styles( 'pip-theme-content', 'pip-theme-front-page' );
 
 
 <?php get_template_part( 'template-parts/content/page_header' ); ?>
-
+	<div class="page-content">
 	<!-- Notices -->
 	<?php tribe_the_notices(); ?>
 
 
 	<?php
+
 	while ( have_posts() ) :
 		the_post();
 		?>
@@ -114,11 +115,11 @@ WP_Rig\pip_theme()->print_styles( 'pip-theme-content', 'pip-theme-front-page' );
 			<?php //do_action( 'tribe_events_single_event_after_the_meta' ); ?>
 
 		</div> <!-- #post-x -->
-		<div class="tribe-single-related-events">
+		<div class="tribe-single-related-events alignwide ck-columns has-3-columns">
 		<?php tribe_single_related_events(); ?>
 		</div>
 	<?php endwhile; ?>
 
 	<!-- #tribe-events-footer -->
-		</article><!-- #article -->
+		</div><!-- #article -->
 </div><!-- #tribe-events-content -->

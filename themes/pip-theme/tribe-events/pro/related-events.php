@@ -24,9 +24,9 @@ $posts = tribe_get_related_posts();
 
 if ( is_array( $posts ) && ! empty( $posts ) ) : ?>
 
-<h2 class="tribe-events-related-events-title"><?php printf( __( 'Related %s', 'tribe-events-calendar-pro' ), tribe_get_event_label_plural() ); ?></h2>
+<h2 class="tribe-events-related-events-title"><?php echo __( 'More Classes & Events', 'tribe-events-calendar-pro' ); ?></h2>
 
-<ul class="tribe-related-events tribe-clearfix">
+<ul class="ck-tribe-related-events tribe-clearfix ck-columns__wrap no-list">
 	<?php foreach ( $posts as $post ) : ?>
 	<li>
 		<?php $thumb = ( has_post_thumbnail( $post->ID ) ) ? get_the_post_thumbnail( $post->ID, 'large' ) : '<img src="' . esc_url( trailingslashit( Tribe__Events__Pro__Main::instance()->pluginUrl ) . 'src/resources/images/tribe-related-events-placeholder.png' ) . '" alt="' . esc_attr( get_the_title( $post->ID ) ) . '" />'; ?>
@@ -37,13 +37,13 @@ if ( is_array( $posts ) && ! empty( $posts ) ) : ?>
 			<h3 class="tribe-related-events-title"><a href="<?php echo tribe_get_event_link( $post ); ?>" class="tribe-event-url" rel="bookmark"><?php echo get_the_title( $post->ID ); ?></a></h3>
 			<?php
 				if ( $post->post_type == Tribe__Events__Main::POSTTYPE ) {
-					echo tribe_get_start_date( $post, false, 'F j' );
+					echo '<div class="tribe-related-start-date">' . tribe_get_start_date( $post, false, 'F j' ) . '</div>';
 				}
 			?>
 		</div>
 	</li>
 	<?php endforeach; ?>
 </ul>
-<div class="textaligncenter"><a href="/classes-events/" class="is-style-arrow-cta">View all Classes</a></div>
+<div class="textaligncenter"><a href="/classes-events/" class="is-style-arrow-cta">See more <span class="screen-reader-text">Classes & Events</span></a></div>
 <?php
 endif;
