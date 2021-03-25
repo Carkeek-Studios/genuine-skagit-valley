@@ -30,6 +30,7 @@
 
 	/*block padding */
 	--block-spacing-vert: 3.25rem;
+	--block-spacing-vert-inner: 1.5rem;
 
 
 	--global-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
