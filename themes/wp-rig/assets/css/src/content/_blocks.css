@@ -152,7 +152,7 @@
 
 
 	& .wp-block-group__inner-container > * {
-		margin-bottom: var(--gutter-width);
+		margin-bottom: var(--block-spacing-vert-inner);
 		max-width: var(--content-width);
 		margin-right: auto;
 		margin-left: auto;

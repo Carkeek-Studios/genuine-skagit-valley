@@ -47,6 +47,9 @@ class Component implements Component_Interface {
 	 * Adds custom image sizes.
 	 */
 	public function action_add_image_sizes() {
-		add_image_size( 'pip-theme-featured', 1800, 1200, false );
+		add_image_size( 'x-large', 2200, 2200, false );
+		/**
+	 * Adds custom image sizes.
+	 */
 	}
 }
