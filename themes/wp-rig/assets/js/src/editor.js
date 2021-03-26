@@ -14,14 +14,19 @@ wp.domReady( function() {
 	} );
 
 	wp.blocks.registerBlockStyle( 'core/media-text', {
-		name: 'small-image',
-		label: 'Small Image',
+		name: 'inline-style',
+		label: 'Inline - reduced Margins',
 	} );
 
-	wp.blocks.registerBlockStyle( 'core/media-text', {
-		name: 'round-image',
-		label: 'Round Image',
-	} );
+	// wp.blocks.registerBlockStyle( 'core/media-text', {
+	// 	name: 'small-image',
+	// 	label: 'Small Image',
+	// } );
+
+	// wp.blocks.registerBlockStyle( 'core/media-text', {
+	// 	name: 'round-image',
+	// 	label: 'Round Image',
+	// } );
 
 	wp.blocks.registerBlockStyle( 'core/media-text', {
 		name: 'vertical-center-text',

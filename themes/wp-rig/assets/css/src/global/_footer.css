@@ -49,7 +49,6 @@
 	}
 
 	& .footer-social {
-		padding-top: 1rem;
 
 		& ul {
 			padding: 0;
@@ -144,6 +143,11 @@
 		margin-top: 10px;
 	}
 
+	& .widget {
+		margin-bottom: 1.5rem;
+		font-weight: var(--font-weight-light);
+	}
+
 }
 
 
@@ -161,7 +165,7 @@
 		display: flex;
 		flex-direction: row-reverse;
 		justify-content: space-between;
-		max-width: var(--content-width);
+		max-width: var(--content-width-wide);
 		width: 100%;
 		margin-right: auto;
 		margin-left: auto;
@@ -173,10 +177,11 @@
 			justify-content: flex-start;
 		}
 
-		& .colophon {
-			padding-top: 1rem;
-			padding-bottom: 1rem;
-			text-align: left;
+		& .colophon-wrapper {
+
+			& a {
+				font-weight: var(--font-weight-regular);
+			}
 
 			& li {
 				padding-bottom: 5px;

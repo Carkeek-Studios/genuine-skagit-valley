@@ -83,6 +83,10 @@ h2,
 	color: var(--color-theme-primary);
 }
 
+h2 {
+	text-align: center;
+}
+
 h3,
 .h3 {
 	font-size: var(--font-size-h3);

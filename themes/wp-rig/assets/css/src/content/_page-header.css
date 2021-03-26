@@ -9,9 +9,11 @@
 	padding: 4.625rem 1rem 0;
 
 	& .image-caption {
-		padding: 0.5rem  var(--gutter-width);
-		text-align: center;
-
+		padding: 0.25rem 0.5rem;
+		text-align: right;
+		font-size: var(--font-size-small);
+		color: var(--color-theme-grey);
+		font-weight: var(--font-weight-light);
 	}
 
 	&.has-post-video {

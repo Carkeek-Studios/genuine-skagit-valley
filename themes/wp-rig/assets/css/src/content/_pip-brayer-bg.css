@@ -8,9 +8,14 @@
 	flex-direction: column;
 	justify-content: center;
 	background-position: 5% top;
+	text-shadow: 0 0 5px rgba(0, 0, 0, 0.22);
 
 	& p {
 		font-size: var(--font-size-large);
+	}
+
+	& .wp-block-button__link {
+		text-shadow: 0 0 5px rgba(0, 0, 0, 0.22);
 	}
 
 }
@@ -24,6 +29,7 @@
 	background-position: 5% -30px;
 
 	color: var(--color-theme-grey-dark);
+	text-shadow: none;
 
 	& a,
 	& .is-style-arrow-cta .wp-block-button__link,
@@ -38,6 +44,10 @@
 		&:hover {
 			color: var(--color-theme-grey-dark);
 		}
+	}
+
+	& .wp-block-button__link {
+		text-shadow: none;
 	}
 }
 

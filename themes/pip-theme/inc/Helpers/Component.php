@@ -36,6 +36,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'get_the_terms', array( $this, 'hide_categories_terms' ), 10, 3 );
 		add_filter( 'excerpt_more', array( $this, 'my_theme_excerpt_more' ) );
 		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
+		add_action( 'init', array( $this, 'sitefooter_add_custom_shortcode' ) );
 	}
 
 	/**
@@ -274,5 +275,46 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			default:
 				return $post_html;
 		}
+	}
+
+	/**
+	 * Put the @Copyright in a shortcode so we can put all footer copy in the widgets
+	 * Optionally include the site name to override the default
+	 *
+	 * [site_copy][/site_copy]
+	 */
+
+	public function sitefooter_add_custom_shortcode() {
+		add_shortcode( 'site_copy', array( $this, 'site_footer_do_custom_shortcode' ) );
+	}
+
+	/**
+	 * Put the @Copyright in a shortcode so we can put all footer copy in the widgets
+	 * Optionally include the site name to override the default
+	 *
+	 * @param array  $atts attributes to pass - credits true or false default true.
+	 * @param string $content Content will override site name.
+	 */
+	public function site_footer_do_custom_shortcode( $atts, $content ) {
+		$atts    = shortcode_atts(
+			array(
+				'credits' => true,
+			),
+			$atts,
+			'site_copy'
+		);
+		$content = empty( $content ) ? get_bloginfo( 'name' ) . '. All Rights Reserved.' : $content;
+		$html    = '&copy; ' . esc_attr( gmdate( 'Y' ) ) . ' ' . $content;
+		if ( true == $atts['credits'] ) {
+				$html .= ' <a class="info-popover" href="#" data-popover="site-credit-pop">Site Credits</a>.
+								<div class="gpopover no-list" id="site-credit-pop">
+									<ul class="no-list">
+										<li class="contact-info">Website Design: <a href="http://beansnrice.com" target="_blank">Beans n\' Rice</a></li>
+										<li class="contact-info">Website Development: <a href="https://carkeekstudios.com"  target="_blank">Carkeek Studios</a></li>
+									</ul>
+								</div>
+							</li>';
+		}
+		return $html;
 	}
 }
