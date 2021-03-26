@@ -545,8 +545,6 @@ a.is-style-arrow-cta:hover::after {
 
 			}
 
-
-
 			&.has-background:not(.has-media-on-the-top) {
 				height: 56vw;
 				max-height: 800px;
@@ -567,8 +565,6 @@ a.is-style-arrow-cta:hover::after {
 					padding: 15% 10%;
 				}
 			}
-
-
 
 			&.is-style-small-image,
 			&.is-style-round-image {

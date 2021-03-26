@@ -45,13 +45,15 @@ input[type="submit"]:hover,
 	text-decoration: none;
 }
 
-a.button.is-style-cta {
+a.button.is-style-cta,
+a.is-style-cta {
 	background-color: transparent;
 	color: var(--color-link);
-	font-weight: var(--font-weight-medium);
 	font-size: var(--font-size-cta);
 	padding-left: 0;
 	text-transform: none;
+	font-weight: var(--font-weight-bold);
+
 
 	&::after {
 		content: "\203A";
@@ -61,6 +63,7 @@ a.button.is-style-cta {
 
 	&:hover {
 		color: var(--color-link-active);
+		text-decoration: none;
 
 		&::after {
 			content: "\203A";
