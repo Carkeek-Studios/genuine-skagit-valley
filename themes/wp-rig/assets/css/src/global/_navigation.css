@@ -386,6 +386,9 @@ html.overflow-hidden {
 .menu-button a {
 	color: var(--color-button-text);
 	font-size: var(--font-size-button);
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 50px;
 }
 
 @media (--tablet-up) {

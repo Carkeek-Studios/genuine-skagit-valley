@@ -261,8 +261,8 @@ class Component implements Component_Interface {
 				'title'       => __( 'News Item', 'wp-rig' ),
 				'description' => _x( 'Image, linked headline and text', 'Block pattern description', 'wp-rig' ),
 				'categories'  => array( 'layout' ),
-				'content'     => '<!-- wp:columns {"align":"wide"} -->
-				<div class="wp-block-columns alignwide"><!-- wp:column {"width":"33.33%"} -->
+				'content'     => '<!-- wp:columns {"align":"wide","className":"pip-news"} -->
+				<div class="wp-block-columns alignwide pip-news"><!-- wp:column {"width":"33.33%"} -->
 				<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:carkeek-blocks/fixed-image {"id":73} -->
 				<figure class="wp-block-carkeek-blocks-fixed-image size-large"><div class="ck-fixed-image-wrap"><img src="https://partnersinprint.sitedistrict.com/wp-content/uploads/2021/02/long-distance-letterpress-daredevil-typesetting.jpg" alt="" class="wp-image-73"/></div></figure>
 				<!-- /wp:carkeek-blocks/fixed-image --></div>
@@ -270,7 +270,7 @@ class Component implements Component_Interface {
 
 				<!-- wp:column {"width":"66.66%"} -->
 				<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:paragraph {"placeholder":"Add Link..."} -->
-				<p><a href="/">News Item Block </a></p>
+				<p></p>
 				<!-- /wp:paragraph -->
 
 				<!-- wp:paragraph {"placeholder":"Add content..."} -->

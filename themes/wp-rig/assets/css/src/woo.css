@@ -651,16 +651,3 @@ h3#ship-to-different-address {
 	}
 }
 
-.wp-block-woocommerce-all-products {
-
-	& h2 {
-		text-transform: none;
-	}
-
-	&.hide-add-to-cart {
-
-		& .wc-block-grid__product-add-to-cart {
-			display: none;
-		}
-	}
-}

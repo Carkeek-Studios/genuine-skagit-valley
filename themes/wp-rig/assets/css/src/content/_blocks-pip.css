@@ -49,7 +49,13 @@
 	}
 }
 
+
 .ck-modal-item-dialog {
+	max-height: calc(100vh - var(--modal-dialog-margin) * 2);
+
+	& .modal-content {
+		max-height: calc(100vh - var(--modal-dialog-margin) * 2);
+	}
 
 	& .ck-modal-item-image {
 		position: relative;
@@ -81,9 +87,18 @@
 		margin-top: 1rem;
 	}
 
+	& .modal-body {
+		padding: 1rem 2rem;
+	}
+
+	& .modal-footer {
+		padding: 1rem 2rem;
+	}
+
 	& .modal-header {
 		background-color: #fff;
 		padding: 0;
+		z-index: 200;
 
 		& button.close {
 			background-color: transparent;
@@ -95,7 +110,7 @@
 
 			&::before {
 				content: "\D7"; /* use the hex value here... */
-				font-size: 50px;
+				font-size: 35px;
 				color: #000;
 				display: block;
 				text-align: center;
@@ -107,6 +122,13 @@
 
 .wp-block-carkeek-blocks-custom-archive {
 	--ck-modal-image-ratio: 66%;
+}
+
+.pip-news .wp-block-column {
+
+	& .wp-block-carkeek-blocks-fixed-image {
+		margin-bottom: 5px;
+	}
 }
 
 @media (--tablet-up) {
@@ -153,4 +175,44 @@
 
 	/* stylelint-enable */
 }
+
+.wp-block-carkeek-blocks-widget-row.pip-portfolio {
+
+	--ck-column-gap: 25px;
+	font-size: var(--font-size-medium);
+
+	& .ck-lightbox-featured-image {
+		position: relative;
+		display: block;
+		margin-bottom: 1rem;
+
+		&::after {
+			display: block;
+			width: 100%;
+			content: "";
+			padding-bottom: 143%;
+		}
+
+		& img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+.fancybox-infobar {
+	font-size: var(--font-size-medium);
+}
+
+@media (--mobile-only) {
+
+	.fancybox-infobar {
+		top: 50px;
+	}
+}
+
 
