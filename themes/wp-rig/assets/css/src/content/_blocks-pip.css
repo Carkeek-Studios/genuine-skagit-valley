@@ -216,7 +216,7 @@
 	font-size: var(--font-size-medium);
 }
 
-@media (--mobile-only) {
+@media (--rig-mobile-only) {
 
 	.fancybox-infobar {
 		top: 50px;

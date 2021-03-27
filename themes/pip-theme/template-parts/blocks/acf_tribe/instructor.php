@@ -25,7 +25,7 @@ if ( ! empty( $block['align'] ) ) {
 }
 
 // Load values and assign defaults.
-$headline = get_field( 'headline' );
+$headline = get_field( 'headline' ) ?: __('About the Instructor', 'pip-theme');
 
 if ( get_field( 'select_instructor' ) && 'select' === get_field( 'display' ) ) {
 	$organizers = array( get_field( 'select_instructor' ) );
