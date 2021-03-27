@@ -1,1 +1,36 @@
 @import "global/_custom-properties.css";
+
+.events-cal {
+
+	& .editor-styles-wrapper {
+
+		& h2 {
+			text-align: left;
+			text-transform: none;
+			font-size: var(--font-size-h3);
+			color: var(--body-color);
+		}
+
+		& h3 {
+			text-align: left;
+			text-transform: none;
+			font-size: var(--font-size-h4);
+			color: var(--body-color);
+		}
+
+		& h4 {
+			text-align: left;
+			text-transform: none;
+			font-size: var(--font-size-h5);
+			color: var(--body-color);
+		}
+
+		& h5 {
+			text-align: left;
+			text-transform: none;
+			font-size: var(--font-size-h6);
+			color: var(--body-color);
+		}
+	}
+}
+

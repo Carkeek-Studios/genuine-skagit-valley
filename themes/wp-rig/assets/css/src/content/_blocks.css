@@ -42,24 +42,6 @@
 		margin-top: 0;
 	}
 
-	&.no-top-margin {
-		margin-top: 0;
-
-	}
-
-	&.no-bottom-margin {
-		margin-bottom: 0;
-
-	}
-
-	&.add-top-margin-small {
-		margin-top: var(--gutter-width);
-	}
-
-	&.add-bottom-margin-small {
-		margin-bottom: var(--gutter-width);
-	}
-
 }
 
 .page-content > .wp-block-columns + .wp-block-columns,
@@ -80,27 +62,6 @@
 }
 
 @media (--tablet-up) {
-
-	.page-content > [class^="wp-block-"] {
-
-		&.no-top-margin {
-			margin-top: 0;
-
-		}
-
-		&.no-bottom-margin {
-			margin-bottom: 0;
-
-		}
-
-		&.add-top-margin-small {
-			margin-top: var(--gutter-width-columns);
-		}
-
-		&.add-bottom-margin-small {
-			margin-bottom: var(--gutter-width-columns);
-		}
-	}
 
 	.page-content > .wp-block-columns + .wp-block-columns,
 	.page-content > .alignfull.has-background + .alignfull.has-background,
@@ -147,7 +108,7 @@
 
 	/*this is to override core */
 	&.has-background {
-		padding: var(--block-spacing-vert) var(--gutter-width);
+		padding: var(--block-spacing-vert) var(--gutter-width-page);
 	}
 
 
@@ -232,19 +193,6 @@
 	text-decoration: none;
 }
 
-.is-style-arrow-cta .wp-block-button__link,
-a.is-style-arrow-cta {
-	background-color: transparent;
-
-	font-weight: var(--font-weight-bold);
-	font-size: var(--font-size-cta);
-	padding-left: 0;
-	text-transform: none;
-
-	&:not(.has-text-color) {
-		color: var(--color-link);
-	}
-}
 
 .aligncenter,
 .is-content-justification-center {
@@ -255,22 +203,38 @@ a.is-style-arrow-cta {
 	}
 }
 
-.is-style-arrow-cta .wp-block-button__link::after,
-a.is-style-arrow-cta::after {
-	content: "\203A";
-	padding-left: 5px;
-	transition: padding 0.3s linear;
-}
+.is-style-arrow-cta .wp-block-button__link,
+a.is-style-arrow-cta,
+.tribe-block__event-website a {
 
-.is-style-arrow-cta .wp-block-button__link:hover,
-a.is-style-arrow-cta:hover {
-	color: var(--color-link-active);
-}
+	background-color: transparent;
+	border: none;
 
-.is-style-arrow-cta .wp-block-button__link:hover::after,
-a.is-style-arrow-cta:hover::after {
-	content: "\203A";
-	padding-left: 8px;
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-cta);
+	padding-left: 0;
+	text-transform: none;
+
+	&:not(.has-text-color) {
+		color: var(--color-link);
+	}
+
+	&::after {
+		content: "\203A";
+		padding-left: 5px;
+		transition: padding 0.3s linear;
+	}
+
+	&:hover {
+		color: var(--color-link-active);
+		text-decoration: none;
+
+		&::after {
+			content: "\203A";
+			padding-left: 8px;
+		}
+	}
+
 }
 
 /*--------------------------------------------------------------
@@ -280,7 +244,12 @@ a.is-style-arrow-cta:hover::after {
 	margin-bottom: var(--gutter-width);
 
 	& figcaption {
+		padding: 0.25rem 0.5rem;
+		text-align: right;
+		margin: 0;
 		font-size: var(--font-size-caption);
+		color: var(--color-theme-grey);
+		font-weight: var(--font-weight-light);
 	}
 
 	&.alignfull {

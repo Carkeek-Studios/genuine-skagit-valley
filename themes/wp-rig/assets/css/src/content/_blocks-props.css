@@ -31,7 +31,7 @@
 }
 
 .add-top-margin-small {
-	margin-top: var(--gutter-width);
+	margin-top: var(--block-spacing-vert-small);
 }
 
 .no-bottom-margin {
@@ -43,9 +43,10 @@
 }
 
 .add-bottom-margin-small {
-	margin-bottom: var(--gutter-width);
+	margin-bottom: var(--block-spacing-vert-small);
 }
 
+.page-content > [class^="wp-block-"],
 [class^="wp-block-"] {
 
 	&.no-top-margin {
@@ -57,7 +58,7 @@
 	}
 
 	&.add-top-margin-small {
-		margin-top: var(--gutter-width);
+		margin-top: var(--block-spacing-vert-small);
 	}
 
 	&.no-bottom-margin {
@@ -69,7 +70,7 @@
 	}
 
 	&.add-bottom-margin-small {
-		margin-bottom: var(--gutter-width);
+		margin-bottom: var(--block-spacing-vert-small);
 	}
 
 	&.no-padding {
@@ -94,44 +95,7 @@
 
 }
 
-@media (--tablet-small-up) {
 
-	.add-top-margin {
-		margin-top: var(--block-spacing-vert);
-	}
-
-	.add-top-margin-small {
-		margin-top: var(--gutter-width-small);
-	}
-
-	.add-bottom-margin {
-		margin-bottom: var(--block-spacing-vert);
-	}
-
-	.add-bottom-margin-small {
-		margin-bottom: var(--gutter-width-small);
-	}
-
-	[class^="wp-block-"] {
-
-		&.add-top-margin {
-			margin-top: var(--block-spacing-vert);
-		}
-
-		&.add-top-margin-small {
-			margin-top: var(--gutter-width-small);
-		}
-
-		&.add-bottom-margin {
-			margin-bottom: var(--block-spacing-vert);
-		}
-
-		&.add-bottom-margin-small {
-			margin-bottom: var(--gutter-width-small);
-		}
-
-	}
-}
 
 /*--------------------------------------------------------------
 ## List Style

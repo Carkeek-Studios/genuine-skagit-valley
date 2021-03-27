@@ -114,28 +114,3 @@ p {
 div > p:last-of-type {
 	margin-bottom: 0;
 }
-
-.aspect-ratio-thumbnail {
-
-	& > a {
-		position: relative;
-		display: block;
-		overflow: hidden;
-
-		&::after {
-			display: block;
-			width: 100%;
-			content: "";
-			padding-bottom: 56%;
-		}
-	}
-
-	& img {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-}

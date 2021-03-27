@@ -1,8 +1,3 @@
-.image-caption {
-	font-size: var(--font-size-caption);
-	color: var(--color-theme-grey-dark);
-}
-
 .page-header {
 	text-align: center;
 	border-top: 2px solid var(--color-theme-grey-lightest);
@@ -11,7 +6,7 @@
 	& .image-caption {
 		padding: 0.25rem 0.5rem;
 		text-align: right;
-		font-size: var(--font-size-small);
+		font-size: var(--font-size-caption);
 		color: var(--color-theme-grey);
 		font-weight: var(--font-weight-light);
 	}
@@ -72,8 +67,7 @@
 		}
 	}
 
-	.entry-title {
-		color: var(--color-theme-green);
+	& .entry-title {
 
 		& h1 {
 			margin-bottom: 0;
@@ -85,13 +79,6 @@
 			text-transform: uppercase;
 			letter-spacing: 2.5px;
 
-			& a {
-				color: var(--color-theme-green);
-
-				&:hover {
-					color: var(--color-theme-green-light-links);
-				}
-			}
 		}
 	}
 }

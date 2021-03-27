@@ -351,8 +351,6 @@ html.overflow-hidden {
 
 	& a {
 		background-color: var(--color-button-background);
-		color: var(--color-theme-white);
-		padding: 1.1rem 1rem;
 		text-align: center;
 		transition: background-color 0.6s ease;
 

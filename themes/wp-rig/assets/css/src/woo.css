@@ -104,6 +104,10 @@
 	}
 }
 
+.woocommerce-cart .page-content {
+	margin-top: 3rem;
+}
+
 #add_payment_method .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button {
@@ -151,8 +155,8 @@
 		}
 	}
 
-
 	& div.product {
+		margin-bottom: var(--block-spacing-vert);
 
 		& form.cart .button {
 			float: none;
@@ -167,6 +171,7 @@
 		& .product_title {
 			font-size: var(--font-size-large);
 			text-transform: none;
+			margin-bottom: 25px;
 		}
 
 		& p.stock {
@@ -179,6 +184,14 @@
 			font-size: 1em;
 			margin-bottom: 1rem;
 			font-weight: var(--font-weight-medium);
+		}
+
+		& div.images .flex-control-thumbs {
+			margin-top: 1rem;
+
+			& li {
+				margin-right: 10px;
+			}
 		}
 
 		& .woocommerce-tabs .wc-tabs {
@@ -279,82 +292,6 @@
 	}
 }
 
-.Xwoocommerce table.shop_table {
-	border: none;
-	border-top: 1px solid var(--color-theme-grey-light);
-	border-radius: 0;
-
-	& .product-subtotal {
-		text-align: right;
-	}
-
-	& td {
-		font-family: var(--global-font-family);
-		font-weight: var(--font-weight-regular);
-		border-top: 1px solid var(--color-theme-grey-light);
-
-		&.product-remove {
-			text-align: center;
-			width: 10%;
-			display: inline-block;
-			padding: 6px 0;
-		}
-
-		&.product-name {
-			display: inline-block;
-			width: 88%;
-			border-top: none;
-			padding-left: 0;
-
-			& a {
-				color: var(--global-font-color);
-
-				&:hover {
-					font-weight: var(--font-weight-bold);
-				}
-			}
-		}
-
-		&.product-quantity {
-			text-align: center;
-		}
-
-		& .number-input {
-			margin-bottom: 0;
-		}
-
-
-	}
-
-	&.woocommerce-checkout-review-order-table {
-
-		& th,
-		& td {
-			padding: 1rem 0;
-		}
-
-		& th {
-			font-family: var(--global-font-family);
-			font-size: 0.85rem;
-			text-transform: uppercase;
-		}
-
-		& td.product-name {
-			display: table-cell;
-			width: auto;
-			border-top: 1px solid var(--color-theme-grey-light);
-		}
-
-		& tfoot {
-
-			& td,
-			& th {
-				font-size: 1rem;
-				font-weight: var(--font-weight-regular);
-			}
-		}
-	}
-}
 
 .woocommerce-shop {
 
@@ -382,6 +319,10 @@ h3#ship-to-different-address {
 	margin-bottom: 1rem;
 }
 
+.page-content > .woocommerce {
+	margin-bottom: var(--block-spacing-vert);
+}
+
 .woocommerce,
 .woocommerce-page {
 
@@ -398,7 +339,7 @@ h3#ship-to-different-address {
 	}
 
 	& .col2-set {
-		margin-bottom: 2rem;
+		margin-bottom: 4rem;
 
 		& .col-1 {
 			max-width: 100%;

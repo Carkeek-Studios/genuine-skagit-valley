@@ -40,16 +40,33 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'admin_menu', array( $this, 'add_organizers_to_menu' ) );
 		add_filter( 'register_post_type_args', array( $this, 'custom_post_type_args' ), 20, 2 );
 
+		add_action( 'plugins_loaded', array( $this, 'alter_tribe_hooks' ) );
+		// setup the default template.
+		// add_filter( 'tribe_events_editor_default_template', array( $this, 'tribe_events_editor_default_template' ), 11, 60 );
+		// Can't get remove_action to work so run our own function after theirs that setup our template.
+		add_action( 'admin_init', array( $this, 'setup_tribe_events_block_editor' ), 30 );
+
+		add_action( 'acf/init', array( $this, 'tribe_acf_block_types' ) );
+
+		// CLASSIC EDITOR TEMPLATE.
 		// Change the display location for the share links.
-		remove_action( 'tribe_events_single_event_after_the_content', array( 'Tribe__Events__iCal', 'single_event_links' ) ); // This doesnt acutally work.
 		add_action( 'pip_theme_tribe_events_single_event_after_the_meta', array( 'Tribe__Events__iCal', 'single_event_links' ) );
 
-		// filter the results of the ical function
+		// Filter the results of the ical function.
 		add_filter( 'tribe_events_ical_single_event_links', array( $this, 'tribe_events_ical_single_event_links' ) );
 
 		add_filter( 'tribe_get_ticket_label_plural', array( $this, 'tribe_get_ticket_label_plural' ), 10, 2 );
 
 		add_filter( 'sf_edit_query_args', array( $this, 'filter_sf_results' ), 20, 2 );
+
+	}
+
+	/**
+	 * Alter hooks after loaded. Cant figure out how to make these work...
+	 */
+	public function alter_tribe_hooks() {
+		remove_action( 'admin_init', array( 'Tribe__Tickets__Editor', 'add_tickets_block_in_editor' ) ); // remove default action so we can add in correct order
+		remove_action( 'tribe_events_single_event_after_the_content', array( 'Tribe__Events__iCal', 'single_event_links' ) ); // This doesnt acutally work.
 
 	}
 
@@ -163,6 +180,128 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		return $query_args;
+	}
+
+	/**
+	 * Customize block order on the events template
+	 *
+	 * @param array $template default template, each item represents a block.
+	 */
+	public function tribe_events_editor_default_template() {
+		$template = array(
+
+			array( 'tribe/event-organizer' ),
+			array( 'tribe/event-datetime' ),
+			array( 'tribe/event-price' ),
+			array( 'tribe/event-venue' ),
+			array( 'tribe/event-website' ),
+			array( 'tribe/event-links' ),
+
+			array(
+				'tribe/tickets',
+			),
+			array(
+				'core/heading',
+				array(
+					'level'   => 2,
+					'content' => 'Why you should take this class',
+				),
+			),
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => __( 'Add Description...', 'pip-theme' ),
+				),
+			),
+			array(
+				'core/heading',
+				array(
+					'level'   => 2,
+					'content' => 'What you’ll learn',
+				),
+			),
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => __( 'Add Description...', 'pip-theme' ),
+				),
+			),
+			array(
+				'core/heading',
+				array(
+					'level'   => 3,
+					'content' => 'Prerequisites',
+				),
+			),
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => __( 'Add Description...', 'pip-theme' ),
+				),
+			),
+			array(
+				'core/heading',
+				array(
+					'level'   => 3,
+					'content' => 'Who should take this class?',
+				),
+			),
+			array(
+				'core/paragraph',
+				array(
+					'placeholder' => __( 'Add Description...', 'pip-theme' ),
+				),
+			),
+			array(
+				'acf/instructor-details',
+			),
+			array(
+				'tribe/related-events',
+				array(
+					'title' => __( 'More Classes &amp; Events', 'pip-theme' ),
+				),
+			),
+		);
+		return $template;
+	}
+
+	/**
+	 * This runs after tribe has done their template mods, we only want ours in there.
+	 * Want the ticket block to show up in the correct order.
+	 */
+	public function setup_tribe_events_block_editor() {
+		// Post types where the block shouldn't be displayed by default
+		if ( ! class_exists( 'Tribe__Events__Main' ) ) {
+			return;
+		}
+
+		$post_type_object = get_post_type_object( 'tribe_events' );
+
+		$template = $this->tribe_events_editor_default_template();
+
+		$post_type_object->template = $template;
+	}
+
+	/** Create a block to show the Instructor on the Events Page */
+
+	function tribe_acf_block_types() {
+
+		// Check function exists.
+		if ( function_exists( 'acf_register_block_type' ) ) {
+
+			// register a testimonial block.
+			acf_register_block_type(
+				array(
+					'name'            => 'instructor-details',
+					'title'           => __( 'Class Instructor', 'pip-theme' ),
+					'description'     => __( 'Customize Instructor Details.', 'pip-theme' ),
+					'render_template' => 'template-parts/blocks/acf_tribe/instructor.php',
+					'category'        => 'events',
+					'icon'            => 'welcome-learn-more',
+					'keywords'        => array( 'events', 'instructor' ),
+				)
+			);
+		}
 	}
 
 

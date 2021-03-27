@@ -24,6 +24,7 @@
 		position: relative;
 		font-size: var(--font-size-medium);
 		padding: 10px var(--gutter-width);
+		font-weight: var(--font-weight-regular);
 		text-align: center;
 
 		& a {
@@ -46,6 +47,13 @@
 		line-height: 1.25;
 		font-weight: var(--font-weight-bold);
 
+	}
+}
+
+.wp-block-carkeek-blocks-custom-archive {
+
+	& .ck-columns-item {
+		margin-bottom: var(--gutter-width-columns);
 	}
 }
 

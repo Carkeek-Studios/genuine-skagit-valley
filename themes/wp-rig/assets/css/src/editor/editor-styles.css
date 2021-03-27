@@ -134,3 +134,8 @@ figure {
 	max-height: auto;
 }
 /* stylelint-enable */
+
+.tribe-editor__event-website__label-text input {
+	background-color: transparent;
+	border-color: #ccc;
+}

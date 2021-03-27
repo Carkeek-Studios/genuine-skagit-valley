@@ -9,19 +9,6 @@
 
 .single-tribe_events {
 
-	& h2:not(.tribe-events-related-events-title) {
-		font-size: var(--font-size-h4);
-		text-transform: none;
-		color: var(--color-body);
-	}
-
-	& h3,
-	& h4 {
-		font-size: var(--font-size-h5);
-		text-transform: none;
-		color: var(--color-body);
-	}
-
 	& .page-header.has-post-thumbnail {
 		margin-bottom: calc(var(--block-spacing-vert) / 2);
 	}
@@ -31,11 +18,13 @@
 	}
 
 	& .tribe-event-categories {
+		margin-bottom: 0.75rem;
 
 		& a {
 			color: var(--color-theme-grey-dark);
 			text-transform: uppercase;
 			font-size: var(--font-size-medium);
+			letter-spacing: 1px;
 		}
 	}
 
@@ -52,7 +41,6 @@
 	}
 
 	& .share-save-links {
-		margin-top: 1rem;
 		display: flex;
 		align-items: center;
 	}
@@ -154,6 +142,12 @@
 
 .tribe-instructor {
 
+	&::after {
+		display: table;
+		content: "";
+		clear: both;
+	}
+
 	& img {
 		width: 100%;
 		margin-bottom: 1rem;
@@ -180,15 +174,22 @@
 	margin-bottom: 1rem;
 }
 
+.tribe-tickets__tickets-wrapper,
+.tribe-instructor-block {
+	margin-bottom: var(--block-spacing-vert);
+	margin-top: var(--block-spacing-vert);
+}
+
+
 @media (--tablet-up) {
 
 	.tribe-instructor {
 
 		& img {
 			width: 50%;
-			margin-bottom: 1rem;
+			margin-bottom: var(--gutter-width-columns);
 			float: left;
-			margin-right: 1rem;
+			margin-right: var(--gutter-width-columns);
 		}
 	}
 }
@@ -257,8 +258,6 @@ ul.ck-tribe-related-events {
 	color: #fff;
 	opacity: 0.6;
 }
-
-
 
 @media (--tablet-small-up) {
 
@@ -482,9 +481,6 @@ ul.ck-tribe-related-events {
 }
 
 /** Single Event **/
-
-
-
 @media (--tablet-small-up) {
 
 	.single-tribe_events {
@@ -568,3 +564,124 @@ ul.ck-tribe-related-events {
 	}
 }
 
+.single-tribe_events #tribe-events-content {
+	padding-left: var(--gutter-width-page);
+	padding-right: var(--gutter-width-page);
+}
+
+.tribe-events-single.tribe-blocks-editor {
+	margin-top: 4 em;
+	max-width: var(--content-width);
+	margin-left: auto;
+	margin-right: auto;
+
+	& h2:not(.tribe-block__related-events__title) {
+		margin-top: 3rem;
+		text-align: left;
+		letter-spacing: 0;
+		text-transform: none;
+		font-size: var(--font-size-h4);
+		color: var(--body-color);
+
+		&.tribe-tickets__tickets-title {
+			margin-top: 0;
+		}
+	}
+
+	& h3 {
+		font-size: var(--font-size-h5);
+		color: var(--body-color);
+		margin-bottom: 0.5em;
+
+		&.tribe-related-events-title {
+			font-size: var(--font-size-regular);
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	& h4 {
+		font-size: var(--font-size-h6);
+	}
+
+	& h5 {
+		font-size: var(--font-size-regular);
+	}
+
+	& .tribe-address {
+		font-weight: var(--font-weight-regular);
+	}
+}
+
+.tribe-block,
+.ck-tribe-events-schedule__date,
+.ck-tribe-events-schedule__time {
+	margin: 0 0 0.5rem 0 !important;
+	font-weight: var(--font-weight-medium);
+}
+
+.tribe-block__event-price .tribe-block__event-price__cost {
+	font-size: var(--font-size-regular);
+	color: var(--body-color);
+	font-weight: var(--font-weight-medium);
+}
+
+.tribe-events-schedule {
+	font-size: var(--font-size-regular);
+
+	& > * {
+		font-size: var(--font-size-regular) !important;
+		font-weight: var(--font-weight-medium);
+		color: var(--body-color);
+	}
+}
+
+.tribe-block__event-website a {
+	font-size: var(--font-size-regular);
+	min-height: none;
+}
+
+
+.ck-tribe-related-events {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	& li {
+		margin-bottom: 1.5rem;
+	}
+
+}
+
+@media (--tablet-up) {
+
+	.ck-tribe-related-events {
+		display: flex;
+
+		& li {
+			flex: 1 1 0;
+			margin-right: var(--gutter-width-columns);
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+
+@media (--tablet-wide-up) {
+
+	.ck-tribe-related-events-wrapper {
+		margin-right: calc(-1 * ( (100vw - var(--gutter-width-page) ) - var(--content-width) ) / 2);
+		margin-left: calc(-1 * ( (100vw - var(--gutter-width-page) ) - var(--content-width) ) / 2);
+	}
+
+}
+
+@media (--desktop-up) {
+
+	.ck-tribe-related-events-wrapper {
+		margin-right: calc(-1 * ( (100vw - var(--gutter-width-page) ) - var(--content-width-wide) ) / 2);
+		margin-left: calc(-1 * ( (100vw - var(--gutter-width-page) ) - var(--content-width-wide) ) / 2);
+	}
+
+}

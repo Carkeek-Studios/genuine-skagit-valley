@@ -184,7 +184,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/** styles for admin area (not just blocks) */
 	public function admin_style() {
 		$css_uri = get_theme_file_uri( '/assets/css/' );
-		wp_enqueue_style( 'wft-admin-styles', $css_uri . '/admin.min.css' );
+		wp_enqueue_style( 'wft-admin-styles', $css_uri . 'admin.min.css' );
 	}
 
 	/**

@@ -9,6 +9,8 @@
 	justify-content: center;
 	background-position: 5% top;
 	text-shadow: 0 0 5px rgba(0, 0, 0, 0.22);
+	padding: 4rem var(--gutter-width-page) !important;
+	margin-bottom: var(--block-spacing-vert-small) !important;
 
 	& p {
 		font-size: var(--font-size-large);
