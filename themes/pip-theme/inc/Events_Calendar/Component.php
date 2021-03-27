@@ -36,7 +36,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function initialize() {
 		add_action( 'init', array( $this, 'register_additional_tax' ) );
-		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11, 2 );
+		add_filter( 'tribe_get_region', array( $this, 'tribe_get_region' ), 11 );
 		add_action( 'admin_menu', array( $this, 'add_organizers_to_menu' ) );
 		add_filter( 'register_post_type_args', array( $this, 'custom_post_type_args' ), 20, 2 );
 
@@ -59,13 +59,15 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'sf_edit_query_args', array( $this, 'filter_sf_results' ), 20, 2 );
 
+		add_filter( 'carkeek_block_custom_post_layout_tribe_events__query_args', array( $this, 'custom_post_filter_query' ) );
+
 	}
 
 	/**
 	 * Alter hooks after loaded. Cant figure out how to make these work...
 	 */
 	public function alter_tribe_hooks() {
-		remove_action( 'admin_init', array( 'Tribe__Tickets__Editor', 'add_tickets_block_in_editor' ) ); // remove default action so we can add in correct order
+		remove_action( 'admin_init', array( 'Tribe__Tickets__Editor', 'add_tickets_block_in_editor' ) ); // remove default action so we can add in correct order.
 		remove_action( 'tribe_events_single_event_after_the_content', array( 'Tribe__Events__iCal', 'single_event_links' ) ); // This doesnt acutally work.
 
 	}
@@ -85,7 +87,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/**
 	 * Register Taxonomy for Organizers
 	 **/
-
 	public function register_additional_tax() {
 		$labels = array(
 			'name'          => _x( 'Organizer Categories', 'Taxonomy General Name', 'pip-theme' ),
@@ -111,16 +112,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Add Taxonomy to menu
 	 */
 	public function add_organizers_to_menu() {
-		// create a submenu under Events
+		// create a submenu under Events.
 		add_submenu_page( 'edit.php?post_type=tribe_events', 'Organizer Categories', 'Organizer Categories', 'manage_options', 'edit-tags.php?taxonomy=organizer_cats&post_type=tribe_events', '', 20 );
 	}
 
-
-
 	/**
 	 * Return Abbreviated State
+	 *
+	 * @param string $output Existing output.
 	 */
-	public function tribe_get_region( $output, $venue_id ) {
+	public function tribe_get_region( $output ) {
 		if ( 'Washington' === $output ) {
 			$output = 'WA';
 		}
@@ -136,7 +137,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param  string $post_type current post type.
 	 */
 	public function custom_post_type_args( $args, $post_type ) {
-		if ( $post_type == 'tribe_organizer' ) {
+		if ( 'tribe_organizer' === $post_type ) {
 			$args['show_in_rest'] = true;
 		}
 
@@ -144,7 +145,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	/**
-	 * tribe_events_ical_single_event_links.
+	 * Tribe_events_ical_single_event_links.
+	 *
+	 * @param string $links Current HTML - we wrap it in a button so it pops up.
 	 */
 	public function tribe_events_ical_single_event_links( $links ) {
 		$html  = '<div class="share-save-links">';
@@ -158,18 +161,23 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	/**
 	 * Tickets label should be register
+	 *
+	 * @param string $label Current label for Tickets.
+	 * @param string $context Current context.
 	 */
-
 	public function tribe_get_ticket_label_plural( $label, $context ) {
 		return __( 'Register', 'pip-theme' );
 	}
 
-	 /**
-	  * Search and Filter Query
-	  */
-	function filter_sf_results( $query_args, $sfid ) {
+	/**
+	 * Search and Filter Query
+	 *
+	 * @param array  $query_args Current query.
+	 * @param string $sfid Id of form.
+	 */
+	public function filter_sf_results( $query_args, $sfid ) {
 
-		if ( 'tribe_events' == $query_args['post_type'] ) {
+		if ( 'tribe_events' === $query_args['post_type'] ) {
 			$query_args['meta_query'] = array(
 				'_EventStartDate' => array(
 					'value'   => date( 'Y-m-d H:i:s' ), // Compare against today's date.
@@ -185,7 +193,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/**
 	 * Customize block order on the events template
 	 *
-	 * @param array $template default template, each item represents a block.
 	 */
 	public function tribe_events_editor_default_template() {
 		$template = array(
@@ -270,7 +277,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Want the ticket block to show up in the correct order.
 	 */
 	public function setup_tribe_events_block_editor() {
-		// Post types where the block shouldn't be displayed by default
+		// Post types where the block shouldn't be displayed by default.
 		if ( ! class_exists( 'Tribe__Events__Main' ) ) {
 			return;
 		}
@@ -283,8 +290,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	/** Create a block to show the Instructor on the Events Page */
-
-	function tribe_acf_block_types() {
+	public function tribe_acf_block_types() {
 
 		// Check function exists.
 		if ( function_exists( 'acf_register_block_type' ) ) {
@@ -304,7 +310,28 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
+	/** Filter the query for the home page events list.
+	 * TODO - (in block) send context along the block data
+	 *
+	 * @param array $args configured query args.
+	 */
+	public function custom_post_filter_query( $args ) {
+		$args['meta_key']   = '_EventStartDate';
+		$args['orderby']    = 'meta_value';
+		$args['meta_query'] = array(
+			array(
+				'key'     => '_tribe_featured',
+				'value'   => true,
+				'compare' => '=',
+			),
+			array(
+				'key'     => '_EventStartDate',
+				'value'   => date( 'Y-m-d H:i' ),
+				'compare' => '>=',
+				'type'    => 'DATE',
+			),
+		);
+		return $args;
+	}
 
 }
-
-

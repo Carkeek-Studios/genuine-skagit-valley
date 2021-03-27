@@ -64,7 +64,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				echo wp_kses_post( '<div class="ck-item-organizer_role">' . $role . '</div>' );
 			}
 		} elseif ( 'tribe_events' === $post->post_type ) {
-			echo wp_kses_post( '<div class="ck-item-event_date>Start Date</div>' );
+			$organizers = tribe_get_organizer_ids( $post->ID );
+			$org_names    = array();
+			foreach ( $organizers as $organizer_id ) {
+				$$org_names[] = tribe_get_organizer( $organizer_id );
+			}
+			echo wp_kses_post( '<div class="ck-item-event_org">' . implode( ', ', $org_names ) . '</div>' );
 		}
 	}
 
