@@ -1164,13 +1164,14 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 		& .ck-columns__wrap > * {
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
+			justify-content: center;
 
 			& figcaption {
 				justify-self: flex-end;
 				margin-bottom: 0;
 				font-size: var(--font-size-small);
 				line-height: 1.125;
+				text-align: center;
 			}
 		}
 	}
