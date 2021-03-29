@@ -181,19 +181,22 @@ ul.ck-tribe-related-events {
 .tribe-common button.tribe-common-c-btn--small,
 .tribe-common input[type="button"].tribe-common-c-btn--small,
 .tribe-common input[type="submit"].tribe-common-c-btn--small {
-	background-color: var(--color-button-background);
-	color: var(--color-button-text);
+	background-color: var(--color-button-background) !important;
+	color: var(--color-button-text) !important;
 	border-radius: 0;
+	padding: var(--padding-button-alt) !important;
+	line-height: 50px;
 
 	&:hover {
-		background-color: var(--color-button-hover);
+		background-color: var(--color-button-hover) !important;
 	}
 
 	&.tribe-common-c-btn-link {
-		background-color: transparent;
-		color: var(--color-link);
+		background-color: transparent !important;
+		color: var(--color-link) !important;
 		font-weight: var(--font-weight-medium);
 		text-decoration: none;
+		text-transform: none;
 
 		&:hover {
 			background-color: transparent;
@@ -201,6 +204,7 @@ ul.ck-tribe-related-events {
 		}
 	}
 }
+
 
 .entry .entry-content .event-tickets .tribe-tickets__attendee__fields__footer_checkout-button.tribe-common-c-btn:focus,
 .entry .entry-content .event-tickets .tribe-tickets__attendee__fields__footer_checkout-button.tribe-common-c-btn:hover,

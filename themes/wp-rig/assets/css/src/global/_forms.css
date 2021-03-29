@@ -24,9 +24,9 @@ a.button,
 	font-size: var(--font-size-forms);
 	font-family: var(--form-field-font-family);
 	font-weight: var(--font-weight-button);
-	line-height: 1;
+	line-height: 50px;
 	text-transform: uppercase;
-	padding: var(--padding-button);
+	padding: var(--padding-button-alt);
 	cursor: pointer;
 	transition: background 0.5s ease;
 	display: block;

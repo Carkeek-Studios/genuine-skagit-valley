@@ -266,6 +266,13 @@
 	}
 }
 
+.tribe-checkout-backlinks {
+
+	& a {
+		margin-right: 1rem;
+	}
+}
+
 .woocommerce-page table.cart td.actions {
 	padding: 9px 12px;
 
