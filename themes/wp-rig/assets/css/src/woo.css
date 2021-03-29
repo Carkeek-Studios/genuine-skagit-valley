@@ -10,6 +10,7 @@
 		text-transform: none;
 		font-size: var(--font-size-large);
 		text-align: center;
+		letter-spacing: 0;
 	}
 
 	& .price {

@@ -1209,6 +1209,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	& h2 .wc-block-components-product-name {
 		text-transform: none;
 		font-size: var(--font-size-large);
+		letter-spacing: 0;
 	}
 
 	&.hide-add-to-cart {
