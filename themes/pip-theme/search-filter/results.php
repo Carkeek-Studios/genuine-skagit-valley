@@ -56,27 +56,13 @@ if ( $query->have_posts() ) {
 	}
 	?>
 	</div>
-	<?php if ($query->max_num_pages > 1) { ?>
-		<div class="sf-query-paged">
-	Page <?php echo $query->query['paged']; ?> of <?php echo $query->max_num_pages; ?>
-	</div>
-	<?php } ?>
 
-	<div class="pagination">
-
-		<div class="nav-previous"><?php next_posts_link( 'Older posts', $query->max_num_pages ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( 'Newer posts' ); ?></div>
-		<?php
-			/* example code for using the wp_pagenavi plugin */
-		if ( function_exists( 'wp_pagenavi' ) ) {
-			echo '<br />';
-			wp_pagenavi( array( 'query' => $query ) );
-		}
-		?>
-	</div>
 	</div>
 	<?php
 } else {
-	echo 'No Results Found';
+	?>
+	<span data-search-filter-action='infinite-scroll-end'>No more results</span>
+	<div class="sf-results-grid no-results">No Results Found, please adjust your filters</div>
+	<?php
 }
 ?>

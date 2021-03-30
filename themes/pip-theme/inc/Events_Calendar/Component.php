@@ -61,6 +61,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'carkeek_block_custom_post_layout_tribe_events__query_args', array( $this, 'custom_post_filter_query' ) );
 
+		add_filter( 'sf_edit_query_args', array( $this, 'filter_sf_query' ), 20, 2 );
+
 	}
 
 	/**
@@ -192,7 +194,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	/**
 	 * Customize block order on the events template
-	 *
 	 */
 	public function tribe_events_editor_default_template() {
 		$template = array(
@@ -333,5 +334,19 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		);
 		return $args;
 	}
+
+	/** Search and Filter Results page.
+	 *
+	 * @param array  $query_args existings query args.
+	 * @param string $sfid id of form.
+	 */
+	public function filter_sf_query( $query_args, $sfid ) {
+
+		// modify $query_args here before returning it.
+		$query_args['posts_per_page'] = 12;
+
+		return $query_args;
+	}
+
 
 }
