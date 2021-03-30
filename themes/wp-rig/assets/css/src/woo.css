@@ -93,9 +93,11 @@
 	&.disabled {
 		opacity: 0.6;
 		background-color: var(--color-button-background);
+		color: var(--color-button-text);
 
 		&:hover {
 			background-color: var(--color-button-background);
+			color: var(--color-button-text);
 		}
 	}
 

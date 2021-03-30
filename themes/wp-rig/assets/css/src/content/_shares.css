@@ -23,6 +23,7 @@
 		border-radius: 0;
 		text-transform: uppercase;
 		padding: var(--padding-button);
+		font-weight: var(--font-weight-button);
 
 		&:hover {
 			background-color: var(--color-button-hover);
