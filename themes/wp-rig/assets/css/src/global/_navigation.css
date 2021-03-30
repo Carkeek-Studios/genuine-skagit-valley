@@ -3,7 +3,7 @@
 --------------------------------------------------------------*/
 .nav--toggle-small .header-toggle {
 	display: block;
-	padding: 1rem;
+	padding: 0.5rem 1rem;
 	font-family: var(--navigation-font-family);
 	font-size: 1rem;
 	border: none;

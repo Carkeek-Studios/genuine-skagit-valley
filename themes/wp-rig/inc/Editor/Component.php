@@ -200,8 +200,8 @@ class Component implements Component_Interface {
 		register_block_pattern(
 			'carkeek-blocks/archive-with-intro',
 			array(
-				'title'       => __( 'Post List with Intro', 'wp-rig' ),
-				'description' => _x( 'Header, Intro, Post List and Link', 'Block pattern description', 'wp-rig' ),
+				'title'       => __( 'Class List with Intro', 'wp-rig' ),
+				'description' => _x( 'Header, Intro, Class List and Link', 'Block pattern description', 'wp-rig' ),
 				'categories'  => array( 'layout' ),
 				'content'     => '<!-- wp:group {"align":"full"} -->
 				<div class="wp-block-group alignfull"><div class="wp-block-group__inner-container"><!-- wp:group -->
@@ -210,17 +210,67 @@ class Component implements Component_Interface {
 				<!-- /wp:heading -->
 
 				<!-- wp:paragraph {"align":"center"} -->
-				<p class="has-text-align-center">Our Long-Distance Letterpress offerings are nearly as satisfying as the real thing, delivering expert instruction—no matter where in the world you live.</p>
+				<p class="has-text-align-center">Our Long-Distance Letterpress offerings deliver expert instruction—no matter where in the world you live.</p>
 				<!-- /wp:paragraph --></div></div>
 				<!-- /wp:group -->
 
-				<!-- wp:carkeek-blocks/custom-archive {"postTypeSelected":"tribe_events","align":"wide"} /-->
+				<!-- wp:carkeek-blocks/events-archive {"displayField1":"organizer","displayField2":"startdate","filterByCategory":true,"catTermsSelected":"27","featuredEvents":true,"align":"wide","className":"single-row"} /-->
 
 				<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">See all classes</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="/classes-events?_sft_tribe_events_cat=class">See all classes</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
+			'carkeek-blocks/store-with-intro',
+			array(
+				'title'       => __( 'Store with Intro', 'wp-rig' ),
+				'description' => _x( 'Header, Intro, Shop Products and Link', 'Block pattern description', 'wp-rig' ),
+				'categories'  => array( 'layout' ),
+				'content'     => '<!-- wp:group {"align":"full"} -->
+				<div class="wp-block-group alignfull"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center"} -->
+				<h2 class="has-text-align-center">Store</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">Look good while doing good.</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:woocommerce/all-products {"columns":3,"rows":1,"alignButtons":false,"contentVisibility":{"orderBy":false},"orderby":"date","layoutConfig":[["woocommerce/product-image"],["woocommerce/product-title"],["woocommerce/product-price"],["woocommerce/product-rating"],["woocommerce/product-button"]],"align":"wide","className":"hide-add-to-cart hide-pagination"} -->
+				<div class="wp-block-woocommerce-all-products alignwide wc-block-all-products hide-add-to-cart hide-pagination" data-attributes="{&quot;align&quot;:&quot;wide&quot;,&quot;alignButtons&quot;:false,&quot;className&quot;:&quot;hide-add-to-cart hide-pagination&quot;,&quot;columns&quot;:3,&quot;contentVisibility&quot;:{&quot;orderBy&quot;:false},&quot;isPreview&quot;:false,&quot;layoutConfig&quot;:[[&quot;woocommerce/product-image&quot;],[&quot;woocommerce/product-title&quot;],[&quot;woocommerce/product-price&quot;],[&quot;woocommerce/product-rating&quot;],[&quot;woocommerce/product-button&quot;]],&quot;orderby&quot;:&quot;date&quot;,&quot;rows&quot;:1}"></div>
+				<!-- /wp:woocommerce/all-products -->
+
+				<!-- wp:buttons {"contentJustification":"center"} -->
+				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link" href="/store/">Browse the Store</a></div>
+				<!-- /wp:button --></div>
+				<!-- /wp:buttons --></div></div>
+				<!-- /wp:group -->',
+			)
+		);
+
+		register_block_pattern(
+			'carkeek-blocks/instagram-with-intro',
+			array(
+				'title'       => __( 'Instagram with Intro', 'wp-rig' ),
+				'description' => _x( 'Instagram, Intro, Shop Products and Link', 'Block pattern description', 'wp-rig' ),
+				'categories'  => array( 'layout' ),
+				'content'     => '<!-- wp:group {"align":"wide"} -->
+				<div class="wp-block-group alignwide"><div class="wp-block-group__inner-container"><!-- wp:heading {"textAlign":"center","align":"wide"} -->
+				<h2 class="alignwide has-text-align-center">Follow Along</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"align":"center"} -->
+				<p class="has-text-align-center">PiP’s Instagram feed is the place to get your analog fix.&nbsp;&nbsp;&nbsp;</p>
+				<!-- /wp:paragraph -->
+
+				<!-- wp:shortcode -->
+				[instagram-feed]
+				<!-- /wp:shortcode --></div></div>
 				<!-- /wp:group -->',
 			)
 		);

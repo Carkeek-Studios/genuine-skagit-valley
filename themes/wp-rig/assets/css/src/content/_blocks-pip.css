@@ -40,7 +40,6 @@
 }
 
 .ck-custom-archive__content-wrap {
-	margin-bottom: 1.5rem;
 
 	& > a {
 		font-size: 19px;
@@ -54,6 +53,14 @@
 
 	& .ck-columns-item {
 		margin-bottom: var(--gutter-width-columns);
+	}
+
+	&.single-row {
+
+		& .ck-columns-item {
+			margin-bottom: 0;
+		}
+
 	}
 }
 

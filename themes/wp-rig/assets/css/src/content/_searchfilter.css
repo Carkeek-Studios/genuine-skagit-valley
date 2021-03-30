@@ -2,6 +2,8 @@ h2.sf-item-title {
 	text-transform: none;
 	font-size: var(--font-size-regular);
 	margin-bottom: 0.5rem;
+	text-align: left;
+	letter-spacing: 0;
 }
 
 .sf-item-thumbnail {
@@ -14,4 +16,26 @@ h2.sf-item-title {
 
 .sf-result-item {
 	margin-bottom: var(--gutter-width);
+}
+
+.searchandfilter h4 {
+	font-size: var(--font-size-regular);
+}
+
+form.searchandfilter {
+	text-align: center;
+	margin-bottom: var(--block-spacing-vert-small);
+
+	& .sf-field-taxonomy-tribe_events_cat ul {
+		display: flex;
+		justify-content: center;
+
+		& li {
+			margin-right: 1.5rem;
+		}
+	}
+}
+
+.wp-block-group .wp-block-group__inner-container > .search-filter-results {
+	max-width: 100%;
 }
