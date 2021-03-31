@@ -70,7 +70,7 @@ p + h6 {
 
 
 h2 + [class^="wp-block-"] {
-	margin-top: var(--block-spacing-vert);
+	margin-top: var(--block-spacing-vert-small);
 }
 
 h1,
