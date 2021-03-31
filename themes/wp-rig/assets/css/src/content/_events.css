@@ -7,6 +7,10 @@
 	margin-bottom: var(--block-spacing-vert);
 }
 
+.event-organizer-disabled {
+	display: none;
+}
+
 .single-tribe_events {
 
 	& .page-header.has-post-thumbnail {
@@ -25,6 +29,7 @@
 			text-transform: uppercase;
 			font-size: var(--font-size-medium);
 			letter-spacing: 1px;
+			margin-right: 5px;
 		}
 	}
 
@@ -143,16 +148,20 @@
 	margin-top: 3rem;
 }
 
+.organizer-photo-credit {
+	font-size: 14px;
+	margin-top: 1rem;
+	color: var(--color-theme-grey);
+}
+
 
 @media (--tablet-up) {
 
 	.tribe-instructor {
 
-		& img {
+		& .aspect-ratio-thumbnail {
 			width: 50%;
-			margin-bottom: var(--gutter-width-columns);
 			float: left;
-			margin-right: var(--gutter-width-columns);
 		}
 	}
 }

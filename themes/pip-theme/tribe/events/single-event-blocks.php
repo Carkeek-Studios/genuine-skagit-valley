@@ -31,7 +31,7 @@ if ( ! empty( $event_id ) && function_exists( 'tribe_is_recurring_event' ) ) {
 <div id="tribe-events-content" class="tribe-events-single tribe-blocks-editor">
 	<?php $this->template( 'single-event/notices' ); ?>
 	<?php
-		echo tribe_get_event_categories(
+		$cats = tribe_get_event_categories(
 			get_the_id(),
 			[
 				'before'       => '',
@@ -44,6 +44,19 @@ if ( ! empty( $event_id ) && function_exists( 'tribe_is_recurring_event' ) ) {
 				'wrap_after'   => '</div>',
 			]
 		);
+		$cats = get_the_terms( $post->ID, 'tribe_events_cat' );
+		if (!empty($cats)) { ?>
+			<div class="tribe-events-event-categories-label">Event Categories</div>
+			<div class="tribe-event-categories">
+		<?php
+			foreach ($cats as $cat) {
+				$cat_term = get_term( $cat, 'tribe_events_cat' );
+				echo '<a href="/classes-events?_sft_tribe_events_cat=' . $cat_term->slug . '">' . $cat_term->name . '</a>';
+			}
+			?>
+			</div>
+			<?php
+		}
 		?>
 
 		<?php the_title( '<h1 class="h3 tribe-events-single-event-title">', '</h1>' ); ?>

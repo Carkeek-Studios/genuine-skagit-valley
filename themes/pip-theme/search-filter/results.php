@@ -46,8 +46,21 @@ if ( $query->have_posts() ) {
 		}
 		?>
 			<h2 class="sf-item-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-			<?php if ( 'tribe_events' === $posttype ) { ?>
-				<p class="sf-item-date"><?php echo tribe_get_start_date( $post, false, 'F j' ); ?></date>
+			<?php
+			if ( 'tribe_events' === $posttype ) {
+				$organizers = tribe_get_organizer_ids( $post );
+				$org_names  = array();
+				foreach ( $organizers as $organizer_id ) {
+
+					$org_names[] = tribe_get_organizer( $organizer_id );
+				}
+				if ( ! empty( $org_names ) ) {
+					?>
+					<div class="sf-item-instructor"><?php echo implode( ', ', $org_names ); ?></div>
+
+				<?php } ?>
+
+				<div class="sf-item-date"><?php echo tribe_get_start_date( $post, false, 'F j' ); ?></div>
 			<?php } else { ?>
 			<p><?php the_excerpt(); ?></p>
 			<?php } ?>

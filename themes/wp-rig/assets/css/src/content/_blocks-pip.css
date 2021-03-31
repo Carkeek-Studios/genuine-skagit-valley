@@ -55,15 +55,21 @@
 		margin-bottom: var(--gutter-width-columns);
 	}
 
-	&.single-row {
-
-		& .ck-columns-item {
-			margin-bottom: 0;
-		}
-
-	}
 }
 
+@media (--tablet-up) {
+
+	.wp-block-carkeek-blocks-custom-archive {
+
+		&.single-row {
+
+			& .ck-columns-item {
+				margin-bottom: 0;
+			}
+
+		}
+	}
+}
 
 .ck-modal-item-dialog {
 	max-height: calc(100vh - var(--modal-dialog-margin) * 2);

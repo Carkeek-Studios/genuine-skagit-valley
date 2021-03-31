@@ -63,6 +63,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'sf_edit_query_args', array( $this, 'filter_sf_query' ), 20, 2 );
 
+		add_filter( 'ck_custom_archive_layout_modal_dialog__after_content', array( $this, 'add_photo_credit_to_organizer' ) );
+
 	}
 
 	/**
@@ -209,57 +211,67 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'tribe/tickets',
 			),
 			array(
-				'core/heading',
-				array(
-					'level'   => 2,
-					'content' => 'Why you should take this class',
-				),
+				'tribe/rsvp',
 			),
 			array(
-				'core/paragraph',
+				'core/group',
+				array(),
 				array(
-					'placeholder' => __( 'Add Description...', 'pip-theme' ),
+					array(
+						'core/heading',
+						array(
+							'level'   => 2,
+							'content' => 'Why you should take this class',
+						),
+					),
+					array(
+						'core/paragraph',
+						array(
+							'placeholder' => __( 'Add Description...', 'pip-theme' ),
+						),
+					),
+					array(
+						'core/heading',
+						array(
+							'level'   => 2,
+							'content' => 'What you’ll learn',
+						),
+					),
+					array(
+						'core/paragraph',
+						array(
+							'placeholder' => __( 'Add Description...', 'pip-theme' ),
+						),
+					),
+					array(
+						'core/heading',
+						array(
+							'level'   => 3,
+							'content' => 'Prerequisites',
+						),
+					),
+					array(
+						'core/paragraph',
+						array(
+							'placeholder' => __( 'Add Description...', 'pip-theme' ),
+						),
+					),
+					array(
+						'core/heading',
+						array(
+							'level'   => 3,
+							'content' => 'Who should take this class?',
+						),
+					),
+					array(
+						'core/paragraph',
+						array(
+							'placeholder' => __( 'Add Description...', 'pip-theme' ),
+						),
+					),
 				),
 			),
-			array(
-				'core/heading',
-				array(
-					'level'   => 2,
-					'content' => 'What you’ll learn',
-				),
-			),
-			array(
-				'core/paragraph',
-				array(
-					'placeholder' => __( 'Add Description...', 'pip-theme' ),
-				),
-			),
-			array(
-				'core/heading',
-				array(
-					'level'   => 3,
-					'content' => 'Prerequisites',
-				),
-			),
-			array(
-				'core/paragraph',
-				array(
-					'placeholder' => __( 'Add Description...', 'pip-theme' ),
-				),
-			),
-			array(
-				'core/heading',
-				array(
-					'level'   => 3,
-					'content' => 'Who should take this class?',
-				),
-			),
-			array(
-				'core/paragraph',
-				array(
-					'placeholder' => __( 'Add Description...', 'pip-theme' ),
-				),
-			),
+
 			array(
 				'acf/instructor-details',
 			),
@@ -348,5 +360,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $query_args;
 	}
 
+	/** Add Photo Credit to Organizer
+	 *
+	 * @param object $data $data object that is passed to block.
+	 */
+	public function add_photo_credit_to_organizer( $data ) {
+		global $post;
+		$credit = get_field( 'organizers_photo_credit', $post->ID );
+		if ( ! empty( $credit ) ) {
+			echo '<div class="organizer-photo-credit">' . $credit . '</div>';
+		}
+	}
 
 }

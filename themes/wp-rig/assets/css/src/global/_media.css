@@ -135,6 +135,19 @@ figcaption {
 		}
 	}
 
+	& > .wrap {
+		position: relative;
+		display: block;
+		overflow: hidden;
+
+		&::after {
+			display: block;
+			width: 100%;
+			content: "";
+			padding-bottom: 66%;
+		}
+	}
+
 	& img {
 		position: absolute;
 		left: 0;

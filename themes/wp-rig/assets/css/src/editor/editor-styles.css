@@ -139,3 +139,8 @@ figure {
 	background-color: transparent;
 	border-color: #ccc;
 }
+
+.event-organizer-disabled {
+	display: block;
+	opacity: 0.5;
+}

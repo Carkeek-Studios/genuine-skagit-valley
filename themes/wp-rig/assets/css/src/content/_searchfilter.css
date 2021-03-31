@@ -10,12 +10,13 @@ h2.sf-item-title {
 	margin-bottom: 0.5rem;
 }
 
-.sf-item-date {
-	font-size: var(--font-size-medium);
-}
 
 .sf-result-item {
 	margin-bottom: var(--gutter-width);
+
+	& > * {
+		font-size: var(--font-size-medium);
+	}
 }
 
 .searchandfilter h4 {

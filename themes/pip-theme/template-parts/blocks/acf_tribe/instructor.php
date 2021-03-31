@@ -25,7 +25,7 @@ if ( ! empty( $block['align'] ) ) {
 }
 
 // Load values and assign defaults.
-$headline = get_field( 'headline' ) ?: __('About the Instructor', 'pip-theme');
+$headline = get_field( 'headline' ) ?: __( 'About the Instructor', 'pip-theme' );
 
 if ( get_field( 'select_instructor' ) && 'select' === get_field( 'display' ) ) {
 	$organizers = array( get_field( 'select_instructor' ) );
@@ -34,12 +34,13 @@ if ( get_field( 'select_instructor' ) && 'select' === get_field( 'display' ) ) {
 }
 
 ?>
+<?php if (! empty( $organizers ) ){ ?>
 <div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>">
 	<h2><?php echo $headline; ?></h2>
 
 	<?php foreach ( $organizers as $organizer ) { ?>
 		<div class ="tribe-instructor">
-		<?php echo get_the_post_thumbnail( $organizer, 'medium' );?>
+		<div class="aspect-ratio-thumbnail"><div class="wrap"><?php echo get_the_post_thumbnail( $organizer, 'medium' ); ?></div></div>
 		<div class="tribe-instructor_title"><?php echo tribe_get_organizer( $id ); ?></div>
 		<div class="tribe-instructor_sub"><?php the_field( 'organizers_role', $organizer ); ?></div>
 		<div class="tribe-instructor_details"><?php echo get_the_content( null, true, $organizer ); ?></div>
@@ -48,3 +49,8 @@ if ( get_field( 'select_instructor' ) && 'select' === get_field( 'display' ) ) {
 	<?php } ?>
 
 </div>
+<?php } else { ?>
+	<div class="event-organizer-disabled"><h2><?php echo $headline; ?></h2></div>
+
+	<?php
+}?>

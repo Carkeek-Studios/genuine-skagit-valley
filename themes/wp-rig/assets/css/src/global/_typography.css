@@ -42,7 +42,7 @@ h5,
 h6 {
 	margin-bottom: 1em;
 
-	& a {
+	&:not(.has-text-color) a {
 		color: var(--color-link);
 		font-weight: var(--font-weight-bold);
 
@@ -51,8 +51,12 @@ h6 {
 		}
 	}
 
-	&:hover a {
+	&:not(.has-text-color):hover a {
 		color: var(--color-link);
+	}
+
+	&.has-text-color a {
+		font-weight: var(--font-weight-bold);
 	}
 }
 
