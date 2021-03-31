@@ -162,6 +162,7 @@
 		& .aspect-ratio-thumbnail {
 			width: 50%;
 			float: left;
+			margin-right: var(--gutter-width-columns);
 		}
 	}
 }
