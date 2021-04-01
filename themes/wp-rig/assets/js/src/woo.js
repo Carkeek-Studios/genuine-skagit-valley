@@ -15,6 +15,11 @@
 			setUpQty();
 		}
 
+		//trigger refresh on cart images
+		$( 'body' ).bind( 'wc_fragments_refreshed', function() {
+			$( window ).trigger( 'resize' );
+		} );
+
 		$( 'th.product-name' ).text( '' );
 		$( 'td.product-name' ).attr( 'data-title', 'Item' );
 		$( 'th.product-remove' ).text( 'Item' );

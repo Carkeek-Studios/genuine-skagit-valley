@@ -245,6 +245,7 @@
 
 	& .number-input {
 		display: flex;
+		justify-content: center;
 
 		& button {
 			background-color: var(--color-theme-grey-light);
