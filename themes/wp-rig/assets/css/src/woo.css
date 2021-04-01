@@ -1,4 +1,5 @@
-.woocommerce-cart .page-content {
+.woocommerce-cart .page-content,
+.woocommerce-checkout .page-content {
 	margin-top: 3rem;
 
 	& > .woocommerce {
@@ -11,10 +12,6 @@
 	& td {
 		vertical-align: middle;
 	}
-}
-
-.woocommerce .woocommerce-cart-form .product-quantity {
-	justify-content: center;
 }
 
 .woocommerce-product-details__short-description {
@@ -125,8 +122,6 @@
 		color: var(--color-button-text);
 	}
 }
-
-
 
 #add_payment_method .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
@@ -515,9 +510,9 @@ h3#ship-to-different-address {
 		& .woocommerce-cart-form {
 
 			& .product-quantity {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
 			}
 		}
 	}
@@ -577,7 +572,6 @@ h3#ship-to-different-address {
 		}
 
 		& td {
-			padding: 3rem 0;
 			font-size: 1.125em;
 
 			&.product-remove {
@@ -646,10 +640,9 @@ h3#ship-to-different-address {
 	float: left;
 }
 
-.payment_method_clickandpledge .cnpccflow {
+.woocommerce form .form-row select.cnpccflow {
 	float: left;
 	margin-right: 10px;
-	width: 100px;
 }
 
 .woocommerce #payment .form-row select,
