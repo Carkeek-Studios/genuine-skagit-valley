@@ -65,6 +65,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'ck_custom_archive_layout_modal_dialog__after_content', array( $this, 'add_photo_credit_to_organizer' ) );
 
+
+		add_action( 'event_tickets_after_create_ticket', array( $this, 'update_ticket_sku_on_create' ), 20, 3 );
+
 	}
 
 	/**
@@ -372,4 +375,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
+	/**
+	 * After create  ticket set SKU for tickets
+	 */
+	public function update_ticket_sku_on_create( $post_id, $ticket, $raw_data ) {
+		$str = $raw_data['ticket_name'];
+		$str = tribe_strtoupper( $str );
+		$sku = 'CLASS-PIP' . "-{$ticket->ID}-" . str_replace( ' ', '-', $str );
+		update_post_meta( $ticket->ID, '_sku', $sku );
+	}
 }
