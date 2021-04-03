@@ -65,7 +65,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'ck_custom_archive_layout_modal_dialog__after_content', array( $this, 'add_photo_credit_to_organizer' ) );
 
-
 		add_action( 'event_tickets_after_create_ticket', array( $this, 'update_ticket_sku_on_create' ), 20, 3 );
 
 	}
@@ -187,7 +186,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( 'tribe_events' === $query_args['post_type'] ) {
 			$query_args['meta_query'] = array(
 				'_EventStartDate' => array(
-					'value'   => date( 'Y-m-d H:i:s' ), // Compare against today's date.
+					'value'   => date( 'Y-m-d H:i:s' ), // phpcs:ignore
 					'compare' => '>=', // Get events that are set to the value's date or in the future.
 					'type'    => 'DATE', // This is a date query.
 				),
@@ -342,7 +341,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			),
 			array(
 				'key'     => '_EventStartDate',
-				'value'   => date( 'Y-m-d H:i' ),
+				'value'   => date( 'Y-m-d H:i' ), //phpcs:ignore
 				'compare' => '>=',
 				'type'    => 'DATE',
 			),
@@ -371,12 +370,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		global $post;
 		$credit = get_field( 'organizers_photo_credit', $post->ID );
 		if ( ! empty( $credit ) ) {
-			echo '<div class="organizer-photo-credit">' . $credit . '</div>';
+			echo '<div class="organizer-photo-credit">' . wp_kses_post( $credit ) . '</div>';
 		}
 	}
 
 	/**
-	 * After create  ticket set SKU for tickets
+	 * After create  ticket set SKU for tickets - this should run after the other Woocommerce save
+	 *
+	 * @param string $post_id id of post.
+	 * @param object $ticket current ticket.
+	 * @param array  $raw_data raw data associated with the ticket.
 	 */
 	public function update_ticket_sku_on_create( $post_id, $ticket, $raw_data ) {
 		$str = $raw_data['ticket_name'];

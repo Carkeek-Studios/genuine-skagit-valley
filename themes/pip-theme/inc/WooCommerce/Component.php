@@ -58,6 +58,12 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// Qty box on cart.
 		add_filter( 'woocommerce_cart_item_quantity', array( $this, 'woocommerce_cart_qty' ) );
 
+		add_filter( 'event_tickets_woo_should_default_ticket_sku', '__return_false' );
+
+		add_action( 'save_post', array( $this, 'woocommerce_update_product_skus' ), 200, 2 );
+
+		add_action( 'woocommerce_new_product_variation', array( $this, 'woocommerce_update_product_variation_skus' ), 200, 2 );
+
 	}
 
 	/**
@@ -168,6 +174,43 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			return '<div class="number-input number-input-variable"><button class="quantity-button minus">-<span class="screen-reader-text">Subtract 1</span></button>' . $quantity . '<button class="quantity-button plus">+<span class="screen-reader-text">Add 1</span></button></div>';
 		}
 	}
+
+	/** Update SKUS on post save
+	 *
+	 * @param string $post_id ID of post.
+	 * @param object $post current post object.
+	 */
+	public function woocommerce_update_product_skus( $post_id, $post ) {
+		// return if autosave.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		if ( 'AUTO-DRAFT' === strtoupper( $post->post_title ) ) {
+			return;
+		}
+
+		if ( 'product' === $post->post_type ) {
+			if ( empty( get_post_meta( $post_id, '_sku', true ) ) ) {
+				$str = strtoupper( $post->post_title );
+				$sku = 'MERCH-PIP-' . str_replace( ' ', '-', $str );
+				update_post_meta( $post_id, '_sku', $sku );
+			}
+		}
+
+	}
+
+	/** Update SKUS on post save
+	 *
+	 * @param string $post_id ID of post.
+	 * @param object $product current product object.
+	 */
+	public function woocommerce_update_product_variation_skus( $post_id, $product ) {
+		$var = get_post( $post_id );
+		$str = strtoupper( $var->post_name );
+		$sku = 'MERCH-PIP-' . str_replace( ' ', '-', $str );
+		update_post_meta( $post_id, '_sku', $sku );
+	}
+
 
 }
 

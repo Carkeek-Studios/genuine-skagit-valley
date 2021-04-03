@@ -56,7 +56,7 @@ if ( $query->have_posts() ) {
 				}
 				if ( ! empty( $org_names ) ) {
 					?>
-					<div class="sf-item-instructor"><?php echo implode( ', ', $org_names ); ?></div>
+					<div class="sf-item-instructor"><?php echo esc_html(implode( ', ', $org_names )); ?></div>
 
 				<?php } ?>
 
