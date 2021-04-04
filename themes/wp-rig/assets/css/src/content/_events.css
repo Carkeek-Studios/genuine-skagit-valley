@@ -693,6 +693,13 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 }
 
+.entry .entry-content .event-tickets .tribe-tickets__tickets-item-quantity-add,
+.entry .entry-content .event-tickets .tribe-tickets__tickets-item-quantity-remove,
+.event-tickets .tribe-tickets__tickets-item-quantity-add,
+.event-tickets .tribe-tickets__tickets-item-quantity-remove {
+	width: auto;
+}
+
 .single-tribe_organizer {
 
 	& .tribe-events-header__messages {

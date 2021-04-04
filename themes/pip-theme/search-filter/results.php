@@ -60,7 +60,7 @@ if ( $query->have_posts() ) {
 
 				<?php } ?>
 
-				<div class="sf-item-date"><?php echo tribe_get_start_date( $post, false, 'F j' ); ?></div>
+				<div class="sf-item-date"><?php echo tribe_get_start_date( $post, false, 'l, F j' ); ?></div>
 			<?php } else { ?>
 			<p><?php the_excerpt(); ?></p>
 			<?php } ?>
