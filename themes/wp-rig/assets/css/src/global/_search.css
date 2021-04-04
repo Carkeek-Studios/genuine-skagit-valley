@@ -21,6 +21,11 @@
 			padding-top: 0;
 		}
 	}
+
+	& .search-event_date {
+		margin-top: 1rem;
+		color: var(--color-theme-grey);
+	}
 }
 
 .page-content .search-form {

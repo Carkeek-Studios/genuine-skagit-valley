@@ -27,7 +27,12 @@ namespace WP_Rig\WP_Rig;
 		echo '<a href="' . esc_url( get_the_permalink( $page_for_posts ) ) . '">' . wp_kses_post( get_the_title( $page_for_posts ) ) . '</a> &rsaquo; ';
 		get_template_part( 'template-parts/content/entry_taxonomies', get_post_type() );
 		echo '</div>';
-	} else {
+	} elseif ( 'tribe_events' === $posttype ) {
+		echo '<div class="search-event_date">';
+		echo tribe_events_event_schedule_details();
+		echo '</div>';
+	}
+	else {
 		$pt_object = get_post_type_object( $posttype );
 		$slug = '';
 		if ( isset( $pt_object->rewrite ) && isset( $pt_object->rewrite['slug'] ) ) {
