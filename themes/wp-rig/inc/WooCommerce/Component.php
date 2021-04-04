@@ -190,10 +190,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		if ( 'product' === $post->post_type ) {
-			if ( empty( get_post_meta( $post_id, '_sku', true ) ) ) {
+			$sku = get_post_meta( $post_id, '_sku', true );
+			if ( empty( $sku ) ) {
 				$str = strtoupper( $post->post_title );
 				$sku = 'MERCH-PIP-' . str_replace( ' ', '-', $str );
 				update_post_meta( $post_id, '_sku', $sku );
+			} elseif ( strpos( $sku, 'CLASS-PIP' ) !== false ) {
+				//putting this here because it does not work in the the create ticket hook.
+					$cat = get_term_by( 'slug', 'class', 'product_cat' );
+				if ( ! empty( $cat ) && ! is_wp_error( ( $cat ) ) ) {
+					wp_set_post_terms( $post_id, $cat->term_id, 'product_cat', true );
+				}
 			}
 		}
 

@@ -386,5 +386,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$str = tribe_strtoupper( $str );
 		$sku = 'CLASS-PIP' . "-{$ticket->ID}-" . str_replace( ' ', '-', $str );
 		update_post_meta( $ticket->ID, '_sku', $sku );
+
+		update_post_meta( $ticket->ID, '_tax_status', 'none' );
+		update_post_meta( $ticket->ID, '_tax_class', 'zero-rate' );
+
 	}
+
+
 }
