@@ -74,8 +74,8 @@ if ( $query->have_posts() ) {
 	<?php
 } else {
 	?>
-	<span data-search-filter-action='infinite-scroll-end'>No more results</span>
-	<div class="sf-results-grid no-results">No Results Found, please adjust your filters</div>
+	<span class="sf-results-grid infinite-scroll-end" data-search-filter-action='infinite-scroll-end'></span>
+	<div class="sf-results-grid no-results">No results found; please adjust your filters.</div>
 	<?php
 }
 ?>

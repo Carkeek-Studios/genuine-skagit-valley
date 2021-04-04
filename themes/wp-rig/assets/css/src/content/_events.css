@@ -546,11 +546,22 @@ ul.ck-tribe-related-events {
 	padding-right: var(--gutter-width-page);
 }
 
+
 .tribe-events-single.tribe-blocks-editor {
 	margin-top: 4 em;
 	max-width: var(--content-width);
 	margin-left: auto;
 	margin-right: auto;
+
+
+	& .tribe-address {
+		font-weight: var(--font-weight-regular);
+	}
+}
+
+
+.tribe-events-single.tribe-blocks-editor,
+.page-tribe-attendee-registration {
 
 	& h2:not(.tribe-block__related-events__title) {
 		margin-top: 3rem;
@@ -587,11 +598,22 @@ ul.ck-tribe-related-events {
 	& h5 {
 		font-size: var(--font-size-regular);
 	}
-
-	& .tribe-address {
-		font-weight: var(--font-weight-regular);
-	}
 }
+
+body.page-tribe-attendee-registration .event-tickets .tribe-tickets__registration-title a:active,
+body.page-tribe-attendee-registration .event-tickets .tribe-tickets__registration-title a:focus,
+body.page-tribe-attendee-registration .event-tickets .tribe-tickets__registration-title a:hover,
+body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration-title a:active,
+body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration-title a:focus,
+body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration-title a:hover {
+	box-shadow: none !important;
+	text-decoration: underline;
+}
+
+.woocommerce-order .woocommerce-notice {
+	margin-bottom: 1rem;
+}
+
 
 .tribe-block,
 .ck-tribe-events-schedule__date,

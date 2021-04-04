@@ -55,7 +55,15 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// Filter the results of the ical function.
 		add_filter( 'tribe_events_ical_single_event_links', array( $this, 'tribe_events_ical_single_event_links' ) );
 
+		// ticket labels
 		add_filter( 'tribe_get_ticket_label_plural', array( $this, 'tribe_get_ticket_label_plural' ), 10, 2 );
+		add_filter( 'tribe_get_ticket_label_plural_lowercase', array( $this, 'tribe_get_ticket_label_plural_lowercase' ), 10, 2 );
+		add_filter( 'tribe_get_ticket_label_singular', array( $this, 'tribe_get_ticket_label_singular' ), 10, 2 );
+		add_filter( 'tribe_get_ticket_label_singular_lowercase', array( $this, 'tribe_get_ticket_label_singular_lowercase' ), 10, 2 );
+
+		// organizer labels
+		add_filter( 'tribe_organizer_label_singular', array( $this, 'tribe_organizer_label_singular' ) );
+		add_filter( 'tribe_organizer_label_plural', array( $this, 'tribe_organizer_label_singular' ) );
 
 		add_filter( 'sf_edit_query_args', array( $this, 'filter_sf_results' ), 20, 2 );
 
@@ -67,7 +75,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_action( 'event_tickets_after_create_ticket', array( $this, 'update_ticket_sku_on_create' ), 20, 3 );
 
+		add_filter( 'tribe_tickets_ticket_moved_email_subject', array( $this, 'tribe_tickets_ticket_moved_email_subject' ) );
+
 	}
+
 
 	/**
 	 * Alter hooks after loaded. Cant figure out how to make these work...
@@ -172,7 +183,69 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param string $context Current context.
 	 */
 	public function tribe_get_ticket_label_plural( $label, $context ) {
+		error_log( $context );
+		if ( 'unavailable_future_display_date' == $context ) {
+			return __( 'Registration', 'pip-theme' );
+		} elseif ( 'event-tickets' == $context || 'unavailable_future_without_date' == $context || 'unavailable_mixed' == $context || 'unavailable_past' == $context ) {
+			return __( 'Registrations', 'pip-theme' );
+		} elseif ( 'event-tickets-verb' ) {
+			return __( 'Register', 'pip-theme' );
+		}
 		return __( 'Register', 'pip-theme' );
+	}
+
+	/**
+	 * Tickets label should be register
+	 *
+	 * @param string $label Current label for Tickets.
+	 * @param string $context Current context.
+	 */
+	public function tribe_get_ticket_label_plural_lowercase( $label, $context ) {
+		error_log( $context );
+		if ( 'check_in_app' == $context || 'woo_settings' == $context ) {
+			return __( 'registration confirmation', 'pip-theme' );
+		}
+		return __( 'registration', 'pip-theme' );
+	}
+
+	/**
+	 * Tickets label should be register
+	 *
+	 * @param string $label Current label for Tickets.
+	 * @param string $context Current context.
+	 */
+	public function tribe_get_ticket_label_singular( $label, $context ) {
+		return __( 'Registration', 'pip-theme' );
+	}
+
+	/**
+	 * Tickets label should be register
+	 *
+	 * @param string $label Current label for Tickets.
+	 * @param string $context Current context.
+	 */
+	public function tribe_get_ticket_label_singular_lowercase( $label, $context ) {
+		return __( 'registration', 'pip-theme' );
+	}
+
+	/**
+	 * Organizer Label
+	 *
+	 * @param string $label Current label for Tickets.
+	 * @param string $context Current context.
+	 */
+	public function tribe_organizer_label_singular() {
+		return __( 'Instructor/Moderator', 'pip-theme' );
+	}
+
+	/**
+	 * Organizer Label
+	 *
+	 * @param string $label Current label for Tickets.
+	 * @param string $context Current context.
+	 */
+	public function tribe_organizer_label_plural() {
+		return __( 'Instructors/Moderators', 'pip-theme' );
 	}
 
 	/**
@@ -390,6 +463,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		update_post_meta( $ticket->ID, '_tax_status', 'none' );
 		update_post_meta( $ticket->ID, '_tax_class', 'zero-rate' );
 
+	}
+
+	public function tribe_tickets_ticket_moved_email_subject() {
+		return sprintf( __( 'Changes to your registration from %s', 'pip-theme' ), get_bloginfo( 'name' ) );
 	}
 
 
