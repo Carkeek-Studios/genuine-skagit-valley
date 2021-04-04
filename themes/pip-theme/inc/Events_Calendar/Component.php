@@ -183,7 +183,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param string $context Current context.
 	 */
 	public function tribe_get_ticket_label_plural( $label, $context ) {
-		error_log( $context );
 		if ( 'unavailable_future_display_date' == $context ) {
 			return __( 'Registration', 'pip-theme' );
 		} elseif ( 'event-tickets' == $context || 'unavailable_future_without_date' == $context || 'unavailable_mixed' == $context || 'unavailable_past' == $context ) {
