@@ -2,8 +2,8 @@
 
 	& .search-entry--content {
 		border-bottom: 2px solid var(--color-border);
-		padding-top: var(--block-spacing-vert);
-		padding-bottom: var(--block-spacing-vert);
+		padding-top: var(--block-spacing-vert-small);
+		padding-bottom: var(--block-spacing-vert-small);
 
 		& .search-breadcrumb {
 			margin-top: 1rem;
@@ -34,6 +34,35 @@
 .site-main .error {
 	text-align: center;
 }
+
+.search-results {
+
+	& .page-header {
+		margin-right: auto;
+		margin-left: auto;
+		padding-right: var(--gutter-width-page);
+		padding-left: var(--gutter-width-page);
+		max-width: var(--content-width);
+	}
+
+	& .search-breadcrumb {
+		display: none;
+	}
+
+	& h1 {
+		font-size: var(--font-size-h4);
+		text-transform: none;
+		text-align: left;
+	}
+
+	& h2 {
+		font-size: var(--font-size-h2);
+		text-transform: none;
+		letter-spacing: 0;
+		text-align: left;
+	}
+}
+
 
 @media (--tablet-up) {
 

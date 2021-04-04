@@ -77,6 +77,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'tribe_tickets_ticket_moved_email_subject', array( $this, 'tribe_tickets_ticket_moved_email_subject' ) );
 
+		add_filter( 'tribe_events_register_organizer_type_args', array( $this, 'tribe_events_register_organizer_type_args' ) );
 	}
 
 
@@ -464,8 +465,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	}
 
+	/**
+	 * Edit the subject on the ticket has moved email
+	 */
 	public function tribe_tickets_ticket_moved_email_subject() {
 		return sprintf( __( 'Changes to your registration from %s', 'pip-theme' ), get_bloginfo( 'name' ) );
+	}
+
+	/** Show Organizers in Search */
+	public function tribe_events_register_organizer_type_args( $args ) {
+		$args['exclude_from_search'] = false;
+		return $args;
 	}
 
 

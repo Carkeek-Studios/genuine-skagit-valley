@@ -692,3 +692,48 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 	}
 
 }
+
+.single-tribe_organizer {
+
+	& .tribe-events-header__breadcrumbs {
+		display: none;
+	}
+
+	& .tribe-events-c-top-bar {
+		display: none !important;
+	}
+
+	& .tribe-events-calendar-list,
+	& .tribe-events-calendar-list-nav,
+	& .tribe-events-c-ical {
+		display: none;
+	}
+
+	& .tribe-organizer_content {
+		margin-top: 1rem;
+	}
+
+	& .tribe-events-pro-organizer__info {
+		margin-top: 1rem;
+	}
+}
+
+@media (--tablet-up) {
+
+	.single-tribe_organizer {
+
+		& .tribe-organizer_content {
+			display: flex;
+		}
+
+		& .tribe-events-pro-organizer__featured-image {
+			flex: 1 1 33%;
+		}
+
+		& .tribe-events-pro-organizer__info {
+			flex: 1 1 67%;
+			margin-top: 0;
+			margin-left: var(--gutter-width-columns);
+		}
+	}
+}

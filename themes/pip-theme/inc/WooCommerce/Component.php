@@ -64,6 +64,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_action( 'woocommerce_new_product_variation', array( $this, 'woocommerce_update_product_variation_skus' ), 200, 2 );
 
+		add_action( 'pre_get_posts', array( $this, 'hide_tickets_from_search' ), 200, 2 );
 	}
 
 	/**
@@ -196,7 +197,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				$sku = 'MERCH-PIP-' . str_replace( ' ', '-', $str );
 				update_post_meta( $post_id, '_sku', $sku );
 			} elseif ( strpos( $sku, 'CLASS-PIP' ) !== false ) {
-				//putting this here because it does not work in the the create ticket hook.
+				// putting this here because it does not work in the the create ticket hook.
 					$cat = get_term_by( 'slug', 'class', 'product_cat' );
 				if ( ! empty( $cat ) && ! is_wp_error( ( $cat ) ) ) {
 					wp_set_post_terms( $post_id, $cat->term_id, 'product_cat', true );
@@ -217,6 +218,28 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		$sku = 'MERCH-PIP-' . str_replace( ' ', '-', $str );
 		update_post_meta( $post_id, '_sku', $sku );
 	}
+
+	/**
+	 * Hide Tickets from search
+	 * Tickets automatically get set to hidden when created, we need to make sure that hidden items do not show up in search.
+	 */
+	public function hide_tickets_from_search( $query = false ) {
+		if ( ! is_admin() && is_search() ) {
+			$query->set(
+				'tax_query',
+				array(
+					array(
+						'taxonomy' => 'product_visibility',
+						'terms'    => array( 'exclude-from-search' ),
+						'field'    => 'slug',
+						'operator' => 'NOT IN',
+					),
+				)
+			);
+		}
+	}
+
+
 
 
 }
