@@ -78,6 +78,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'tribe_tickets_ticket_moved_email_subject', array( $this, 'tribe_tickets_ticket_moved_email_subject' ) );
 
 		add_filter( 'tribe_events_register_organizer_type_args', array( $this, 'tribe_events_register_organizer_type_args' ) );
+
+		add_filter( 'tribe_events_title_tag', array( $this, 'filter_events_title' ) );
 	}
 
 
@@ -475,8 +477,98 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/** Show Organizers in Search */
 	public function tribe_events_register_organizer_type_args( $args ) {
 		$args['exclude_from_search'] = false;
+		$args['rewrite']             = array(
+			'slug'       => 'who-we-are',
+			'with_front' => false,
+		);
 		return $args;
 	}
+
+	/**
+	 * Defines alternative titles for various event views.
+	 *
+	 * @param  string $title
+	 * @return string
+	 */
+	public function filter_events_title( $title ) {
+		// Single events
+		if ( tribe_is_event() && is_single() ) {
+			$title = 'Classes & Events';
+		}
+		// Single venues
+		elseif ( tribe_is_venue() ) {
+			$title = 'Single venue page';
+		}
+		// Single organizers
+		elseif ( tribe_is_organizer() && is_single() ) {
+			$title = 'Who We Are';
+		}
+		// Month view Page
+		elseif ( tribe_is_month() && ! is_tax() ) {
+			$title = 'Month view page';
+		}
+		// Month view category page
+		elseif ( tribe_is_month() && is_tax() ) {
+			$title = 'Month view category page';
+		}
+		// List view page: upcoming events
+		elseif ( tribe_is_upcoming() && ! is_tax() ) {
+			$title = 'List view: upcoming events page';
+		}
+		// List view category page: upcoming events
+		elseif ( tribe_is_upcoming() && is_tax() ) {
+			$title = 'List view category: upcoming events page';
+		}
+		// List view page: past events
+		elseif ( tribe_is_past() && ! is_tax() ) {
+			$title = 'List view: past events page';
+		}
+		// List view category page: past events
+		elseif ( tribe_is_past() && is_tax() ) {
+			$title = 'List view category: past events page';
+		}
+		// Week view page
+		elseif ( tribe_is_week() && ! is_tax() ) {
+			$title = 'Week view page';
+		}
+		// Week view category page
+		elseif ( tribe_is_week() && is_tax() ) {
+			$title = 'Week view category page';
+		}
+		// Day view page
+		elseif ( tribe_is_day() && ! is_tax() ) {
+			$title = 'Day view page';
+		}
+		// Day view category page
+		elseif ( tribe_is_day() && is_tax() ) {
+			$title = 'Day view category page';
+		}
+		// Map view page
+		elseif ( tribe_is_map() && ! is_tax() ) {
+			$title = 'Map view page';
+		}
+		// Map view category page
+		elseif ( tribe_is_map() && is_tax() ) {
+			$title = 'Map view category page';
+		}
+		// Photo view page
+		elseif ( tribe_is_photo() && ! is_tax() ) {
+			$title = 'Photo view page';
+		}
+		// Photo view category page
+		elseif ( tribe_is_photo() && is_tax() ) {
+			$title = 'Photo view category page';
+		}
+
+		return $title;
+	}
+	/**
+	 * Modifes the event <title&gt; element.
+	 *
+	 * Users of Yoast's SEO plugin may wish to try replacing the below line with:
+	 *
+	 *     add_filter('wpseo_title', 'filter_events_title' );
+	 */
 
 
 }

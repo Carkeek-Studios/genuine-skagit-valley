@@ -695,6 +695,10 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 .single-tribe_organizer {
 
+	& .tribe-events-header__messages {
+		display: none;
+	}
+
 	& .tribe-events-header__breadcrumbs {
 		display: none;
 	}
@@ -707,6 +711,13 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 	& .tribe-events-calendar-list-nav,
 	& .tribe-events-c-ical {
 		display: none;
+	}
+
+	& .tribe-organizer_header {
+
+		& a {
+			font-weight: var(--font-weight-bold);
+		}
 	}
 
 	& .tribe-organizer_content {

@@ -9,11 +9,12 @@ namespace WP_Rig\WP_Rig;
 
 ?>
 <section class="error">
-	<?php get_template_part( 'template-parts/content/page_header' ); ?>
+
 
 	<div class="page-content">
+		<h1 style="margin-top: 3rem">Looks like we're out of sorts!</h1>
 		<p>
-			<?php esc_html_e( 'It looks like nothing was found at this location. Maybe try searching for the page you were looking for?', 'pip-theme' ); ?>
+			<?php esc_html_e( 'Please try a different search term or use the navigation menu.', 'pip-theme' ); ?>
 		</p>
 
 		<?php
