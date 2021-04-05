@@ -38,3 +38,4 @@
 <h2 class="tribe-common-h4 tribe-common-h--alt tribe-tickets__tickets-title">
 	<?php echo esc_html( tribe_get_ticket_label_plural( 'event-tickets-verb' ) ); ?>
 </h2>
+<div class="register-notes">PiP is committed to limiting financial barriers when possible. We leave it to you to decide if your income, wealth, or privilege status warrants a scholarship.</div>

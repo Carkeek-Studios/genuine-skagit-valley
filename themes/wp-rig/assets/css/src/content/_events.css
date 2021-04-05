@@ -700,6 +700,17 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 	width: auto;
 }
 
+.entry .entry-content .event-tickets .tribe-tickets__tickets-item-details-content,
+.event-tickets .tribe-tickets__tickets-item-details-content {
+	color: var(--color-theme-grey);
+}
+
+.tribe-tickets__tickets-wrapper .register-notes {
+	color: var(--color-theme-grey);
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
 .single-tribe_organizer {
 
 	& .tribe-events-header__messages {
