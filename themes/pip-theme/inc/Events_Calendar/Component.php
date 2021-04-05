@@ -203,7 +203,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param string $context Current context.
 	 */
 	public function tribe_get_ticket_label_plural_lowercase( $label, $context ) {
-		error_log( $context );
 		if ( 'check_in_app' == $context || 'woo_settings' == $context ) {
 			return __( 'registration confirmation', 'pip-theme' );
 		}

@@ -699,6 +699,9 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 .event-tickets .tribe-tickets__tickets-item-quantity-add,
 .event-tickets .tribe-tickets__tickets-item-quantity-remove {
 	width: auto;
+	background-color: transparent !important;
+	padding: 0 !important;
+	line-height: 1 !important;
 }
 
 .entry .entry-content .event-tickets .tribe-tickets__tickets-item-details-content,
