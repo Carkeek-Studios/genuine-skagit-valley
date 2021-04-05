@@ -187,7 +187,6 @@ ul.ck-tribe-related-events {
 	padding: 0;
 }
 
-.tribe-common button,
 .tribe-common a.tribe-common-c-btn--small,
 .tribe-common button.tribe-common-c-btn--small,
 .tribe-common input[type="button"].tribe-common-c-btn--small,
@@ -702,6 +701,10 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 	background-color: transparent !important;
 	padding: 0 !important;
 	line-height: 1 !important;
+
+	&:hover {
+		background-color: transparent !important;
+	}
 }
 
 .entry .entry-content .event-tickets .tribe-tickets__tickets-item-details-content,
