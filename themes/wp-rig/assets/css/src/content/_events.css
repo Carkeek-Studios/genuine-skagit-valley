@@ -189,6 +189,7 @@ ul.ck-tribe-related-events {
 
 .tribe-common a.tribe-common-c-btn--small,
 .tribe-common button.tribe-common-c-btn--small,
+.tribe-common button.tribe-tickets__rsvp-form-button,
 .tribe-common input[type="button"].tribe-common-c-btn--small,
 .tribe-common input[type="submit"].tribe-common-c-btn--small {
 	background-color: var(--color-button-background) !important;
