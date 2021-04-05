@@ -187,6 +187,7 @@ ul.ck-tribe-related-events {
 	padding: 0;
 }
 
+.tribe-common button,
 .tribe-common a.tribe-common-c-btn--small,
 .tribe-common button.tribe-common-c-btn--small,
 .tribe-common input[type="button"].tribe-common-c-btn--small,
@@ -705,7 +706,8 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 	color: var(--color-theme-grey);
 }
 
-.tribe-tickets__tickets-wrapper .register-notes {
+.tribe-tickets__tickets-wrapper .register-notes,
+.tribe-tickets__rsvp-description {
 	color: var(--color-theme-grey);
 	font-size: 12px;
 	margin-bottom: 10px;
@@ -763,6 +765,45 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 			flex: 1 1 67%;
 			margin-top: 0;
 			margin-left: var(--gutter-width-columns);
+		}
+	}
+}
+
+.tribe-events-page-template .event-tickets {
+
+	& .tribe-tickets__rsvp {
+		padding: var(--gutter-width-columns);
+	}
+
+	& .tribe-tickets__rsvp-attendance {
+		display: none;
+	}
+
+	& .tribe-tickets__rsvp-actions {
+		margin-top: 0;
+		padding: var(--gutter-width-columns);
+
+		& .tribe-common-c-btn {
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		& .tribe-tickets__rsvp-actions-rsvp > span:first-child {
+			display: none;
+		}
+	}
+}
+
+@media (--tablet-up) {
+
+	.tribe-events-page-template .event-tickets {
+
+		& .tribe-tickets__rsvp-actions {
+			padding: 0;
+		}
+
+		& .tribe-tickets__rsvp-actions-rsvp-going {
+			margin-top: 0;
 		}
 	}
 }
