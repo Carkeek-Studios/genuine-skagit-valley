@@ -769,6 +769,10 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 	}
 }
 
+.tribe-link-view-attendee {
+	display: none;
+}
+
 .tribe-events-page-template .event-tickets {
 
 	& .tribe-tickets__rsvp {
@@ -777,6 +781,10 @@ body.page-tribe-attendee-registration .tribe-common .tribe-tickets__registration
 
 	& .tribe-tickets__rsvp-attendance {
 		display: none;
+	}
+
+	& .tribe-tickets__rsvp-actions-success-going-check-icon {
+		background-color: var(--color-theme-primary);
 	}
 
 	& .tribe-tickets__rsvp-actions {
