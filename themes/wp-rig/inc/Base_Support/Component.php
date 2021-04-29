@@ -325,7 +325,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		wp_add_dashboard_widget(
 			'carkeek_dashboard_widget', // Widget slug.
-			'Partners in Print Site Management', // Title.
+			'Genuine Skagit Valley Site Management', // Title.
 			array( $this, 'dashboard_widget_function' )// Display function.
 		);
 
