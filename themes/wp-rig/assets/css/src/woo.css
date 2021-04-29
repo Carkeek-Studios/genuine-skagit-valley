@@ -111,6 +111,7 @@
 		opacity: 0.6;
 		background-color: var(--color-button-background);
 		color: var(--color-button-text);
+		padding: 0 1rem;
 
 		&:hover {
 			background-color: var(--color-button-background);

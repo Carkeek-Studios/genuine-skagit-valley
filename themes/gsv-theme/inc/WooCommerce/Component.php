@@ -38,8 +38,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'body_class', array( $this, 'woocommerce_body_classes' ) );
 		add_action( 'widgets_init', array( $this, 'woocommerce_register_sidebars' ) );
 
-		add_action( 'woocommerce_single_product_summary', array( $this, 'woocommerce_product_title' ), 9 ); // somehow this is missing.
-
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 );
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20 );
 		// simply re-order these.
