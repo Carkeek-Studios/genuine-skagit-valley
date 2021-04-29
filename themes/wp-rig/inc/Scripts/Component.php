@@ -41,6 +41,8 @@ class Component implements Component_Interface {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_jquery' ), 100 );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_global' ), 100 );
 		add_action( 'wp_head', array( $this, 'jquery_local_fallback' ) );
+		add_action( 'wp_head', array( $this, 'pinterest_scripts' ) );
+
 	}
 
 		/**
@@ -136,6 +138,25 @@ class Component implements Component_Interface {
 		}
 
 		return $src;
+	}
+
+	/**
+	 * Output the pinterest code on blog pages
+	 *
+	 * @link https://developers.pinterest.com/docs/widgets/getting-started/?
+	 * @param string $src source url.
+	 * @param string $handle source handle.
+	 */
+	public function pinterest_scripts() {
+		error_log(get_post_type());
+		if (is_singular('post')) {
+		echo '<script
+			type="text/javascript"
+			async defer
+			src="//assets.pinterest.com/js/pinit.js"
+		></script>
+	';
+		}
 	}
 
 }

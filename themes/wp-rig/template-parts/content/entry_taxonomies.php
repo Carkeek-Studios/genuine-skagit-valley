@@ -21,7 +21,7 @@ $taxonomies = wp_list_filter(
 	foreach ( $taxonomies as $taxonomy ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		/* translators: separator between taxonomy terms */
-		$separator = _x( ' | ', 'list item separator', 'wp-rig' );
+		$separator = _x( ' &bull; ', 'list item separator', 'wp-rig' );
 
 		switch ( $taxonomy->name ) {
 			case 'category':

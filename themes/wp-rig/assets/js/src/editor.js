@@ -7,6 +7,21 @@ wp.domReady( function() {
 		label: 'Arrow Link',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/button', {
+		name: 'large-btn',
+		label: 'Large Button',
+	} );
+
+	wp.blocks.registerBlockStyle( 'core/button', {
+		name: 'large-btn-transparent',
+		label: 'Large Button Transparent',
+	} );
+
+	wp.blocks.registerBlockStyle( 'core/heading', {
+		name: 'heading-alt',
+		label: 'Veneer Heading',
+	} );
+
 	// Add Column Styles
 	wp.blocks.registerBlockStyle( 'core/columns', {
 		name: 'vertical-centered',
@@ -16,6 +31,11 @@ wp.domReady( function() {
 	wp.blocks.registerBlockStyle( 'core/media-text', {
 		name: 'inline-style',
 		label: 'Inline - reduced Margins',
+	} );
+
+	wp.blocks.registerBlockStyle( 'core/media-text', {
+		name: 'square-image',
+		label: 'Square Image - crop image to equal height and width',
 	} );
 
 	// wp.blocks.registerBlockStyle( 'core/media-text', {

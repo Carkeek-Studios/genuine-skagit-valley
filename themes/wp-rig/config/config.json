@@ -1,13 +1,13 @@
 {
   "theme": {
-    "slug": "pip-theme",
-    "name": "Partners in Print Theme",
+    "slug": "gsv-theme",
+    "name": "Genuine Skagit Valley Theme",
     "author": "Patty O'Hara"
   },
   "dev": {
     "browserSync": {
       "live": true,
-      "proxyURL": "partners-in-print.local",
+      "proxyURL": "genuine-skagit-valley.local",
       "bypassPort": "3000",
       "https": true,
       "certPath": "/Users/pattyohara/Sites/BrowserSync/wp-rig-browser-sync-cert.crt",

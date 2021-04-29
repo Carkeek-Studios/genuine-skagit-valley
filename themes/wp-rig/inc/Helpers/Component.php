@@ -35,7 +35,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function initialize() {
 		add_filter( 'get_the_terms', array( $this, 'hide_categories_terms' ), 10, 3 );
 		add_filter( 'excerpt_more', array( $this, 'my_theme_excerpt_more' ) );
-		add_filter( 'carkeek_block_custom_post_layout', array( $this, 'carkeek_block_custom_post_layout' ), 11, 3 );
 		add_action( 'init', array( $this, 'sitefooter_add_custom_shortcode' ) );
 	}
 
@@ -211,6 +210,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	}
 
 	/**
+	 * Make Pinterest Links
+	 *
+	 * @param string $text optional text before the icon.
+	 */
+	private function make_pinterest_button( $text = null ) {
+
+		$fb_link = '<a class="share-link" href="https://www.pinterest.com/pin/create/button/" data-pin-custom="true" title="Share on Pinterest"><i class="icon-pinterest" aria-hidden="true"></i> ' . $text . '</a>';
+		return $fb_link;
+	}
+
+	/**
 	 * Make Twttter Links
 	 *
 	 * @param string $text optional text before the icon.
@@ -236,12 +246,15 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	/**
 	 * Make Social Links
+	 *
+	 * @param boolean $echo Echo or return the statement.
 	 */
 	public function make_social_share_links( $echo = false ) {
 		$links = '<ul class="social-share-links list-inline">
 		<li class="list-inline-item social-share-links__label">Share: </li>
 		<li class="list-inline-item">' . $this->make_fb_button() . '</li>
 		<li class="list-inline-item">' . $this->make_twitter_button() . '</li>
+		<li class="list-inline-item">' . $this->make_pinterest_button() . '</li>
 		<li class="list-inline-item">' . $this->make_email_button() . '</li>
 	</ul>';
 		if ( $echo ) {
@@ -251,41 +264,15 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
-
-	/**
-	 * Carkeek Blocks Custom Post Type templates
-	 *
-	 * @param string $post_html - existing content.
-	 * @param object $post current post.
-	 * @param array  $attributes as passed to block.
-	 */
-	public function carkeek_block_custom_post_layout( $post_html, $post, $attributes ) {
-		$post_type = $attributes['postTypeSelected'];
-		$layout    = $post_type . '_' . $attributes['postLayout'];
-		switch ( $layout ) {
-			case 'post_grid':
-			case 'post_list':
-				ob_start();
-					get_template_part( 'template-parts/content/entry', get_post_type() );
-				return ob_get_clean();
-			case 'tribe_events_list':
-				ob_start();
-				get_template_part( 'template-parts/content/entry', 'tribe_events' );
-				return ob_get_clean();
-			default:
-				return $post_html;
-		}
-	}
-
 	/**
 	 * Put the @Copyright in a shortcode so we can put all footer copy in the widgets
 	 * Optionally include the site name to override the default
 	 *
 	 * [site_copy][/site_copy]
 	 */
-
 	public function sitefooter_add_custom_shortcode() {
 		add_shortcode( 'site_copy', array( $this, 'site_footer_do_custom_shortcode' ) );
+		add_shortcode( 'social_links', array( $this, 'do_custom_shortcode_social_links' ) );
 	}
 
 	/**
@@ -316,5 +303,25 @@ class Component implements Component_Interface, Templating_Component_Interface {
 							</li>';
 		}
 		return $html;
+	}
+
+	/**
+	 * Social Links in shortcode so we can put them in a widget
+	 *
+	 * Content is added under Theme Settings
+	 * [social_links]
+	 */
+	public function do_custom_shortcode_social_links() {
+		$links = get_field( 'social_links', 'options' );
+		$list  = '';
+		if ( ! empty( $links ) ) {
+			$list = '<ul class="list-inline social-links">';
+			foreach ( $links as $link ) {
+				$slug  = sanitize_title( $link['label'] );
+				$list .= '<li><a href="' . esc_url( $link['link'] ) . '"><i class="icon-' . esc_attr( $slug ) . '"></i><span class="screen-reader-text">Follow us on ' . $link['label'] . '</span></a></li>';
+			}
+			$list .= '</ul>';
+		}
+		return $list;
 	}
 }

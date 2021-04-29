@@ -6,19 +6,21 @@
  **/
 
 :root {
-	--global-font-color: #454543;
+	--global-font-color: var(--color-theme-grey-dark);
 	--global-font-family: museo-sans, sans-serif;
 	--global-font-size: 16;
-	--global-font-line-height: 1.6;
-	--highlight-font-family: museo-sans, sans-serif;
+	--global-font-line-height: 1.77;
+	--font-family-highlight: archer, sans-serif;
+	--font-family-highlight-alt: veneer, sans-serif;
 	--navigation-font-family: museo-sans, sans-serif;
 	--form-field-font-family: museo-sans, sans-serif;
-	--icon-font-family: carkeek-blocks, sans-serif;
+	--font-family-icons: carkeek-blocks, sans-serif;
 	--content-width: calc(800px + (2 * var(--gutter-width-page) )); /* including padding 824 + 4 rem*/
 	--content-width-actual: 800px;
 	--header-width: 1400px;
-	--content-width-wide: 1200px; /* including padding 824 + 4 rem*/
+	--content-width-wide: 1140px; /* including padding 824 + 4 rem*/
 	--dropdown-symbol-width: 0.7em;
+
 
 	/* deprecate */
 	--gutter-width-small: 3.7vw;
@@ -29,44 +31,48 @@
 	--gutter-width-columns: 2rem;
 
 	/*block padding */
-	--block-spacing-vert: 5.125rem;
+	--block-spacing-vert: 2.5rem;
 	--block-spacing-vert-small: 2.5rem;
 	--block-spacing-vert-inner: 1.5rem;
 
 	--paragraph-spacing: 1.5rem;
 
-
 	--global-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
 
 
 	/* Custom editor colors */
-	--color-theme-primary: #01a1b7;
-	--color-theme-secondary: #e1588d;
-	--color-theme-red: #e1588d;
-	--color-theme-green: #637d36;
-	--color-theme-blue: #01a1b7;
-	--color-theme-yellow: #f1c400;
-	--color-theme-orange: #e4bc09;
-	--color-theme-light: #faf7f4;
+	--color-theme-primary: #cc5d1b;
+	--color-theme-secondary: #62902c;
+
+	--color-theme-green: #62902c;
+	--color-theme-orange: #cc5d1b;
 	--color-theme-white: #fff;
+	--color-theme-black: #000;
+
+	--color-theme-blue: #607aae;
+	--color-theme-yellow: #f1c400;
+	--color-theme-red: #e1588d;
+	--color-theme-light: #faf7f4;
 
 
-	--color-theme-grey-dark: #454543;
-	--color-theme-grey-light: #e0e0e0;
-	--color-theme-grey: #6b6b6b;
+	--color-theme-grey-dark: #242830;
+	--color-theme-grey-med-dark: #2e374a;
+	--color-theme-grey: #888;
+	--color-theme-grey-med-light: #979797;
+	--color-theme-grey-light: #d8d8d8;
+	--color-theme-grey-lightest: #fefefe;
 
-	--color-theme-grey-lightest: #e3e3e3;
+	--color-background-main: #fff;
+	--color-background-transparent: rgba(36, 40, 48, 0.5);
 
-	--color-background-main: #faf7f4;
 
-
-	--color-button-background: var(--color-theme-yellow);
-	--color-button-text: var(--color-theme-grey-dark);
+	--color-button-background: var(--color-theme-orange);
+	--color-button-text: var(--color-theme-white);
 	--color-button-hover: color-mod(var(--color-button-background) shade(15%));
 
-	--color-button-background-alt: var(--color-theme-secondary);
+	--color-button-background-alt: rgba(36, 40, 48, 0.2);
 	--color-button-text-alt: var(--color-theme-white);
-	--color-button-hover-alt: color-mod(var(--color-theme-secondary) shade(20%));
+	--color-button-hover-alt: rgba(36, 40, 48, 0.8);
 
 	--color-nav-links: var(--color-theme-grey-dark);
 	--color-nav-links-hover: var(--color-theme-secondary);
@@ -77,41 +83,49 @@
 
 	--color-quote-border: #000;
 	--color-quote-citation: #6c7781;
-	--color-border: var(--color-theme-grey-lightest);
+	--color-border: var(--color-theme-grey);
 	--color-border-dark: #979797;
+	--border-standard: 1px solid var(--color-border);
 
 	/* Custom editor font sizes */
-	--font-size-small: calc(13 / var(--global-font-size) * 1rem);
 	--font-size-xsmall: calc(14 / var(--global-font-size) * 1rem);
-	--font-size-medium: calc(17 / var(--global-font-size) * 1rem); /** intro text **/
-	--font-size-regular: calc(17 / var(--global-font-size) * 1rem);
-	--font-size-large: calc(21 / var(--global-font-size) * 1rem); /** quote **/
+	--font-size-regular: calc(15 / var(--global-font-size) * 1rem);
+	--font-size-medium-small: calc(16 / var(--global-font-size) * 1rem);
+	--font-size-medium: calc(15 / var(--global-font-size) * 1rem); /** intro text **/
+	--font-size-medium-large: calc(18 / var(--global-font-size) * 1rem); /** product titles **/
+	--font-size-large: calc(24 / var(--global-font-size) * 1rem); /** quote **/
 
-	--font-size-nav: calc(17 / var(--global-font-size) * 1rem);
-	--font-size-forms: calc(15 / var(--global-font-size) * 1rem);
-	--font-size-caption: calc(13 / var(--global-font-size) * 1rem);
+	--font-size-nav: calc(19 / var(--global-font-size) * 1rem);
+	--font-size-forms: calc(18 / var(--global-font-size) * 1rem);
+	--font-size-caption: calc(16 / var(--global-font-size) * 1rem);
 	--font-size-cta: calc(18 / var(--global-font-size) * 1rem);
-	--font-size-intro: calc(21 / var(--global-font-size) * 1rem);
 
-	--font-size-button: calc(15 / var(--global-font-size) * 1rem);
+	--font-size-button: var(--font-size-forms);
 	--font-weight-button: var(--font-weight-bold);
+	--font-size-button-large: 26px;
+	--height-button: 60px;
 	--padding-button: 1rem 1.25rem;
-	--padding-button-alt: 0 1.25rem;
+	--padding-button-alt: 0 1.5rem;
 
 	/* Main family font weights */
-	--font-weight-light: 300;
-	--font-weight-regular: 500;
-	--font-weight-bold: 900;
+	--font-weight-regular: 300;
+	--font-weight-semibold: 500;
 	--font-weight-medium: 700;
+	--font-weight-bold: 900;
 
 
 	/* Heading font sizes */
-	--font-size-h1: calc(42 / var(--global-font-size) * 1rem);
-	--font-size-h2: calc(28 / var(--global-font-size) * 1rem);
-	--font-size-h3: calc(30 / var(--global-font-size) * 1rem);
-	--font-size-h4: calc(24 / var(--global-font-size) * 1rem);
+	--font-size-h1: calc(56 / var(--global-font-size) * 1rem);
+	--font-size-h1-alt: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-h2: calc(30 / var(--global-font-size) * 1rem);
+	--font-size-h2-alt: calc(46 / var(--global-font-size) * 1rem);
+	--font-size-h3: calc(36 / var(--global-font-size) * 1rem);
+	--font-size-h4: calc(28 / var(--global-font-size) * 1rem);
 	--font-size-h5: calc(21 / var(--global-font-size) * 1rem);
 	--font-size-h6: calc(19 / var(--global-font-size) * 1rem);
+
+	/** Carkeek Blocks Overrides **/
+	--ck-archive-image-ratio: 100%;
 
 
 }
@@ -120,16 +134,19 @@
 
 	:root {
 		--gutter-width: 2.75rem;
-		--gutter-width-columns: 2.5rem;
+		--gutter-width-columns: 3.75rem;
 
-		--font-size-regular: calc(19 / var(--global-font-size) * 1rem);
-		--font-size-h1: calc(56 / var(--global-font-size) * 1rem);
-		--font-size-h2: calc(32 / var(--global-font-size) * 1rem);
+		--font-size-regular: calc(18 / var(--global-font-size) * 1rem);
+		--font-size-medium-small: calc(21 / var(--global-font-size) * 1rem);
+		--font-size-h1: calc(90 / var(--global-font-size) * 1rem);
+		--font-size-h1-alt: calc(50 / var(--global-font-size) * 1rem);
+		--font-size-h2: calc(50 / var(--global-font-size) * 1rem);
+		--font-size-h2-alt: calc(65 / var(--global-font-size) * 1rem);
 
-		--font-size-cta: calc(21 / var(--global-font-size) * 1rem);
-
-		--block-spacing-vert: 9rem;
-		--block-spacing-vert-small: 4.5rem;
+		--font-size-cta: calc(18 / var(--global-font-size) * 1rem);
+		--font-size-medium: calc(18 / var(--global-font-size) * 1rem); /** intro text **/
+		--font-size-medium-large: calc(21 / var(--global-font-size) * 1rem); /** product titles **/
+		--font-size-large: calc(28 / var(--global-font-size) * 1rem); /** quote **/
 
 	}
 }
@@ -137,7 +154,22 @@
 @media (--tablet-wide-up) {
 
 	:root {
-		--font-size-nav: calc(14 / var(--global-font-size) * 1rem);
+		--font-size-h1: calc(110 / var(--global-font-size) * 1rem);
+		--font-size-h1-thumb: calc(150 / var(--global-font-size) * 1rem);
+		--block-spacing-vert: 5rem;
+		--font-size-medium: calc(24 / var(--global-font-size) * 1rem); /** intro text **/
+		--font-size-large: calc(32 / var(--global-font-size) * 1rem); /** quote **/
+
+		--font-size-nav: calc(17 / var(--global-font-size) * 1rem);
+		--font-size-button-large: 36px;
+
+	}
+}
+
+@media (--desktop-up) {
+
+	:root {
+		--font-size-h2-alt: calc(80 / var(--global-font-size) * 1rem);
 
 	}
 }

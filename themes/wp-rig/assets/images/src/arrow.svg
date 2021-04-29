@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="11px" viewBox="0 0 32 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Line</title>
+    <g id="Templates-round-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Page" transform="translate(-682.000000, -1273.000000)" fill="#62902C" fill-rule="nonzero">
+            <g id="Group-4" transform="translate(488.000000, 1262.000000)">
+                <path id="Line" d="M216.309343,11.3190816 L216.745131,11.5642122 L224.745131,16.0642122 L225.519864,16.5 L224.745131,16.9357878 L216.745131,21.4357878 L216.309343,21.6809184 L215.819082,20.8093429 L216.254869,20.5642122 L222.589,17 L194.5,17 L194.5,16 L222.593,16 L216.254869,12.4357878 L215.819082,12.1906571 L216.309343,11.3190816 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

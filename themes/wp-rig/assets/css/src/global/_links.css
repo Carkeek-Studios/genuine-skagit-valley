@@ -30,22 +30,61 @@ a:active {
 	outline: 0;
 }
 
-.arrow-link > a {
-	font-weight: 600;
+.arrow-link > a,
+a.arrow-link {
+	font-weight: var(--font-weight-bold);
 	text-decoration: none;
 	color: var(--color-link);
 	font-size: 16px;
+
+	&::after {
+		content: "\e80d";
+		font-family: var(--font-family-icons);
+		font-size: 10px;
+		line-height: 28px;
+		padding-left: 7px;
+		transition: padding 0.3s linear;
+	}
+
+	&:hover,
+	&:active {
+		color: var(--color-link-active);
+		text-decoration: none;
+
+		&::after {
+			padding-left: 10px;
+		}
+	}
 }
 
-.arrow-link > a:hover,
-.arrow-link > a:active {
-	color: var(--color-link-active);
-}
+.arrow-link-left > a,
+a.arrow-link-left {
+	font-weight: var(--font-weight-bold);
+	text-decoration: none;
+	color: var(--color-link);
+	font-size: 16px;
 
-.arrow-link > a::after {
-	content: " \203A";
-}
+	&::before {
+		content: "\e80d";
+		font-family: var(--font-family-icons);
+		font-size: 10px;
+		line-height: 28px;
+		padding-left: 7px;
+		transition: padding 0.3s linear;
+		display: inline-block;
+		transform: rotate(180deg);
+	}
 
+	&:hover,
+	&:active {
+		color: var(--color-link-active);
+		text-decoration: none;
+
+		&::after {
+			padding-left: 10px;
+		}
+	}
+}
 
 .gpopover {
 	background-color: #fff;
@@ -79,3 +118,4 @@ a:active {
 	width: 0;
 	z-index: 997;
 }
+

@@ -1,12 +1,12 @@
 /* stylelint-disable */
 @font-face {
 	font-family: carkeek-blocks;
-	src: url("../fonts/carkeek-blocks.eot?74982249");
+	src: url("../fonts/carkeek-blocks.eot?51523356");
 	src:
-		url("../fonts/carkeek-blocks.eot?74982249#iefix") format("embedded-opentype"),
-		url("../fonts/carkeek-blocks.woff2?74982249") format("woff2"),
-		url("../fonts/carkeek-blocks.woff?74982249") format("woff"),
-		url("../fonts/carkeek-blocks.ttf?74982249") format("truetype");
+		url("../fonts/carkeek-blocks.eot?51523356#iefix") format("embedded-opentype"),
+		url("../fonts/carkeek-blocks.woff2?51523356") format("woff2"),
+		url("../fonts/carkeek-blocks.woff?51523356") format("woff"),
+		url("../fonts/carkeek-blocks.ttf?51523356") format("truetype");
 	font-weight: normal;
 	font-style: normal;
 }
@@ -18,7 +18,6 @@
 /* Note, that will break hinting!
 	In other OS-es font will be not as sharp as it could be */
 
-/* stylelint-disable */
 
 /* @media screen and (-webkit-min-device-pixel-ratio: 0) {
 
@@ -29,7 +28,7 @@
 	}
 } */
 
-
+/* stylelint-disable */
 [class^="icon-"]::before,
 [class*=" icon-"]::before {
 	font-family: carkeek-blocks;
@@ -69,7 +68,6 @@
 
 	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-
 /* stylelint-enable */
 .icon-mail::before {
 	content: "\e800";
@@ -110,6 +108,12 @@
 .icon-basket::before {
 	content: "\e80c";
 } /* '' */
+.icon-arrow::before {
+	content: "\e80d";
+} /* '' */
+.icon-linkedin-1::before {
+	content: "\e80e";
+} /* '' */
 .icon-twitter::before {
 	content: "\f099";
 } /* '' */
@@ -146,6 +150,9 @@
 .icon-lock-open-alt::before {
 	content: "\f13e";
 } /* '' */
+.icon-youtube::before {
+	content: "\f16a";
+} /* '' */
 .icon-instagram::before {
 	content: "\f16d";
 } /* '' */
@@ -155,3 +162,10 @@
 .icon-pinterest::before {
 	content: "\f231";
 } /* '' */
+.icon-vimeo::before {
+	content: "\f27d";
+} /* '' */
+.icon-pinterest-1::before {
+	content: "\f312";
+} /* '' */
+

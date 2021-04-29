@@ -22,54 +22,54 @@
 	text-align: center;
 }
 
-.no-top-margin {
+.no-margin-top {
 	margin-top: 0;
 }
 
-.add-top-margin {
+.add-margin-top {
 	margin-top: var(--block-spacing-vert);
 }
 
-.add-top-margin-small {
+.add-margin-top-small {
 	margin-top: var(--block-spacing-vert-small);
 }
 
-.no-bottom-margin {
+.no-margin-bottom {
 	margin-bottom: 0;
 }
 
-.add-bottom-margin {
+.add-margin-bottom {
 	margin-bottom: var(--block-spacing-vert);
 }
 
-.add-bottom-margin-small {
+.add-margin-bottom-small {
 	margin-bottom: var(--block-spacing-vert-small);
 }
 
 .page-content > [class^="wp-block-"],
 [class^="wp-block-"] {
 
-	&.no-top-margin {
+	&.no-margin-top {
 		margin-top: 0;
 	}
 
-	&.add-top-margin {
+	&.add-margin-top {
 		margin-top: var(--block-spacing-vert);
 	}
 
-	&.add-top-margin-small {
+	&.add-margin-top-small {
 		margin-top: var(--block-spacing-vert-small);
 	}
 
-	&.no-bottom-margin {
+	&.no-margin-bottom {
 		margin-bottom: 0;
 	}
 
-	&.add-bottom-margin {
+	&.add-margin-bottom {
 		margin-bottom: var(--block-spacing-vert);
 	}
 
-	&.add-bottom-margin-small {
+	&.add-margin-bottom-small {
 		margin-bottom: var(--block-spacing-vert-small);
 	}
 
@@ -94,8 +94,6 @@
 	}
 
 }
-
-
 
 /*--------------------------------------------------------------
 ## List Style
@@ -153,6 +151,10 @@ ul.is-style-circle-checked {
 
 .has-theme-secondary-background-color {
 	background-color: var(--color-theme-secondary);
+}
+
+.has-theme-transparent-color {
+	background-color: var(--color-background-transparent);
 }
 
 .has-theme-grey-med-light-color,

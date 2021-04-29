@@ -205,7 +205,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		// Enqueue block editor stylesheet.
-		add_editor_style( 'assets/css/editor/editor-styles.min.css' );
+		add_editor_style( 'assets/css/editor-styles.min.css' );
 	}
 
 	/**
@@ -297,21 +297,21 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 
 		$css_files = array(
-			'wp-rig-global'   => array(
+			'wp-rig-global'      => array(
 				'file'   => 'global.min.css',
 				'global' => true,
 			),
-			'wp-rig-comments' => array(
+			'wp-rig-comments'    => array(
 				'file'             => 'comments.min.css',
 				'preload_callback' => function() {
 					return ! post_password_required() && is_singular() && ( comments_open() || get_comments_number() );
 				},
 			),
-			'wp-rig-content'  => array(
+			'wp-rig-content'     => array(
 				'file'             => 'content.min.css',
 				'preload_callback' => '__return_true',
 			),
-			'wp-rig-woocommerce'   => array(
+			'wp-rig-woocommerce' => array(
 				'file'             => 'woo.min.css',
 				'preload_callback' => '__return_true',
 			),
@@ -418,6 +418,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return string Google Fonts URL, or empty string if no Google Fonts should be used.
 	 */
 	protected function get_typekit_fonts_url() : string {
-		return 'https://use.typekit.net/ygm8xoe.css';
+		return 'https://use.typekit.net/hoi8hnl.css';
 	}
 }

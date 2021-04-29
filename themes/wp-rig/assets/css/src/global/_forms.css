@@ -15,23 +15,21 @@ input[type="reset"],
 input[type="submit"],
 a.button,
 .page-content .wFormContainer input[type="submit"],
-.menu-button a {
+.top-navigation .menu-button a {
 	border: 1px solid;
-	border-color: transparent;
+	border-color: var(--color-button-text);
 	border-radius: 0;
 	background: var(--color-button-background);
 	color: var(--color-button-text);
 	font-size: var(--font-size-forms);
 	font-family: var(--form-field-font-family);
 	font-weight: var(--font-weight-button);
-	line-height: 50px;
-	text-transform: uppercase;
+	line-height: var(--height-button);
 	padding: var(--padding-button-alt);
 	cursor: pointer;
 	transition: background 0.5s ease;
 	display: block;
-	text-transform: uppercase;
-	height: 50px;
+	height: var(--height-button);
 }
 /* stylelint-enable */
 a.button:hover,

@@ -3,12 +3,12 @@
 	display: flex;
 	align-items: center;
 	font-size: var(--font-size-large);
-
 }
 
 
 .social-share-links__label {
-	font-size: var(--font-size-medium);
+	font-size: var(--font-size-regular);
+	font-weight: var(--font-weight-semibold);
 	margin: 0;
 	padding: 0.5rem 0.5rem 0.5rem 0;
 }

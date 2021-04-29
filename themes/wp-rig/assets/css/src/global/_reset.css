@@ -20,6 +20,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 html {
 	line-height: 1.15; /* 1 */
 	-webkit-text-size-adjust: 100%; /* 2 */
+	-webkit-font-smoothing: antialiased;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* Sections

@@ -11,11 +11,9 @@
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: space-between;
-	align-items: center;
-	padding: 1.25rem 1rem;
-
+	align-items: flex-end;
+	padding: 1.25rem 1rem 0 1rem;
 	position: relative;
-
 
 	& a {
 		color: var(--color-nav-links);
@@ -27,8 +25,7 @@
 
 	& .icon-basket {
 		font-size: 26px;
-		margin-bottom: 3px;
-		padding-top: 9px;
+		margin-bottom: 0;
 		position: relative;
 
 		&:hover {
@@ -44,8 +41,8 @@
 			height: 20px;
 			width: 20px;
 			font-size: 12px;
-			top: 6px;
-			right: 10px;
+			top: 0;
+			right: -3px;
 			text-align: center;
 			line-height: 20px;
 		}
@@ -131,20 +128,37 @@
 .custom-logo-link {
 	display: block;
 	margin: 0 auto;
+	position: relative;
+	z-index: 1001;
 }
 
 .site-branding {
 	margin: 0;
-	width: 50%;
+	margin-bottom: -1rem;
 
 	& img {
-		max-width: 150px;
+		max-width: 125px;
 	}
 }
 
 .header-nav-wrapper {
 	display: flex;
 	align-items: center;
+}
+
+@media (--narrow-menu-query) {
+
+	.cart-contents {
+		order: 2;
+	}
+
+	.top-navigation {
+		order: 1;
+	}
+
+	.main-navigation {
+		order: 3;
+	}
 }
 
 .site-title {
@@ -194,19 +208,12 @@
 
 	}
 
-	.site-header .icon-basket {
-		padding-right: 1rem;
+	.header-nav-wrapper {
+		padding-bottom: 1rem;
 	}
 
-	.site-branding {
-		margin: 0;
-		padding-right: 2rem;
-		padding-bottom: 1.5rem;
-		width: 50%;
-
-		& img {
-			max-width: 195px;
-		}
+	.site-header .icon-basket {
+		padding-left: 1rem;
 	}
 
 	.top-navigation {
@@ -218,16 +225,32 @@
 
 }
 
-@media (--tablet-wide-up) {
+@media (--wide-menu-query) {
 
 
 	.site-header--inner {
+		padding: 0 1rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		flex-wrap: nowrap;
 		max-width: var(--header-width);
 		margin: 0 auto;
+	}
+
+	.site-branding {
+		margin-bottom: -4rem;
+
+		& img {
+			max-width: 150px;
+		}
+	}
+
+	.header-nav-wrapper {
+		padding-bottom: 0;
+		flex-basis: 100%;
+		justify-content: flex-end;
+		padding-left: 2rem;
 	}
 
 	.header-search-wrapper {
@@ -262,6 +285,8 @@
 
 	.main-navigation {
 		order: 0;
+		flex-basis: 100%;
+		justify-content: center;
 	}
 
 }

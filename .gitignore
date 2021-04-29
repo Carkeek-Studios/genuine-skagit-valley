@@ -12,7 +12,7 @@ themes/*/bower_components/
 
 
 !themes/wp-rig
-!themes/pip-theme
+!themes/gsv-theme
 
 
 !mu-plugins/*/src/plugins

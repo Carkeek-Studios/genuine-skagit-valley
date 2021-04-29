@@ -40,7 +40,7 @@ namespace WP_Rig\WP_Rig;
 			$custom_likes = new \Jetpack_Likes();
 			echo $custom_likes->post_likes( '' );
 		}
-		wp_rig()->make_social_share_links();
+		wp_rig()->make_social_share_links('true');
 	}
 	?>
 

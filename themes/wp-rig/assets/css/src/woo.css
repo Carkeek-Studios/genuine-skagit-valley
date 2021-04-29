@@ -24,7 +24,9 @@
 	& .woocommerce-loop-product__title {
 		color: var(--color-link);
 		text-transform: none;
-		font-size: var(--font-size-large);
+		font-family: var(--global-font-family);
+		font-size: var(--font-size-medium-large);
+		font-weight: var(--font-weight-semibold);
 		text-align: center;
 		letter-spacing: 0;
 	}
@@ -93,7 +95,7 @@
 	font-size: var(--font-size-button);
 	font-weight: var(--font-weight-button);
 	padding: 0 1rem;
-	line-height: 50px;
+	line-height: var(--height-button);
 }
 
 .woocommerce #respond input#submit.alt,
@@ -103,7 +105,6 @@
 .woocommerce input.gform_button {
 	background-color: var(--color-button-background);
 	color: var(--color-button-text);
-	line-height: 1.25;
 
 
 	&.disabled {
@@ -127,7 +128,7 @@
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button,
 .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button {
 	font-size: var(--font-size-button);
-	padding: var(--padding-button);
+	padding: 0 1rem;
 }
 
 .woocommerce-variation-add-to-cart,
@@ -258,8 +259,9 @@
 
 		& input.qty {
 			width: 50px;
-			padding: 0 1.25rem;
-			line-height: 48px;
+			padding: 0 10px;
+			line-height: var(--height-button);
+			height: var(--height-button);
 			-moz-appearance: textfield;
 			border-left-color: transparent;
 			border-right-color: transparent;

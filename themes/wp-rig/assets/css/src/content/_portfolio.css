@@ -72,7 +72,7 @@
 		width: calc(100% - 30px);
 		background: rgba(0, 0, 0, 0.2);
 		color: #fff;
-		font-family: var(--highlight-font-family);
+		font-family: var(--font-family-highlight);
 		transition: all 0.2s ease;
 
 		& a {

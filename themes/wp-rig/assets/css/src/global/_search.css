@@ -1,3 +1,7 @@
+.nav--toggle-small.header-search-wrapper {
+	display: none;
+}
+
 .search-entry {
 
 	& .search-entry--content {

@@ -7,31 +7,36 @@
 
 namespace WP_Rig\WP_Rig;
 
+$footer_top_bg_image = get_theme_mod( 'wprig_footertop_bg_image' );
+$footer_style        = '';
+if ( ! empty( $footer_top_bg_image ) ) {
+	$footer_style = 'has-background-image';
+}
 ?>
 
 <footer class="footer-main">
 	<?php if ( is_active_sidebar( 'sidebar-footer' ) ) { ?>
-		<section class="footer-section footer-upper has-brayer-background brayer-background-blue brayer-background-right">
+		<section class="footer-section footer-upper <?php echo esc_attr( $footer_style ); ?>">
 			<div class="widget_wrapper">
 				<?php dynamic_sidebar( 'sidebar-footer' ); ?>
 			</div>
 		</section>
 	<?php } ?>
+	<?php if ( is_active_sidebar( 'sidebar-footer-lower' ) ) { ?>
 		<section class="footer-section footer-lower">
-		<?php if ( is_active_sidebar( 'sidebar-footer-lower' ) ) { ?>
+
 			<div class="widget_wrapper footer-lower-widgets">
 				<?php dynamic_sidebar( 'sidebar-footer-lower' ); ?>
 			</div>
-			<?php } ?>
+		</section>
+	<?php } ?>
+	<?php if ( is_active_sidebar( 'sidebar-footer-bottom' ) ) { ?>
 
 			<div class="colophon-wrapper">
-			<?php if ( is_active_sidebar( 'sidebar-footer-bottom' ) ) { ?>
 				<div class="widget_wrapper footer-bottom-widgets">
 					<?php dynamic_sidebar( 'sidebar-footer-bottom' ); ?>
 				</div>
-			<?php } ?>
 			</div>
 
-		</section>
-
+			<?php } ?>
 </footer>
