@@ -85,7 +85,9 @@
 	--color-quote-citation: #6c7781;
 	--color-border: var(--color-theme-grey);
 	--color-border-dark: #979797;
+	--color-border-light: var(--color-theme-grey-light);
 	--border-standard: 1px solid var(--color-border);
+	--border-light: 1px solid var(--color-border-light);
 
 	/* Custom editor font sizes */
 	--font-size-xsmall: calc(14 / var(--global-font-size) * 1rem);
@@ -119,10 +121,10 @@
 	--font-size-h1-alt: calc(36 / var(--global-font-size) * 1rem);
 	--font-size-h2: calc(30 / var(--global-font-size) * 1rem);
 	--font-size-h2-alt: calc(46 / var(--global-font-size) * 1rem);
-	--font-size-h3: calc(36 / var(--global-font-size) * 1rem);
-	--font-size-h4: calc(28 / var(--global-font-size) * 1rem);
-	--font-size-h5: calc(21 / var(--global-font-size) * 1rem);
-	--font-size-h6: calc(19 / var(--global-font-size) * 1rem);
+	--font-size-h3: calc(23 / var(--global-font-size) * 1rem);
+	--font-size-h4: calc(21 / var(--global-font-size) * 1rem);
+	--font-size-h5: calc(18 / var(--global-font-size) * 1rem);
+	--font-size-h6: calc(18 / var(--global-font-size) * 1rem);
 
 	/** Carkeek Blocks Overrides **/
 	--ck-archive-image-ratio: 100%;
@@ -142,6 +144,10 @@
 		--font-size-h1-alt: calc(50 / var(--global-font-size) * 1rem);
 		--font-size-h2: calc(50 / var(--global-font-size) * 1rem);
 		--font-size-h2-alt: calc(65 / var(--global-font-size) * 1rem);
+		--font-size-h3: calc(36 / var(--global-font-size) * 1rem);
+		--font-size-h4: calc(28 / var(--global-font-size) * 1rem);
+		--font-size-h5: calc(21 / var(--global-font-size) * 1rem);
+		--font-size-h6: calc(19 / var(--global-font-size) * 1rem);
 
 		--font-size-cta: calc(18 / var(--global-font-size) * 1rem);
 		--font-size-medium: calc(18 / var(--global-font-size) * 1rem); /** intro text **/

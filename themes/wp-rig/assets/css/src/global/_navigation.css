@@ -124,7 +124,6 @@ html.overflow-hidden {
 		right: 0;
 		width: 100vw;
 		position: fixed;
-		top: 75px;
 		transition: transform 0.6s ease;
 		transform: translate3d(200%, 0, 0);
 		transition-delay: 0s;
@@ -303,11 +302,11 @@ html.overflow-hidden {
 }
 
 .main-navigation li {
-	border-top: 2px solid var(--color-theme-grey-lightest);
+	border-top: var(--border-light);
 	position: relative;
 
 	&:last-of-type {
-		border-bottom: 2px solid var(--color-theme-grey-lightest);
+		border-bottom: var(--border-light);
 	}
 
 	&.current-menu-ancestor,
@@ -345,7 +344,7 @@ html.overflow-hidden {
 .main-navigation a {
 	display: block;
 	width: 100%;
-	padding: 1.75rem 1.25rem;
+	padding: 1.25rem 1.25rem;
 	text-decoration: none;
 	text-align: left;
 	font-size: var(--font-size-nav);
@@ -377,6 +376,7 @@ html.overflow-hidden {
 		background-color: var(--color-button-background);
 		text-align: center;
 		transition: background-color 0.6s ease;
+		color: var(--color-button-text);
 
 		&:hover {
 			background-color: var(--color-button-hover);

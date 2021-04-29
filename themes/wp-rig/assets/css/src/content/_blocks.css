@@ -337,9 +337,8 @@ a.is-style-arrow-cta,
 	flex-direction: column;
 
 	& .wp-block-media-text__content {
-		padding: 0;
-		padding-top: var(--gutter-width);
-
+		padding: var(--gutter-width) var(--gutter-width-page);
+		padding-bottom: 0;
 		align-self: flex-start;
 	}
 
@@ -1199,6 +1198,13 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 
 	& .ck-columns__wrap > * {
 		margin-bottom: var(--gutter-width);
+	}
+
+	&.direction-vertical {
+
+		& .ck-columns__wrap > * {
+			margin-bottom: 1rem;
+		}
 	}
 
 	&.partner-logos {

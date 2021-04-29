@@ -71,6 +71,10 @@
 	}
 }
 
+ul.ck-blocks-gallery-grid {
+	--slick-arrow-bg-color: #7676767d;
+}
+
 
 @media (--tablet-up) {
 
