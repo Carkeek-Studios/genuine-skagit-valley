@@ -1,4 +1,16 @@
 <?php
+/**
+ * Template part for displaying the events header
+ *
+ * @package gsv_theme
+ */
+
+namespace WP_Rig\WP_Rig;
+
+?>
+
+
+<?php
 $featured   = get_field( 'events_featured_image', 'options' );
 $page_title = ( ! empty( get_field( 'events_page_title', 'options' ) ) ) ? get_field( 'events_page_title', 'options' ) : 'Events';
 $parent     = get_field( 'events_page_parent', 'options' );

@@ -244,7 +244,13 @@ a.is-style-arrow-cta,
 
 .is-style-large-btn-transparent .wp-block-button__link {
 	background-color: var(--color-background-transparent);
-	text-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
+	text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+
+	&:hover,
+	&:focus {
+		background-color: var(--color-theme-orange);
+
+	}
 }
 
 /*--------------------------------------------------------------
@@ -754,12 +760,6 @@ a.is-style-arrow-cta,
 		&.has-background {
 			margin-bottom: 0;
 			padding-bottom: var(--gutter-width);
-		}
-
-		& > .alignfull {
-			width: 100vw;
-			margin-left: calc(-1 * var(--gutter-width-page));
-			margin-right: calc(-1 * var(--gutter-width-page));
 		}
 
 		& .wp-block-carkeek-blocks-fixed-image {

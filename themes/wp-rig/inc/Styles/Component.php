@@ -118,7 +118,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		$css_files = $this->get_css_files();
 		foreach ( $css_files as $handle => $data ) {
-			// $src     = $css_uri . $data['file'];
 			$version = wp_rig()->get_asset_version( $css_dir . $data['file'] );
 			$asset   = $css_uri . wp_rig()->get_asset_path( $data['file'] );
 
@@ -181,10 +180,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
-	/** styles for admin area (not just blocks) */
+	/** Styles for admin area (not just blocks) */
 	public function admin_style() {
 		$css_uri = get_theme_file_uri( '/assets/css/' );
-		wp_enqueue_style( 'wft-admin-styles', $css_uri . 'admin.min.css' );
+		wp_enqueue_style( 'wft-admin-styles', $css_uri . 'admin.min.css', array(), '1.0' );
 	}
 
 	/**

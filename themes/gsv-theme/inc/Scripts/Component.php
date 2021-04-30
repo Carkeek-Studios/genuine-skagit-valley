@@ -82,7 +82,7 @@ class Component implements Component_Interface {
 		 *                         $data must be an array with keys 'file' (file path relative to 'assets/js'
 		 *                         directory), and optionally 'dependencies'.
 		 */
-		$js_files = apply_filters( 'gsv_theme_js_files', $js_files );
+		$js_files       = apply_filters( 'gsv_theme_js_files', $js_files );
 		$this->js_files = array();
 		foreach ( $js_files as $handle => $data ) {
 			if ( is_string( $data ) ) {
@@ -144,13 +144,10 @@ class Component implements Component_Interface {
 	 * Output the pinterest code on blog pages
 	 *
 	 * @link https://developers.pinterest.com/docs/widgets/getting-started/?
-	 * @param string $src source url.
-	 * @param string $handle source handle.
 	 */
 	public function pinterest_scripts() {
-		error_log(get_post_type());
-		if (is_singular('post')) {
-		echo '<script
+		if ( is_singular( 'post' ) ) {
+			echo '<script
 			type="text/javascript"
 			async defer
 			src="//assets.pinterest.com/js/pinit.js"

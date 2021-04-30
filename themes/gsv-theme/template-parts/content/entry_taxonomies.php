@@ -28,7 +28,7 @@ $taxonomies = wp_list_filter(
 				$class = 'category-links term-links';
 				$list  = get_the_category_list( esc_html( $separator ), '', $post->ID );
 				/* translators: %s: list of taxonomy terms */
-				$placeholder_text = __( '%s', 'gsv-theme' );
+				$placeholder_text = '';
 				break;
 			case 'post_tag':
 				$class = 'tag-links term-links';

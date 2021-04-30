@@ -285,8 +285,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$title = __( 'Archives', 'gsv-theme' );
 		}
 		return $title;
-
-		return $tag;
 	}
 
 	/**
@@ -335,7 +333,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		unset( $dashboard['carkeek_dashboard_widget'] );
 
 		$sorted_dashboard                             = array_merge( $my_widget, $dashboard );
-		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+		$wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard; // phpcs:ignore
 
 	}
 

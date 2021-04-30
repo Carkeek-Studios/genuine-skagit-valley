@@ -68,7 +68,7 @@ if ( is_404() ) {
 		<?php get_template_part( 'template-parts/content/blogs-category-select' ); ?>
 	</header><!-- .page-header -->
 	<?php
-} elseif ( is_singular('post') && ! is_page() ) {
+} elseif ( is_singular( 'post' ) && ! is_page() ) {
 	$hide_title   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$hide_image   = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$iframe       = get_field( 'blog_video_link' );
@@ -114,7 +114,7 @@ if ( is_404() ) {
 	</header>
 
 	<?php
-} elseif ( ! is_front_page() && ! is_singular('product')) {
+} elseif ( ! is_front_page() && ! is_singular( 'product' ) ) {
 	$hide_title = filter_var( get_post_meta( $post->ID, '_carkeekblocks_title_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 	$hide_image = filter_var( get_post_meta( $post->ID, '_carkeekblocks_featuredimage_hidden', true ), FILTER_VALIDATE_BOOLEAN );
 

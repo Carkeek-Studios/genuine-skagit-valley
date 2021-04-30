@@ -155,7 +155,7 @@ class Theme {
 			new Scripts\Component(),
 			new Blocks\Component(),
 			new CKBlocks_Overrides\Component(),
-			new Events_Calendar\Component(),
+			// new Events_Calendar\Component(), not using.
 			new WooCommerce\Component(),
 		);
 

@@ -55,13 +55,13 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		// Filter the results of the ical function.
 		add_filter( 'tribe_events_ical_single_event_links', array( $this, 'tribe_events_ical_single_event_links' ) );
 
-		// ticket labels
+		// ticket labels.
 		add_filter( 'tribe_get_ticket_label_plural', array( $this, 'tribe_get_ticket_label_plural' ), 10, 2 );
 		add_filter( 'tribe_get_ticket_label_plural_lowercase', array( $this, 'tribe_get_ticket_label_plural_lowercase' ), 10, 2 );
 		add_filter( 'tribe_get_ticket_label_singular', array( $this, 'tribe_get_ticket_label_singular' ), 10, 2 );
 		add_filter( 'tribe_get_ticket_label_singular_lowercase', array( $this, 'tribe_get_ticket_label_singular_lowercase' ), 10, 2 );
 
-		// organizer labels
+		// organizer labels.
 		add_filter( 'tribe_organizer_label_singular', array( $this, 'tribe_organizer_label_singular' ) );
 		add_filter( 'tribe_organizer_label_plural', array( $this, 'tribe_organizer_label_singular' ) );
 
@@ -231,9 +231,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	/**
 	 * Organizer Label
-	 *
-	 * @param string $label Current label for Tickets.
-	 * @param string $context Current context.
 	 */
 	public function tribe_organizer_label_singular() {
 		return __( 'Instructor/Moderator', 'wp-rig' );
@@ -241,9 +238,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	/**
 	 * Organizer Label
-	 *
-	 * @param string $label Current label for Tickets.
-	 * @param string $context Current context.
 	 */
 	public function tribe_organizer_label_plural() {
 		return __( 'Instructors/Moderators', 'wp-rig' );
@@ -490,35 +484,35 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @return string
 	 */
 	public function filter_events_title( $title ) {
-		// Single events
+		// Single events.
 		if ( tribe_is_event() && is_single() ) {
 			$title = 'Classes & Events';
 		}
-		// Single venues
+		// Single venues.
 		elseif ( tribe_is_venue() ) {
 			$title = 'Single venue page';
 		}
-		// Single organizers
+		// Single organizers.
 		elseif ( tribe_is_organizer() && is_single() ) {
 			$title = 'Who We Are';
 		}
-		// Month view Page
+		// Month view Page.
 		elseif ( tribe_is_month() && ! is_tax() ) {
 			$title = 'Month view page';
 		}
-		// Month view category page
+		// Month view category page.
 		elseif ( tribe_is_month() && is_tax() ) {
 			$title = 'Month view category page';
 		}
-		// List view page: upcoming events
+		// List view page: upcoming events.
 		elseif ( tribe_is_upcoming() && ! is_tax() ) {
 			$title = 'List view: upcoming events page';
 		}
-		// List view category page: upcoming events
+		// List view category page: upcoming events.
 		elseif ( tribe_is_upcoming() && is_tax() ) {
 			$title = 'List view category: upcoming events page';
 		}
-		// List view page: past events
+		// List view page: past events.
 		elseif ( tribe_is_past() && ! is_tax() ) {
 			$title = 'List view: past events page';
 		}
@@ -526,35 +520,35 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		elseif ( tribe_is_past() && is_tax() ) {
 			$title = 'List view category: past events page';
 		}
-		// Week view page
+		// Week view page.
 		elseif ( tribe_is_week() && ! is_tax() ) {
 			$title = 'Week view page';
 		}
-		// Week view category page
+		// Week view category page.
 		elseif ( tribe_is_week() && is_tax() ) {
 			$title = 'Week view category page';
 		}
-		// Day view page
+		// Day view page.
 		elseif ( tribe_is_day() && ! is_tax() ) {
 			$title = 'Day view page';
 		}
-		// Day view category page
+		// Day view category page.
 		elseif ( tribe_is_day() && is_tax() ) {
 			$title = 'Day view category page';
 		}
-		// Map view page
+		// Map view page.
 		elseif ( tribe_is_map() && ! is_tax() ) {
 			$title = 'Map view page';
 		}
-		// Map view category page
+		// Map view category page.
 		elseif ( tribe_is_map() && is_tax() ) {
 			$title = 'Map view category page';
 		}
-		// Photo view page
+		// Photo view page.
 		elseif ( tribe_is_photo() && ! is_tax() ) {
 			$title = 'Photo view page';
 		}
-		// Photo view category page
+		// Photo view category page.
 		elseif ( tribe_is_photo() && is_tax() ) {
 			$title = 'Photo view category page';
 		}

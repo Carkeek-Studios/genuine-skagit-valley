@@ -13,6 +13,7 @@
  */
 
 namespace WP_Rig\WP_Rig;
+
 get_header();
 
 gsv_theme()->print_styles( 'gsv-theme-content' );

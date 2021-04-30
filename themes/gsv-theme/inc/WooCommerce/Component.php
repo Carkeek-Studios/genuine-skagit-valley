@@ -220,6 +220,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/**
 	 * Hide Tickets from search
 	 * Tickets automatically get set to hidden when created, we need to make sure that hidden items do not show up in search.
+	 *
+	 * @param object $query the current query.
 	 */
 	public function hide_tickets_from_search( $query = false ) {
 		if ( ! is_admin() && is_search() ) {

@@ -1,0 +1,51 @@
+/* stylelint-disable */
+.page-content {
+
+	& #SFctr {
+		color: var(--global-font-color);
+		font-family: var(--global-font-family);
+
+		& * {
+			color: var(--global-font-color);
+			font-family: var(--global-font-family);
+		}
+
+		& div.SFbox {
+			border: none;
+			max-width: 100%;
+			padding: 0;
+			margin: 0;
+		}
+
+		& table.SFfrm {
+			width: 100%;
+
+			& tr {
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 1rem;
+
+				& > td {
+					padding: 0;
+					text-align: left;
+
+					&:first-child {
+						text-align: left;
+						font-weight: var(--font-weight-medium);
+						padding-bottom: 8px;
+					}
+				}
+			}
+
+			& div.SFpy0,
+			& input[type="file"],
+			& input[type="password"],
+			& input[type="text"],
+			& select {
+				width: 100%;
+				padding: 1rem;
+			}
+		}
+	}
+}
+/* stylelint-enable */

@@ -29,12 +29,11 @@ namespace WP_Rig\WP_Rig;
 		echo '</div>';
 	} elseif ( 'tribe_events' === $posttype ) {
 		echo '<div class="search-event_date">';
-		echo tribe_events_event_schedule_details();
+		echo wp_kses_post( tribe_events_event_schedule_details() );
 		echo '</div>';
-	}
-	else {
+	} else {
 		$pt_object = get_post_type_object( $posttype );
-		$slug = '';
+		$slug      = '';
 		if ( isset( $pt_object->rewrite ) && isset( $pt_object->rewrite['slug'] ) ) {
 			$slug = $pt_object->rewrite['slug'];
 		}

@@ -32,15 +32,7 @@ namespace WP_Rig\WP_Rig;
 	</div>
 	<?php
 	if ( ! is_archive() && ! is_home() ) {
-		if ( function_exists( 'sharing_display' ) ) {
-			sharing_display( '', true );
-		}
-
-		if ( class_exists( 'Jetpack_Likes' ) ) {
-			$custom_likes = new \Jetpack_Likes();
-			echo $custom_likes->post_likes( '' );
-		}
-		wp_rig()->make_social_share_links('true');
+		wp_rig()->make_social_share_links( 'true' );
 	}
 	?>
 

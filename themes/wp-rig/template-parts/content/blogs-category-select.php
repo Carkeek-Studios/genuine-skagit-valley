@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template part for displaying the category links for posts
+ *
+ * @package wp_rig
+ */
+
+namespace WP_Rig\WP_Rig;
+
   $terms       = get_terms( 'category', array( 'hide_empty' => 1 ) );
   $current     = get_query_var( 'cat' );
   $active      = empty( $current ) ? 'active' : '';
@@ -11,17 +19,17 @@
 	  <li class="category-select-item <?php echo esc_attr( $active ); ?>" <?php echo esc_attr( $aria_active ); ?> ><a href="<?php the_permalink( $page_for_posts ); ?>">All Posts</a></li>
 	<?php
 
-	foreach ( $terms as $term ) {
-		if ( 'blog' !== $term->slug ) {
-			$active      = $current == $term->term_id ? 'active' : '';
-			$aria_active = $current == $term->term_id ? 'aria-current=page' : '';
+	foreach ( $terms as $taxterm ) {
+		if ( 'blog' !== $taxterm->slug ) {
+			$active      = $current == $taxterm->term_id ? 'active' : '';
+			$aria_active = $current == $taxterm->term_id ? 'aria-current=page' : '';
 			?>
 			<li class="category-select-item <?php echo esc_attr( $active ); ?>" <?php echo esc_attr( $aria_active ); ?>>
 			<?php
 			if ( 'active' == $active ) {
-				echo esc_html( $term->name );
+				echo esc_html( $taxterm->name );
 			} else {
-				echo wp_sprintf( '<a href="%1s">%2s</a>', esc_url( get_category_link( $term, ) ), esc_html( $term->name ) );
+				echo wp_sprintf( '<a href="%1s">%2s</a>', esc_url( get_category_link( $taxterm ) ), esc_html( $taxterm->name ) );
 			}
 			?>
 			  </li>
