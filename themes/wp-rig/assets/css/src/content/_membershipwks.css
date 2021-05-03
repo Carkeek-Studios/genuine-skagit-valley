@@ -46,6 +46,27 @@
 				padding: 1rem;
 			}
 		}
+
+		& button,
+		& a.button {
+			background-color: var(--color-button-background);
+
+			padding: var(--padding-button);
+			font-size: var(--font-size-button);
+			font-weight: var(--font-weight-button);
+
+			& i {
+				display: none;
+			}
+
+			& span {
+				color: var(--color-button-text);
+			}
+
+			&:hover {
+				background-color: var(--color-button-hover);
+			}
+		}
 	}
 }
 /* stylelint-enable */
