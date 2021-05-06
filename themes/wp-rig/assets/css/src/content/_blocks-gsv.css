@@ -465,3 +465,42 @@ ul.ck-blocks-gallery-grid {
 		}
 	}
 }
+
+.wp-block-ck-member-details {
+	font-size: var(--font-size-medium-large);
+	max-width: 600px;
+
+	& dd {
+		margin-left: 0;
+		font-style: normal;
+	}
+
+	& address {
+		font-style: normal;
+		margin-bottom: 0;
+	}
+
+	& .social-links {
+		font-size: 22px;
+
+		& a {
+			padding: 0 3px;
+		}
+
+		& li:first-child a {
+			padding-left: 0;
+		}
+	}
+}
+
+@media (--tablet-up) {
+
+	.wp-block-ck-member-details {
+		display: flex;
+		padding: 0;
+
+		& > * {
+			flex: 1 1 50%;
+		}
+	}
+}

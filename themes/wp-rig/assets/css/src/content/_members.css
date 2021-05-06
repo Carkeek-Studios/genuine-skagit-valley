@@ -1,0 +1,13 @@
+.single-ck_members {
+
+	& .page-header.page-header-solid {
+		margin-bottom: var(--block-spacing-vert-small);
+	}
+}
+
+.member-logo {
+	max-width: 225px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: var(--block-spacing-vert-small);
+}

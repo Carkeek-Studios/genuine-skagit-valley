@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="53px" viewBox="0 0 41 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>map pin</title>
+    <defs>
+        <filter x="-26.1%" y="-100.0%" width="152.2%" height="300.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <polygon id="path-2" points="0.00024 0.5736 33.2652 0.5736 33.2652 46.79904 0.00024 46.79904"></polygon>
+        <polygon id="path-4" points="0 47.427 33.2652 47.427 33.2652 1.2006 0 1.2006"></polygon>
+    </defs>
+    <g id="Comps---ready-for-dev" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Our-Work-01" transform="translate(-600.000000, -868.000000)">
+            <g id="Map" transform="translate(-1.000000, 511.000000)">
+                <g id="map-pin" transform="translate(601.000000, 356.500000)">
+                    <ellipse id="Oval" fill-opacity="0.502458479" fill="#0C0C0C" filter="url(#filter-1)" transform="translate(25.862883, 43.955444) rotate(-14.000000) translate(-25.862883, -43.955444) " cx="25.8628828" cy="43.9554436" rx="11.5" ry="3"></ellipse>
+                    <g id="Group-14-Copy" stroke-width="1">
+                        <g id="Group-3" transform="translate(0.000000, 0.627000)">
+                            <mask id="mask-3" fill="white">
+                                <use xlink:href="#path-2"></use>
+                            </mask>
+                            <g id="Clip-2"></g>
+                            <path d="M28.94544,0.57264 L4.32024,0.57264 C1.94424,0.57264 0.00024,2.51664 0.00024,4.89384 L0.00024,27.33864 C0.00024,29.71464 1.94424,31.65864 4.32024,31.65864 L11.08584,31.65864 L16.50024,46.79904 L22.08744,31.65864 L28.94544,31.65864 C31.32024,31.65864 33.26544,29.71464 33.26544,27.33864 L33.26544,4.89384 C33.26544,2.51664 31.32024,0.57264 28.94544,0.57264" id="Fill-1" fill="#A55525" mask="url(#mask-3)"></path>
+                        </g>
+                        <line x1="16.5552" y1="24.92424" x2="16.5552" y2="24.92304" id="Stroke-4" stroke="#FEFEFE"></line>
+                        <mask id="mask-5" fill="white">
+                            <use xlink:href="#path-4"></use>
+                        </mask>
+                        <g id="Clip-9"></g>
+                        <polygon id="Stroke-8" stroke="#FEFEFE" stroke-width="1.2" mask="url(#mask-5)" points="13 26 20 26 20 17 13 17"></polygon>
+                        <polygon id="Stroke-11" stroke="#FEFEFE" stroke-width="1.2" stroke-linejoin="bevel" mask="url(#mask-5)" points="6 15 9.31466259 9.79849962 16.5113745 6 23.7107628 9.79849962 27 14.9837959"></polygon>
+                        <polyline id="Stroke-12" stroke="#FEFEFE" stroke-width="1.2" mask="url(#mask-5)" points="8 15 8 26 26 26 26 15.0943374"></polyline>
+                        <polygon id="Stroke-13" stroke="#FEFEFE" stroke-width="1.2" mask="url(#mask-5)" points="15 12 18 12 18 9 15 9"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

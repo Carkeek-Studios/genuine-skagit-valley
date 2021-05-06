@@ -32,6 +32,7 @@
  */
 .page-content > [class^="wp-block-"] {
 	margin-bottom: var(--block-spacing-vert);
+	margin-top: var(--block-spacing-vert);
 
 	&:first-child {
 		margin-top: 0;
