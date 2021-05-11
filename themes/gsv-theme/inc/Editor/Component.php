@@ -59,7 +59,7 @@ class Component implements Component_Interface {
 		remove_theme_support( 'core-block-patterns' );
 
 		// Disable custom gradients.
-		add_theme_support( '__experimental-disable-custom-gradients' );
+		add_theme_support( 'disable-custom-gradients' );
 
 		// Disable gradients.
 		add_theme_support( '__experimental-editor-gradient-presets', array() );
@@ -166,7 +166,7 @@ class Component implements Component_Interface {
 				'keywords'    => array( 'cta', 'button', 'links' ),
 				'content'     => '<!-- wp:buttons {"contentJustification":"center"} -->
 				<div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-arrow-cta"} -->
-				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">See all classes</a></div>
+				<div class="wp-block-button is-style-arrow-cta"><a class="wp-block-button__link">See all</a></div>
 				<!-- /wp:button --></div>
 				<!-- /wp:buttons -->',
 			)

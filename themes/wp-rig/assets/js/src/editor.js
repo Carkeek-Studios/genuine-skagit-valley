@@ -5,16 +5,7 @@ wp.domReady( function() {
 	wp.blocks.registerBlockStyle( 'core/button', {
 		name: 'arrow-cta',
 		label: 'Arrow Link',
-	} );
-
-	wp.blocks.registerBlockStyle( 'core/button', {
-		name: 'large-btn',
-		label: 'Large Button',
-	} );
-
-	wp.blocks.registerBlockStyle( 'core/button', {
-		name: 'large-btn-transparent',
-		label: 'Large Button Transparent',
+		isDefault: true,
 	} );
 
 	wp.blocks.registerBlockStyle( 'core/heading', {

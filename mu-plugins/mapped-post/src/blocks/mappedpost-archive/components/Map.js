@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Map, ZoomControl } from "react-leaflet";
+import { Map, ZoomControl, LayersControl } from "react-leaflet";
 import MapBoxGLLayer from "./MapBoxGLLayer";
 import Pins from './Pins.js';
 
@@ -63,21 +63,22 @@ function MapCluster(props) {
 
     return (
         <div className={`archive-map-wrapper ${mapStyle}`}>
-        {/* <PointsList
+        <PointsList
             data={locations}
             onItemClick={handleItemClick}
             selectedIndex={selected}
             hideList={hideList}
             onHeaderClick={handleHeaderClick}
-            /> */}
+            />
             <div className={'data-map'}>
         <Map bounds={bounds} zoom={zoom} maxZoom={maxZoom} zoomControl={false} ref={mapRef} onClick={handleMapClick}>
-        <MapBoxGLLayer
+            <MapBoxGLLayer
                 accessToken={'pk.eyJ1IjoicGF0dHlvayIsImEiOiJja2Q1OWI1bnkxaWdxMndudjU4dDIxd2tyIn0.8wNkxnelM0meYNGz-6yDQQ'}
                 style="mapbox://styles/mapbox/outdoors-v11"
                 attribution="&amp;copy <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &amp;copy <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
             />
             <Pins selectedIndex={selected} data={locations} onItemClick={handleItemClick}  />
+            <LayersControl position="topright"></LayersControl>
             <ZoomControl position="topleft" />
         </Map>
         </div>

@@ -32,6 +32,7 @@
 
 	/*block padding */
 	--block-spacing-vert: 2.5rem;
+	--block-spacing-vert-extra: 3.75rem;
 	--block-spacing-vert-small: 2.5rem;
 	--block-spacing-vert-inner: 1.5rem;
 
@@ -121,14 +122,15 @@
 	--font-size-h1-alt: calc(36 / var(--global-font-size) * 1rem);
 	--font-size-h2: calc(30 / var(--global-font-size) * 1rem);
 	--font-size-h2-alt: calc(46 / var(--global-font-size) * 1rem);
-	--font-size-h3: calc(23 / var(--global-font-size) * 1rem);
-	--font-size-h4: calc(21 / var(--global-font-size) * 1rem);
+	--font-size-h3: calc(26 / var(--global-font-size) * 1rem);
+	--font-size-h4: calc(18 / var(--global-font-size) * 1rem);
+	--font-size-h4-alt: calc(24 / var(--global-font-size) * 1rem);
 	--font-size-h5: calc(18 / var(--global-font-size) * 1rem);
 	--font-size-h6: calc(18 / var(--global-font-size) * 1rem);
 
 	/** Carkeek Blocks Overrides **/
 	--ck-archive-image-ratio: 100%;
-
+	--ck-archive-image-text-gap: 1.5rem;
 
 }
 
@@ -145,15 +147,18 @@
 		--font-size-h2: calc(50 / var(--global-font-size) * 1rem);
 		--font-size-h2-alt: calc(65 / var(--global-font-size) * 1rem);
 		--font-size-h3: calc(36 / var(--global-font-size) * 1rem);
-		--font-size-h4: calc(28 / var(--global-font-size) * 1rem);
-		--font-size-h5: calc(21 / var(--global-font-size) * 1rem);
-		--font-size-h6: calc(19 / var(--global-font-size) * 1rem);
+		--font-size-h4-alt: calc(26 / var(--global-font-size) * 1rem);
+		--font-size-h4: calc(21 / var(--global-font-size) * 1rem);
+		--font-size-h5: calc(19 / var(--global-font-size) * 1rem);
+		--font-size-h6: calc(18 / var(--global-font-size) * 1rem);
 
 		--font-size-cta: calc(18 / var(--global-font-size) * 1rem);
 		--font-size-medium: calc(18 / var(--global-font-size) * 1rem); /** intro text **/
 		--font-size-medium-large: calc(21 / var(--global-font-size) * 1rem); /** product titles **/
 		--font-size-large: calc(28 / var(--global-font-size) * 1rem); /** quote **/
 
+
+		--ck-archive-image-text-gap: 2.5rem;
 	}
 }
 
@@ -163,6 +168,7 @@
 		--font-size-h1: calc(110 / var(--global-font-size) * 1rem);
 		--font-size-h1-thumb: calc(150 / var(--global-font-size) * 1rem);
 		--block-spacing-vert: 5rem;
+		--block-spacing-vert-extra: 7.25rem;
 		--font-size-medium: calc(24 / var(--global-font-size) * 1rem); /** intro text **/
 		--font-size-large: calc(32 / var(--global-font-size) * 1rem); /** quote **/
 
