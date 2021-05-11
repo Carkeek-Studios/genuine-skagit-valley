@@ -253,6 +253,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
 
       var _this$props = this.props,
           posts = _this$props.posts,
+          taxonomies = _this$props.taxonomies,
           postTypes = _this$props.postTypes,
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes;
@@ -263,7 +264,9 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           postsToShow = attributes.postsToShow,
           postTypeSelected = attributes.postTypeSelected,
           latFieldSelected = attributes.latFieldSelected,
-          lngFieldSelected = attributes.lngFieldSelected;
+          lngFieldSelected = attributes.lngFieldSelected,
+          mapAddFilter = attributes.mapAddFilter,
+          taxonomySelected = attributes.taxonomySelected;
       var latlngfieldOptions;
 
       if (postTypes && postTypeSelected) {
@@ -290,6 +293,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         latlngfieldOptions.unshift(selectAnItem);
       }
 
+      console.log(taxonomies);
       var postTypeSelect = wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Post Type", "carkeek-blocks"),
         onChange: this.onChangePostType,
@@ -303,7 +307,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62,
+          lineNumber: 68,
           columnNumber: 17
         }
       }), postTypeSelected && wp.element.createElement(wp.element.Fragment, null, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
@@ -314,7 +318,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76,
+          lineNumber: 82,
           columnNumber: 21
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
@@ -325,7 +329,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84,
+          lineNumber: 90,
           columnNumber: 21
         }
       })));
@@ -333,7 +337,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 97,
+          lineNumber: 103,
           columnNumber: 13
         }
       }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
@@ -341,11 +345,68 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 98,
+          lineNumber: 104,
           columnNumber: 17
         }
-      }, postTypeSelect, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
-        heading: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Include in Popup:"),
+      }, postTypeSelect), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Map Settings", "carkeek-blocks"),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 107,
+          columnNumber: 17
+        }
+      }, wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
+        label: "Add Taxonomy Filter to Map",
+        checked: mapAddFilter,
+        onChange: function onChange(value) {
+          return setAttributes({
+            mapAddFilter: value
+          });
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 108,
+          columnNumber: 21
+        }
+      }), mapAddFilter && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+        multiple: true,
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Select Taxonomies", "carkeek-blocks"),
+        onChange: function onChange(terms) {
+          return setAttributes({
+            taxonomySelected: terms
+          });
+        },
+        options: taxonomies && taxonomies.map(function (type) {
+          return {
+            value: type.slug,
+            label: type.name
+          };
+        }),
+        value: taxonomySelected,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 118,
+          columnNumber: 21
+        }
+      })), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], {
+        title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Popup Settings", "carkeek-blocks"),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 133,
+          columnNumber: 17
+        }
+      }, wp.element.createElement("div", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 134,
+          columnNumber: 21
+        }
+      }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Include in Popup:")), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Listing Title"),
         checked: popupTitle,
         onChange: function onChange(value) {
@@ -356,7 +417,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100,
+          lineNumber: 135,
           columnNumber: 21
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
@@ -370,7 +431,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 110,
+          lineNumber: 144,
           columnNumber: 21
         }
       }), wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["CheckboxControl"], {
@@ -384,7 +445,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119,
+          lineNumber: 153,
           columnNumber: 21
         }
       }), popupExcerpt && wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["RangeControl"], {
@@ -400,7 +461,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129,
+          lineNumber: 163,
           columnNumber: 25
         }
       })));
@@ -413,14 +474,14 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 154,
+            lineNumber: 188,
             columnNumber: 21
           }
         }, !Array.isArray(posts) ? wp.element.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Spinner"], {
           __self: this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 155,
+            lineNumber: 189,
             columnNumber: 50
           }
         }) : noPostMessage));
@@ -432,14 +493,14 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 169,
+          lineNumber: 203,
           columnNumber: 17
         }
       }, wp.element.createElement("ul", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170,
+          lineNumber: 204,
           columnNumber: 21
         }
       }, displayPosts.map(function (post) {
@@ -459,7 +520,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 201,
+            lineNumber: 235,
             columnNumber: 37
           }
         }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("Read more")));
@@ -468,7 +529,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 212,
+            lineNumber: 246,
             columnNumber: 33
           }
         }, popupImage && wp.element.createElement("div", {
@@ -476,7 +537,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 214,
+            lineNumber: 248,
             columnNumber: 41
           }
         }, imageSourceUrl && wp.element.createElement("img", {
@@ -485,7 +546,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 216,
+            lineNumber: 250,
             columnNumber: 49
           }
         })), popupTitle && wp.element.createElement("a", {
@@ -495,14 +556,14 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 224,
+            lineNumber: 258,
             columnNumber: 41
           }
         }, titleTrimmed ? wp.element.createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__["RawHTML"], {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 230,
+            lineNumber: 264,
             columnNumber: 49
           }
         }, titleTrimmed) : Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_4__["__"])("(no title)")), popupExcerpt && wp.element.createElement("div", {
@@ -510,7 +571,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 240,
+            lineNumber: 274,
             columnNumber: 45
           }
         }, postExcerpt));
@@ -523,19 +584,29 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_wordpress_data__WEBPACK_IMPORTED_MODULE_3__["withSelect"])(function (select, props) {
   var attributes = props.attributes;
-  var postTypeSelected = attributes.postTypeSelected;
+  var postTypeSelected = attributes.postTypeSelected,
+      taxonomySelected = attributes.taxonomySelected;
 
   var _select = select("core"),
       getEntityRecords = _select.getEntityRecords,
       getMedia = _select.getMedia,
-      getPostTypes = _select.getPostTypes;
+      getPostTypes = _select.getPostTypes,
+      getTaxonomies = _select.getTaxonomies;
 
   var query = {
     per_page: 5
   };
   var latestPosts = getEntityRecords("postType", postTypeSelected, query);
+  var taxonomies = getTaxonomies();
+  console.log(postTypeSelected);
+  console.log(taxonomies);
+  taxonomies = !Array.isArray(taxonomies) ? taxonomies : taxonomies.filter(function (tax) {
+    return tax.types.includes(postTypeSelected);
+  });
   return {
     postTypes: getPostTypes(),
+    taxonomies: taxonomies,
+    taxSelected: Array.isArray(taxonomies) && taxonomies.length == 1 ? taxonomies[0] : taxonomySelected,
     posts: !Array.isArray(latestPosts) ? latestPosts : latestPosts.map(function (post) {
       if (post.featured_media) {
         var image = getMedia(post.featured_media);
@@ -607,6 +678,14 @@ var attributes = {
   excerptLength: {
     type: "number",
     default: 25
+  },
+  mapAddFilter: {
+    type: "boolean",
+    default: false
+  },
+  taxonomySelected: {
+    type: "array",
+    default: []
   }
 };
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("mapped-posts/archive", {
@@ -624,7 +703,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("map
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54,
+        lineNumber: 62,
         columnNumber: 13
       }
     });

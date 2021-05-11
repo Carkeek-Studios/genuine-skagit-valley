@@ -33,6 +33,14 @@ const attributes = {
     excerptLength: {
         type: "number",
         default: 25
+    },
+    mapAddFilter: {
+        type: "boolean",
+        default: false
+    },
+    taxonomySelected: {
+        type: "array",
+        default: []
     }
 };
 

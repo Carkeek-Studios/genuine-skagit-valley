@@ -114,10 +114,38 @@ class MappedPosts_CustomPost {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'Member Type' ),
+			'rewrite'           => array( 'slug' => 'type' ),
+			'show_in_rest'      => true,
 		);
 
 		register_taxonomy( 'ck_members_type', array( 'ck_members' ), $args );
+
+		// Add new taxonomy, make it hierarchical (like categories)
+		$labels = array(
+			'name'              => _x( 'Business Types', 'taxonomy general name', 'textdomain' ),
+			'singular_name'     => _x( 'Business Type', 'taxonomy singular name', 'textdomain' ),
+			'search_items'      => __( 'Search Business Types', 'textdomain' ),
+			'all_items'         => __( 'All Business Types', 'textdomain' ),
+			'parent_item'       => __( 'Parent Business Type', 'textdomain' ),
+			'parent_item_colon' => __( 'Parent Business Type:', 'textdomain' ),
+			'edit_item'         => __( 'Edit Business Type', 'textdomain' ),
+			'update_item'       => __( 'Update Business Type', 'textdomain' ),
+			'add_new_item'      => __( 'Add New Business Type', 'textdomain' ),
+			'new_item_name'     => __( 'New Business Type Name', 'textdomain' ),
+			'menu_name'         => __( 'Business Type', 'textdomain' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'business-type' ),
+			'show_in_rest'      => true,
+		);
+
+		register_taxonomy( 'ck_business_type', array( 'ck_members' ), $args );
 	}
 
 	/**
@@ -233,6 +261,51 @@ class MappedPosts_CustomPost {
 	}
 
 	/**
+	 * Recursively sort an array of taxonomy terms hierarchically. Child categories will be
+	 * placed under a 'children' member of their parent term.
+	 *
+	 * @param Array   $cats     taxonomy term objects to sort
+	 * @param Array   $into     result array to put them in
+	 * @param integer $parent_id the current parent ID to put them in
+	 */
+	public static function sort_terms_hierarchically( array &$cats, array &$into, $parent_id = 0 ) {
+		foreach ( $cats as $i => $cat ) {
+			if ( $cat->parent === $parent_id ) {
+				$into[] = $cat;
+				unset( $cats[ $i ] );
+			}
+		}
+
+		foreach ( $into as $top_cat ) {
+			$top_cat->children = array();
+			self::sort_terms_hierarchically( $cats, $top_cat->children, $top_cat->term_id );
+		}
+	}
+
+
+
+	/**
+	 * Build the list for the terms from the hierarchical list
+	 * child terms are in the 'children' items
+	 *
+	 * @param Array $cats     hierarchical list of term objects
+	 */
+	public static function build_terms_list( $cats, $tax ) {
+		$html = '<ul>';
+		foreach ( $cats as $i => $cat ) {
+			$term_id = $tax . '-' . $cat->slug;
+			$html   .= '<li data-id="' . $cat->term_id . '"><input type="checkbox" value="' . $cat->slug . '" id="' . $term_id . '"><label for="' . $term_id . '">' . $cat->name . '</label>';
+			if ( ! empty( $cat->children ) ) {
+				$html .= self::build_terms_list( $cat->children, $tax );
+			}
+			$html .= '</li>';
+		}
+		$html .= '</ul>';
+
+		return $html;
+	}
+
+	/**
 	 * Render Custom Post Type Archive
 	 *
 	 * @param array $attributes Attributes passed to callback.
@@ -242,6 +315,8 @@ class MappedPosts_CustomPost {
 		if ( empty( $attributes['postTypeSelected'] ) ) {
 			return;
 		}
+
+		var_dump( $attributes );
 		$args  = array(
 			'posts_per_page' => -1,
 			'post_type'      => $attributes['postTypeSelected'],
@@ -253,6 +328,22 @@ class MappedPosts_CustomPost {
 
 		if ( empty( $attributes['latFieldSelected'] ) || empty( $attributes['lngFieldSelected'] ) ) {
 			return 'You need to select the location fields in order to display posts on a map, edit the page and select the fields in the block settings';
+		}
+
+		$taxonomies = $attributes['taxonomySelected'];
+		$taxfilters = '';
+		if ( ( true == $attributes['mapAddFilter'] ) && ! empty( $taxonomies ) ) {
+			$form = '';
+			foreach ( $taxonomies as $tax ) {
+				$categories         = get_terms( $tax, array( 'hide_empty' => true ) );
+				$category_hierarchy = array();
+				self::sort_terms_hierarchically( $categories, $category_hierarchy );
+				$form .= self::build_terms_list( $category_hierarchy, $tax );
+			}
+			// want to make this flexible for future if we have levels of hierarchy...
+			$taxfilters  = '<div id="mapped-post-filters">';
+			$taxfilters .= $form;
+			$taxfilters .= '</div>';
 		}
 
 		if ( $query->have_posts() ) {
@@ -287,14 +378,29 @@ class MappedPosts_CustomPost {
 						$limit   = $attributes['excerptLength'];
 						$excerpt = '<div class="post-excerpt">' . self::excerpt( $limit ) . '</div>';
 					}
+					$my_taxes = '';
+					if ( ! empty( $taxonomies ) ) {
+						foreach ( $taxonomies as $taxonomy ) {
+							$my_terms  = get_the_terms( $post, $taxonomy );
+							$add_terms = array();
+							if ( false !== $my_terms ) {
+								foreach ( $my_terms as $my_term ) {
+									$add_terms [] = $my_term->slug;
+								}
+							}
+							if ( ! empty( $add_terms ) ) {
+								$my_taxes .= 'data-' . $taxonomy . '="' . implode( ',', $add_terms ) . '"';
+							}
+						}
+					}
 
 					$learn_more = wp_sprintf( '<a href="%1s">Learn More <span class="screen-reader-text">%2s</span></a>', get_the_permalink(), get_the_title() );
 
-					$posts .= '<li data-id="' . $post->ID . '" data-lat="' . $lat . '" data-lng="' . $lng . '" data-count="' . $count . '">' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $excerpt . $learn_more . '</div></li>';
+					$posts .= '<li data-id="' . $post->ID . '" data-lat="' . $lat . '" data-lng="' . $lng . '" data-count="' . $count . '"' . $my_taxes . '>' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $excerpt . $learn_more . '</div></li>';
 					$count++;
 				}
 			}
-			$posts .= '</ol></div></div>';
+			$posts .= '</ol></div>' . $taxfilters . '</div>';
 			wp_reset_postdata();
 			return $posts;
 		} else {

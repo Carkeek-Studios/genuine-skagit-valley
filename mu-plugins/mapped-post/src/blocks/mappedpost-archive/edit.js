@@ -10,7 +10,8 @@ import {
     Spinner,
     Placeholder,
     SelectControl,
-    CheckboxControl
+    CheckboxControl,
+    ToggleControl
 } from "@wordpress/components";
 import { InspectorControls } from "@wordpress/block-editor";
 
@@ -28,6 +29,7 @@ class MappedPostsArchiveEdit extends Component {
     render() {
         const {
             posts,
+            taxonomies,
             postTypes,
             attributes,
             setAttributes
@@ -40,7 +42,9 @@ class MappedPostsArchiveEdit extends Component {
             postsToShow,
             postTypeSelected,
             latFieldSelected,
-            lngFieldSelected
+            lngFieldSelected,
+            mapAddFilter,
+            taxonomySelected
         } = attributes;
         let latlngfieldOptions;
         if (postTypes && postTypeSelected) {
@@ -56,6 +60,8 @@ class MappedPostsArchiveEdit extends Component {
             const selectAnItem = { value: null, label: 'Select a Post Type'};
             latlngfieldOptions.unshift(selectAnItem);
         }
+
+        console.log(taxonomies);
 
         const postTypeSelect = (
             <>
@@ -97,8 +103,36 @@ class MappedPostsArchiveEdit extends Component {
             <InspectorControls>
                 <PanelBody title={__("Posts Settings", "carkeek-blocks")}>
                     {postTypeSelect}
+                </PanelBody>
+                <PanelBody title={__("Map Settings", "carkeek-blocks")}>
+                    <ToggleControl
+                        label="Add Taxonomy Filter to Map"
+                        checked={ mapAddFilter }
+                        onChange={value =>
+                            setAttributes({
+                                mapAddFilter: value
+                            })
+                        }
+                    />
+                    {mapAddFilter &&
+                    <SelectControl
+                        multiple
+                        label={__("Select Taxonomies", "carkeek-blocks")}
+                        onChange={ ( terms ) => setAttributes( { taxonomySelected: terms } ) }
+                        options={
+                            taxonomies &&
+                            taxonomies.map(type => ({
+                                value: type.slug,
+                                label: type.name
+                            }))
+                        }
+                        value={taxonomySelected}
+                    />
+                    }
+                </PanelBody>
+                <PanelBody title={__("Popup Settings", "carkeek-blocks")}>
+                    <div>{__("Include in Popup:")}</div>
                     <CheckboxControl
-                        heading={__("Include in Popup:")}
                         label={__("Listing Title")}
                         checked={popupTitle}
                         onChange={value =>
@@ -254,13 +288,24 @@ class MappedPostsArchiveEdit extends Component {
 
 export default withSelect((select, props) => {
     const { attributes } = props;
-    const { postTypeSelected } = attributes;
-    const { getEntityRecords, getMedia, getPostTypes } = select("core");
+    const { postTypeSelected, taxonomySelected } = attributes;
+    const { getEntityRecords, getMedia, getPostTypes, getTaxonomies } = select("core");
+
     let query = { per_page: 5 };
     const latestPosts = getEntityRecords("postType", postTypeSelected, query);
 
+    let taxonomies = getTaxonomies();
+    console.log(postTypeSelected);
+    console.log(taxonomies);
+    taxonomies = !Array.isArray(taxonomies)
+            ? taxonomies
+            : taxonomies.filter(tax => tax.types.includes(postTypeSelected));
+
+
     return {
         postTypes: getPostTypes(),
+        taxonomies: taxonomies,
+        taxSelected:  Array.isArray(taxonomies) && taxonomies.length == 1 ? taxonomies[0] : taxonomySelected,
         posts: !Array.isArray(latestPosts)
             ? latestPosts
             : latestPosts.map(post => {

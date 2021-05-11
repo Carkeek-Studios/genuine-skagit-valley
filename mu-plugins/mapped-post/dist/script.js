@@ -20989,7 +20989,19 @@ function MapCluster(props) {
       lineNumber: 65,
       columnNumber: 9
     }
-  }, wp.element.createElement("div", {
+  }, wp.element.createElement(PointsList, {
+    data: locations,
+    onItemClick: handleItemClick,
+    selectedIndex: selected,
+    hideList: hideList,
+    onHeaderClick: handleHeaderClick,
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66,
+      columnNumber: 9
+    }
+  }), wp.element.createElement("div", {
     className: 'data-map',
     __self: this,
     __source: {
@@ -21018,7 +21030,7 @@ function MapCluster(props) {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 75,
-      columnNumber: 9
+      columnNumber: 13
     }
   }), wp.element.createElement(_Pins_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
     selectedIndex: selected,
@@ -21030,12 +21042,20 @@ function MapCluster(props) {
       lineNumber: 80,
       columnNumber: 13
     }
+  }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["LayersControl"], {
+    position: "topright",
+    __self: this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81,
+      columnNumber: 13
+    }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["ZoomControl"], {
     position: "topleft",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81,
+      lineNumber: 82,
       columnNumber: 13
     }
   }))));
