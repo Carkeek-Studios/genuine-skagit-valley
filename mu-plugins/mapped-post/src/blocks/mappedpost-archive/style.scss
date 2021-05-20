@@ -1,9 +1,8 @@
 :root {
     --am-map-height: 650px;
-    --am-list-width: 320px;
+    --am-list-width: 0;
     --color-theme-green: #21bf73;
     --color-theme-blue: #41a7b3;
-
   }
 
 .wp-block-mapped-posts-archive,
@@ -21,6 +20,78 @@
     position: relative;
     border-top: 2px solid #e3e3e3;
     border-bottom: 2px solid #e3e3e3;
+    .archive-filter-list {
+        position: absolute;
+        z-index: 200;
+        top: 2rem;
+        left: 2rem;
+        box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
+        border: 1px solid var(--color-theme-grey-med-light);
+        background-color: #f1f1f1;
+        padding: 1rem 2rem;
+        font-size: 16px;
+        font-weight: 500;
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            line-height: 1.75;
+        }
+        section > ul {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-theme-grey-med-light);
+        }
+        section:last-of-type {
+            & > ul {
+                margin-bottom: 1rem;
+            }
+        }
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            background-color: #fff;
+            border: 1px solid var(--color-theme-grey-med-light);
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            margin-right: 5px;
+            &:checked {
+                background-color: var(--color-theme-orange);
+                &:after {
+                    content:'\e80a';
+                    font-family: var(--font-family-icons);
+                    font-size: 14px;
+                    position: absolute;
+                    top: -3px;
+                    left: 3px;
+                    color: #fff;
+                }
+            }
+        }
+        button {
+            background-color: transparent;
+            color: var(--color-theme-grey-dark);
+            border: none;
+            padding-left: 0;
+            &:after {
+                content: '\e805';
+                font-family: var(--font-family-icons);
+                display: inline-block;
+                margin-left: 5px;
+            }
+            &.btn-active {
+                &:after {
+                    content: '\e804';
+                }
+            }
+        }
+    }
+
     .leaflet-container {
         width: 100%;
         height: var(--am-map-height);

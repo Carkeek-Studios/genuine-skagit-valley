@@ -311,7 +311,7 @@ class MappedPosts_CustomPost {
 	 * @param array $attributes Attributes passed to callback.
 	 * @return string HTML of dynamic content.
 	 */
-	public function carkeek_blocks_render_custom_posttype_archive( $attributes ) {
+	public function carkeek_blocks_render_custom_posttype_archive_old( $attributes ) {
 		if ( empty( $attributes['postTypeSelected'] ) ) {
 			return;
 		}
@@ -406,6 +406,24 @@ class MappedPosts_CustomPost {
 		} else {
 			return '<div>' . __( 'No Posts Found', 'carkeek-blocks' ) . '</div>';
 		}
+	}
+	/**
+	 * Return div that we add the data to from the front end app
+	 */
+	public function carkeek_blocks_render_custom_posttype_archive( $attributes ) {
+		$taxonomies = '';
+		if ( ! empty( $attributes['taxonomySelected'] ) ) {
+			$taxonomies = implode( ',', $attributes['taxonomySelected'] );
+		}
+		$classname = 'wp-block-carkeek-map-archive';
+		if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
+			$classname .= ' align' . $attributes['align'];
+		}
+		return '<div class="' . $classname . '"><div id="mapped-posts-map"
+		data-post="' . $attributes['postTypeSelected'] . '"
+		data-thumb="' . $attributes['popupImage'] . '"
+		data-taxonomies="' . $taxonomies . '"
+		data-address="' . $attributes['latFieldSelected'] . '"></div></div>';
 	}
 
 }
