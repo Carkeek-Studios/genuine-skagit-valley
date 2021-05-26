@@ -6,7 +6,7 @@ import icons from './icons';
 
 const Pin = (props) => {
     const markerRef = useRef(null);
-    const { center, content, openPopup, onItemClick, itemId, groupRef, count } = props;
+    const { center, title, excerpt, link, openPopup, onItemClick, itemId, groupRef, count } = props;
     useEffect(() => {
         if (openPopup) {
             const target = markerRef.current.leafletElement;
@@ -18,25 +18,26 @@ const Pin = (props) => {
         }
       }, [openPopup]);
 
-    const getMyIcon =({count}) => {
+    const getMyIcon =() => {
           const myIcon = L.divIcon({
             className: 'farm-icon',
-            html: openPopup ? `${icons.selected} <span class="count">${count}</span>` : `${icons.marker} <span class="count">${count}</span>`,
+            html: openPopup ? `${icons.selected}` : `${icons.marker}`,
             iconSize: [30, 30],
             iconAnchor: [15, 45],
             popupAnchor:  [-3, -76]
         });
         return myIcon;
     }
+    const popup = <div className={'map-archive-popup'}><span className={'popup-title'} dangerouslySetInnerHTML={ {__html: title} } /><span className={'popup-excerpt'} dangerouslySetInnerHTML={ {__html: excerpt} }/><a className={'popup-link'} href={link}>More</a></div>
     return (
         <Marker
             position={center}
-            icon={getMyIcon({count})}
+            icon={getMyIcon()}
             ref={markerRef}
             onClick={() => {
                 onItemClick(itemId);
             }}>
-        <Popup><div className={'map-archive-popup'} dangerouslySetInnerHTML={{__html: content}} /></Popup>
+        <Popup>{popup}</Popup>
         </Marker>
     );
 }

@@ -55,6 +55,7 @@
 		& button,
 		& a.button {
 			background-color: var(--color-button-background);
+			color: #fff;
 
 			padding: var(--padding-button);
 			font-size: var(--font-size-button);
