@@ -43,7 +43,7 @@ const MapBox = () => {
 
 
 function MapCluster(props) {
-    const { zoom, locations, maxZoom, categories, isMapLoading, isCatLoading, visibleLocations, onUpdateLocations, visibleBounds} = props;
+    const { zoom, locations, maxZoom, categories, isMapLoading, isCatLoading, visibleLocations, onUpdateLocations, visibleBounds, taxFilter} = props;
     const hideListAtLoad = window.innerWidth > 600 ? false : true;
     const [selected, setSelected] = useState();
     const [selectedCats, setSelectedCats] = useState([]);
@@ -52,16 +52,13 @@ function MapCluster(props) {
     const mapRef = useRef(null);
 
     const arrayContains = (arr1, arr2) => {
-        return arr1.some(i => arr2.indexOf(i) > 0);
+        return _.intersection(arr1, arr2).length > 0;
     }
 
     const mapReady = !isMapLoading && !isCatLoading;
 
     function handleItemClick(index) {
         setSelected(index);
-        if (window.innerWidth < 601) {
-            setHideList(true);
-        }
     }
 
     function handleHeaderClick() {
@@ -81,11 +78,12 @@ function MapCluster(props) {
     const showList = false;
 
     const filterLocations = (selectedCats) => {
+
         //const all = _.clone(locations);
         if (selectedCats.length > 0 ) {
             const visible = []
             locations.map((item) => {
-                if (arrayContains(selectedCats, item.ck_business_type)) {
+                if (arrayContains(selectedCats, item[taxFilter])) {
                     visible.push(item);
                 }
             })

@@ -37,6 +37,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'ck_custom_archive_layout__after_title', array( $this, 'ck_blocks_custom_archive_after_title' ), 10, 1 );
 		add_action( 'admin_menu', array( $this, 'remove_menu_items' ) );
 		add_filter( 'carkeek_block_custom_post_layout_tribe_organizer__query_args', array( $this, 'set_organizers_sort' ), 10, 1 );
+		add_filter( 'ck_custom_archive_ck_members__featured_image', array( $this, 'ck_members_featured_image' ), 10, 1 );
 	}
 
 	/**
@@ -65,7 +66,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			}
 		} elseif ( 'tribe_events' === $post->post_type ) {
 			$organizers = tribe_get_organizer_ids( $post->ID );
-			$org_names    = array();
+			$org_names  = array();
 			foreach ( $organizers as $organizer_id ) {
 
 				$org_names[] = tribe_get_organizer( $organizer_id );
@@ -93,6 +94,21 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		return $args;
 
+	}
+
+	/** Set Default Image
+	 *
+	 * @param string $featured_image;
+	 */
+	public function ck_members_featured_image( $featured_image ) {
+		if ( empty( $featured_image ) ) {
+			$default = get_field( 'member_directory_default_image', 'options' );
+			if ( ! empty( $default ) ) {
+				return wp_get_attachment_image( $default, 'medium' );
+			}
+		} else {
+			return $featured_image;
+		}
 	}
 
 

@@ -12,7 +12,8 @@ import _ from 'lodash';
 //with help from https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/
 
 //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_members?per_page=100&_fields=id,title,excerpt,ck_business_type,acf.member_address
-function App(){
+function App(props){
+  const { dataUrl, taxUrl, tax } = props;
     //const MapLoading = withMapLoading(Map);
     const [markersState, setMarkersState] = useState({
       loadingMarkers: true,
@@ -35,21 +36,27 @@ function App(){
     // });
 
     const resolveMarkers = (markers) =>  {
-        updateVisibleMarkers(markers);
+        let usable = [];
+        //only use if have lat lng
+        markers.forEach( (marker) => {
+          if (marker.acf.member_address.lat.length > 0 && marker.acf.member_address.lng.length > 0) {
+            usable.push(marker);
+          }
+        });
+        updateVisibleMarkers(usable);
         setMarkersState( (prevState) => {
           return {
             ...prevState,
             loadingMarkers: false,
-            markers: markers,
-            visible: markers,
-            bounds: setBounds(markers)
+            markers: usable,
+            visible: usable,
+            bounds: setBounds(usable)
           }
         });
 
     }
 
     const updateVisibleMarkers = (markers) => {
-      console.log(markers);
       setMarkersState( (prevState) => {
         return {
           ...prevState,
@@ -61,13 +68,11 @@ function App(){
     }
 
     const setBounds = (markers) => {
-      console.log("setbounds");
         const bounds = L.latLngBounds();
         markers.forEach( (data) => {
             let position = [data.acf.member_address.lat, data.acf.member_address.lng];
             bounds.extend(position);
         })
-        console.log(bounds);
         return bounds;
     }
 
@@ -103,11 +108,11 @@ function App(){
   }
 
   useEffect(() => {
-    getMarkerData(resolveMarkers);
+    getMarkerData(dataUrl, resolveMarkers);
   }, [setMarkersState]);
 
   useEffect(() => {
-    getCategoryData(resolveCategories);
+    getCategoryData(taxUrl, resolveCategories);
   }, [setCatState]);
   return(
     <Map
@@ -118,6 +123,7 @@ function App(){
     visibleLocations={markersState.visible}
     visibleBounds={markersState.bounds}
     onUpdateLocations={updateVisibleMarkers}
+    taxFilter={tax}
     zoom="8"
     maxZoom="18"
     />
@@ -127,5 +133,9 @@ function App(){
 
 
 if (document.getElementById('mapped-posts-map')){
-    render(<App/>, document.getElementById('mapped-posts-map'));
+    const mapEl = document.getElementById('mapped-posts-map');
+    const dataUrl = mapEl.getAttribute('data-items');
+    const taxUrl = mapEl.getAttribute('data-taxurl');
+    const taxonomy = mapEl.getAttribute('data-taxonomy');
+    render(<App dataUrl={dataUrl} taxUrl={taxUrl} tax={taxonomy} />, document.getElementById('mapped-posts-map'));
 }
