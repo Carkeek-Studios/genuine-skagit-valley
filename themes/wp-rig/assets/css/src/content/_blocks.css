@@ -36,6 +36,10 @@
 
 	&:first-child {
 		margin-top: 0;
+
+		&.add-margin-top {
+			margin-top: var(--block-spacing-vert);
+		}
 	}
 
 	&.is-page-intro,

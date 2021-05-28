@@ -273,7 +273,7 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
           lngFieldSelected = attributes.lngFieldSelected,
           mapAddFilter = attributes.mapAddFilter,
           taxonomySelected = attributes.taxonomySelected;
-      var latlngfieldOptions;
+      var latlngfieldOptions = [];
 
       if (postTypes && postTypeSelected) {
         var typeObj = postTypes.find(function (_ref) {
@@ -602,8 +602,6 @@ var MappedPostsArchiveEdit = /*#__PURE__*/function (_Component) {
   };
   var latestPosts = getEntityRecords("postType", postTypeSelected, query);
   var taxonomies = getTaxonomies();
-  console.log(postTypeSelected);
-  console.log(taxonomies);
   taxonomies = !Array.isArray(taxonomies) ? taxonomies : taxonomies.filter(function (tax) {
     return tax.types.includes(postTypeSelected);
   });

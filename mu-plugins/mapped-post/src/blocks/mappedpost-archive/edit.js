@@ -46,7 +46,7 @@ class MappedPostsArchiveEdit extends Component {
             mapAddFilter,
             taxonomySelected
         } = attributes;
-        let latlngfieldOptions;
+        let latlngfieldOptions = [];
         if (postTypes && postTypeSelected) {
             const typeObj = postTypes.find( ({ slug }) => slug === postTypeSelected );
             if (typeObj.metafields) {
@@ -292,8 +292,6 @@ export default withSelect((select, props) => {
     const latestPosts = getEntityRecords("postType", postTypeSelected, query);
 
     let taxonomies = getTaxonomies();
-    console.log(postTypeSelected);
-    console.log(taxonomies);
     taxonomies = !Array.isArray(taxonomies)
             ? taxonomies
             : taxonomies.filter(tax => tax.types.includes(postTypeSelected));

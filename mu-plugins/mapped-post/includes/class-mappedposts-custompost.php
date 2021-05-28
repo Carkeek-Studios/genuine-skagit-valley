@@ -317,7 +317,14 @@ class MappedPosts_CustomPost {
 		// ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address`
 		// ${baseUrl}ck_business_type?per_page=100&_fields=id,count,name,slug,parent
 		if ( ! empty( $attributes['taxonomySelected'] ) ) {
-			foreach ( $attributes['taxonomySelected'] as $tax ) {
+			if ( is_array( $attributes['taxonomySelected'] ) ) {
+				foreach ( $attributes['taxonomySelected'] as $tax ) {
+					$taxes[]    = $tax;
+					$rest_url   = $base_url . $tax . '?per_page=100&_fields=id,count,name,slug,parent';
+					$tax_urls[] = $rest_url;
+				}
+			} else {
+				$tax        = $attributes['taxonomySelected'];
 				$taxes[]    = $tax;
 				$rest_url   = $base_url . $tax . '?per_page=100&_fields=id,count,name,slug,parent';
 				$tax_urls[] = $rest_url;
@@ -327,9 +334,9 @@ class MappedPosts_CustomPost {
 		$tax_rest_urls = implode( '|', $tax_urls );
 		$data_taxes    = implode( ',', $taxes );
 
-		$data_url  = $base_url . $attributes['postTypeSelected'] . '?per_page=100&categories&_fields=id,link,title,excerpt,acf.member_address,' . $data_taxes;
-		//TODO make this a setting;
-		$include = get_term_by('slug', 'places-to-visit', 'ck_listing_category');
+		$data_url = $base_url . $attributes['postTypeSelected'] . '?per_page=100&categories&_fields=id,link,title,excerpt,acf.member_address,' . $data_taxes;
+		// TODO make this a setting;
+		$include   = get_term_by( 'slug', 'places-to-visit', 'ck_listing_category' );
 		$data_url .= '&ck_listing_category=' . $include->term_id;
 		$data_url  = apply_filters( 'ck_maparchive_dataurl', $data_url, $attributes );
 		$classname = 'wp-block-carkeek-map-archive';
