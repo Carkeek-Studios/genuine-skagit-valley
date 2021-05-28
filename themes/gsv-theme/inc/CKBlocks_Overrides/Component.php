@@ -103,6 +103,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public function ck_members_featured_image( $featured_image ) {
 		if ( empty( $featured_image ) ) {
 			$default = get_field( 'member_directory_default_image', 'options' );
+			var_dump($default);
 			if ( ! empty( $default ) ) {
 				return wp_get_attachment_image( $default, 'medium' );
 			}
