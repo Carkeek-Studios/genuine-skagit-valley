@@ -21,6 +21,44 @@
             "height": ""
         },
         {
+            "key": "field_60afe8785c6f2",
+            "label": "Open to the Public",
+            "name": "open_to_the_public",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Open to the Public",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_60afe8145c6f0",
+            "label": "Hours",
+            "name": "hours",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_609056bab1043",
             "label": "Phone",
             "name": "member_phone",
@@ -92,7 +130,7 @@
                     "key": "field_60905746b1047",
                     "label": "Facebook",
                     "name": "facebook",
-                    "type": "text",
+                    "type": "url",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -102,16 +140,13 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "placeholder": ""
                 },
                 {
                     "key": "field_60905753b1048",
                     "label": "Instagram",
                     "name": "instagram",
-                    "type": "text",
+                    "type": "url",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -121,16 +156,13 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "placeholder": ""
                 },
                 {
                     "key": "field_6090575cb1049",
                     "label": "Twitter",
                     "name": "twitter",
-                    "type": "text",
+                    "type": "url",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -140,31 +172,73 @@
                         "id": ""
                     },
                     "default_value": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "maxlength": ""
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_60afedde2ab4a",
+                    "label": "LinkedIn",
+                    "name": "linkedin",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_60afee1a2ab4b",
+                    "label": "Pinterest",
+                    "name": "pinterest",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_60afee2c2ab4c",
+                    "label": "YouTube",
+                    "name": "youtube",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_60afee392ab4d",
+                    "label": "Vimeo",
+                    "name": "vimeo",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
                 }
             ]
-        },
-        {
-            "key": "field_6090577d5fe02",
-            "label": "Excerpt",
-            "name": "member_excerpt",
-            "type": "textarea",
-            "instructions": "Short description used on the map\/archive.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": 4,
-            "new_lines": ""
         }
     ],
     "location": [
@@ -184,5 +258,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1620252041
+    "modified": 1622163240
 }

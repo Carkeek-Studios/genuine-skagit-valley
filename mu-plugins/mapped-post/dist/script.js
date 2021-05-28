@@ -24050,7 +24050,8 @@ function MapCluster(props) {
       isCatLoading = props.isCatLoading,
       visibleLocations = props.visibleLocations,
       onUpdateLocations = props.onUpdateLocations,
-      visibleBounds = props.visibleBounds;
+      visibleBounds = props.visibleBounds,
+      taxFilter = props.taxFilter;
   var hideListAtLoad = window.innerWidth > 600 ? false : true;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
@@ -24071,19 +24072,13 @@ function MapCluster(props) {
   var mapRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
   var arrayContains = function arrayContains(arr1, arr2) {
-    return arr1.some(function (i) {
-      return arr2.indexOf(i) > 0;
-    });
+    return _.intersection(arr1, arr2).length > 0;
   };
 
   var mapReady = !isMapLoading && !isCatLoading;
 
   function handleItemClick(index) {
     setSelected(index);
-
-    if (window.innerWidth < 601) {
-      setHideList(true);
-    }
   }
 
   function handleHeaderClick() {
@@ -24105,7 +24100,7 @@ function MapCluster(props) {
     if (selectedCats.length > 0) {
       var visible = [];
       locations.map(function (item) {
-        if (arrayContains(selectedCats, item.ck_business_type)) {
+        if (arrayContains(selectedCats, item[taxFilter])) {
           visible.push(item);
         }
       });
@@ -24139,7 +24134,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 116,
       columnNumber: 9
     }
   }, showList && wp.element.createElement(PointsList, {
@@ -24151,7 +24146,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120,
+      lineNumber: 118,
       columnNumber: 13
     }
   }), mapReady && wp.element.createElement(_Filters_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -24164,7 +24159,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129,
+      lineNumber: 127,
       columnNumber: 9
     }
   }), wp.element.createElement("div", {
@@ -24172,7 +24167,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136,
+      lineNumber: 134,
       columnNumber: 9
     }
   }, wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["Map"], _extends({}, mapProps, {
@@ -24187,14 +24182,14 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 139,
+      lineNumber: 137,
       columnNumber: 9
     }
   }), wp.element.createElement(MapBox, {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 140,
+      lineNumber: 138,
       columnNumber: 13
     }
   }), mapReady && wp.element.createElement(_Pins_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -24205,7 +24200,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142,
+      lineNumber: 140,
       columnNumber: 17
     }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["ZoomControl"], {
@@ -24213,7 +24208,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144,
+      lineNumber: 142,
       columnNumber: 13
     }
   }))));
@@ -24385,7 +24380,7 @@ var Pin = function Pin(props) {
       lineNumber: 31,
       columnNumber: 215
     }
-  }, "More"));
+  }, "Learn More"));
   return wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["Marker"], {
     position: center,
     icon: getMyIcon(),
@@ -24502,7 +24497,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var baseUrl = 'http://genuine-skagit-valley.local/wp-json/wp/v2/';
 
 var getData = function getData(page, url, data, resolve, reject) {
   var query = "".concat(url, "&page=").concat(page);
@@ -24519,13 +24513,13 @@ var getData = function getData(page, url, data, resolve, reject) {
   });
 };
 
-var getMarkerData = function getMarkerData(resolve, reject) {
-  var url = "".concat(baseUrl, "ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address");
+var getMarkerData = function getMarkerData(url, resolve, reject) {
+  //const url = `${baseUrl}ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address`
   return getData(1, url, [], resolve, reject);
 };
-var getCategoryData = function getCategoryData(resolve, reject) {
+var getCategoryData = function getCategoryData(url, resolve, reject) {
   //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_business_type?per_page=100&_fields=id,count,name,slug,parent
-  var url = "".concat(baseUrl, "ck_business_type?per_page=100&_fields=id,count,name,slug,parent");
+  //const url = `${baseUrl}ck_business_type?per_page=100&_fields=id,count,name,slug,parent`;
   return getData(1, url, [], resolve, reject);
 };
 /* harmony default export */ __webpack_exports__["default"] = (getMarkerData);
@@ -24542,8 +24536,8 @@ var getCategoryData = function getCategoryData(resolve, reject) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var icons = {};
-icons.selected = "<svg\nxmlns=\"http://www.w3.org/2000/svg\"\ndata-name=\"Layer 1\"\nviewBox=\"0 0 27.24 36.29\"\n>\n<path\n  fill=\"#21bf73\"\n  d=\"M28.73 14.88a13.61 13.61 0 00-27.22 0v.16a8.3 8.3 0 00.2 2.14 13.67 13.67 0 001 3.31C4.25 24.32 7.63 30 15.12 37.54c7.62-7.62 11-13.41 12.46-17.23a14.12 14.12 0 00.88-2.88 8.51 8.51 0 00.27-2.55z\"\n  transform=\"translate(-1.51 -1.27)\"\n></path>\n<circle cx=\"13.62\" cy=\"13.61\" r=\"10.34\" fill=\"#fff\"></circle>\n</svg>";
-icons.marker = "<svg\nxmlns=\"http://www.w3.org/2000/svg\"\ndata-name=\"Layer 1\"\nviewBox=\"0 0 27.24 36.29\"\n>\n<path\n  fill=\"#c39\"\n  d=\"M28.73 14.88a13.61 13.61 0 00-27.22 0v.16a8.3 8.3 0 00.2 2.14 13.67 13.67 0 001 3.31C4.25 24.32 7.63 30 15.12 37.54c7.62-7.62 11-13.41 12.46-17.23a14.12 14.12 0 00.88-2.88 8.51 8.51 0 00.27-2.55z\"\n  transform=\"translate(-1.51 -1.27)\"\n></path>\n<circle cx=\"13.62\" cy=\"13.61\" r=\"10.34\" fill=\"#fff\"></circle>\n</svg>";
+icons.selected = "<svg\nxmlns=\"http://www.w3.org/2000/svg\"\nwidth=\"24\"\nheight=\"32\"\nviewBox=\"0 0 24 32\"\n>\n<g fill=\"none\" fillRule=\"evenodd\" stroke=\"none\" strokeWidth=\"1\">\n  <g fill=\"#62902c\" stroke=\"#FFF\" transform=\"translate(-824 -623)\">\n    <g transform=\"translate(-4 381)\">\n      <g transform=\"translate(560 243)\">\n        <path d=\"M269 11.178c0-1.514.292-2.958.875-4.341.538-1.316 1.34-2.517 2.397-3.597A11.144 11.144 0 01280.195 0c1.541 0 2.99.288 4.339.858a11.18 11.18 0 013.58 2.416 11.026 11.026 0 012.397 3.563c.583 1.383.875 2.827.875 4.34 0 1.512-.292 2.959-.875 4.34-.388.866-.778 1.567-1.165 2.108l-7.42 11.241c-.474.757-1.05 1.134-1.716 1.134-.67 0-1.265-.377-1.781-1.134l-7.389-11.241c-.474-.67-.865-1.371-1.165-2.107a11.055 11.055 0 01-.875-4.34\"></path>\n      </g>\n    </g>\n  </g>\n</g>\n</svg>";
+icons.marker = "<svg\nxmlns=\"http://www.w3.org/2000/svg\"\nwidth=\"24\"\nheight=\"32\"\nviewBox=\"0 0 24 32\"\n>\n<g fill=\"none\" fillRule=\"evenodd\" stroke=\"none\" strokeWidth=\"1\">\n  <g fill=\"#CC5D1B\" stroke=\"#FFF\" transform=\"translate(-824 -623)\">\n    <g transform=\"translate(-4 381)\">\n      <g transform=\"translate(560 243)\">\n        <path d=\"M269 11.178c0-1.514.292-2.958.875-4.341.538-1.316 1.34-2.517 2.397-3.597A11.144 11.144 0 01280.195 0c1.541 0 2.99.288 4.339.858a11.18 11.18 0 013.58 2.416 11.026 11.026 0 012.397 3.563c.583 1.383.875 2.827.875 4.34 0 1.512-.292 2.959-.875 4.34-.388.866-.778 1.567-1.165 2.108l-7.42 11.241c-.474.757-1.05 1.134-1.716 1.134-.67 0-1.265-.377-1.781-1.134l-7.389-11.241c-.474-.67-.865-1.371-1.165-2.107a11.055 11.055 0 01-.875-4.34\"></path>\n      </g>\n    </g>\n  </g>\n</g>\n</svg>";
 /* harmony default export */ __webpack_exports__["default"] = (icons);
 
 /***/ }),
@@ -24643,8 +24637,11 @@ var render = wp.element.render;
  //with help from https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/
 //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_members?per_page=100&_fields=id,title,excerpt,ck_business_type,acf.member_address
 
-function App() {
-  //const MapLoading = withMapLoading(Map);
+function App(props) {
+  var dataUrl = props.dataUrl,
+      taxUrl = props.taxUrl,
+      tax = props.tax; //const MapLoading = withMapLoading(Map);
+
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     loadingMarkers: true,
     markers: null,
@@ -24672,19 +24669,25 @@ function App() {
 
 
   var resolveMarkers = function resolveMarkers(markers) {
-    updateVisibleMarkers(markers);
+    var usable = []; //only use if have lat lng
+
+    markers.forEach(function (marker) {
+      if (marker.acf.member_address.lat.length > 0 && marker.acf.member_address.lng.length > 0) {
+        usable.push(marker);
+      }
+    });
+    updateVisibleMarkers(usable);
     setMarkersState(function (prevState) {
       return _objectSpread({}, prevState, {
         loadingMarkers: false,
-        markers: markers,
-        visible: markers,
-        bounds: setBounds(markers)
+        markers: usable,
+        visible: usable,
+        bounds: setBounds(usable)
       });
     });
   };
 
   var updateVisibleMarkers = function updateVisibleMarkers(markers) {
-    console.log(markers);
     setMarkersState(function (prevState) {
       return _objectSpread({}, prevState, {
         visible: markers,
@@ -24694,13 +24697,11 @@ function App() {
   };
 
   var setBounds = function setBounds(markers) {
-    console.log("setbounds");
     var bounds = leaflet__WEBPACK_IMPORTED_MODULE_2___default.a.latLngBounds();
     markers.forEach(function (data) {
       var position = [data.acf.member_address.lat, data.acf.member_address.lng];
       bounds.extend(position);
     });
-    console.log(bounds);
     return bounds;
   };
 
@@ -24738,10 +24739,10 @@ function App() {
   };
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    Object(_components_getData__WEBPACK_IMPORTED_MODULE_3__["getMarkerData"])(resolveMarkers);
+    Object(_components_getData__WEBPACK_IMPORTED_MODULE_3__["getMarkerData"])(dataUrl, resolveMarkers);
   }, [setMarkersState]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    Object(_components_getData__WEBPACK_IMPORTED_MODULE_3__["getCategoryData"])(resolveCategories);
+    Object(_components_getData__WEBPACK_IMPORTED_MODULE_3__["getCategoryData"])(taxUrl, resolveCategories);
   }, [setCatState]);
   return wp.element.createElement(_components_Map__WEBPACK_IMPORTED_MODULE_4__["default"], {
     isMapLoading: markersState.loadingMarkers,
@@ -24751,12 +24752,13 @@ function App() {
     visibleLocations: markersState.visible,
     visibleBounds: markersState.bounds,
     onUpdateLocations: updateVisibleMarkers,
+    taxFilter: tax,
     zoom: "8",
     maxZoom: "18",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113,
+      lineNumber: 118,
       columnNumber: 5
     }
   }) //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
@@ -24764,11 +24766,18 @@ function App() {
 }
 
 if (document.getElementById('mapped-posts-map')) {
+  var mapEl = document.getElementById('mapped-posts-map');
+  var dataUrl = mapEl.getAttribute('data-items');
+  var taxUrl = mapEl.getAttribute('data-taxurl');
+  var taxonomy = mapEl.getAttribute('data-taxonomy');
   render(wp.element.createElement(App, {
+    dataUrl: dataUrl,
+    taxUrl: taxUrl,
+    tax: taxonomy,
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130,
+      lineNumber: 140,
       columnNumber: 12
     }
   }), document.getElementById('mapped-posts-map'));

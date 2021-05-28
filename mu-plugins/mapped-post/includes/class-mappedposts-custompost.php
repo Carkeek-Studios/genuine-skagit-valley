@@ -122,17 +122,17 @@ class MappedPosts_CustomPost {
 
 		// Add new taxonomy, make it hierarchical (like categories)
 		$labels = array(
-			'name'              => _x( 'Business Types', 'taxonomy general name', 'textdomain' ),
-			'singular_name'     => _x( 'Business Type', 'taxonomy singular name', 'textdomain' ),
-			'search_items'      => __( 'Search Business Types', 'textdomain' ),
-			'all_items'         => __( 'All Business Types', 'textdomain' ),
-			'parent_item'       => __( 'Parent Business Type', 'textdomain' ),
-			'parent_item_colon' => __( 'Parent Business Type:', 'textdomain' ),
-			'edit_item'         => __( 'Edit Business Type', 'textdomain' ),
-			'update_item'       => __( 'Update Business Type', 'textdomain' ),
-			'add_new_item'      => __( 'Add New Business Type', 'textdomain' ),
-			'new_item_name'     => __( 'New Business Type Name', 'textdomain' ),
-			'menu_name'         => __( 'Business Type', 'textdomain' ),
+			'name'              => _x( 'Listing Categories', 'taxonomy general name', 'textdomain' ),
+			'singular_name'     => _x( 'Listing Category', 'taxonomy singular name', 'textdomain' ),
+			'search_items'      => __( 'Search Listing Categories', 'textdomain' ),
+			'all_items'         => __( 'All Listing Categories', 'textdomain' ),
+			'parent_item'       => __( 'Parent Listing Category', 'textdomain' ),
+			'parent_item_colon' => __( 'Parent Listing Category:', 'textdomain' ),
+			'edit_item'         => __( 'Edit Listing Category', 'textdomain' ),
+			'update_item'       => __( 'Update Listing Category', 'textdomain' ),
+			'add_new_item'      => __( 'Add New Listing Category', 'textdomain' ),
+			'new_item_name'     => __( 'New Listing Category Name', 'textdomain' ),
+			'menu_name'         => __( 'Listing Category', 'textdomain' ),
 		);
 
 		$args = array(
@@ -141,11 +141,11 @@ class MappedPosts_CustomPost {
 			'show_ui'           => true,
 			'show_admin_column' => true,
 			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'business-type' ),
+			'rewrite'           => array( 'slug' => 'listing-category' ),
 			'show_in_rest'      => true,
 		);
 
-		register_taxonomy( 'ck_business_type', array( 'ck_members' ), $args );
+		register_taxonomy( 'ck_listing_category', array( 'ck_members' ), $args );
 	}
 
 	/**
@@ -305,124 +305,44 @@ class MappedPosts_CustomPost {
 		return $html;
 	}
 
-	/**
-	 * Render Custom Post Type Archive
-	 *
-	 * @param array $attributes Attributes passed to callback.
-	 * @return string HTML of dynamic content.
-	 */
-	public function carkeek_blocks_render_custom_posttype_archive_old( $attributes ) {
-		if ( empty( $attributes['postTypeSelected'] ) ) {
-			return;
-		}
 
-		var_dump( $attributes );
-		$args  = array(
-			'posts_per_page' => -1,
-			'post_type'      => $attributes['postTypeSelected'],
-			'orderby'        => 'title',
-			'order'          => 'ASC',
-		);
-		$query = new WP_Query( $args );
-		$posts = '';
-
-		if ( empty( $attributes['latFieldSelected'] ) || empty( $attributes['lngFieldSelected'] ) ) {
-			return 'You need to select the location fields in order to display posts on a map, edit the page and select the fields in the block settings';
-		}
-
-		$taxonomies = $attributes['taxonomySelected'];
-		$taxfilters = '';
-		if ( ( true == $attributes['mapAddFilter'] ) && ! empty( $taxonomies ) ) {
-			$form = '';
-			foreach ( $taxonomies as $tax ) {
-				$categories         = get_terms( $tax, array( 'hide_empty' => true ) );
-				$category_hierarchy = array();
-				self::sort_terms_hierarchically( $categories, $category_hierarchy );
-				$form .= self::build_terms_list( $category_hierarchy, $tax );
-			}
-			// want to make this flexible for future if we have levels of hierarchy...
-			$taxfilters  = '<div id="mapped-post-filters">';
-			$taxfilters .= $form;
-			$taxfilters .= '</div>';
-		}
-
-		if ( $query->have_posts() ) {
-
-			$posts .= '<div class="wp-block-mapped-posts-archive"><div id="mapped-posts-map"></div><div id="mapped-posts-content"><ol id="mapped-posts-data">';
-			$count  = 1;
-			while ( $query->have_posts() ) {
-				$query->the_post();
-				global $post;
-
-				$lat            = get_post_meta( $post->ID, $attributes['latFieldSelected'], true );
-				$lat            = is_array( $lat ) && isset( $lat['lat'] ) ? $lat['lat'] : $lat;
-				$lng            = get_post_meta( $post->ID, $attributes['lngFieldSelected'], true );
-				$lng            = is_array( $lng ) && isset( $lng['lng'] ) ? $lng['lng'] : $lng;
-				$featured_image = '';
-				$post_title     = '';
-				$class_pre      = 'wp-block-mapped-posts-archive__';
-
-				if ( ! empty( $lat ) && ! empty( $lng ) ) {
-
-					$featured_image = '';
-					if ( has_post_thumbnail() && true == $attributes['popupImage'] ) {
-						$featured_image = '<div class="post-thumb">' . get_the_post_thumbnail( null, 'medium_large' ) . '</div>';
-					}
-					$title_class = '';
-					if ( false == $attributes['popupTitle'] ) {
-						$title_class = 'hidden';
-					}
-					$post_title = '<h2 class="post-title" class="' . $title_class . '"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a></h2>';
-					$excerpt    = '';
-					if ( true == $attributes['popupExcerpt'] ) {
-						$limit   = $attributes['excerptLength'];
-						$excerpt = '<div class="post-excerpt">' . self::excerpt( $limit ) . '</div>';
-					}
-					$my_taxes = '';
-					if ( ! empty( $taxonomies ) ) {
-						foreach ( $taxonomies as $taxonomy ) {
-							$my_terms  = get_the_terms( $post, $taxonomy );
-							$add_terms = array();
-							if ( false !== $my_terms ) {
-								foreach ( $my_terms as $my_term ) {
-									$add_terms [] = $my_term->slug;
-								}
-							}
-							if ( ! empty( $add_terms ) ) {
-								$my_taxes .= 'data-' . $taxonomy . '="' . implode( ',', $add_terms ) . '"';
-							}
-						}
-					}
-
-					$learn_more = wp_sprintf( '<a href="%1s">Learn More <span class="screen-reader-text">%2s</span></a>', get_the_permalink(), get_the_title() );
-
-					$posts .= '<li data-id="' . $post->ID . '" data-lat="' . $lat . '" data-lng="' . $lng . '" data-count="' . $count . '"' . $my_taxes . '>' . $featured_image . '<div class="' . $class_pre . 'content-wrap">' . $post_title . $excerpt . $learn_more . '</div></li>';
-					$count++;
-				}
-			}
-			$posts .= '</ol></div>' . $taxfilters . '</div>';
-			wp_reset_postdata();
-			return $posts;
-		} else {
-			return '<div>' . __( 'No Posts Found', 'carkeek-blocks' ) . '</div>';
-		}
-	}
 	/**
 	 * Return div that we add the data to from the front end app
 	 */
 	public function carkeek_blocks_render_custom_posttype_archive( $attributes ) {
-		$taxonomies = '';
+		// this is an array, but we are only accepting single value, in the future that may change.
+		$tax_urls = array();
+		$taxes    = array();
+		$base_url = get_rest_url() . 'wp/v2/';
+		// ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address`
+		// ${baseUrl}ck_business_type?per_page=100&_fields=id,count,name,slug,parent
 		if ( ! empty( $attributes['taxonomySelected'] ) ) {
-			$taxonomies = implode( ',', $attributes['taxonomySelected'] );
+			foreach ( $attributes['taxonomySelected'] as $tax ) {
+				$taxes[]    = $tax;
+				$rest_url   = $base_url . $tax . '?per_page=100&_fields=id,count,name,slug,parent';
+				$tax_urls[] = $rest_url;
+			}
 		}
+		$tax_urls      = apply_filters( 'ck_maparchive_taxurl', $tax_urls, $attributes );
+		$tax_rest_urls = implode( '|', $tax_urls );
+		$data_taxes    = implode( ',', $taxes );
+
+		$data_url  = $base_url . $attributes['postTypeSelected'] . '?per_page=100&categories&_fields=id,link,title,excerpt,acf.member_address,' . $data_taxes;
+		//TODO make this a setting;
+		$include = get_term_by('slug', 'places-to-visit', 'ck_listing_category');
+		$data_url .= '&ck_listing_category=' . $include->term_id;
+		$data_url  = apply_filters( 'ck_maparchive_dataurl', $data_url, $attributes );
 		$classname = 'wp-block-carkeek-map-archive';
 		if ( isset( $attributes['align'] ) && ! empty( $attributes['align'] ) ) {
 			$classname .= ' align' . $attributes['align'];
 		}
+
 		return '<div class="' . $classname . '"><div id="mapped-posts-map"
 		data-post="' . $attributes['postTypeSelected'] . '"
 		data-thumb="' . $attributes['popupImage'] . '"
-		data-taxonomies="' . $taxonomies . '"
+		data-taxonomy="' . $data_taxes . '"
+		data-taxurl="' . $tax_rest_urls . '"
+		data-items="' . $data_url . '"
 		data-address="' . $attributes['latFieldSelected'] . '"></div></div>';
 	}
 

@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-const baseUrl = 'http://genuine-skagit-valley.local/wp-json/wp/v2/';
-
 const getData = (page, url, data, resolve, reject) => {
     const query = `${url}&page=${page}`
     axios.get(query)
@@ -17,14 +15,14 @@ const getData = (page, url, data, resolve, reject) => {
     })
 }
 
-export const getMarkerData = (resolve, reject) => {
-    const url = `${baseUrl}ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address`
+export const getMarkerData = (url, resolve, reject) => {
+    //const url = `${baseUrl}ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address`
     return getData(1, url, [], resolve, reject);
 }
 
-export const getCategoryData = (resolve, reject) => {
+export const getCategoryData = (url, resolve, reject) => {
     //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_business_type?per_page=100&_fields=id,count,name,slug,parent
-    const url = `${baseUrl}ck_business_type?per_page=100&_fields=id,count,name,slug,parent`;
+    //const url = `${baseUrl}ck_business_type?per_page=100&_fields=id,count,name,slug,parent`;
 
     return getData(1, url, [], resolve, reject);
 }

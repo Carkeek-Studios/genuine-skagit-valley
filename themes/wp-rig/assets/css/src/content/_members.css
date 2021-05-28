@@ -11,3 +11,33 @@
 	margin-right: auto;
 	margin-bottom: var(--block-spacing-vert-small);
 }
+
+
+.gsv-member-directory.wp-block-carkeek-blocks-custom-archive {
+
+	& .ck-columns-item {
+		margin-bottom: var(--ck-column-gap);
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	& .ck-custom-archive__content-wrap {
+		text-align: center;
+	}
+
+	& .ck-custom-archive-image-link {
+		display: flex;
+		height: 200px;
+		width: 200px;
+
+		&::after {
+			padding: 0;
+		}
+
+		& img {
+			object-fit: contain;
+		}
+	}
+}

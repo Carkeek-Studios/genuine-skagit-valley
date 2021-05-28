@@ -28,7 +28,7 @@ const Pin = (props) => {
         });
         return myIcon;
     }
-    const popup = <div className={'map-archive-popup'}><span className={'popup-title'} dangerouslySetInnerHTML={ {__html: title} } /><span className={'popup-excerpt'} dangerouslySetInnerHTML={ {__html: excerpt} }/><a className={'popup-link'} href={link}>More</a></div>
+    const popup = <div className={'map-archive-popup'}><span className={'popup-title'} dangerouslySetInnerHTML={ {__html: title} } /><span className={'popup-excerpt'} dangerouslySetInnerHTML={ {__html: excerpt} }/><a className={'popup-link'} href={link}>Learn More</a></div>
     return (
         <Marker
             position={center}

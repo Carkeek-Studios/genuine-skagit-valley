@@ -250,6 +250,23 @@
             width: 100%;
             height: auto;
         }
+        .popup-title {
+            display: block;
+            color: var(--color-theme-green);
+            font-size: 18px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .popup-link {
+            display: block;
+            color: var(--color-theme-green);
+            font-size: 14px;
+            font-weight: 900;
+            text-align: center;
+            margin-top: 10px;
+        }
         .wp-block-mapped-posts-archive__text-link {
 
             font-size: 18px;
@@ -269,22 +286,22 @@
 }
 
 .marker-cluster-small {
-    background-color: rgba(204, 51, 153, 0.6); }
+    background-color: rgba(204, 93, 27, 0.6); }
 
   .marker-cluster-small div {
-    background-color: rgba(204, 51, 153, 0.6); }
+    background-color: rgba(204, 93, 27, 0.6); }
 
   .marker-cluster-medium {
-    background-color: rgba(65, 167, 79, 0.6); }
+    background-color: rgba(204, 93, 27, 0.6); }
 
   .marker-cluster-medium div {
-    background-color: rgba(165, 167, 79, 0.6); }
+    background-color: rgba(204, 93, 27, 0.6); }
 
   .marker-cluster-large {
-    background-color: rgba(202, 180, 75, 0.6); }
+    background-color: rgba(97, 144, 44, 0.6); }
 
   .marker-cluster-large div {
-    background-color: rgba(202, 180, 75, 0.6); }
+    background-color: rgba(97, 144, 44, 0.6); }
 
 
 .marker-cluster div {

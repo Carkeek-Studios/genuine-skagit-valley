@@ -3,6 +3,7 @@
 $class_name = 'wp-block-ck-member-details';
 $address    = get_field( 'member_address' );
 $site_url   = get_field( 'member_website' );
+$open       = get_field( 'open_to_the_public' );
 $site       = preg_replace( '(^https?://)', '', $site_url );
 $social     = get_field( 'member_social' );
 $soc_links  = '';
@@ -13,6 +14,16 @@ if ( isset( $address['place_id'] ) && ! empty( $address['place_id'] ) ) {
 } elseif ( isset( $address['address'] ) && ! empty( $address['address'] ) ) {
 	$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/search/?api=1&query=%1s" target="_blank">Directions</a>', $address['address'] );
 }
+$display_address = '';
+if ( ! empty( $address['street_number'] && ! empty( $address['street_name'] ) ) ) {
+	$display_address = '<address>' . $address['street_number'] . ' ' . $address['street_name'] . '<br/>';
+}
+if ( ! empty( $address['city'] && ! empty( $address['state_short'] ) ) ) {
+	$display_address .= $address['city'] . ', ' . $address['state_short'] . '</address>';
+}
+if ( ! empty( $display_address ) && true == $open ) {
+	$display_address .= $directions_link;
+}
 foreach ( $social as $name => $value ) {
 	if ( ! empty( $value ) ) {
 		$soc_links .= wp_sprintf( '<li><a href="%1s"><span class="screen-reader-text">%2s</span><i class="icon-%3s" aria-hidden="true"></i></a></li>', $value, $name, $name );
@@ -21,12 +32,12 @@ foreach ( $social as $name => $value ) {
 ?>
 <div class="<?php echo esc_attr( $class_name ); ?>">
 	<dl>
+		<?php if ( ! empty( $display_address ) ) { ?>
 		<dt>Location:</dt>
-		<dd><address><?php echo esc_html( $address['name'] ); ?><br/>
-		<?php echo esc_html( $address['city'] . ', ' . $address['state_short'] ); ?>
-		</address>
-		<?php echo wp_kses_post( $directions_link ); ?>
+		<dd>
+			<?php echo wp_kses_post( $display_address ); ?>
 		</dd>
+		<?php } ?>
 		<?php if ( ! empty( get_field( 'member_phone' ) ) ) { ?>
 		<dt>Phone:</dt>
 		<dd><?php echo esc_html( get_field( 'member_phone' ) ); ?></dd>

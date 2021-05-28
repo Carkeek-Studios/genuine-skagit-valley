@@ -61,8 +61,6 @@ class MappedPostsArchiveEdit extends Component {
             latlngfieldOptions.unshift(selectAnItem);
         }
 
-        console.log(taxonomies);
-
         const postTypeSelect = (
             <>
                 <SelectControl
@@ -116,8 +114,7 @@ class MappedPostsArchiveEdit extends Component {
                     />
                     {mapAddFilter &&
                     <SelectControl
-                        multiple
-                        label={__("Select Taxonomies", "carkeek-blocks")}
+                        label={__("Select Taxonomy", "carkeek-blocks")}
                         onChange={ ( terms ) => setAttributes( { taxonomySelected: terms } ) }
                         options={
                             taxonomies &&

@@ -1009,7 +1009,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 --------------------------------------------------------------*/
 .wp-block-separator {
 	border-color: var(--color-border);
-
+	border-width: 1px;
 
 	&.is-style-no-margin {
 		margin-top: 0;
