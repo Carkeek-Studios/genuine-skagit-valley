@@ -187,9 +187,9 @@ class MappedPosts_CustomPost {
 				<p></p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:carkeek-blocks/lightbox-gallery {"title":"GSV Member Gallery","displayAs":"gallery","columns":3,"imageLayout":"square","limitView":true,"viewLimit":3,"hideTitle":true,"blockId":"1bba0d66-55d7-4c3f-a0b5-3861b5e66b0e","align":"wide"} -->
-				<div class="wp-block-carkeek-blocks-lightbox-gallery alignwide"><ul class="ck-blocks-gallery-grid columns-3 fixed-images fixed-images-square" data-title="GSV Member Gallery" id="wrappergallery-gsv-member-gallery"></ul></div>
-				<!-- /wp:carkeek-blocks/lightbox-gallery -->',
+				<!-- wp:carkeek-blocks/lightbox-gallery {"title":"GSV Member Gallery","displayAs":"gallery","columns":3,"imageLayout":"square","limitView":true,"viewLimit":3,"mobileScroll":true,"hideTitle":true,"sizeSlugThumbs":"large","align":"wide"} -->
+<div class="wp-block-carkeek-blocks-lightbox-gallery alignwide"><ul class="ck-blocks-gallery-grid columns-3 fixed-images fixed-images-square mobile-scroll" data-title="GSV Member Gallery" id="wrappergallery-gsv-member-gallery"></ul></div>
+<!-- /wp:carkeek-blocks/lightbox-gallery -->',
 
 				'categories'  => array( 'members' ),
 			)
