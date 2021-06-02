@@ -16,12 +16,19 @@ if ( isset( $address['place_id'] ) && ! empty( $address['place_id'] ) ) {
 	$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/search/?api=1&query=%1s" target="_blank" class="directions-link">Directions</a>', $address['address'] );
 }
 $display_address = '';
+// if open to the public we show the address.
 if ( true == $open && ! empty( $address['street_number'] ) && ! empty( $address['street_name'] ) ) {
 	$display_address = $address['street_number'] . ' ' . $address['street_name'] . '<br/>';
 }
-if ( ! empty( $address['city'] && ! empty( $address['state_short'] ) ) ) {
+// if we have the name, we show that (in the case of Skagit Valley).
+if ( empty( $address['city'] ) && ! empty( $address['name'] ) && ! empty( $address['state_short'] ) ) {
+	$display_address .= $address['name'] . ', ' . $address['state_short'];
+}
+// if we have the city, show that.
+if ( ! empty( $address['city'] ) && ! empty( $address['state_short'] ) ) {
 	$display_address .= $address['city'] . ', ' . $address['state_short'];
 }
+
 
 if ( ! empty( $display_address ) && true == $open ) {
 	$display_address .= $directions_link;
