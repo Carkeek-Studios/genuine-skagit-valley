@@ -17,7 +17,7 @@ if ( ! empty( $block['anchor'] ) ) {
 $class_name = 'wp-block-ck-member-details';
 $address    = $block['data']['member_address'];
 $site_url   = $block['data']['member_website'];
-$site       = preg_replace( '(^https?://)', '', $site_url );
+
 $social     = get_field( 'member_social' );
 $soc_links  = '';
 
@@ -48,8 +48,7 @@ foreach ( $social as $name => $value ) {
 	</dl>
 	<dl>
 		<?php if ( ! empty( $site_url ) ) { ?>
-		<dt>Website:</dt>
-		<dd><?php echo wp_kses_post( wp_sprintf( '<a href="%1s" target="_blank">%2s</a>', $site_url, $site ) ); ?></dd>
+		<dd><?php echo wp_kses_post( wp_sprintf( '<a href="%1s" target="_blank">%2s</a>', $site_url, 'Website' ) ); ?></dd>
 		<?php } ?>
 		<?php if ( ! empty( $block['data']['member_email'] ) ) { ?>
 		<dt>Email:</dt>

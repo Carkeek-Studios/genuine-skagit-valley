@@ -6,7 +6,7 @@ import icons from './icons';
 
 const Pin = (props) => {
     const markerRef = useRef(null);
-    const { center, title, excerpt, link, openPopup, onItemClick, itemId, groupRef, count } = props;
+    const { center, title, excerpt, link, openPopup, onItemClick, itemId, groupRef } = props;
     useEffect(() => {
         if (openPopup) {
             const target = markerRef.current.leafletElement;
@@ -23,8 +23,8 @@ const Pin = (props) => {
             className: 'farm-icon',
             html: openPopup ? `${icons.selected}` : `${icons.marker}`,
             iconSize: [30, 30],
-            iconAnchor: [15, 45],
-            popupAnchor:  [-3, -76]
+            iconAnchor: [10, 40],
+            popupAnchor:  [0, -56]
         });
         return myIcon;
     }

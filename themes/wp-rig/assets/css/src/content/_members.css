@@ -3,6 +3,10 @@
 	& .page-header.page-header-solid {
 		margin-bottom: var(--block-spacing-vert-small);
 	}
+
+	& .footer-main {
+		margin-top: var(--block-spacing-vert);
+	}
 }
 
 .member-logo {
@@ -10,6 +14,10 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: var(--block-spacing-vert-small);
+}
+
+.directions-link {
+	display: block;
 }
 
 

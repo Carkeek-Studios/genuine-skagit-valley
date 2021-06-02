@@ -5,7 +5,6 @@ import L from 'leaflet';
 const { render } = wp.element;
 import { getMarkerData, getCategoryData } from './components/getData';
 import Map from './components/Map';
-import withMapLoading from './components/withMapLoading';
 
 import './style.scss';
 import _ from 'lodash';
@@ -14,7 +13,6 @@ import _ from 'lodash';
 //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_members?per_page=100&_fields=id,title,excerpt,ck_business_type,acf.member_address
 function App(props){
   const { dataUrl, taxUrl, tax } = props;
-    //const MapLoading = withMapLoading(Map);
     const [markersState, setMarkersState] = useState({
       loadingMarkers: true,
       markers: null,
@@ -25,15 +23,6 @@ function App(props){
       loadingCategories: true,
       categories: null,
     });
-
-    // setCatState((prevState) => {
-    //   let newCategories = prevState.categories.slice();
-    //   newCategories.push('new category');
-    //   return {
-    //     ...prevState,
-    //     categories: newCategories
-    //   }
-    // });
 
     const resolveMarkers = (markers) =>  {
         let usable = [];
@@ -125,7 +114,6 @@ function App(props){
     onUpdateLocations={updateVisibleMarkers}
     taxFilter={tax}
     zoom="8"
-    maxZoom="18"
     />
     //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
   )

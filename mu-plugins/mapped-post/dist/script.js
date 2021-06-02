@@ -24044,7 +24044,6 @@ var MapBox = function MapBox() {
 function MapCluster(props) {
   var zoom = props.zoom,
       locations = props.locations,
-      maxZoom = props.maxZoom,
       categories = props.categories,
       isMapLoading = props.isMapLoading,
       isCatLoading = props.isCatLoading,
@@ -24077,8 +24076,7 @@ function MapCluster(props) {
 
   var mapReady = !isMapLoading && !isCatLoading;
 
-  function handleItemClick(index) {
-    setSelected(index);
+  function handleItemClick(index) {//setSelected(index); //this makes the map zoom back out weird, need to figure that out.
   }
 
   function handleHeaderClick() {
@@ -24111,7 +24109,7 @@ function MapCluster(props) {
   };
 
   var updateSelectedCats = function updateSelectedCats(selected) {
-    setSelectedCats(function (prevState) {
+    setSelectedCats(function () {
       return selected;
     });
     filterLocations(selected);
@@ -24172,9 +24170,10 @@ function MapCluster(props) {
     }
   }, wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["Map"], _extends({}, mapProps, {
     zoom: zoom,
-    maxZoom: maxZoom,
+    maxZoom: 36,
     zoomControl: false,
     ref: mapRef,
+    scrollWheelZoom: false,
     onClick: handleMapClick,
     boundsOptions: {
       paddingTopLeft: [275, 0]
@@ -24318,8 +24317,7 @@ var Pin = function Pin(props) {
       openPopup = props.openPopup,
       onItemClick = props.onItemClick,
       itemId = props.itemId,
-      groupRef = props.groupRef,
-      count = props.count;
+      groupRef = props.groupRef;
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
     if (openPopup) {
       var target = markerRef.current.leafletElement;
@@ -24335,8 +24333,8 @@ var Pin = function Pin(props) {
       className: 'farm-icon',
       html: openPopup ? "".concat(_icons__WEBPACK_IMPORTED_MODULE_3__["default"].selected) : "".concat(_icons__WEBPACK_IMPORTED_MODULE_3__["default"].marker),
       iconSize: [30, 30],
-      iconAnchor: [15, 45],
-      popupAnchor: [-3, -76]
+      iconAnchor: [10, 40],
+      popupAnchor: [0, -56]
     });
     return myIcon;
   };
@@ -24430,9 +24428,6 @@ var _this = undefined,
 
 
 
-var _ = __webpack_require__(/*! lodash */ "lodash");
-
-
 
 
 var Pins = function Pins(props) {
@@ -24455,7 +24450,7 @@ var Pins = function Pins(props) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16,
+        lineNumber: 15,
         columnNumber: 9
       }
     });
@@ -24473,7 +24468,7 @@ var Pins = function Pins(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31,
+      lineNumber: 30,
       columnNumber: 7
     }
   }, Markers);
@@ -24514,12 +24509,9 @@ var getData = function getData(page, url, data, resolve, reject) {
 };
 
 var getMarkerData = function getMarkerData(url, resolve, reject) {
-  //const url = `${baseUrl}ck_members?per_page=100&_fields=id,link,title,excerpt,ck_business_type,acf.member_address`
   return getData(1, url, [], resolve, reject);
 };
 var getCategoryData = function getCategoryData(url, resolve, reject) {
-  //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_business_type?per_page=100&_fields=id,count,name,slug,parent
-  //const url = `${baseUrl}ck_business_type?per_page=100&_fields=id,count,name,slug,parent`;
   return getData(1, url, [], resolve, reject);
 };
 /* harmony default export */ __webpack_exports__["default"] = (getMarkerData);
@@ -24542,47 +24534,6 @@ icons.marker = "<svg\nxmlns=\"http://www.w3.org/2000/svg\"\nwidth=\"24\"\nheight
 
 /***/ }),
 
-/***/ "./src/blocks/mappedpost-archive/components/withMapLoading.js":
-/*!********************************************************************!*\
-  !*** ./src/blocks/mappedpost-archive/components/withMapLoading.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-var _jsxFileName = "/Users/pattyohara/Sites/genuine-skagit-valley/app/public/wp-content/mu-plugins/mapped-post/src/blocks/mappedpost-archive/components/withMapLoading.js";
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function WithMapLoading(Component) {
-  if (!isMapLoading && !isCatLoading) return wp.element.createElement(Component, _extends({}, props, {
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 2,
-      columnNumber: 50
-    }
-  }));
-  return wp.element.createElement("p", {
-    style: {
-      textAlign: 'center',
-      fontSize: '30px'
-    },
-    __self: this,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 4,
-      columnNumber: 9
-    }
-  }, "Hold on, fetching data may take some time :)");
-}
-
-;
-/* harmony default export */ __webpack_exports__["default"] = (WithMapLoading);
-
-/***/ }),
-
 /***/ "./src/blocks/mappedpost-archive/script.js":
 /*!*************************************************!*\
   !*** ./src/blocks/mappedpost-archive/script.js ***!
@@ -24600,11 +24551,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_getData__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/getData */ "./src/blocks/mappedpost-archive/components/getData.js");
 /* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Map */ "./src/blocks/mappedpost-archive/components/Map.js");
-/* harmony import */ var _components_withMapLoading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/withMapLoading */ "./src/blocks/mappedpost-archive/components/withMapLoading.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/mappedpost-archive/style.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/blocks/mappedpost-archive/style.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_6__);
 var _jsxFileName = "/Users/pattyohara/Sites/genuine-skagit-valley/app/public/wp-content/mu-plugins/mapped-post/src/blocks/mappedpost-archive/script.js";
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -24633,14 +24583,13 @@ var render = wp.element.render;
 
 
 
-
  //with help from https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/
 //http://genuine-skagit-valley.local/wp-json/wp/v2/ck_members?per_page=100&_fields=id,title,excerpt,ck_business_type,acf.member_address
 
 function App(props) {
   var dataUrl = props.dataUrl,
       taxUrl = props.taxUrl,
-      tax = props.tax; //const MapLoading = withMapLoading(Map);
+      tax = props.tax;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     loadingMarkers: true,
@@ -24658,15 +24607,7 @@ function App(props) {
   }),
       _useState4 = _slicedToArray(_useState3, 2),
       catState = _useState4[0],
-      setCatState = _useState4[1]; // setCatState((prevState) => {
-  //   let newCategories = prevState.categories.slice();
-  //   newCategories.push('new category');
-  //   return {
-  //     ...prevState,
-  //     categories: newCategories
-  //   }
-  // });
-
+      setCatState = _useState4[1];
 
   var resolveMarkers = function resolveMarkers(markers) {
     var usable = []; //only use if have lat lng
@@ -24709,13 +24650,13 @@ function App(props) {
     var parent = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
     //copy the array into a new array that we pass back into the function
-    var catsCopy = lodash__WEBPACK_IMPORTED_MODULE_7___default.a.clone(cats);
+    var catsCopy = lodash__WEBPACK_IMPORTED_MODULE_6___default.a.clone(cats);
 
-    lodash__WEBPACK_IMPORTED_MODULE_7___default.a.forEach(cats, function (item) {
+    lodash__WEBPACK_IMPORTED_MODULE_6___default.a.forEach(cats, function (item) {
       if (item.parent == parent) {
         into.push(item);
 
-        lodash__WEBPACK_IMPORTED_MODULE_7___default.a.remove(catsCopy, function (cat) {
+        lodash__WEBPACK_IMPORTED_MODULE_6___default.a.remove(catsCopy, function (cat) {
           return cat.id === item.id;
         });
       }
@@ -24754,11 +24695,10 @@ function App(props) {
     onUpdateLocations: updateVisibleMarkers,
     taxFilter: tax,
     zoom: "8",
-    maxZoom: "18",
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118,
+      lineNumber: 107,
       columnNumber: 5
     }
   }) //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
@@ -24777,7 +24717,7 @@ if (document.getElementById('mapped-posts-map')) {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 140,
+      lineNumber: 128,
       columnNumber: 12
     }
   }), document.getElementById('mapped-posts-map'));

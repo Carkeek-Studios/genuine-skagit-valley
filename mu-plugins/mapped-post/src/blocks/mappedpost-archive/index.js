@@ -39,8 +39,7 @@ const attributes = {
         default: false
     },
     taxonomySelected: {
-        type: "array",
-        default: []
+        type: "string",
     }
 };
 

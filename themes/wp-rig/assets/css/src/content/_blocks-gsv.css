@@ -475,7 +475,7 @@ ul.ck-blocks-gallery-grid {
 
 .wp-block-ck-member-details {
 	font-size: var(--font-size-medium-large);
-	max-width: 600px;
+	max-width: 650px;
 
 	& dd {
 		margin-left: 0;
@@ -507,7 +507,8 @@ ul.ck-blocks-gallery-grid {
 		padding: 0;
 
 		& > * {
-			flex: 1 1 50%;
+			flex: 1 0 50%;
+			padding: 0 25px;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var classnames = require('classnames');
 import { isArray } from "lodash";
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import useCollapse from 'react-collapsed';
 
 

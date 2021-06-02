@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Map, ZoomControl, LayersControl } from "react-leaflet";
+import { Map, ZoomControl } from "react-leaflet";
 var _ = require('lodash');
 
 import MapBoxGLLayer from "./MapBoxGLLayer";
@@ -43,7 +43,7 @@ const MapBox = () => {
 
 
 function MapCluster(props) {
-    const { zoom, locations, maxZoom, categories, isMapLoading, isCatLoading, visibleLocations, onUpdateLocations, visibleBounds, taxFilter} = props;
+    const { zoom, locations, categories, isMapLoading, isCatLoading, visibleLocations, onUpdateLocations, visibleBounds, taxFilter} = props;
     const hideListAtLoad = window.innerWidth > 600 ? false : true;
     const [selected, setSelected] = useState();
     const [selectedCats, setSelectedCats] = useState([]);
@@ -58,7 +58,7 @@ function MapCluster(props) {
     const mapReady = !isMapLoading && !isCatLoading;
 
     function handleItemClick(index) {
-        setSelected(index);
+        //setSelected(index); //this makes the map zoom back out weird, need to figure that out.
     }
 
     function handleHeaderClick() {
@@ -96,7 +96,7 @@ function MapCluster(props) {
 
 
     const updateSelectedCats = (selected) => {
-        setSelectedCats( (prevState) => {
+        setSelectedCats( () => {
             return (selected);
         });
         filterLocations(selected);
@@ -134,7 +134,7 @@ function MapCluster(props) {
         <div className={'data-map'}>
 
 
-        <Map {...mapProps} zoom={zoom} maxZoom={maxZoom} zoomControl={false} ref={mapRef} onClick={handleMapClick} boundsOptions={{paddingTopLeft: [275, 0]}}>
+        <Map {...mapProps} zoom={zoom} maxZoom={36} zoomControl={false} ref={mapRef} scrollWheelZoom={false} onClick={handleMapClick} boundsOptions={{paddingTopLeft: [275, 0]}}>
             <MapBox />
             {mapReady&&
                 <Pins selectedIndex={selected} data={visibleLocations} selectedCats={selectedCats} onItemClick={handleItemClick}  />

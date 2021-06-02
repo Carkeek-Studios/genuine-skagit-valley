@@ -686,8 +686,7 @@ var attributes = {
     default: false
   },
   taxonomySelected: {
-    type: "array",
-    default: []
+    type: "string"
   }
 };
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("mapped-posts/archive", {
@@ -705,7 +704,7 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])("map
       __self: this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62,
+        lineNumber: 61,
         columnNumber: 13
       }
     });

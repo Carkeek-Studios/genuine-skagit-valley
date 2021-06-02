@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-var _ = require('lodash');
 import 'react-leaflet-markercluster/dist/styles.min.css';
 import Pin from './Pin.js';
 
