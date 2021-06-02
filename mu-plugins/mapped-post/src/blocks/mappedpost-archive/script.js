@@ -29,7 +29,7 @@ function App(props){
         //only use if have lat lng
         markers.forEach( (marker) => {
           console.log(marker);
-          if (marker.acf.member_address.lat.length > 0 && marker.acf.member_address.lng.length > 0) {
+          if (marker.acf.member_address && marker.acf.member_address.lat.length > 0 && marker.acf.member_address.lng.length > 0) {
             usable.push(marker);
           }
         });
