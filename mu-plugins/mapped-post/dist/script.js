@@ -24613,6 +24613,8 @@ function App(props) {
     var usable = []; //only use if have lat lng
 
     markers.forEach(function (marker) {
+      console.log(marker);
+
       if (marker.acf.member_address.lat.length > 0 && marker.acf.member_address.lng.length > 0) {
         usable.push(marker);
       }
@@ -24698,7 +24700,7 @@ function App(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107,
+      lineNumber: 108,
       columnNumber: 5
     }
   }) //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
@@ -24717,7 +24719,7 @@ if (document.getElementById('mapped-posts-map')) {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 128,
+      lineNumber: 129,
       columnNumber: 12
     }
   }), document.getElementById('mapped-posts-map'));
