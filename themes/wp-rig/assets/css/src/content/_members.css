@@ -38,7 +38,7 @@
 	& .ck-custom-archive-image-link {
 		display: flex;
 		height: 200px;
-		width: 200px;
+		width: 100%;
 
 		&::after {
 			padding: 0;
