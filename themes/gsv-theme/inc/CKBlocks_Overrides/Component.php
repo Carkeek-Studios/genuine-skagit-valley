@@ -37,7 +37,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_action( 'ck_custom_archive_layout__after_title', array( $this, 'ck_blocks_custom_archive_after_title' ), 10, 1 );
 		add_action( 'admin_menu', array( $this, 'remove_menu_items' ) );
 		add_filter( 'carkeek_block_custom_post_layout_tribe_organizer__query_args', array( $this, 'set_organizers_sort' ), 10, 1 );
-		add_filter( 'ck_custom_archive_ck_members__featured_image', array( $this, 'ck_members_featured_image' ), 10, 1 );
+		add_filter( 'ck_custom_archive_ck_members__featured_image', array( $this, 'ck_members_featured_image' ), 10, 3 );
+		add_filter( 'ck_custom_archive_ck_members__link', array( $this, 'ck_members_farmstand_fresh_link' ), 10, 3 );
+		add_filter( 'ck_custom_archive_ck_members__excerpt', array( $this, 'ck_members_farmstand_fresh_excerpt' ), 10, 3 );
+		add_filter( 'ck_custom_archive_layout__meta_before_title', array( $this, 'ck_members_farmstand_fresh_before_title' ), 10, 2 );
+		add_action( 'ck_custom_archive_layout__after_excerpt', array( $this, 'ck_members_farmstand_after_excerpt' ), 10, 1 );
 	}
 
 	/**
@@ -100,8 +104,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 *
 	 * @param string $featured_image;
 	 */
-	public function ck_members_featured_image( $featured_image ) {
-		if ( empty( $featured_image ) ) {
+	public function ck_members_featured_image( $featured_image, $post_id, $data ) {
+		if ( $data->displayFeaturedImage && empty( $featured_image ) ) {
 			$default = get_field( 'member_directory_default_image', 'options' );
 			if ( ! empty( $default ) ) {
 				return wp_get_attachment_image( $default, 'medium' );
@@ -111,6 +115,59 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
+	/** Set Default Image
+	 *
+	 * @param string $featured_image;
+	 */
+	public function ck_members_farmstand_fresh_link( $permalink, $post_id, $data ) {
+		if ( 'farmstand-fresh-list' == $data->className || 'farmstand-fresh-chefs' == $data->className ) {
+			$permalink = get_field( 'member_website', $post_id );
+		}
+		return $permalink;
+	}
+
+	public static function make_directions_link( $post_id ) {
+		$address         = get_field( 'member_address', $post_id );
+		$directions_link = '';
+		if ( isset( $address['place_id'] ) && ! empty( $address['place_id'] ) ) {
+			$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/place/?q=place_id:%1s" target="_blank" class="directions-link">Directions</a>', $address['place_id'] );
+		} elseif ( isset( $address['address'] ) && ! empty( $address['address'] ) ) {
+			$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/search/?api=1&query=%1s" target="_blank" class="directions-link">Directions</a>', $address['address'] );
+		}
+		return $directions_link;
+	}
+
+	public function ck_members_farmstand_after_excerpt( $data ) {
+		global $post;
+		if ( 'farmstand-fresh-list' == $data->className ) {
+			$directions = self::make_directions_link( $post->ID );
+			$hours      = get_field( 'hours', $post->ID );
+			if ( ! empty( $hours ) ) {
+				echo '<div class="farmstand-hours">' . $hours . '</div>';
+			}
+			echo wp_kses_post( $directions );
+		}
+	}
+
+	public function ck_members_farmstand_fresh_excerpt( $excerpt, $post_id, $data ) {
+		if ( 'farmstand-fresh-list' == $data->className || 'farmstand-fresh-chefs' == $data->className ) {
+			$alt = get_field( 'farmstand_fresh_description', $post_id );
+			if ( ! empty( $alt ) ) {
+				$excerpt = $alt;
+			}
+		}
+		return $excerpt;
+	}
+
+	public function ck_members_farmstand_fresh_before_title( $before, $data ) {
+		if ( 'farmstand-fresh-chefs' == $data->className ) {
+			$chef = get_field( 'farmstand_fresh_chef' );
+		}
+		if ( ! empty( $chef ) ) {
+			$before = '<div class="farmstand-fresh-chef">' . $chef . '</div>';
+		}
+		return $before;
+	}
 
 }
 

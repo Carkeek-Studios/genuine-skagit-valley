@@ -512,3 +512,16 @@ ul.ck-blocks-gallery-grid {
 		}
 	}
 }
+
+
+.farmstand-fresh-list,
+.farmstand-fresh-chefs {
+
+	& .ck-custom-archive-title_link {
+		font-size: var(--font-size-h4);
+	}
+
+	& .farmstand-fresh-chef {
+		font-weight: var(--font-weight-medium);
+	}
+}
