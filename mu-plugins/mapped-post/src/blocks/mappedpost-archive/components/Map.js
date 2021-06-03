@@ -1,8 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Map, ZoomControl } from "react-leaflet";
+import { Map, ZoomControl, TileLayer } from "react-leaflet";
 var _ = require('lodash');
 
-import MapBoxGLLayer from "./MapBoxGLLayer";
 import Pins from './Pins.js';
 import FilterList from './Filters.js';
 
@@ -31,15 +30,6 @@ function PointsList(props) {
     );
 }
 
-const MapBox = () => {
-    return (
-        <MapBoxGLLayer
-            accessToken={'pk.eyJ1IjoicGF0dHlvayIsImEiOiJja2Q1OWI1bnkxaWdxMndudjU4dDIxd2tyIn0.8wNkxnelM0meYNGz-6yDQQ'}
-            style="mapbox://styles/mapbox/outdoors-v11"
-            attribution="&amp;copy <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> &amp;copy <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
-        />
-    )
-}
 
 
 function MapCluster(props) {
@@ -134,8 +124,11 @@ function MapCluster(props) {
         <div className={'data-map'}>
 
 
-        <Map {...mapProps} zoom={zoom} maxZoom={36} zoomControl={false} ref={mapRef} scrollWheelZoom={false} onClick={handleMapClick} boundsOptions={{paddingTopLeft: [275, 0]}}>
-            <MapBox />
+        <Map {...mapProps} zoom={zoom} maxZoom={18} minZoom={9} zoomControl={false} ref={mapRef} scrollWheelZoom={false} onClick={handleMapClick} boundsOptions={{paddingTopLeft: [275, 0]}}>
+        <TileLayer
+            attribution='<a href="https://www.maptiler.com/copyright/" target="_blank" >&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+            url="https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=yRFimapDOtSxWTi4dx3l"
+        />
             {mapReady&&
                 <Pins selectedIndex={selected} data={visibleLocations} selectedCats={selectedCats} onItemClick={handleItemClick}  />
             }
