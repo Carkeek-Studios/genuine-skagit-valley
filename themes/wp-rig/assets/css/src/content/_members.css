@@ -16,6 +16,10 @@
 	margin-bottom: var(--block-spacing-vert-small);
 }
 
+.wp-block-ck-member-details .directions-link {
+	display: block;
+}
+
 
 .gsv-member-directory.wp-block-carkeek-blocks-custom-archive,
 .farmstand-fresh-list.wp-block-carkeek-blocks-custom-archive {
@@ -88,4 +92,14 @@
 		font-weight: var(--font-weight-medium);
 	}
 
+}
+
+.wp-block-carkeek-blocks-custom-archive .featured-member-location {
+	text-transform: uppercase;
+	margin-top: -1rem;
+	margin-bottom: 1rem;
+	font-weight: var(--font-weight-medium);
+	font-size: 14px;
+	letter-spacing: 1px;
+	line-height: 2;
 }

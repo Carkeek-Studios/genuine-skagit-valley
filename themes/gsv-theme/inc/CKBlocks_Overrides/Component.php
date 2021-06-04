@@ -40,6 +40,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'ck_custom_archive_ck_members__link', array( $this, 'ck_members_farmstand_fresh_link' ), 10, 3 );
 		add_filter( 'ck_custom_archive_ck_members__excerpt', array( $this, 'ck_members_farmstand_fresh_excerpt' ), 10, 3 );
 		add_filter( 'ck_custom_archive_layout__meta_before_title', array( $this, 'ck_members_farmstand_fresh_before_title' ), 10, 2 );
+		add_filter( 'ck_custom_archive_layout__meta_after_title', array( $this, 'ck_members_after_title' ), 10, 2 );
 		add_action( 'ck_custom_archive_layout__after_excerpt', array( $this, 'ck_members_farmstand_after_excerpt' ), 10, 1 );
 	}
 
@@ -87,11 +88,16 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( $data->displayFeaturedImage && empty( $featured_image ) ) {
 			$default = get_field( 'member_directory_default_image', 'options' );
 			if ( ! empty( $default ) ) {
-				return wp_get_attachment_image( $default, 'medium' );
+				$featured_image = wp_get_attachment_image( $default, 'large' );
 			}
-		} else {
-			return $featured_image;
 		}
+		if ( $data->displayFeaturedImage && self::string_contains( $data->className, 'featured-member' ) ) {
+			$featured = get_field( 'featured_member_image' );
+			if ( ! empty( $featured ) ) {
+				$featured_image = wp_get_attachment_image( $featured, 'medium' );
+			}
+		}
+		return $featured_image;
 	}
 
 	/** Set permalink to the website for the farmstand fresh page
@@ -174,13 +180,29 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param object $data data object from block.
 	 */
 	public function ck_members_farmstand_fresh_before_title( $before, $data ) {
-		if ( 'farmstand-fresh-chefs' == $data->className ) {
+		if ( self::string_contains( $data->className, 'farmstand-fresh-chefs' ) ) {
 			$chef = get_field( 'farmstand_fresh_chef' );
 		}
 		if ( ! empty( $chef ) ) {
 			$before = '<div class="farmstand-fresh-chef">' . $chef . '</div>';
 		}
 		return $before;
+	}
+
+
+	/** Add chefs name from post before title
+	 *
+	 * @param string $before before meta assigned from the block.
+	 * @param object $data data object from block.
+	 */
+	public function ck_members_after_title( $after, $data ) {
+		if ( self::string_contains( $data->className, 'featured-member' ) ) {
+			$address = get_field( 'member_address' );
+		}
+		if ( ! empty( $address['city'] ) && ! empty( $address['state_short'] ) ) {
+			$after = '<div class="featured-member-location">' . $address['city'] . ', ' . $address['state_short'] . '</div>';
+		}
+		return $after;
 	}
 	// phpcs:enable
 }
