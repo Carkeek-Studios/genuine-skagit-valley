@@ -27,7 +27,7 @@
 	color: var(--color-theme-red);
 }
 
-ul.gform_fields {
+.gform_fields {
 	margin: 0 0 1rem;
 	padding: 0;
 	list-style: none;
@@ -39,8 +39,10 @@ h3.gform_title {
 }
 
 
-.gfield > label {
-	font-weight: 600;
+.gfield > label,
+.gfield > legend {
+	font-weight: var(--font-weight-medium);
+	line-height: 1.25;
 }
 
 .gfield_description {
@@ -69,7 +71,7 @@ h3.gform_title {
 	flex-direction: column;
 }
 
-li.gfield {
+.gfield {
 	padding-bottom: 1rem;
 }
 
@@ -112,29 +114,31 @@ body .gform_wrapper ul.gform_fields li.gfield.gform_validation_container {
 
 /** Radio + Checkboxes **/
 
-ul.gfield_checkbox,
-ul.gfield_radio {
+.gfield_checkbox,
+.gfield_radio {
 	padding: 0;
 	margin: 0;
 }
 
-.gfield_radio > li,
-.gfield_checkbox > li {
+.gfield_radio .gchoice,
+.gfield_checkbox .gchoice,
+.ginput_container_consent {
 	display: flex;
 	align-items: center;
 }
 
-.gfield_radio > li > label,
-.gfield_checkbox > li > label {
+.gfield_radio .gchoice > label,
+.ginput_container_consent > label,
+.gfield_checkbox .gchoice > label {
 	padding-left: 0.25rem;
 	position: relative;
 	cursor: pointer;
-	height: 20px;
 	padding-top: 1px;
 }
 
-.gfield_radio > li > input,
-.gfield_checkbox > li > input {
+.gfield_radio .gchoice > input,
+.ginput_container_consent > input,
+.gfield_checkbox .gchoice > input {
 	height: 20px;
 	width: 20px;
 	margin: 3px;
@@ -150,16 +154,18 @@ ul.gfield_radio {
 	cursor: pointer;
 }
 
-.gfield_checkbox > li > input {
+.gfield_checkbox .gchoice > input,
+.ginput_container_consent > input {
 	border-radius: 0;
 }
 
-.gfield_radio > li > input:checked,
-.gfield_checkbox > li > input:checked {
-	background-color: var(--color-theme-grey-dark);
+.gfield_radio .gchoice > input:checked,
+.gfield_checkbox .gchoice > input:checked,
+.ginput_container_consent > input:checked {
+	background-color: var(--color-theme-orange);
 }
 
-.gfield_radio > li > input:checked + label::before {
+.gfield_radio .gchoice > input:checked + label::before {
 	content: "";
 	height: 10px;
 	width: 10px;
@@ -167,24 +173,27 @@ ul.gfield_radio {
 	display: block;
 	border-radius: 100%;
 	text-align: center;
-	color: #41b883;
+	color: #fff;
 	position: absolute;
 	left: -18px;
-	top: 5px;
+	top: 11px;
 }
 
-.gfield_checkbox > li > input:checked + label::before {
-	content: "\2714";
+.gfield_checkbox .gchoice > input:checked + label::before,
+.ginput_container_consent > input:checked + label::before {
+	content: "\e80a";
+	font-family: var(--font-family-icons);
 	display: block;
 	border-radius: 100%;
 	text-align: center;
-	color: #41b883;
+	color: #fff;
 	position: absolute;
-	left: -19px;
+	left: -22px;
 	top: 0;
 }
 
-.gfield_checkbox > li > input:active {
+.gfield_checkbox .gchoice > input:active,
+.ginput_container_consent > input:active {
 	border: 2px solid #34495e;
 }
 
