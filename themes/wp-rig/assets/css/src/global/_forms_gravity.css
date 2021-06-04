@@ -23,6 +23,11 @@
 	}
 }
 
+.gform_wrapper.gravity-theme .gform_footer,
+.gform_wrapper.gravity-theme .gform_page_footer {
+	margin-top: 2rem !important;
+}
+
 .gform_footer {
 	display: flex;
 	justify-content: center;
