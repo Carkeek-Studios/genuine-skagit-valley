@@ -24184,13 +24184,13 @@ function App(props) {
   var resolveMarkers = function resolveMarkers(markers) {
     var usable = []; //only use if have lat lng
 
+    console.log(markers);
     markers.forEach(function (marker) {
-      console.log(marker);
-
-      if (marker.acf.member_address && marker.acf.member_address.lat.length > 0 && marker.acf.member_address.lng.length > 0) {
+      if (marker.acf.member_address && marker.acf.member_address.lat.toString().length > 0 && marker.acf.member_address.lng.toString().length > 0) {
         usable.push(marker);
       }
     });
+    console.log(usable);
     updateVisibleMarkers(usable);
     setMarkersState(function (prevState) {
       return _objectSpread({}, prevState, {
@@ -24272,7 +24272,7 @@ function App(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 109,
       columnNumber: 5
     }
   }) //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
@@ -24291,7 +24291,7 @@ if (document.getElementById('mapped-posts-map')) {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129,
+      lineNumber: 130,
       columnNumber: 12
     }
   }), document.getElementById('mapped-posts-map'));
