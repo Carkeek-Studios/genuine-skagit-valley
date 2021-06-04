@@ -13,6 +13,11 @@ wp.domReady( function() {
 		label: 'Veneer Heading',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/heading', {
+		name: 'heading-underline',
+		label: 'Heading w Bottom Border',
+	} );
+
 	// Add Column Styles
 	wp.blocks.registerBlockStyle( 'core/columns', {
 		name: 'vertical-centered',

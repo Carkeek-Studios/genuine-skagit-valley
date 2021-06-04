@@ -16,24 +16,9 @@
 	margin-bottom: var(--block-spacing-vert-small);
 }
 
-.directions-link {
-	display: block;
-}
 
-
-.gsv-member-directory.wp-block-carkeek-blocks-custom-archive {
-
-	& .ck-columns-item {
-		margin-bottom: var(--ck-column-gap);
-		text-align: center;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	& .ck-custom-archive__content-wrap {
-		text-align: center;
-	}
+.gsv-member-directory.wp-block-carkeek-blocks-custom-archive,
+.farmstand-fresh-list.wp-block-carkeek-blocks-custom-archive {
 
 	& .ck-custom-archive-image-link {
 		display: flex;
@@ -47,5 +32,51 @@
 		& img {
 			object-fit: contain;
 		}
+	}
+
+	& .ck-columns-item {
+		margin-bottom: var(--ck-column-gap);
+	}
+}
+
+.gsv-member-directory.wp-block-carkeek-blocks-custom-archive {
+
+	& .ck-custom-archive__content-wrap {
+		text-align: center;
+	}
+
+	& .ck-columns-item {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: var(--ck-column-gap);
+	}
+}
+
+
+.farmstand-fresh-list.wp-block-carkeek-blocks-custom-archive {
+
+	& .ck-custom-archive-image-link {
+		height: 175px;
+		margin-bottom: 1.5rem;
+
+		& img {
+			object-position: left;
+		}
+	}
+
+	& .farmstand-hours {
+		margin-right: 10px;
+		padding-right: 10px;
+		border-right: 1px solid var(--color-theme-grey-dark);
+	}
+
+	& .farmstand-hours-map {
+		margin-top: 2rem;
+	}
+
+	& .ck-columns-item {
+		margin-bottom: 3rem;
 	}
 }

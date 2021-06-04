@@ -36,6 +36,11 @@ h5,
 		font-family: var(--font-family-highlight-alt);
 		font-weight: var(--font-weight-regular);
 	}
+
+	&.is-style-heading-underline {
+		border-bottom: 1px solid var(--color-theme-grey-dark);
+		padding-bottom: 1rem;
+	}
 }
 
 h1,

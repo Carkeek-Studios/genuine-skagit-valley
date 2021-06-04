@@ -120,7 +120,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * @param string $featured_image;
 	 */
 	public function ck_members_farmstand_fresh_link( $permalink, $post_id, $data ) {
-		if ( 'farmstand-fresh-list' == $data->className || 'farmstand-fresh-chefs' == $data->className ) {
+		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) || self::string_contains( $data->className, 'farmstand-fresh-chefs' ) ) {
 			$permalink = get_field( 'member_website', $post_id );
 		}
 		return $permalink;
@@ -137,20 +137,29 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $directions_link;
 	}
 
+	public static function string_contains( $string, $word ) {
+		if ( strpos( $string, $word ) !== false ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function ck_members_farmstand_after_excerpt( $data ) {
 		global $post;
-		if ( 'farmstand-fresh-list' == $data->className ) {
+		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) ) {
 			$directions = self::make_directions_link( $post->ID );
 			$hours      = get_field( 'hours', $post->ID );
+			echo '<p class="farmstand-hours-map">';
 			if ( ! empty( $hours ) ) {
-				echo '<div class="farmstand-hours">' . $hours . '</div>';
+				echo '<span class="farmstand-hours">' . $hours . '</span>';
 			}
-			echo wp_kses_post( $directions );
+			echo wp_kses_post( $directions ) . '</p>';
 		}
 	}
 
 	public function ck_members_farmstand_fresh_excerpt( $excerpt, $post_id, $data ) {
-		if ( 'farmstand-fresh-list' == $data->className || 'farmstand-fresh-chefs' == $data->className ) {
+		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) || self::string_contains( $data->className, 'farmstand-fresh-chefs' ) ) {
 			$alt = get_field( 'farmstand_fresh_description', $post_id );
 			if ( ! empty( $alt ) ) {
 				$excerpt = $alt;
