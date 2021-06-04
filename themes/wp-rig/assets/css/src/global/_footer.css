@@ -149,6 +149,36 @@
 
 	}
 
+	&.footer-upper {
+
+		& .widget_wrapper {
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		& p {
+			margin-bottom: 1rem;
+			font-size: var(--font-size-medium-small);
+			font-weight: var(--font-weight-bold);
+		}
+
+		& input {
+			margin-bottom: 1.5rem;
+			max-width: 360px;
+		}
+
+		& h2.widget-title {
+			color: #fff;
+			font-family: var(--font-family-highlight-alt);
+			font-size: var(--font-size-h2-alt);
+			font-weight: 400;
+			text-align: left;
+			margin-bottom: 0.5rem;
+		}
+
+	}
+
 	& .footer-section .widget_wrapper {
 		display: flex;
 		flex-direction: column;
@@ -223,6 +253,26 @@
 				& img {
 					margin-left: 0;
 				}
+			}
+		}
+
+		&.footer-upper {
+
+			& .widget_wrapper {
+				text-align: center;
+
+				& h2.widget-title {
+					text-align: center;
+				}
+			}
+
+			& form {
+				text-align: center;
+			}
+
+			& button {
+				margin-left: auto;
+				margin-right: auto;
 			}
 		}
 
