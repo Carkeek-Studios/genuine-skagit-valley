@@ -20,7 +20,7 @@ use WP_Rig\WP_Rig\Templating_Component_Interface;
  * @link https://wordpress.org/plugins/amp/
  */
 class Component implements Component_Interface, Templating_Component_Interface {
-
+	// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	/**
 	 * Gets the unique identifier for the theme component.
 	 *
@@ -34,7 +34,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 * Need this function even though its empty
 	 */
 	public function initialize() {
-		add_action( 'ck_custom_archive_layout__after_title', array( $this, 'ck_blocks_custom_archive_after_title' ), 10, 1 );
 		add_action( 'admin_menu', array( $this, 'remove_menu_items' ) );
 		add_filter( 'carkeek_block_custom_post_layout_tribe_organizer__query_args', array( $this, 'set_organizers_sort' ), 10, 1 );
 		add_filter( 'ck_custom_archive_ck_members__featured_image', array( $this, 'ck_members_featured_image' ), 10, 3 );
@@ -55,29 +54,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return array();
 	}
 
-	/**
-	 * Override to custom archive item
-	 * place content after the title
-	 *
-	 * @param object $data holds the block properties.
-	 */
-	public function ck_blocks_custom_archive_after_title( $data ) {
-		global $post;
-		if ( 'tribe_organizer' === $post->post_type ) {
-			$role = get_post_meta( $post->ID, 'organizers_role', true );
-			if ( ! empty( $role ) ) {
-				echo wp_kses_post( '<div class="ck-item-organizer_role">' . $role . '</div>' );
-			}
-		} elseif ( 'tribe_events' === $post->post_type ) {
-			$organizers = tribe_get_organizer_ids( $post->ID );
-			$org_names  = array();
-			foreach ( $organizers as $organizer_id ) {
 
-				$org_names[] = tribe_get_organizer( $organizer_id );
-			}
-			echo wp_kses_post( '<div class="ck-item-event_org">' . implode( ', ', $org_names ) . '</div>' );
-		}
-	}
 
 	/**Hide Custom Links from Menu */
 	public function remove_menu_items() {
@@ -102,7 +79,9 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 	/** Set Default Image
 	 *
-	 * @param string $featured_image;
+	 * @param string $featured_image image from post.
+	 * @param string $post_id post id.
+	 * @param object $data data object from block.
 	 */
 	public function ck_members_featured_image( $featured_image, $post_id, $data ) {
 		if ( $data->displayFeaturedImage && empty( $featured_image ) ) {
@@ -115,9 +94,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
-	/** Set Default Image
+	/** Set permalink to the website for the farmstand fresh page
 	 *
-	 * @param string $featured_image;
+	 * @param string $permalink post permalink.
+	 * @param string $post_id post id.
+	 * @param object $data data object from block.
 	 */
 	public function ck_members_farmstand_fresh_link( $permalink, $post_id, $data ) {
 		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) || self::string_contains( $data->className, 'farmstand-fresh-chefs' ) ) {
@@ -126,6 +107,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $permalink;
 	}
 
+	/** Make directions link from the address on the post.
+	 *
+	 * @param string $post_id post id.
+	 */
 	public static function make_directions_link( $post_id ) {
 		$address         = get_field( 'member_address', $post_id );
 		$directions_link = '';
@@ -137,6 +122,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $directions_link;
 	}
 
+	/** Check if string contains (can be replaced with php function in php 8).
+	 *
+	 * @param string $string string to check.
+	 * @param string $word the word we are looking for.
+	 */
 	public static function string_contains( $string, $word ) {
 		if ( strpos( $string, $word ) !== false ) {
 			return true;
@@ -145,6 +135,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 	}
 
+	/** Add data from post to excerpt of FS Fresh list
+	 *
+	 * @param object $data data object from block.
+	 */
 	public function ck_members_farmstand_after_excerpt( $data ) {
 		global $post;
 		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) ) {
@@ -152,12 +146,18 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$hours      = get_field( 'hours', $post->ID );
 			echo '<p class="farmstand-hours-map">';
 			if ( ! empty( $hours ) ) {
-				echo '<span class="farmstand-hours">' . $hours . '</span>';
+				echo '<span class="farmstand-hours">' . esc_html( $hours ) . '</span>';
 			}
 			echo wp_kses_post( $directions ) . '</p>';
 		}
 	}
 
+	/** Replace the excerpt on FS fresh chefs list
+	 *
+	 * @param string $excerpt the excerpt from the post.
+	 * @param string $post_id post id.
+	 * @param object $data data object from block.
+	 */
 	public function ck_members_farmstand_fresh_excerpt( $excerpt, $post_id, $data ) {
 		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) || self::string_contains( $data->className, 'farmstand-fresh-chefs' ) ) {
 			$alt = get_field( 'farmstand_fresh_description', $post_id );
@@ -168,6 +168,11 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		return $excerpt;
 	}
 
+	/** Add chefs name from post before title
+	 *
+	 * @param string $before before meta assigned from the block.
+	 * @param object $data data object from block.
+	 */
 	public function ck_members_farmstand_fresh_before_title( $before, $data ) {
 		if ( 'farmstand-fresh-chefs' == $data->className ) {
 			$chef = get_field( 'farmstand_fresh_chef' );
@@ -177,7 +182,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		}
 		return $before;
 	}
-
+	// phpcs:enable
 }
 
 

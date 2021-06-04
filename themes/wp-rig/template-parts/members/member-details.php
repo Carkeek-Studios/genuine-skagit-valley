@@ -1,4 +1,11 @@
 <?php
+/**
+ * Template part for displaying the member details.
+ *
+ * @package wp_rig
+ */
+
+namespace WP_Rig\WP_Rig;
 
 $class_name = 'wp-block-ck-member-details';
 $address    = get_field( 'member_address' );

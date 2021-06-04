@@ -55,7 +55,8 @@
 }
 
 
-.farmstand-fresh-list.wp-block-carkeek-blocks-custom-archive {
+.farmstand-fresh-list.wp-block-carkeek-blocks-custom-archive,
+.farmstand-fresh-chefs.wp-block-carkeek-blocks-custom-archive {
 
 	& .ck-custom-archive-image-link {
 		height: 175px;
@@ -63,6 +64,7 @@
 
 		& img {
 			object-position: left;
+			max-width: 225px;
 		}
 	}
 
@@ -79,4 +81,11 @@
 	& .ck-columns-item {
 		margin-bottom: 3rem;
 	}
+
+	& .ck-custom-archive-title_link,
+	& .farmstand-fresh-chef {
+		font-size: var(--font-size-h4);
+		font-weight: var(--font-weight-medium);
+	}
+
 }
