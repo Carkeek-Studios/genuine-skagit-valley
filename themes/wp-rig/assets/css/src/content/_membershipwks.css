@@ -19,6 +19,7 @@
 
 		& table.SFfrm {
 			width: 100%;
+			font-size: 18px;
 
 			& tr {
 				display: flex;
