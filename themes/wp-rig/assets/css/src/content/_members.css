@@ -103,3 +103,10 @@
 	letter-spacing: 1px;
 	line-height: 2;
 }
+
+.wp-block-carkeek-blocks-custom-archive.featured-member {
+
+	& .ck-custom-archive-image-link img:not(.member-non-logo) {
+		object-fit: contain;
+	}
+}

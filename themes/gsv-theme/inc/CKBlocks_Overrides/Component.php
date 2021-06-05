@@ -94,7 +94,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( $data->displayFeaturedImage && self::string_contains( $data->className, 'featured-member' ) ) {
 			$featured = get_field( 'featured_member_image' );
 			if ( ! empty( $featured ) ) {
-				$featured_image = wp_get_attachment_image( $featured, 'medium' );
+				$featured_image = wp_get_attachment_image( $featured, 'medium', false, array( 'class' => 'member-non-logo' ) );
 			}
 		}
 		return $featured_image;

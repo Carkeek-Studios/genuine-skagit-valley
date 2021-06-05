@@ -106,9 +106,9 @@
 	--font-size-button: var(--font-size-forms);
 	--font-weight-button: var(--font-weight-bold);
 	--font-size-button-large: 26px;
-	--height-button: 60px;
+	--height-button: 66px;
 	--padding-button: 1rem 1.25rem;
-	--padding-button-alt: 0 1.5rem;
+	--padding-button-alt: 0 1.75rem;
 
 	/* Main family font weights */
 	--font-weight-regular: 300;

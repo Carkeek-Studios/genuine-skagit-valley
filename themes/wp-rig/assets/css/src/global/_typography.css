@@ -80,7 +80,7 @@ h1,
 .h1 {
 	font-size: var(--font-size-h1);
 	font-family: var(--font-family-highlight-alt);
-	line-height: 1.3888;
+	line-height: 1.1888;
 	font-weight: 300;
 }
 

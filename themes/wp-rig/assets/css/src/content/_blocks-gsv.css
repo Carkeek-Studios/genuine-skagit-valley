@@ -306,7 +306,6 @@ ul.ck-blocks-gallery-grid {
 			top: 0;
 			right: 2rem;
 			width: 65%;
-			bottom: 4rem;
 			border: 4px solid #fff;
 			border-top: none;
 			height: auto;
@@ -384,6 +383,7 @@ ul.ck-blocks-gallery-grid {
 
 	}
 }
+
 
 @media (--tablet-wide-up) and (any-hover: hover) {
 
@@ -467,8 +467,17 @@ ul.ck-blocks-gallery-grid {
 			position: absolute;
 			top: 0;
 			right: 4rem;
-			bottom: 6rem;
 			width: calc(50% - 4rem);
+		}
+	}
+}
+
+@media (--desktop-up) {
+
+	.wp-block-group.highlight-single {
+
+		& .wp-block-group.highlight-single-text {
+			padding: 5.315rem 2.5rem;
 		}
 	}
 }
@@ -488,7 +497,7 @@ ul.ck-blocks-gallery-grid {
 	}
 
 	& .social-links {
-		font-size: 22px;
+		font-size: var(--font-size-large);
 
 		& a {
 			padding: 0 3px;
