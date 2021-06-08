@@ -1310,3 +1310,17 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 		font-size: var(--font-size-regular);
 	}
 }
+
+/* Jetpack Video fixes */
+.wp-embed-responsive .wp-has-aspect-ratio {
+
+	& iframe {
+		height: 100% !important;
+		width: 100% !important;
+	}
+
+	& .jetpack-video-wrapper {
+		margin-bottom: 0;
+	}
+}
+
