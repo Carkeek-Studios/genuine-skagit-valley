@@ -4,17 +4,15 @@
 		url(../fonts/Archer-SemiboldItalic.woff2) format("woff2"),
 		url(../fonts/Archer-SemiboldItalic.woff) format("woff");
 	font-weight: 500;
-	font-style: italic;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: archer;
+	font-family: archerpro;
 	src:
 		url(../fonts/ArcherPro-BookItalic.woff2) format("woff2"),
 		url(../fonts/ArcherPro-BookItalic.woff) format("woff");
 	font-weight: 300;
-	font-style: italic;
 	font-display: swap;
 }
 

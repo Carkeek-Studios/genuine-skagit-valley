@@ -162,7 +162,7 @@ blockquote {
 	border: none;
 	text-align: left;
 	font-weight: var(--font-weight-regular);
-	font-family: var(--font-family-highlight);
+	font-family: var(--font-family-highlight-pro);
 	font-size: var(--font-size-large);
 	line-height: 1.334;
 }
