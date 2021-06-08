@@ -91,12 +91,6 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				$featured_image = wp_get_attachment_image( $default, 'large' );
 			}
 		}
-		if ( $data->displayFeaturedImage && self::string_contains( $data->className, 'featured-member' ) ) {
-			$featured = get_field( 'featured_member_image' );
-			if ( ! empty( $featured ) ) {
-				$featured_image = wp_get_attachment_image( $featured, 'medium', false, array( 'class' => 'member-non-logo' ) );
-			}
-		}
 		return $featured_image;
 	}
 
@@ -197,10 +191,10 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	 */
 	public function ck_members_after_title( $after, $data ) {
 		if ( self::string_contains( $data->className, 'featured-member' ) ) {
-			$address = get_field( 'member_address' );
+			$address = get_field( 'subtitle' );
 		}
-		if ( ! empty( $address['city'] ) && ! empty( $address['state_short'] ) ) {
-			$after = '<div class="featured-member-location">' . $address['city'] . ', ' . $address['state_short'] . '</div>';
+		if ( ! empty( $address ) ) {
+			$after = '<div class="featured-member-location">' . $address . '</div>';
 		}
 		return $after;
 	}
