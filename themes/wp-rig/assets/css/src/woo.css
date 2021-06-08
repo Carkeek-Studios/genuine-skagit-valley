@@ -135,7 +135,11 @@
 .woocommerce-variation-add-to-cart,
 .woocommerce div.product form.cart:not(.variations_form) {
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
+
+	& .single_add_to_cart_button {
+		margin-left: 1rem;
+	}
 }
 
 .woocommerce a.button.is-style-cta {

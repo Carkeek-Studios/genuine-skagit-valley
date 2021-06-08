@@ -131,7 +131,6 @@
 
 	/** Carkeek Blocks Overrides **/
 	--ck-archive-image-ratio: 100%;
-	--ck-archive-image-text-gap: 1.5rem;
 
 }
 
@@ -158,8 +157,6 @@
 		--font-size-medium-large: calc(21 / var(--global-font-size) * 1rem); /** product titles **/
 		--font-size-large: calc(28 / var(--global-font-size) * 1rem); /** quote **/
 
-
-		--ck-archive-image-text-gap: 2.5rem;
 		--ck-column-gap-vert: 3.125rem;
 	}
 }

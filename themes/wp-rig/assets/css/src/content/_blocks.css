@@ -218,7 +218,9 @@ a.is-style-arrow-cta,
 	padding-left: 0;
 	text-transform: none;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: left;
 
 	&:not(.has-text-color) {
 		color: var(--color-link);

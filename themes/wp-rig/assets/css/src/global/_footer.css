@@ -60,6 +60,7 @@
 
 	& dd {
 		display: inline;
+		margin: 0;
 		margin-left: 10px;
 
 		& a {
