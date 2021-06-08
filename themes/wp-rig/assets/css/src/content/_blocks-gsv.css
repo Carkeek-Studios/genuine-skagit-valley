@@ -123,7 +123,7 @@ ul.ck-blocks-gallery-grid {
 	}
 
 	& .wp-block-carkeek-blocks-fixed-image {
-		margin-bottom: 10px;
+		margin-bottom: 45px;
 	}
 
 	& .ck-modal-item-name {
@@ -369,6 +369,7 @@ ul.ck-blocks-gallery-grid {
 			right: 0;
 			color: var(--color-theme-white);
 			font-weight: var(--font-weight-medium);
+			font-size: 20px;
 
 			& .wp-block-group__inner-container {
 				max-width: 480px;
@@ -378,6 +379,12 @@ ul.ck-blocks-gallery-grid {
 
 			& .wp-block-button__link {
 				color: var(--color-theme-white);
+				font-size: 20px;
+				white-space: nowrap;
+
+				&::after {
+					line-height: 35px;
+				}
 			}
 		}
 
@@ -412,6 +419,7 @@ ul.ck-blocks-gallery-grid {
 				& .wp-block-group.highlight-text {
 					display: block;
 				}
+
 
 				& .wp-block-buttons.highlight-cta {
 
@@ -478,13 +486,23 @@ ul.ck-blocks-gallery-grid {
 
 		& .wp-block-group.highlight-single-text {
 			padding: 5.315rem 2.5rem;
+			font-size: 20px;
+		}
+
+		& .wp-block-buttons .wp-block-button__link {
+			font-size: 20px;
+
+			&::after {
+				line-height: 35px;
+			}
 		}
 	}
 }
 
-.wp-block-ck-member-details {
+.page-content > .wp-block-ck-member-details {
 	font-size: var(--font-size-medium-large);
 	max-width: 650px;
+	margin-bottom: var(--block-spacing-vert-small);
 
 	& dd {
 		margin-left: 0;
@@ -509,9 +527,13 @@ ul.ck-blocks-gallery-grid {
 	}
 }
 
+.wp-block-carkeek-blocks-custom-archive.has-2-columns {
+	--ck-column-gap: var(--gutter-width-columns);
+}
+
 @media (--tablet-up) {
 
-	.wp-block-ck-member-details {
+	.page-content > .wp-block-ck-member-details {
 		display: flex;
 		padding: 0;
 

@@ -330,6 +330,17 @@ a.is-style-arrow-cta,
 	}
 }
 
+@media (--tablet-up) {
+
+	.wp-block-embed {
+
+		&.alignfull {
+			padding-left: var(--gutter-width);
+			padding-right: var(--gutter-width);
+		}
+	}
+}
+
 .wp-block-carkeek-blocks-link-gallery {
 
 	& .wp-block-image {
@@ -1193,7 +1204,7 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 	&.direction-vertical {
 
 		& .ck-columns__wrap > * {
-			margin-bottom: 1rem;
+			margin-bottom: 1.25rem;
 		}
 	}
 
@@ -1273,7 +1284,13 @@ ul.wp-block-latest-posts.is-grid.alignfull {
 		& .ck-columns__wrap > * {
 			margin-right: 0;
 		}
+
+		& .ck-custom-archive-image-link {
+			margin-bottom: 3.125rem;
+		}
 	}
+
+
 }
 
 .wp-block-carkeek-blocks-accordion {

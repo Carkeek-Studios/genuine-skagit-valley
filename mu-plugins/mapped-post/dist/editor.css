@@ -198,6 +198,7 @@
   .leaflet-popup-content-wrapper .map-archive-popup {
     width: 215px;
     font-family: var(--global-font-family);
+    font-size: 14px;
     color: var(--global-font-color); }
     .leaflet-popup-content-wrapper .map-archive-popup h2 {
       font-size: 18px; }

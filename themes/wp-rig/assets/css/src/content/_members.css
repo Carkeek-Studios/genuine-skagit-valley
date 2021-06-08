@@ -54,7 +54,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-bottom: var(--ck-column-gap);
+		margin-bottom: var(--ck-column-gap-vert);
 	}
 }
 

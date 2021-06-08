@@ -34,6 +34,10 @@
 	margin-top: var(--block-spacing-vert-small);
 }
 
+.add-margin-top-large {
+	margin-top: var(--block-spacing-vert-extra);
+}
+
 .no-margin-bottom {
 	margin-bottom: 0;
 }
@@ -44,6 +48,10 @@
 
 .add-margin-bottom-small {
 	margin-bottom: var(--block-spacing-vert-small);
+}
+
+.add-margin-bottom-large {
+	margin-bottom: var(--block-spacing-vert-extra);
 }
 
 .page-content > [class^="wp-block-"],
@@ -71,6 +79,14 @@
 
 	&.add-margin-bottom-small {
 		margin-bottom: var(--block-spacing-vert-small);
+	}
+
+	&.add-margin-top-large {
+		margin-top: var(--block-spacing-vert-extra);
+	}
+
+	&.add-margin-bottom-large {
+		margin-bottom: var(--block-spacing-vert-extra);
 	}
 
 	&.no-padding {

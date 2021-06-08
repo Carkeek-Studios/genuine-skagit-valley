@@ -1,6 +1,7 @@
 .page-header {
 	text-align: center;
 	padding: 4.625rem 1rem 0;
+	margin-bottom: var(--block-spacing-vert);
 
 	& .image-caption {
 		padding: 0.25rem 0.5rem;
@@ -79,6 +80,7 @@
 			font-size: 15px;
 			text-transform: uppercase;
 			letter-spacing: 1.77px;
+			font-weight: var(--font-weight-medium);
 
 			& a {
 				color: var(--color-theme-white);
@@ -107,7 +109,7 @@
 
 @media (--desktop-up) {
 
-	.entry-title {
+	.page-header .entry-title {
 
 
 		& span {
