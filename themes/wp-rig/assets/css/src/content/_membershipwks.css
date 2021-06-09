@@ -2,19 +2,41 @@
 .page-content {
 
 	& #SFctr {
+
 		color: var(--global-font-color);
 		font-family: var(--global-font-family);
 
 		& * {
 			color: var(--global-font-color);
 			font-family: var(--global-font-family);
+			box-sizing: border-box;
+		}
+
+		&.SF {
+
+			& input,
+			& select,
+			& textarea {
+				box-sizing: border-box;
+			}
 		}
 
 		& div.SFbox {
 			border: none;
+			width: 100%;
 			max-width: 100%;
 			padding: 0;
 			margin: 0;
+		}
+
+		& table {
+			width: 100%;
+
+			& td,
+			& tr,
+			& th {
+				width: 100%;
+			}
 		}
 
 		& table.SFfrm {
@@ -53,6 +75,10 @@
 			}
 		}
 
+		& #SFfrmadd {
+			width: 100%;
+		}
+
 		& button,
 		& a.button {
 			background-color: var(--color-button-background);
@@ -88,12 +114,17 @@
 .gsv-donate {
 
 	& #SFctr #SFfrmitm {
-		display: flex;
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: 1fr 1fr 1fr;
 
 		& .SFfrmitm {
 			height: auto;
 			width: auto;
 			border: none;
+			padding-bottom: 0;
+			margin: 0;
+			flex: 1 1 33%;
 		}
 
 		& .SFfrmitmtxt,
@@ -103,18 +134,60 @@
 
 		& .SFfrmitmadd {
 			position: relative;
+			display: block;
 			bottom: auto;
 			left: auto;
 
 			& button:not(.SFlnk) {
-				padding: 1rem 1.5rem;
+				padding: 1rem 0;
+				text-align: center;
+				width: 100%;
 				margin: 0;
 				font-weight: var(--font-weight-bold);
+
+				&:hover {
+					background-color: var(--color-theme-orange);
+					color: #fff;
+				}
 			}
 		}
 
 		& .SFfrmitmamt {
 			display: none;
+		}
+
+		& .SFfrmitmsel {
+			background-color: var(--color-theme-green);
+			color: #fff;
+		}
+	}
+
+	& #SFctr #SFfrmadd {
+		border: 1px solid var(--color-theme-green);
+
+		& #SFfrmsum {
+			background-color: var(--color-theme-green);
+
+			& td,
+			& div {
+				color: #fff !important;
+			}
+		}
+	}
+
+	& #SFctr h4 {
+		font-weight: var(--font-weight-medium);
+	}
+}
+
+@media (--tablet-wide-up) {
+
+	.gsv-donate {
+
+		& #SFctr #SFfrmitm {
+			display: grid;
+			grid-gap: 1rem;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 		}
 	}
 }
