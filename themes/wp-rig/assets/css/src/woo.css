@@ -209,9 +209,12 @@
 
 		& div.images .flex-control-thumbs {
 			margin-top: 1rem;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			grid-gap: 10px;
 
 			& li {
-				margin-right: 10px;
+				width: 100%;
 			}
 		}
 
@@ -462,8 +465,6 @@ h3#ship-to-different-address {
 		}
 	}
 }
-
-
 
 
 @media (--tablet-up) {
