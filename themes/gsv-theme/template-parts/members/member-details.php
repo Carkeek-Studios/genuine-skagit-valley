@@ -43,7 +43,7 @@ if ( ! empty( $display_address ) && true == $open ) {
 
 foreach ( $social as $name => $value ) {
 	if ( ! empty( $value ) ) {
-		$soc_links .= wp_sprintf( '<li><a href="%1s"><span class="screen-reader-text">%2s</span><i class="icon-%3s" aria-hidden="true"></i></a></li>', $value, $name, $name );
+		$soc_links .= wp_sprintf( '<li><a href="%1s" target="_blank"><span class="screen-reader-text">%2s</span><i class="icon-%3s" aria-hidden="true"></i></a></li>', $value, $name, $name );
 	}
 }
 ?>

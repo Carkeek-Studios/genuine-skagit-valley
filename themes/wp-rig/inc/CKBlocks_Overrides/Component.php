@@ -38,6 +38,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		add_filter( 'carkeek_block_custom_post_layout_tribe_organizer__query_args', array( $this, 'set_organizers_sort' ), 10, 1 );
 		add_filter( 'ck_custom_archive_ck_members__featured_image', array( $this, 'ck_members_featured_image' ), 10, 3 );
 		add_filter( 'ck_custom_archive_ck_members__link', array( $this, 'ck_members_farmstand_fresh_link' ), 10, 3 );
+		add_filter( 'ck_custom_archive_ck_members__link_target', array( $this, 'ck_members_farmstand_fresh_link_target' ), 10, 2 );
 		add_filter( 'ck_custom_archive_ck_members__excerpt', array( $this, 'ck_members_farmstand_fresh_excerpt' ), 10, 3 );
 		add_filter( 'ck_custom_archive_layout__meta_before_title', array( $this, 'ck_members_farmstand_fresh_before_title' ), 10, 2 );
 		add_filter( 'ck_custom_archive_layout__meta_after_title', array( $this, 'ck_members_after_title' ), 10, 2 );
@@ -105,6 +106,18 @@ class Component implements Component_Interface, Templating_Component_Interface {
 			$permalink = get_field( 'member_website', $post_id );
 		}
 		return $permalink;
+	}
+
+	/** Set permalink target to the website for the farmstand fresh page
+	 *
+	 * @param string $permalink post permalink.
+	 * @param object $data data object from block.
+	 */
+	public function ck_members_farmstand_fresh_link_target( $target, $data ) {
+		if ( self::string_contains( $data->className, 'farmstand-fresh-list' ) || self::string_contains( $data->className, 'farmstand-fresh-chefs' ) ) {
+			$target = '_blank';
+		}
+		return $target;
 	}
 
 	/** Make directions link from the address on the post.
