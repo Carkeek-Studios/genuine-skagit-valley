@@ -27,13 +27,11 @@ function App(props){
     const resolveMarkers = (markers) =>  {
         let usable = [];
         //only use if have lat lng
-        console.log(markers);
         markers.forEach( (marker) => {
           if (marker.acf.member_address && marker.acf.member_address.lat.toString().length > 0 && marker.acf.member_address.lng.toString().length > 0) {
             usable.push(marker);
           }
         });
-        console.log(usable);
         updateVisibleMarkers(usable);
         setMarkersState( (prevState) => {
           return {

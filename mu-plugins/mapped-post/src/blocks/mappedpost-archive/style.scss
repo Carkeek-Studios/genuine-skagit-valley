@@ -21,12 +21,9 @@
     border-top: 2px solid #e3e3e3;
     border-bottom: 2px solid #e3e3e3;
     .archive-filter-list {
-        position: absolute;
         z-index: 200;
-        top: 2rem;
-        left: 2rem;
-        box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
-        border: 1px solid var(--color-theme-grey-med-light);
+
+
         background-color: #f1f1f1;
         padding: 1rem 2rem;
         font-size: 16px;
@@ -207,6 +204,17 @@
                 width: calc(100% - var(--am-list-width));
                 margin-right: var(--am-list-width);
             }
+        }
+        .archive-filter-list {
+            position: absolute;
+            z-index: 200;
+            top: 2rem;
+            left: 2rem;
+            border: 1px solid var(--color-theme-grey-med-light);
+            box-shadow: 0 0 8px 0 rgba(0,0,0,0.25);
+            padding: 1rem 2rem;
+            font-size: 16px;
+            font-weight: 500;
         }
     }
 }

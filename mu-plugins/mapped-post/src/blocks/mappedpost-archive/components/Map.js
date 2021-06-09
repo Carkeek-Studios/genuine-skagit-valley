@@ -82,8 +82,11 @@ function MapCluster(props) {
         onUpdateLocations(locations);
         }
     }
-
-
+    //todo: tie this to browser resize https://react-cn.github.io/react/tips/dom-event-listeners.html
+    let boundsOptions = {padding: [25, 25]}
+    if ( window.innerWidth > 599 ) {
+        boundsOptions= {paddingTopLeft: [275, 0]}
+    }
 
     const updateSelectedCats = (selected) => {
         setSelectedCats( () => {
@@ -124,7 +127,7 @@ function MapCluster(props) {
         <div className={'data-map'}>
 
 
-        <Map {...mapProps} zoom={zoom} maxZoom={18} minZoom={9} zoomControl={false} ref={mapRef} scrollWheelZoom={false} onClick={handleMapClick} boundsOptions={{paddingTopLeft: [275, 0]}}>
+        <Map {...mapProps} zoom={zoom} maxZoom={18} minZoom={8} zoomControl={false} ref={mapRef} scrollWheelZoom={false} onClick={handleMapClick} boundsOptions={boundsOptions}>
         <TileLayer
             attribution='<a href="https://www.maptiler.com/copyright/" target="_blank" >&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
             url="https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=yRFimapDOtSxWTi4dx3l"

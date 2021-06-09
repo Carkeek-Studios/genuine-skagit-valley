@@ -23743,7 +23743,18 @@ function MapCluster(props) {
     } else {
       onUpdateLocations(locations);
     }
+  }; //todo: tie this to browser resize https://react-cn.github.io/react/tips/dom-event-listeners.html
+
+
+  var boundsOptions = {
+    padding: [25, 25]
   };
+
+  if (window.innerWidth > 599) {
+    boundsOptions = {
+      paddingTopLeft: [275, 0]
+    };
+  }
 
   var updateSelectedCats = function updateSelectedCats(selected) {
     setSelectedCats(function () {
@@ -23769,7 +23780,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106,
+      lineNumber: 109,
       columnNumber: 9
     }
   }, showList && wp.element.createElement(PointsList, {
@@ -23781,7 +23792,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108,
+      lineNumber: 111,
       columnNumber: 13
     }
   }), mapReady && wp.element.createElement(_Filters_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -23794,7 +23805,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117,
+      lineNumber: 120,
       columnNumber: 9
     }
   }), wp.element.createElement("div", {
@@ -23802,24 +23813,22 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 124,
+      lineNumber: 127,
       columnNumber: 9
     }
   }, wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["Map"], _extends({}, mapProps, {
     zoom: zoom,
     maxZoom: 18,
-    minZoom: 9,
+    minZoom: 8,
     zoomControl: false,
     ref: mapRef,
     scrollWheelZoom: false,
     onClick: handleMapClick,
-    boundsOptions: {
-      paddingTopLeft: [275, 0]
-    },
+    boundsOptions: boundsOptions,
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127,
+      lineNumber: 130,
       columnNumber: 9
     }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["TileLayer"], {
@@ -23828,7 +23837,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 128,
+      lineNumber: 131,
       columnNumber: 9
     }
   }), mapReady && wp.element.createElement(_Pins_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -23839,7 +23848,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 133,
+      lineNumber: 136,
       columnNumber: 17
     }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["ZoomControl"], {
@@ -23847,7 +23856,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135,
+      lineNumber: 138,
       columnNumber: 13
     }
   }))));
@@ -24184,13 +24193,11 @@ function App(props) {
   var resolveMarkers = function resolveMarkers(markers) {
     var usable = []; //only use if have lat lng
 
-    console.log(markers);
     markers.forEach(function (marker) {
       if (marker.acf.member_address && marker.acf.member_address.lat.toString().length > 0 && marker.acf.member_address.lng.toString().length > 0) {
         usable.push(marker);
       }
     });
-    console.log(usable);
     updateVisibleMarkers(usable);
     setMarkersState(function (prevState) {
       return _objectSpread({}, prevState, {
@@ -24272,7 +24279,7 @@ function App(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109,
+      lineNumber: 107,
       columnNumber: 5
     }
   }) //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
@@ -24291,7 +24298,7 @@ if (document.getElementById('mapped-posts-map')) {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 130,
+      lineNumber: 128,
       columnNumber: 12
     }
   }), document.getElementById('mapped-posts-map'));
