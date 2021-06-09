@@ -46,9 +46,16 @@
 		margin-top: 1.5rem;
 	}
 
+	& h4,
+	& h3,
+	& h2 {
+		font-family: var(--global-font-family);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-theme-green);
+	}
+
 	& h4 {
 		font-size: var(--font-size-h4-alt);
-		color: var(--color-theme-green);
 	}
 
 }
@@ -57,6 +64,33 @@
 
 	& .ck-custom-archive-excerpt {
 		line-height: 32px;
+	}
+}
+
+@media (--tablet-up) {
+
+	.wp-block-carkeek-blocks-custom-archive {
+
+		&.is-list {
+
+			& .ck-columns-item {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				column-gap: var(--gutter-width);
+			}
+		}
+
+		&.featured-member {
+
+			& .ck-custom-archive__content-wrap {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding-right: var(--gutter-width);
+			}
+		}
 	}
 }
 
@@ -214,6 +248,10 @@ ul.ck-blocks-gallery-grid {
 		color: #fff;
 	}
 
+	& .wp-block-buttons {
+		display: none;
+	}
+
 }
 
 
@@ -303,6 +341,10 @@ ul.ck-blocks-gallery-grid {
 			color: #fff;
 		}
 
+		& .wp-block-buttons {
+			display: flex;
+		}
+
 		& .wp-block-group.highlight-single-text {
 			position: absolute;
 			top: 0;
@@ -380,7 +422,7 @@ ul.ck-blocks-gallery-grid {
 			}
 
 			& .wp-block-buttons {
-				display: block;
+				display: flex;
 			}
 
 			& .wp-block-button__link {
