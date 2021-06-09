@@ -183,6 +183,11 @@ ul.ck-blocks-gallery-grid {
 	& .highlight-text {
 		padding: var(--gutter-width-page);
 		padding-bottom: 0;
+		padding-top: 1rem;
+
+		& .wp-block-buttons {
+			display: none;
+		}
 	}
 }
 
@@ -372,6 +377,10 @@ ul.ck-blocks-gallery-grid {
 				max-width: 480px;
 				margin-left: auto;
 				margin-right: auto;
+			}
+
+			& .wp-block-buttons {
+				display: block;
 			}
 
 			& .wp-block-button__link {
