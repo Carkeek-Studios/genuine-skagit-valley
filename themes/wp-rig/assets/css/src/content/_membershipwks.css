@@ -83,4 +83,40 @@
 	max-width: none;
 	height: 175px;
 }
+
+
+.gsv-donate {
+
+	& #SFctr #SFfrmitm {
+		display: flex;
+
+		& .SFfrmitm {
+			height: auto;
+			width: auto;
+			border: none;
+		}
+
+		& .SFfrmitmtxt,
+		& .SFfrmitmovr {
+			display: none;
+		}
+
+		& .SFfrmitmadd {
+			position: relative;
+			bottom: auto;
+			left: auto;
+
+			& button:not(.SFlnk) {
+				padding: 1rem 1.5rem;
+				margin: 0;
+				font-weight: var(--font-weight-bold);
+			}
+		}
+
+		& .SFfrmitmamt {
+			display: none;
+		}
+	}
+}
+
 /* stylelint-enable */
