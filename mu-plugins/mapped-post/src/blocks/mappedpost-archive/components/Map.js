@@ -1,9 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Map, ZoomControl, TileLayer } from "react-leaflet";
+import { useHistory, withRouter } from 'react-router-dom';
+import queryString from 'query-string';
+
 var _ = require('lodash');
 
 import Pins from './Pins.js';
 import FilterList from './Filters.js';
+
 
 function PointsList(props) {
     const { data, onItemClick, selectedIndex, onHeaderClick } = props;
@@ -33,10 +37,17 @@ function PointsList(props) {
 
 
 function MapCluster(props) {
-    const { zoom, locations, categories, isMapLoading, isCatLoading, visibleLocations, onUpdateLocations, visibleBounds, taxFilter} = props;
+    const { zoom, locations, categories, isMapLoading, isCatLoading, visibleLocations, onUpdateLocations, visibleBounds, taxFilter, location} = props;
     const hideListAtLoad = window.innerWidth > 600 ? false : true;
     const [selected, setSelected] = useState();
-    const [selectedCats, setSelectedCats] = useState([]);
+    let params = queryString.parse(location.search)
+    let paramCats = [];
+    if (params && params.ck_listing_category) {
+        paramCats = params.ck_listing_category.split(',').map(function(item){
+            return parseInt(item, 10);
+        });
+    }
+    const [selectedCats, setSelectedCats] = useState(paramCats);
     const [hideList, setHideList] = useState(hideListAtLoad);
 
     const mapRef = useRef(null);
@@ -88,10 +99,21 @@ function MapCluster(props) {
         boundsOptions= {paddingTopLeft: [275, 0]}
     }
 
+    const history = useHistory();
+
     const updateSelectedCats = (selected) => {
         setSelectedCats( () => {
             return (selected);
         });
+        const params = new URLSearchParams();
+        if (selected.length > 0) {
+            params.append('ck_listing_category', selected)
+        } else {
+            params.delete('ck_listing_category')
+        }
+        history.push({
+            search: '?' + params.toString()
+        })
         filterLocations(selected);
     }
     let mapProps = {};
@@ -144,4 +166,4 @@ function MapCluster(props) {
     );
 }
 
-export default MapCluster;
+export default withRouter (MapCluster);

@@ -5,6 +5,9 @@ import L from 'leaflet';
 const { render } = wp.element;
 import { getMarkerData, getCategoryData } from './components/getData';
 import Map from './components/Map';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 
 import './style.scss';
 import _ from 'lodash';
@@ -125,5 +128,5 @@ if (document.getElementById('mapped-posts-map')){
     const dataUrl = mapEl.getAttribute('data-items');
     const taxUrl = mapEl.getAttribute('data-taxurl');
     const taxonomy = mapEl.getAttribute('data-taxonomy');
-    render(<App dataUrl={dataUrl} taxUrl={taxUrl} tax={taxonomy} />, document.getElementById('mapped-posts-map'));
+    render(<Router><App dataUrl={dataUrl} taxUrl={taxUrl} tax={taxonomy} /></Router>, document.getElementById('mapped-posts-map'));
 }
