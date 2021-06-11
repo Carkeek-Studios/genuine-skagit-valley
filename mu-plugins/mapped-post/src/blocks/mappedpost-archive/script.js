@@ -50,6 +50,9 @@ function App(props){
 
     const updateVisibleMarkers = (markers) => {
       setMarkersState( (prevState) => {
+        if (_.isEqual(prevState.visible, markers)) {
+          return prevState;
+        }
         return {
           ...prevState,
           visible: markers,

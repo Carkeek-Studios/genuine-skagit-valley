@@ -122,11 +122,15 @@ function MapCluster(props) {
         mapProps = {
             bounds: visibleBounds
         }
+        if (paramCats.length) {
+            filterLocations(paramCats);
+        }
     } else {
         mapProps = {
             center: ['48.41789', '-122.323702']
         }
     }
+
     return (
         <div className={`archive-map-wrapper ${mapStyle}`}>
         {showList &&

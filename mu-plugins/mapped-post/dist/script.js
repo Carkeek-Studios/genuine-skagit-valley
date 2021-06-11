@@ -28403,6 +28403,10 @@ function MapCluster(props) {
     mapProps = {
       bounds: visibleBounds
     };
+
+    if (paramCats.length) {
+      filterLocations(paramCats);
+    }
   } else {
     mapProps = {
       center: ['48.41789', '-122.323702']
@@ -28414,7 +28418,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131,
+      lineNumber: 135,
       columnNumber: 9
     }
   }, showList && wp.element.createElement(PointsList, {
@@ -28426,7 +28430,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 133,
+      lineNumber: 137,
       columnNumber: 13
     }
   }), mapReady && wp.element.createElement(_Filters_js__WEBPACK_IMPORTED_MODULE_5__["default"], {
@@ -28439,7 +28443,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 142,
+      lineNumber: 146,
       columnNumber: 9
     }
   }), wp.element.createElement("div", {
@@ -28447,7 +28451,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 149,
+      lineNumber: 153,
       columnNumber: 9
     }
   }, wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["Map"], _extends({}, mapProps, {
@@ -28462,7 +28466,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 152,
+      lineNumber: 156,
       columnNumber: 9
     }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["TileLayer"], {
@@ -28471,7 +28475,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153,
+      lineNumber: 157,
       columnNumber: 9
     }
   }), mapReady && wp.element.createElement(_Pins_js__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -28482,7 +28486,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158,
+      lineNumber: 162,
       columnNumber: 17
     }
   }), wp.element.createElement(react_leaflet__WEBPACK_IMPORTED_MODULE_1__["ZoomControl"], {
@@ -28490,7 +28494,7 @@ function MapCluster(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 160,
+      lineNumber: 164,
       columnNumber: 13
     }
   }))));
@@ -28847,6 +28851,10 @@ function App(props) {
 
   var updateVisibleMarkers = function updateVisibleMarkers(markers) {
     setMarkersState(function (prevState) {
+      if (lodash__WEBPACK_IMPORTED_MODULE_7___default.a.isEqual(prevState.visible, markers)) {
+        return prevState;
+      }
+
       return _objectSpread({}, prevState, {
         visible: markers,
         bounds: setBounds(markers)
@@ -28915,7 +28923,7 @@ function App(props) {
     __self: this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110,
+      lineNumber: 113,
       columnNumber: 5
     }
   }) //return (<Map zoom={10} bounds={bounds} maxZoom={18} locations={markerData} />);
@@ -28931,7 +28939,7 @@ if (document.getElementById('mapped-posts-map')) {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131,
+      lineNumber: 134,
       columnNumber: 12
     }
   }, wp.element.createElement(App, {
@@ -28941,7 +28949,7 @@ if (document.getElementById('mapped-posts-map')) {
     __self: undefined,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131,
+      lineNumber: 134,
       columnNumber: 20
     }
   })), document.getElementById('mapped-posts-map'));
