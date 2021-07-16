@@ -2,13 +2,6 @@
 	$( document ).ready( function() {
 		$( '.info-popover' ).gpopover();
 
-		$( '#gform_submit_button_1' ).on( 'click', function( e ) {
-			e.preventDefault();
-			const email = $( '#input_1_1' ).val();
-			const url = $( '#input_1_2' ).val();
-			window.location.href = url + '&MERGE0=' + email;
-		} );
-
 		if ( document.location.hash ) {
 			setTimeout( function() {
 				window.scrollTo( window.scrollX, window.scrollY - 50 );
