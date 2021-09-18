@@ -258,7 +258,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		<li class="list-inline-item">' . $this->make_email_button() . '</li>
 	</ul>';
 		if ( $echo ) {
-			echo wp_kses_post( $links );
+			echo $links;
 		} else {
 			return $links;
 		}

@@ -84,6 +84,8 @@ function MapCluster(props) {
         if (selectedCats.length > 0 ) {
             const visible = []
             locations.map((item) => {
+                console.log(item);
+                console.log(taxFilter);
                 if (arrayContains(selectedCats, item[taxFilter])) {
                     visible.push(item);
                 }
