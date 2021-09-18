@@ -25,6 +25,12 @@ if ( is_singular( get_post_type() ) ) {
 	if ( ! has_post_thumbnail() ) {
 		return;
 	}
+	$focal_point = get_post_meta( $post->ID, '_carkeekblocks_featured_image_focal_point', true );
+	if ( ! empty( $focal_point ) ) {
+		$x = $focal_point['x'] * 100;
+		$y = $focal_point['y'] * 100;
+		echo '<style>.page-header .post-thumbnail img {object-position:' . esc_attr( $x ) . '% ' . esc_attr( $y ) . '%;}</style>';
+	}
 	?>
 	<div class="post-thumbnail">
 		<?php the_post_thumbnail( 'gsv-theme-featured', array( 'class' => 'skip-lazy' ) ); ?>
@@ -36,7 +42,7 @@ if ( is_singular( get_post_type() ) ) {
 	<?php
 } else {
 	if ( ! has_post_thumbnail() ) {
-		$feat_image = gsv_theme()->get_random_thumbnail( 'large', true, $random_number );
+		$feat_image    = gsv_theme()->get_random_thumbnail( 'large', true, $random_number );
 		$feat_image_id = $feat_image['ID'];
 	} else {
 		$feat_image_id = get_post_thumbnail_id();
