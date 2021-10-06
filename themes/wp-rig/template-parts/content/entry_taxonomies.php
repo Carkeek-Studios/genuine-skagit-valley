@@ -7,6 +7,13 @@
 
 namespace WP_Rig\WP_Rig;
 
+$args = wp_parse_args(
+	$args,
+	array(
+		'tax' => array( 'category' ),
+	)
+);
+
 $taxonomies = wp_list_filter(
 	get_object_taxonomies( $post, 'objects' ),
 	array(
@@ -18,32 +25,23 @@ $taxonomies = wp_list_filter(
 <div class="entry-taxonomies">
 	<?php
 	// Show terms for all taxonomies associated with the post.
-	foreach ( $taxonomies as $taxonomy ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+	foreach ( $args['tax'] as $taxonomy ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		/* translators: separator between taxonomy terms */
 		$separator = _x( ' &bull; ', 'list item separator', 'wp-rig' );
 
-		switch ( $taxonomy->name ) {
+		switch ( $taxonomy ) {
 			case 'category':
 				$class = 'category-links term-links';
 				$list  = get_the_category_list( esc_html( $separator ), '', $post->ID );
-				/* translators: %s: list of taxonomy terms */
-				$placeholder_text = '';
 				break;
 			case 'post_tag':
 				$class = 'tag-links term-links';
 				$list  = get_the_tag_list( '', esc_html( $separator ), '', $post->ID );
-				/* translators: %s: list of taxonomy terms */
-				$placeholder_text = __( 'Tagged %s', 'wp-rig' );
 				break;
 			default:
-				$class            = str_replace( '_', '-', $taxonomy->name ) . '-links term-links';
-				$list             = get_the_term_list( $post->ID, $taxonomy->name, '', esc_html( $separator ), '' );
-				$placeholder_text = sprintf(
-					/* translators: %s: taxonomy name */
-					__( '%s:', 'wp-rig' ),
-					$taxonomy->labels->name // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				);
+				$class = str_replace( '_', '-', $taxonomy->name ) . '-links term-links';
+				$list  = get_the_term_list( $post->ID, $taxonomy->name, '', esc_html( $separator ), '' );
 		}
 
 		if ( empty( $list ) ) {
@@ -52,7 +50,7 @@ $taxonomies = wp_list_filter(
 		?>
 		<span class="<?php echo esc_attr( $class ); ?>">
 			<?php
-			echo wp_kses_post( $placeholder_text . $list );
+			echo wp_kses_post( $list );
 			?>
 		</span>
 		<?php
