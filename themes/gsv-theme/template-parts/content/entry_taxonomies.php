@@ -14,13 +14,6 @@ $args = wp_parse_args(
 	)
 );
 
-$taxonomies = wp_list_filter(
-	get_object_taxonomies( $post, 'objects' ),
-	array(
-		'public' => true,
-	)
-);
-
 ?>
 <div class="entry-taxonomies">
 	<?php
