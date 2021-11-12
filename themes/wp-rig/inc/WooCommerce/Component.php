@@ -62,6 +62,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_action( 'woocommerce_new_product_variation', array( $this, 'woocommerce_update_product_variation_skus' ), 200, 2 );
 
+		add_filter( 'woocommerce_format_price_range', array( $this, 'format_grouped_price_range' ), 100, 3 );
 		add_action( 'pre_get_posts', array( $this, 'hide_tickets_from_search' ), 200, 2 );
 	}
 
@@ -170,7 +171,7 @@ class Component implements Component_Interface, Templating_Component_Interface {
 		if ( strpos( $quantity, 'hidden' ) !== false ) {
 			return '<div class="number-input number-input-fixed">' . $quantity . '</div>';
 		} else {
-			return '<div class="number-input number-input-variable"><button class="quantity-button minus">-<span class="screen-reader-text">Subtract 1</span></button>' . $quantity . '<button class="quantity-button plus">+<span class="screen-reader-text">Add 1</span></button></div>';
+			return '<div class="number-input number-input-variable"><button type="button" class="quantity-button minus">-<span class="screen-reader-text">Subtract 1</span></button>' . $quantity . '<button type="button" class="quantity-button plus">+<span class="screen-reader-text">Add 1</span></button></div>';
 		}
 	}
 
@@ -237,6 +238,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				)
 			);
 		}
+	}
+
+	/** If has price range just show a plus.
+	 * display_price_range
+	 *
+	 * @param string $html html element of price.
+	 */
+	public function format_grouped_price_range( $price, $from, $to ) {
+		/* translators: 1: price from 2: price to */
+		$price = sprintf( _x( '%1$s &plus;', 'Price range: from-to', 'wp-rig' ), is_numeric( $to ) ? wc_price( $to ) : $to );
+		return $price;
 	}
 
 

@@ -1,8 +1,8 @@
 
 ( function( $ ) {
 	function setUpQty() {
-		const plus = '<button class="quantity-button plus">+<span class="screen-reader-text">Subtract 1</span></button>';
-		const minus = '<button class="quantity-button minus">-<span class="screen-reader-text">Subtract 1</span></button>';
+		const plus = '<button type="button" class="quantity-button plus">+<span class="screen-reader-text">Add 1</span></button>';
+		const minus = '<button type="button" class="quantity-button minus">-<span class="screen-reader-text">Subtract 1</span></button>';
 
 		$( '.quantity input[type=number]' ).wrap( '<div class="number-input"></div>' );
 		$( minus ).insertBefore( '.quantity input[type=number]' );
