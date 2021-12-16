@@ -203,10 +203,6 @@
 			margin-bottom: 25px;
 		}
 
-		& p.stock {
-			display: none;
-		}
-
 		& p.price {
 			color: var(--global-font-color);
 			font-family: var(--global-font-family);
