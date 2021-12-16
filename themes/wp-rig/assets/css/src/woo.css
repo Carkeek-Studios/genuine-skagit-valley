@@ -191,6 +191,10 @@
 			float: none;
 		}
 
+		& .woocommerce-grouped-product-list .outofstock .button {
+			display: none;
+		}
+
 		&::after {
 			display: table;
 			content: " ";

@@ -64,6 +64,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 
 		add_filter( 'woocommerce_format_price_range', array( $this, 'format_grouped_price_range' ), 100, 3 );
 		add_action( 'pre_get_posts', array( $this, 'hide_tickets_from_search' ), 200, 2 );
+
+		add_action( 'woocommerce_after_shop_loop_item', array( $this, 'remove_add_to_cart_buttons' ), 200, 2 );
 	}
 
 	/**
@@ -92,6 +94,14 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	/** Place the Title within the WC Product content */
 	public function woocommerce_product_title() {
 		echo the_title( '<h1 class="product_title entry-title">', '</h1>' ); // phpcs:ignore
+	}
+
+
+	/** remove add to cart buttons on the shop pages */
+	public function remove_add_to_cart_buttons() {
+		if ( is_product_category() || is_shop() ) {
+			remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart' );
+		}
 	}
 
 	/** Add our Js File only on WC pages.
