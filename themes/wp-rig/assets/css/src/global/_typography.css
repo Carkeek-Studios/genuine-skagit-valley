@@ -72,7 +72,7 @@ p + h6 {
 }
 
 
-h2 + [class^="wp-block-"] {
+h2 + [class*="wp-block-"] {
 	margin-top: var(--block-spacing-vert-small);
 }
 

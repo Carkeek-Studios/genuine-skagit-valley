@@ -158,6 +158,7 @@
 		--font-size-large: calc(28 / var(--global-font-size) * 1rem); /** quote **/
 
 		--ck-column-gap-vert: 3.125rem;
+		--wp--style--block-gap: var(--gutter-width-columns);
 	}
 }
 

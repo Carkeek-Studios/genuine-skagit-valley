@@ -54,8 +54,8 @@
 	margin-bottom: var(--block-spacing-vert-extra);
 }
 
-.page-content > [class^="wp-block-"],
-[class^="wp-block-"] {
+.page-content > [class*="wp-block-"],
+[class*="wp-block-"] {
 
 	&.no-margin-top {
 		margin-top: 0;
