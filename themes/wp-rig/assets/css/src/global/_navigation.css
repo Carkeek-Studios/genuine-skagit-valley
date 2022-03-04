@@ -409,17 +409,6 @@ html.overflow-hidden {
 }
 
 
-@media (--tablet-up) {
-
-	.top-navigation {
-		display: block;
-
-		& .menu {
-			display: flex;
-		}
-	}
-}
-
 @media (--wide-menu-query) {
 
 	.main-navigation {
