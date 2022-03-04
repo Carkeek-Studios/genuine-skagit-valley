@@ -27,11 +27,11 @@ use function dynamic_sidebar;
  */
 class Component implements Component_Interface, Templating_Component_Interface {
 
-	const PRIMARY_SIDEBAR_SLUG      = 'sidebar-1';
-	const FOOTER_SIDEBAR_SLUG       = 'sidebar-footer';
-	const FOOTER_LOWER_SIDEBAR_SLUG = 'sidebar-footer-lower';
+	const PRIMARY_SIDEBAR_SLUG       = 'sidebar-1';
+	const FOOTER_SIDEBAR_SLUG        = 'sidebar-footer';
+	const FOOTER_LOWER_SIDEBAR_SLUG  = 'sidebar-footer-lower';
 	const FOOTER_BOTTOM_SIDEBAR_SLUG = 'sidebar-footer-bottom';
-	const BLOG_ARCHIVE_SLUG = 'blog-archive-intro';
+	const BLOG_ARCHIVE_SLUG          = 'blog-archive-intro';
 
 	/**
 	 * Gets the unique identifier for the theme component.
@@ -106,6 +106,17 @@ class Component implements Component_Interface, Templating_Component_Interface {
 				'name'          => esc_html__( 'Blog Archive Intro', 'gsv-theme' ),
 				'id'            => static::BLOG_ARCHIVE_SLUG,
 				'description'   => esc_html__( 'Place content that will appear on the blog archive below the title and above the filters', 'gsv-theme' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widget-title">',
+				'after_title'   => '</h2>',
+			)
+		);
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Header Top', 'gsv-theme' ),
+				'id'            => 'header-top',
+				'description'   => esc_html__( 'Appears above the nav', 'gsv-theme' ),
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="widget-title">',
