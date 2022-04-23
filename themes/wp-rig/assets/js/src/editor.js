@@ -29,6 +29,11 @@ wp.domReady( function() {
 		label: 'Inline - reduced Margins',
 	} );
 
+	wp.blocks.registerBlockStyle( 'core/image', {
+		name: 'left-aligned-captions',
+		label: 'Left Aligned Captions',
+	} );
+
 	wp.blocks.registerBlockStyle( 'core/media-text', {
 		name: 'square-image',
 		label: 'Square Image - crop image to equal height and width',

@@ -303,6 +303,13 @@ a.is-style-arrow-cta,
 		}
 	}
 
+	&.is-style-left-aligned-captions {
+
+		& figcaption {
+			text-align: left;
+		}
+	}
+
 
 }
 
