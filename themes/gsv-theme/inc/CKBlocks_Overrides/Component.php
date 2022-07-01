@@ -127,10 +127,8 @@ class Component implements Component_Interface, Templating_Component_Interface {
 	public static function make_directions_link( $post_id ) {
 		$address         = get_field( 'member_address', $post_id );
 		$directions_link = '';
-		if ( isset( $address['place_id'] ) && ! empty( $address['place_id'] ) ) {
-			$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/place/?q=place_id:%1s" target="_blank" class="directions-link">Directions</a>', $address['place_id'] );
-		} elseif ( isset( $address['address'] ) && ! empty( $address['address'] ) ) {
-			$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/search/?api=1&query=%1s" target="_blank" class="directions-link">Directions</a>', $address['address'] );
+		if ( isset( $address['address'] ) && ! empty( $address['address'] ) ) {
+			$directions_link = wp_sprintf( '<a href="https://maps.google.com/?daddr=%1s" target="_blank" class="directions-link">Directions</a>', $address['address'] );
 		}
 		return $directions_link;
 	}

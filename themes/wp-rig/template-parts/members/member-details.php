@@ -17,10 +17,8 @@ $social     = get_field( 'member_social' );
 $soc_links  = '';
 
 $directions_link = '';
-if ( isset( $address['place_id'] ) && ! empty( $address['place_id'] ) ) {
-	$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/place/?q=place_id:%1s" target="_blank" class="directions-link">Directions</a>', $address['place_id'] );
-} elseif ( isset( $address['address'] ) && ! empty( $address['address'] ) ) {
-	$directions_link = wp_sprintf( '<a href="https://www.google.com/maps/search/?api=1&query=%1s" target="_blank" class="directions-link">Directions</a>', $address['address'] );
+if ( isset( $address['address'] ) && ! empty( $address['address'] ) ) {
+	$directions_link = wp_sprintf( '<a href="https://maps.google.com/?daddr=%1s" target="_blank" class="directions-link">Directions</a>', $address['address'] );
 }
 $display_address = '';
 // if open to the public we show the address.
